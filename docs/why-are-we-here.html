@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2 Why are we here? | Analysis of Ecological Data with R</title>
+  <meta name="description" content="This is currently a slide collection for the ILOEK Course “Analysis of ecological data in R” but could eventually turn into a more comprehensive ressource collection." />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2 Why are we here? | Analysis of Ecological Data with R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is currently a slide collection for the ILOEK Course “Analysis of ecological data in R” but could eventually turn into a more comprehensive ressource collection." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2 Why are we here? | Analysis of Ecological Data with R" />
+  
+  <meta name="twitter:description" content="This is currently a slide collection for the ILOEK Course “Analysis of ecological data in R” but could eventually turn into a more comprehensive ressource collection." />
+  
+
+<meta name="author" content="Marvin Ludwig" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="ecological-data.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="libs/datagrid-binding-0.2.1/datagrid.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Analysis of Ecological Data</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Welcome</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#target-audience"><i class="fa fa-check"></i><b>1.1</b> Target audience</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#aims-of-this-course"><i class="fa fa-check"></i><b>1.2</b> Aims of this course</a></li>
+</ul></li>
+<li class="part"><span><b>I Foundations</b></span></li>
+<li class="chapter" data-level="2" data-path="why-are-we-here.html"><a href="why-are-we-here.html"><i class="fa fa-check"></i><b>2</b> Why are we here?</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="why-are-we-here.html"><a href="why-are-we-here.html#what-is-r"><i class="fa fa-check"></i><b>2.1</b> What is R?</a></li>
+<li class="chapter" data-level="2.2" data-path="why-are-we-here.html"><a href="why-are-we-here.html#how-does-r-look-like"><i class="fa fa-check"></i><b>2.2</b> How does R look like?</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="why-are-we-here.html"><a href="why-are-we-here.html#r-code"><i class="fa fa-check"></i><b>2.2.1</b> R Code</a></li>
+<li class="chapter" data-level="2.2.2" data-path="why-are-we-here.html"><a href="why-are-we-here.html#r-code-with-results"><i class="fa fa-check"></i><b>2.2.2</b> R Code with Results</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="why-are-we-here.html"><a href="why-are-we-here.html#why-r"><i class="fa fa-check"></i><b>2.3</b> Why R?</a></li>
+<li class="chapter" data-level="2.4" data-path="why-are-we-here.html"><a href="why-are-we-here.html#rstudio"><i class="fa fa-check"></i><b>2.4</b> Rstudio</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="ecological-data.html"><a href="ecological-data.html"><i class="fa fa-check"></i><b>3</b> Ecological data</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="ecological-data.html"><a href="ecological-data.html#section"><i class="fa fa-check"></i><b>3.1</b> </a></li>
+<li class="chapter" data-level="3.2" data-path="ecological-data.html"><a href="ecological-data.html#how-can-we-describe-data"><i class="fa fa-check"></i><b>3.2</b> How can we describe data?</a></li>
+<li class="chapter" data-level="3.3" data-path="ecological-data.html"><a href="ecological-data.html#aasee-dataset"><i class="fa fa-check"></i><b>3.3</b> Aasee Dataset</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="database-concepts.html"><a href="database-concepts.html"><i class="fa fa-check"></i><b>4</b> Database concepts</a></li>
+<li class="chapter" data-level="5" data-path="describing-relationships.html"><a href="describing-relationships.html"><i class="fa fa-check"></i><b>5</b> Describing relationships</a></li>
+<li class="chapter" data-level="6" data-path="visuals.html"><a href="visuals.html"><i class="fa fa-check"></i><b>6</b> Visuals</a></li>
+<li class="chapter" data-level="7" data-path="functional-programming.html"><a href="functional-programming.html"><i class="fa fa-check"></i><b>7</b> Functional Programming</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Made with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Analysis of Ecological Data with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="why-are-we-here" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> Why are we here?</h1>
+<ul>
+<li>Answering Questions / Hypothesis</li>
+<li>Data-driven Analysis</li>
+<li>Statistics as a tool</li>
+<li>Double the work, double the benefits:
+<ul>
+<li>Learn R</li>
+<li>Learn concepts of data analysis</li>
+</ul></li>
+<li>Learn more about data rather than statistics</li>
+</ul>
+<div id="what-is-r" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> What is R?</h2>
+<ul>
+<li>Script Language</li>
+<li>First Version from 1992 (idea date back to the 1974)</li>
+<li>Original Aim: Statistical Analysis</li>
+<li>Designed for data analysis and “interactive” use</li>
+<li>Download: <a href="https://www.r-project.org/">r-project.org</a></li>
+</ul>
+<div class="figure">
+<img src="https://www.r-project.org/Rlogo.png" alt="" />
+<p class="caption">r-project.org</p>
+</div>
+</div>
+<div id="how-does-r-look-like" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> How does R look like?</h2>
+<div class="figure">
+<img src="ressources/R_window.png" alt="" />
+<p class="caption">What you see when you start R</p>
+</div>
+<div id="r-code" class="section level3" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> R Code</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="why-are-we-here.html#cb1-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">45</span>, <span class="dv">65</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">87</span>)</span>
+<span id="cb1-2"><a href="why-are-we-here.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(data)</span>
+<span id="cb1-3"><a href="why-are-we-here.html#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="why-are-we-here.html#cb1-4" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">+</span> <span class="dv">5</span></span>
+<span id="cb1-5"><a href="why-are-we-here.html#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(data)</span></code></pre></div>
+</div>
+<div id="r-code-with-results" class="section level3" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> R Code with Results</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="why-are-we-here.html#cb2-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">45</span>, <span class="dv">65</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">87</span>)</span>
+<span id="cb2-2"><a href="why-are-we-here.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(data)</span></code></pre></div>
+<pre><code>## [1] 35.5</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="why-are-we-here.html#cb4-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">+</span> <span class="dv">5</span></span>
+<span id="cb4-2"><a href="why-are-we-here.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(data)</span></code></pre></div>
+<pre><code>## [1]  6  8 17 50 70 92</code></pre>
+</div>
+</div>
+<div id="why-r" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> Why R?</h2>
+<ul>
+<li>Easy to get into (although it might not feel that way at first)</li>
+<li>Designed for solving scientific problems</li>
+<li>Big community - Getting help is really easy.</li>
+<li>Open-source, active development</li>
+<li>Expandable with <code>packages</code> provided by other R users
+<ul>
+<li>Specialized analysis for specific fields</li>
+<li>Machine Learning</li>
+<li>Medicine</li>
+<li>Writing Books</li>
+<li>…</li>
+</ul></li>
+<li>Used in science, industry, healthcare, NGOs, …</li>
+</ul>
+</div>
+<div id="rstudio" class="section level2" number="2.4">
+<h2><span class="header-section-number">2.4</span> Rstudio</h2>
+<ul>
+<li>Integrated Development Environment (IDE)</li>
+<li>Makes R “convenient” to use</li>
+<li>Text Editor + R Console</li>
+<li>Project Environments, Package Management, Help Pages, Plot Viewer, File Browser …</li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ecological-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/01-R_basics.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["ecoanalysis.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
