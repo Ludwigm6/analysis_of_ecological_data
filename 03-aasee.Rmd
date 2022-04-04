@@ -1,0 +1,27 @@
+# (PART) Aasee water monitoring {-}
+
+# The Aasee Dataset
+
+To learn the basics about data types, data handling and the fundamentals of R, we will work with a dataset from the Aasee in Muenster:
+Inform yourself real quick [here](https://opendata.stadt-muenster.de/dataset/aasee-m%C3%BCnster-tagesaktuelle-sensordaten) about the origin of the dataset. You can download it here: [https://github.com/od-ms/aasee-monitoring](https://github.com/od-ms/aasee-monitoring)
+
+Here is an excerpt of the data:
+
+
+```{r, echo = FALSE}
+df <- read.csv(file = "data/2021-06_aasee.csv")
+knitr::kable(
+  df[1:10,], caption = 'First entries of the Aasee monitoring dataset',
+  booktabs = TRUE
+)
+```
+
+
+As a first intermediate goal we want to deal with the following task. We will learn all the necessary skills in R and a bit of statistics in the next lessons, but it is valuable to think about the task / question beforehand! 
+
+> Compare the water temperature of 2021 June 02 and June 21.
+
+* What does this task actually mean?
+* Reformulate it as a question
+* Outline steps to answer the question
+

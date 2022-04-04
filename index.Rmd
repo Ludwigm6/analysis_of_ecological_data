@@ -1,0 +1,95 @@
+--- 
+title: "Analysis of Ecological Data with R"
+author: "Marvin Ludwig"
+# date: "Spring 2022"
+site: bookdown::bookdown_site
+documentclass: book
+# cover-image: "/ressources/cover_image.png"
+description: |
+  This is currently a slide collection for the ILOEK Course "Analysis of ecological data in R" but could eventually turn into a more comprehensive ressource collection.
+link-citations: yes
+bibliography: "/home/marvin/literature/zotero/references.bib"
+github-repo: Ludwigm6/analysis_of_ecological_data
+output:
+  bookdown::gitbook:
+    highlight: kate
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+
+
+library(sf)
+library(tmap)
+library(tidyverse)
+library(stars)
+library(mapview)
+library(ggplot2)
+library(lubridate)
+
+mapview::mapviewOptions(fgb = FALSE)
+
+
+```
+
+
+# Welcome
+
+```{r, fig.cap = "Landscape Ecology with R", echo = FALSE}
+knitr::include_graphics("assets/cover_image.png")
+```
+
+
+## Target audience
+
+* You want answers to questions (in landscape ecology)!
+* Primarily ecologists but the methods and skills are useful in many fields.
+* No R knowledge is required (or other programming skills)
+* It is helpful if you know what a spreadsheet is
+* Minimum amount of statistic needed (course explains all the necessary stuff)
+
+
+## Aims of this course
+
+* Developing ideas, answering questions
+* Defining steps how to solve a problem
+* Translating these steps into R code
+* Learning the R language "on the fly"
+* Data handling. A lot of data handling.
+* I believe a good understanding of data is one of the most important things in science and work.
+* Learn statistics. Use statistics as a tool.
+* developing good scripting and project management habits from the start (makes live so much easier)
+
+
+## What this course is not
+
+* statistics as in mathematical equations
+
+$$
+\left( {\begin{array}{*{20}c}
+   n  \\
+   k  \\
+\end{array}} \right) = \frac{{n!}}{{k!\left( {n - k} \right)!}}
+$$
+
+$$
+\sigma ^2  = \mu _2  = \sum {\left( {x - \mu _1 } \right)^2 P\left( x \right)}
+$$
+
+* R as in computer science
+* You probably won't find out anything you didn't already know about nature
+
+
+## Course Outline 2022
+
+```{r nice-tab, tidy=FALSE, echo = FALSE}
+
+df = read.csv("assets/2022_course_dates.csv")
+
+knitr::kable(
+  df, caption = 'Course Outline',
+  booktabs = TRUE
+)
+```
+

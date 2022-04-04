@@ -1,0 +1,129 @@
+# (PART) Introduction {-}
+
+# Ecological data 
+
+Take a few minutes to think about
+
+* what kind of data you know or have used before?
+* what kind of data would be interesting for you?
+
+
+```{r mofrgb, echo = FALSE, fig.cap="Marburg Open Forest, 2019-05-13 Planetscope RGB"}
+mof_water = st_read("data/mof/mof_supplementary.gpkg", layer =  "water", quiet = TRUE)
+mof_rgb = read_stars("data/mof/mof_basemaps.gpkg", sub = "planetscope_20190513", quiet = TRUE)
+
+tm_shape(mof_rgb)+
+    tm_rgb(saturation = 0.4)+
+    tm_shape(mof_water)+
+    tm_lines(col = "skyblue", lwd = 2.5)+
+    tm_layout(frame = FALSE)
+```
+
+
+> Ask yourself how you could describe and quantify a landscape like the one in Fig. \@ref(fig:mofrgb).
+
+
+## Plot surveys
+
+* plots with ID and surveyed environmental information
+* bread and butter of ecology
+
+```{r, echo = FALSE}
+df = data.frame(plotID = c("P1", "P2", "P3"),
+           soil_ph = c(5.5, 5.4, 6.1),
+           soil_temperature = c(10, 11, 12),
+           forest_type = c("coniferous", "coniferous", "deciduous"))
+
+knitr::kable(
+  df, caption = 'Field survery data on a plot level',
+  booktabs = TRUE
+)
+```
+
+
+## Time Series
+
+```{r, echo = FALSE, fig.cap="Visualization of time series data"}
+df <- read.csv(file = "data/2021-06_aasee.csv")
+colnames(df) = c("date", "temperature", "ph", "o2")
+df$date <- as.Date(df$date)
+
+dfmean <- df %>% group_by(date) %>% summarise(temperature = mean(temperature))
+
+ggplot(dfmean, aes(date, temperature))+
+    geom_line()+
+    theme_light()
+```
+
+
+* continuous measurements
+* measurement interval flexible
+* mainly climate, soil, remote sensing
+
+
+```{r, echo = FALSE}
+knitr::kable(
+  df[c(5,10,15,20,25),], caption = 'Time series data: Aasee sensor measurements',
+  booktabs = TRUE, row.names = FALSE
+)
+```
+
+
+## Species Lists
+
+* mostly plot based
+* monitoring of conservation sites
+* biodiversity assessment
+
+
+```{r, echo = FALSE}
+df = data.frame(species = c("Digitalis purpurea", "Galium odoratum", "Fagus Sylvatica","..."),
+                n = c("4", "25", "20", "..."))
+knitr::kable(
+  df, caption = 'Species Lists: Occurence on a plot',
+  booktabs = TRUE
+)
+```
+
+
+> What are the differences between the plot based survey example and the species list example?
+
+
+## Geospatial Data
+
+* defined by explicit location on the earth surface
+* information attached to coordinates
+
+```{r, echo = FALSE}
+set.seed(10)
+mof_trees = st_read("data/mof/mof_trees.gpkg", quiet = TRUE) %>% 
+    na.omit() %>%
+    slice_sample(n = 5) %>% 
+    select(-socialposition) %>% 
+    mutate(dbh = round(dbh, 2))
+
+
+knitr::kable(
+  mof_trees, caption = 'Geospatial Data: Tree locations',
+  booktabs = TRUE
+)
+
+mapview::mapview(mof_trees, zcol = "dbh")
+```
+
+
+
+## Want more?
+
+
+![@Turner2014 : Sensing Biodiversity](https://www.science.org/cms/10.1126/science.1256014/asset/1e767e07-e785-4851-9ea0-6604203398a1/assets/graphic/346_301_f1.jpeg)
+
+
+* Animal movement data
+* Lab / Field experiments
+* Individuum based information (e.g. traits)
+* Camera Traps
+* Socio-Economic data (also useful for landscape ecology)
+* ...
+
+
