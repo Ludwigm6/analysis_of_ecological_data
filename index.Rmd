@@ -10,9 +10,10 @@ description: |
 link-citations: yes
 bibliography: "/home/marvin/literature/zotero/references.bib"
 github-repo: Ludwigm6/analysis_of_ecological_data
+monofont: "mononoki"
 output:
   bookdown::gitbook:
-    highlight: kate
+    highlight: default
 ---
 
 

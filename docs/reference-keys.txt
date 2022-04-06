@@ -33,6 +33,4 @@ variables-values
 value-types
 functions
 vectors
-vector-math
 task-vectors-and-functions
-logical-operators

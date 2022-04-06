@@ -5,13 +5,11 @@ p.caption {
 p code {
   white-space: inherit;
 }
+
 pre {
+  font-size: 20px;
   word-break: normal;
   word-wrap: normal;
-}
-
-code {
-    font-size: 18px;
 }
 
 
