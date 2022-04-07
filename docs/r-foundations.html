@@ -204,13 +204,19 @@ div.csl-indent {
 <li><a href="the-aasee-dataset.html#the-aasee-dataset" id="toc-the-aasee-dataset"><span class="toc-section-number">4</span> The Aasee Dataset</a></li>
 <li><a href="r-foundations.html#r-foundations" id="toc-r-foundations"><span class="toc-section-number">5</span> R foundations</a>
 <ul>
-<li><a href="r-foundations.html#variables-values" id="toc-variables-values"><span class="toc-section-number">5.1</span> Variables &amp; Values</a>
+<li><a href="r-foundations.html#variables" id="toc-variables"><span class="toc-section-number">5.1</span> Variables</a></li>
+<li><a href="r-foundations.html#values" id="toc-values"><span class="toc-section-number">5.2</span> Values</a></li>
+<li><a href="r-foundations.html#functions" id="toc-functions"><span class="toc-section-number">5.3</span> Functions</a></li>
+<li><a href="r-foundations.html#vectors" id="toc-vectors"><span class="toc-section-number">5.4</span> Vectors</a>
 <ul>
-<li><a href="r-foundations.html#value-types" id="toc-value-types"><span class="toc-section-number">5.1.1</span> Value Types</a></li>
+<li><a href="r-foundations.html#vector-maths" id="toc-vector-maths"><span class="toc-section-number">5.4.1</span> Vector Maths</a></li>
+<li><a href="r-foundations.html#task-vectors-and-functions" id="toc-task-vectors-and-functions"><span class="toc-section-number">5.4.2</span> TASK: Vectors and functions</a></li>
 </ul></li>
-<li><a href="r-foundations.html#functions" id="toc-functions"><span class="toc-section-number">5.2</span> Functions</a></li>
-<li><a href="r-foundations.html#vectors" id="toc-vectors"><span class="toc-section-number">5.3</span> Vectors</a></li>
-<li><a href="r-foundations.html#task-vectors-and-functions" id="toc-task-vectors-and-functions"><span class="toc-section-number">5.4</span> TASK: Vectors and functions</a></li>
+<li><a href="r-foundations.html#subsetting" id="toc-subsetting"><span class="toc-section-number">5.5</span> Subsetting</a>
+<ul>
+<li><a href="r-foundations.html#indexing" id="toc-indexing"><span class="toc-section-number">5.5.1</span> Indexing</a></li>
+<li><a href="r-foundations.html#logical-operators" id="toc-logical-operators"><span class="toc-section-number">5.5.2</span> Logical Operators</a></li>
+</ul></li>
 </ul></li>
 <li><a href="references.html#references" id="toc-references">References</a></li>
 <li class="divider"></li>
@@ -235,8 +241,8 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="r-foundations" class="section level1" number="5">
 <h1><span class="header-section-number">5</span> R foundations</h1>
-<div id="variables-values" class="section level2" number="5.1">
-<h2><span class="header-section-number">5.1</span> Variables &amp; Values</h2>
+<div id="variables" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> Variables</h2>
 <ul>
 <li>assign values to variables either with <code>&lt;-</code> or <code>=</code></li>
 <li>variable on the left, assigned value on the right</li>
@@ -250,8 +256,9 @@ div.csl-indent {
 <span id="cb7-2"><a href="r-foundations.html#cb7-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">=</span> <span class="dv">10</span></span>
 <span id="cb7-3"><a href="r-foundations.html#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-4"><a href="r-foundations.html#cb7-4" aria-hidden="true" tabindex="-1"></a>a_big_number <span class="ot">=</span> <span class="dv">500000</span></span></code></pre></div>
-<div id="value-types" class="section level3" number="5.1.1">
-<h3><span class="header-section-number">5.1.1</span> Value Types</h3>
+</div>
+<div id="values" class="section level2" number="5.2">
+<h2><span class="header-section-number">5.2</span> Values</h2>
 <ul>
 <li>How is data represented in R?</li>
 <li>Types we need right now:
@@ -279,9 +286,8 @@ div.csl-indent {
 <span id="cb8-16"><a href="r-foundations.html#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="cn">NA</span> <span class="co"># there should be something, but it is missing</span></span>
 <span id="cb8-17"><a href="r-foundations.html#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="cn">NULL</span> <span class="co"># truly nothing</span></span></code></pre></div>
 </div>
-</div>
-<div id="functions" class="section level2" number="5.2">
-<h2><span class="header-section-number">5.2</span> Functions</h2>
+<div id="functions" class="section level2" number="5.3">
+<h2><span class="header-section-number">5.3</span> Functions</h2>
 <ul>
 <li>Everything you do in R is a function!</li>
 <li>Easily identified by function name followed by parenthesis (), e.g. <code>print()</code></li>
@@ -311,8 +317,8 @@ div.csl-indent {
 <span id="cb17-2"><a href="r-foundations.html#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cos</span>(<span class="dv">1</span>)</span></code></pre></div>
 <pre><code>## [1] 0.5403023</code></pre>
 </div>
-<div id="vectors" class="section level2" number="5.3">
-<h2><span class="header-section-number">5.3</span> Vectors</h2>
+<div id="vectors" class="section level2" number="5.4">
+<h2><span class="header-section-number">5.4</span> Vectors</h2>
 <ul>
 <li>most important data structure in R</li>
 <li>building block for more complicated structures</li>
@@ -333,17 +339,9 @@ Figure 5.1: R vector model
 <span id="cb21-2"><a href="r-foundations.html#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">23</span>, <span class="dv">1</span>, <span class="fl">60.5</span>, <span class="dv">21</span>, <span class="dv">21</span>)</span></code></pre></div>
 <pre><code>## [1] 23.0  1.0 60.5 21.0 21.0</code></pre>
 <div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="r-foundations.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># to actually use a vector we have to assign it to a variable</span></span>
-<span id="cb23-2"><a href="r-foundations.html#cb23-2" aria-hidden="true" tabindex="-1"></a>vec <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">23</span>, <span class="dv">1</span>, <span class="dv">60</span>, <span class="dv">21</span>, <span class="dv">21</span>)</span>
-<span id="cb23-3"><a href="r-foundations.html#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-4"><a href="r-foundations.html#cb23-4" aria-hidden="true" tabindex="-1"></a>vec[<span class="dv">1</span>]</span></code></pre></div>
-<pre><code>## [1] 23</code></pre>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="r-foundations.html#cb25-1" aria-hidden="true" tabindex="-1"></a>vec[<span class="dv">3</span>]</span></code></pre></div>
-<pre><code>## [1] 60</code></pre>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="r-foundations.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># accessing multiple elements at once</span></span>
-<span id="cb27-2"><a href="r-foundations.html#cb27-2" aria-hidden="true" tabindex="-1"></a>vec[<span class="dv">1</span>,<span class="dv">2</span>]</span></code></pre></div>
-<pre><code>## Error in vec[1, 2]: incorrect number of dimensions</code></pre>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="r-foundations.html#cb29-1" aria-hidden="true" tabindex="-1"></a>vec[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)]</span></code></pre></div>
-<pre><code>## [1] 23  1</code></pre>
+<span id="cb23-2"><a href="r-foundations.html#cb23-2" aria-hidden="true" tabindex="-1"></a>vec <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">23</span>, <span class="dv">1</span>, <span class="dv">60</span>, <span class="dv">21</span>, <span class="dv">21</span>)</span></code></pre></div>
+<div id="vector-maths" class="section level3" number="5.4.1">
+<h3><span class="header-section-number">5.4.1</span> Vector Maths</h3>
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-18"></span>
 <img src="assets/r_vector_plus.svg" alt="R vector addition"  />
 <p class="caption">
@@ -354,11 +352,11 @@ Figure 5.2: R vector addition
 <li>most of the functions in R are “vectorised”</li>
 <li>i.e. functions are applied to all the elements in a vector</li>
 </ul>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="r-foundations.html#cb31-1" aria-hidden="true" tabindex="-1"></a>vec1 <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">23</span>, <span class="dv">1</span>, <span class="dv">60</span>, <span class="dv">21</span>, <span class="dv">21</span>, <span class="dv">5</span>)</span>
-<span id="cb31-2"><a href="r-foundations.html#cb31-2" aria-hidden="true" tabindex="-1"></a>vec1 <span class="sc">+</span> <span class="dv">6</span></span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="r-foundations.html#cb24-1" aria-hidden="true" tabindex="-1"></a>vec1 <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">23</span>, <span class="dv">1</span>, <span class="dv">60</span>, <span class="dv">21</span>, <span class="dv">21</span>, <span class="dv">5</span>)</span>
+<span id="cb24-2"><a href="r-foundations.html#cb24-2" aria-hidden="true" tabindex="-1"></a>vec1 <span class="sc">+</span> <span class="dv">6</span></span></code></pre></div>
 <pre><code>## [1] 29  7 66 27 27 11</code></pre>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="r-foundations.html#cb33-1" aria-hidden="true" tabindex="-1"></a>vec2 <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">1000</span>, <span class="dv">5</span>, <span class="dv">1000</span>, <span class="dv">5</span>, <span class="dv">1000</span>)</span>
-<span id="cb33-2"><a href="r-foundations.html#cb33-2" aria-hidden="true" tabindex="-1"></a>vec1 <span class="sc">-</span> vec2</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="r-foundations.html#cb26-1" aria-hidden="true" tabindex="-1"></a>vec2 <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">1000</span>, <span class="dv">5</span>, <span class="dv">1000</span>, <span class="dv">5</span>, <span class="dv">1000</span>)</span>
+<span id="cb26-2"><a href="r-foundations.html#cb26-2" aria-hidden="true" tabindex="-1"></a>vec1 <span class="sc">-</span> vec2</span></code></pre></div>
 <pre><code>## [1]   18 -999   55 -979   16 -995</code></pre>
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-20"></span>
 <img src="assets/r_vector_mul.svg" alt="R vector multiplication, different length"  />
@@ -366,32 +364,32 @@ Figure 5.2: R vector addition
 Figure 5.3: R vector multiplication, different length
 </p>
 </div>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="r-foundations.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># be careful with vectors of different length!</span></span>
-<span id="cb35-2"><a href="r-foundations.html#cb35-2" aria-hidden="true" tabindex="-1"></a>vec3 <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
-<span id="cb35-3"><a href="r-foundations.html#cb35-3" aria-hidden="true" tabindex="-1"></a>vec1 <span class="sc">*</span> vec3</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="r-foundations.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># be careful with vectors of different length!</span></span>
+<span id="cb28-2"><a href="r-foundations.html#cb28-2" aria-hidden="true" tabindex="-1"></a>vec3 <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
+<span id="cb28-3"><a href="r-foundations.html#cb28-3" aria-hidden="true" tabindex="-1"></a>vec1 <span class="sc">*</span> vec3</span></code></pre></div>
 <pre><code>## [1] 23  2 60 21 42  5</code></pre>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="r-foundations.html#cb37-1" aria-hidden="true" tabindex="-1"></a>vec4 <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>)</span>
-<span id="cb37-2"><a href="r-foundations.html#cb37-2" aria-hidden="true" tabindex="-1"></a>vec1 <span class="sc">*</span> vec4</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="r-foundations.html#cb30-1" aria-hidden="true" tabindex="-1"></a>vec4 <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb30-2"><a href="r-foundations.html#cb30-2" aria-hidden="true" tabindex="-1"></a>vec1 <span class="sc">*</span> vec4</span></code></pre></div>
 <pre><code>## [1] 23  2 60 42 21 10</code></pre>
 </div>
-<div id="task-vectors-and-functions" class="section level2" number="5.4">
-<h2><span class="header-section-number">5.4</span> TASK: Vectors and functions</h2>
+<div id="task-vectors-and-functions" class="section level3" number="5.4.2">
+<h3><span class="header-section-number">5.4.2</span> TASK: Vectors and functions</h3>
 <p>The vector below are the temperature values for 2021-06-02 from the Aasee dataset.
 Copy it into an empty are script.</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="r-foundations.html#cb39-1" aria-hidden="true" tabindex="-1"></a>temperature <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">18.81</span>,<span class="fl">18.73</span>,<span class="fl">18.92</span>,<span class="fl">18.87</span>,<span class="fl">18.76</span>,<span class="fl">18.79</span>,<span class="fl">18.87</span>,<span class="fl">18.84</span>,<span class="fl">18.89</span>,<span class="fl">18.89</span>,</span>
-<span id="cb39-2"><a href="r-foundations.html#cb39-2" aria-hidden="true" tabindex="-1"></a>                 <span class="fl">18.93</span>,<span class="fl">18.95</span>,<span class="fl">18.92</span>,<span class="fl">18.97</span>,<span class="fl">19.00</span>,<span class="fl">18.99</span>,<span class="fl">19.00</span>,<span class="fl">19.00</span>,<span class="fl">18.99</span>,<span class="fl">19.00</span>,</span>
-<span id="cb39-3"><a href="r-foundations.html#cb39-3" aria-hidden="true" tabindex="-1"></a>                 <span class="fl">18.98</span>,<span class="fl">18.97</span>,<span class="fl">18.97</span>,<span class="fl">18.97</span>,<span class="fl">18.97</span>,<span class="fl">18.98</span>,<span class="fl">18.96</span>,<span class="fl">18.94</span>,<span class="fl">18.94</span>,<span class="fl">18.91</span>,</span>
-<span id="cb39-4"><a href="r-foundations.html#cb39-4" aria-hidden="true" tabindex="-1"></a>                 <span class="fl">18.90</span>,<span class="fl">18.89</span>,<span class="fl">18.87</span>,<span class="fl">18.85</span>,<span class="fl">18.85</span>,<span class="fl">18.84</span>,<span class="fl">18.83</span>,<span class="fl">18.81</span>,<span class="fl">18.81</span>,<span class="fl">18.81</span>,</span>
-<span id="cb39-5"><a href="r-foundations.html#cb39-5" aria-hidden="true" tabindex="-1"></a>                 <span class="fl">18.81</span>,<span class="fl">18.81</span>,<span class="fl">18.80</span>,<span class="fl">18.79</span>,<span class="fl">18.80</span>,<span class="fl">18.79</span>,<span class="fl">18.79</span>,<span class="fl">18.78</span>,<span class="fl">18.77</span>,<span class="fl">18.78</span>,</span>
-<span id="cb39-6"><a href="r-foundations.html#cb39-6" aria-hidden="true" tabindex="-1"></a>                 <span class="fl">18.79</span>,<span class="fl">18.79</span>,<span class="fl">18.79</span>,<span class="fl">18.79</span>,<span class="fl">18.79</span>,<span class="fl">18.79</span>,<span class="fl">18.80</span>,<span class="fl">18.79</span>,<span class="fl">18.81</span>,<span class="fl">18.80</span>,</span>
-<span id="cb39-7"><a href="r-foundations.html#cb39-7" aria-hidden="true" tabindex="-1"></a>                 <span class="fl">18.81</span>,<span class="fl">18.81</span>,<span class="fl">18.82</span>,<span class="fl">18.84</span>,<span class="fl">18.87</span>,<span class="fl">18.89</span>,<span class="fl">18.89</span>,<span class="fl">18.91</span>,<span class="fl">18.96</span>,<span class="fl">19.02</span>,</span>
-<span id="cb39-8"><a href="r-foundations.html#cb39-8" aria-hidden="true" tabindex="-1"></a>                 <span class="fl">19.11</span>,<span class="fl">19.15</span>,<span class="fl">18.95</span>,<span class="fl">18.92</span>,<span class="fl">18.84</span>,<span class="fl">18.85</span>,<span class="fl">18.96</span>,<span class="fl">18.92</span>,<span class="fl">18.95</span>,<span class="fl">18.95</span>,</span>
-<span id="cb39-9"><a href="r-foundations.html#cb39-9" aria-hidden="true" tabindex="-1"></a>                 <span class="fl">18.91</span>,<span class="fl">19.00</span>,<span class="fl">19.02</span>,<span class="fl">19.06</span>,<span class="fl">19.05</span>,<span class="fl">19.47</span>,<span class="fl">19.32</span>,<span class="fl">19.05</span>,<span class="fl">19.66</span>,<span class="fl">19.57</span>,</span>
-<span id="cb39-10"><a href="r-foundations.html#cb39-10" aria-hidden="true" tabindex="-1"></a>                 <span class="fl">19.23</span>,<span class="fl">19.42</span>,<span class="fl">19.36</span>,<span class="fl">19.66</span>,<span class="fl">19.79</span>,<span class="fl">19.81</span>,<span class="fl">19.99</span>,<span class="fl">21.10</span>,<span class="fl">21.94</span>,<span class="fl">22.52</span>,</span>
-<span id="cb39-11"><a href="r-foundations.html#cb39-11" aria-hidden="true" tabindex="-1"></a>                 <span class="fl">22.81</span>,<span class="fl">22.43</span>,<span class="fl">22.16</span>,<span class="fl">21.55</span>,<span class="fl">21.80</span>,<span class="fl">21.02</span>,<span class="fl">21.85</span>,<span class="fl">21.45</span>,<span class="fl">22.48</span>,<span class="fl">22.73</span>,</span>
-<span id="cb39-12"><a href="r-foundations.html#cb39-12" aria-hidden="true" tabindex="-1"></a>                 <span class="fl">22.61</span>,<span class="fl">22.83</span>,<span class="fl">20.85</span>,<span class="fl">20.68</span>,<span class="fl">19.76</span>,<span class="fl">19.81</span>,<span class="fl">19.74</span>,<span class="fl">19.58</span>,<span class="fl">19.35</span>,<span class="fl">19.40</span>,</span>
-<span id="cb39-13"><a href="r-foundations.html#cb39-13" aria-hidden="true" tabindex="-1"></a>                 <span class="fl">19.75</span>,<span class="fl">19.76</span>,<span class="fl">19.85</span>,<span class="fl">19.82</span>,<span class="fl">19.86</span>,<span class="fl">20.08</span>,<span class="fl">20.06</span>,<span class="fl">19.85</span>,<span class="fl">20.04</span>,<span class="fl">19.90</span>,</span>
-<span id="cb39-14"><a href="r-foundations.html#cb39-14" aria-hidden="true" tabindex="-1"></a>                 <span class="fl">19.96</span>,<span class="fl">20.12</span>,<span class="fl">19.94</span>,<span class="fl">20.20</span>,<span class="fl">20.17</span>,<span class="fl">20.31</span>,<span class="fl">20.17</span>,<span class="fl">20.37</span>,<span class="fl">20.36</span>,<span class="fl">20.13</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="r-foundations.html#cb32-1" aria-hidden="true" tabindex="-1"></a>temperature <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">18.81</span>,<span class="fl">18.73</span>,<span class="fl">18.92</span>,<span class="fl">18.87</span>,<span class="fl">18.76</span>,<span class="fl">18.79</span>,<span class="fl">18.87</span>,<span class="fl">18.84</span>,<span class="fl">18.89</span>,<span class="fl">18.89</span>,</span>
+<span id="cb32-2"><a href="r-foundations.html#cb32-2" aria-hidden="true" tabindex="-1"></a>                 <span class="fl">18.93</span>,<span class="fl">18.95</span>,<span class="fl">18.92</span>,<span class="fl">18.97</span>,<span class="fl">19.00</span>,<span class="fl">18.99</span>,<span class="fl">19.00</span>,<span class="fl">19.00</span>,<span class="fl">18.99</span>,<span class="fl">19.00</span>,</span>
+<span id="cb32-3"><a href="r-foundations.html#cb32-3" aria-hidden="true" tabindex="-1"></a>                 <span class="fl">18.98</span>,<span class="fl">18.97</span>,<span class="fl">18.97</span>,<span class="fl">18.97</span>,<span class="fl">18.97</span>,<span class="fl">18.98</span>,<span class="fl">18.96</span>,<span class="fl">18.94</span>,<span class="fl">18.94</span>,<span class="fl">18.91</span>,</span>
+<span id="cb32-4"><a href="r-foundations.html#cb32-4" aria-hidden="true" tabindex="-1"></a>                 <span class="fl">18.90</span>,<span class="fl">18.89</span>,<span class="fl">18.87</span>,<span class="fl">18.85</span>,<span class="fl">18.85</span>,<span class="fl">18.84</span>,<span class="fl">18.83</span>,<span class="fl">18.81</span>,<span class="fl">18.81</span>,<span class="fl">18.81</span>,</span>
+<span id="cb32-5"><a href="r-foundations.html#cb32-5" aria-hidden="true" tabindex="-1"></a>                 <span class="fl">18.81</span>,<span class="fl">18.81</span>,<span class="fl">18.80</span>,<span class="fl">18.79</span>,<span class="fl">18.80</span>,<span class="fl">18.79</span>,<span class="fl">18.79</span>,<span class="fl">18.78</span>,<span class="fl">18.77</span>,<span class="fl">18.78</span>,</span>
+<span id="cb32-6"><a href="r-foundations.html#cb32-6" aria-hidden="true" tabindex="-1"></a>                 <span class="fl">18.79</span>,<span class="fl">18.79</span>,<span class="fl">18.79</span>,<span class="fl">18.79</span>,<span class="fl">18.79</span>,<span class="fl">18.79</span>,<span class="fl">18.80</span>,<span class="fl">18.79</span>,<span class="fl">18.81</span>,<span class="fl">18.80</span>,</span>
+<span id="cb32-7"><a href="r-foundations.html#cb32-7" aria-hidden="true" tabindex="-1"></a>                 <span class="fl">18.81</span>,<span class="fl">18.81</span>,<span class="fl">18.82</span>,<span class="fl">18.84</span>,<span class="fl">18.87</span>,<span class="fl">18.89</span>,<span class="fl">18.89</span>,<span class="fl">18.91</span>,<span class="fl">18.96</span>,<span class="fl">19.02</span>,</span>
+<span id="cb32-8"><a href="r-foundations.html#cb32-8" aria-hidden="true" tabindex="-1"></a>                 <span class="fl">19.11</span>,<span class="fl">19.15</span>,<span class="fl">18.95</span>,<span class="fl">18.92</span>,<span class="fl">18.84</span>,<span class="fl">18.85</span>,<span class="fl">18.96</span>,<span class="fl">18.92</span>,<span class="fl">18.95</span>,<span class="fl">18.95</span>,</span>
+<span id="cb32-9"><a href="r-foundations.html#cb32-9" aria-hidden="true" tabindex="-1"></a>                 <span class="fl">18.91</span>,<span class="fl">19.00</span>,<span class="fl">19.02</span>,<span class="fl">19.06</span>,<span class="fl">19.05</span>,<span class="fl">19.47</span>,<span class="fl">19.32</span>,<span class="fl">19.05</span>,<span class="fl">19.66</span>,<span class="fl">19.57</span>,</span>
+<span id="cb32-10"><a href="r-foundations.html#cb32-10" aria-hidden="true" tabindex="-1"></a>                 <span class="fl">19.23</span>,<span class="fl">19.42</span>,<span class="fl">19.36</span>,<span class="fl">19.66</span>,<span class="fl">19.79</span>,<span class="fl">19.81</span>,<span class="fl">19.99</span>,<span class="fl">21.10</span>,<span class="fl">21.94</span>,<span class="fl">22.52</span>,</span>
+<span id="cb32-11"><a href="r-foundations.html#cb32-11" aria-hidden="true" tabindex="-1"></a>                 <span class="fl">22.81</span>,<span class="fl">22.43</span>,<span class="fl">22.16</span>,<span class="fl">21.55</span>,<span class="fl">21.80</span>,<span class="fl">21.02</span>,<span class="fl">21.85</span>,<span class="fl">21.45</span>,<span class="fl">22.48</span>,<span class="fl">22.73</span>,</span>
+<span id="cb32-12"><a href="r-foundations.html#cb32-12" aria-hidden="true" tabindex="-1"></a>                 <span class="fl">22.61</span>,<span class="fl">22.83</span>,<span class="fl">20.85</span>,<span class="fl">20.68</span>,<span class="fl">19.76</span>,<span class="fl">19.81</span>,<span class="fl">19.74</span>,<span class="fl">19.58</span>,<span class="fl">19.35</span>,<span class="fl">19.40</span>,</span>
+<span id="cb32-13"><a href="r-foundations.html#cb32-13" aria-hidden="true" tabindex="-1"></a>                 <span class="fl">19.75</span>,<span class="fl">19.76</span>,<span class="fl">19.85</span>,<span class="fl">19.82</span>,<span class="fl">19.86</span>,<span class="fl">20.08</span>,<span class="fl">20.06</span>,<span class="fl">19.85</span>,<span class="fl">20.04</span>,<span class="fl">19.90</span>,</span>
+<span id="cb32-14"><a href="r-foundations.html#cb32-14" aria-hidden="true" tabindex="-1"></a>                 <span class="fl">19.96</span>,<span class="fl">20.12</span>,<span class="fl">19.94</span>,<span class="fl">20.20</span>,<span class="fl">20.17</span>,<span class="fl">20.31</span>,<span class="fl">20.17</span>,<span class="fl">20.37</span>,<span class="fl">20.36</span>,<span class="fl">20.13</span>)</span></code></pre></div>
 <p>To get familiar with the R syntax and vectors, do the following tasks:</p>
 <ul>
 <li>Convert the temperature from Celsius to Fahrenheit.</li>
@@ -400,7 +398,61 @@ Copy it into an empty are script.</p>
 <blockquote>
 <p>Come up with a reasonable questions that someone might have looking at this data.</p>
 </blockquote>
+</div>
+</div>
+<div id="subsetting" class="section level2" number="5.5">
+<h2><span class="header-section-number">5.5</span> Subsetting</h2>
+<p>For many questions it is often required to access only parts of the data.
+This is one of the most common things you have to deal with in R.</p>
+<div id="indexing" class="section level3" number="5.5.1">
+<h3><span class="header-section-number">5.5.1</span> Indexing</h3>
+<p>To access single values of a vector, use square brackets <code>[]</code>.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="r-foundations.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get the third value of the vector</span></span>
+<span id="cb33-2"><a href="r-foundations.html#cb33-2" aria-hidden="true" tabindex="-1"></a>temperature[<span class="dv">3</span>]</span></code></pre></div>
+<pre><code>## [1] 18.92</code></pre>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="r-foundations.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># accessing multiple elements at once</span></span>
+<span id="cb35-2"><a href="r-foundations.html#cb35-2" aria-hidden="true" tabindex="-1"></a>temperature[<span class="dv">1</span>,<span class="dv">2</span>]</span></code></pre></div>
+<pre><code>## Error in temperature[1, 2]: incorrect number of dimensions</code></pre>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="r-foundations.html#cb37-1" aria-hidden="true" tabindex="-1"></a>temperature[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)]</span></code></pre></div>
+<pre><code>## [1] 18.81 18.73</code></pre>
+<blockquote>
+<p>Using the functions above, what is an easy way to access the first 10 elements of the vector?</p>
+</blockquote>
+</div>
+<div id="logical-operators" class="section level3" number="5.5.2">
+<h3><span class="header-section-number">5.5.2</span> Logical Operators</h3>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-24"></span>
+<img src="assets/r_vector_bigger.svg" alt="R vector logical operation"  />
+<p class="caption">
+Figure 5.4: R vector logical operation
+</p>
+</div>
+<p>A more powerful way to subset a vector is by using logical operators. These functions usually return a boolean object (<code>TRUE, FALSE</code>) which can then be used to access certain values.</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="r-foundations.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">&gt;</span> <span class="dv">2</span></span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="r-foundations.html#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">&lt;</span> <span class="dv">2</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="r-foundations.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">==</span> <span class="dv">2</span></span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="r-foundations.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(temperature) <span class="sc">&gt;</span> <span class="dv">22</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="r-foundations.html#cb47-1" aria-hidden="true" tabindex="-1"></a>temperature <span class="sc">&gt;</span> <span class="dv">20</span></span></code></pre></div>
+<pre><code>##   [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [17] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [33] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [49] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [65] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [81] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [97] FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+## [113]  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE
+## [129]  TRUE FALSE FALSE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE</code></pre>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="r-foundations.html#cb49-1" aria-hidden="true" tabindex="-1"></a>hot <span class="ot">=</span> temperature <span class="sc">&gt;</span> <span class="dv">20</span></span>
+<span id="cb49-2"><a href="r-foundations.html#cb49-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-3"><a href="r-foundations.html#cb49-3" aria-hidden="true" tabindex="-1"></a>temperature[hot]</span></code></pre></div>
+<pre><code>##  [1] 21.10 21.94 22.52 22.81 22.43 22.16 21.55 21.80 21.02 21.85 21.45 22.48 22.73 22.61 22.83 20.85
+## [17] 20.68 20.08 20.06 20.04 20.12 20.20 20.17 20.31 20.17 20.37 20.36 20.13</code></pre>
 
+</div>
 </div>
 </div>
             </section>

@@ -1,7 +1,7 @@
 # R foundations
 
 
-## Variables & Values
+## Variables
 
 * assign values to variables either with `<-` or `=`
 * variable on the left, assigned value on the right
@@ -16,7 +16,7 @@ b = 10
 a_big_number = 500000
 ```
 
-### Value Types
+## Values
 
 * How is data represented in R?
 * Types we need right now:
@@ -109,14 +109,10 @@ c(23, 1, 60.5, 21, 21)
 # to actually use a vector we have to assign it to a variable
 vec = c(23, 1, 60, 21, 21)
 
-vec[1]
-vec[3]
-
-
-# accessing multiple elements at once
-vec[1,2]
-vec[c(1,2)]
 ```
+
+
+### Vector Maths
 
 
 ```{r, fig.cap="R vector addition", echo = FALSE}
@@ -152,7 +148,7 @@ vec1 * vec4
 
 
 
-## TASK: Vectors and functions
+### TASK: Vectors and functions
 
 The vector below are the temperature values for 2021-06-02 from the Aasee dataset.
 Copy it into an empty are script. 
@@ -181,4 +177,56 @@ To get familiar with the R syntax and vectors, do the following tasks:
 * Try out the following functions: `length()`, `range()`, `seq()`
 
 > Come up with a reasonable questions that someone might have looking at this data.
+
+
+
+## Subsetting
+
+For many questions it is often required to access only parts of the data.
+This is one of the most common things you have to deal with in R.
+
+
+### Indexing
+
+To access single values of a vector, use square brackets `[]`.
+
+
+```{r, error = TRUE}
+# get the third value of the vector
+temperature[3]
+
+
+# accessing multiple elements at once
+temperature[1,2]
+temperature[c(1,2)]
+```
+
+> Using the functions above, what is an easy way to access the first 10 elements of the vector?
+
+
+### Logical Operators
+
+
+```{r, fig.cap="R vector logical operation", echo = FALSE}
+knitr::include_graphics("assets/r_vector_bigger.svg")
+```
+
+
+A more powerful way to subset a vector is by using logical operators. These functions usually return a boolean object (`TRUE, FALSE`) which can then be used to access certain values.
+
+```{r}
+1 > 2
+1 < 2
+
+1 == 2
+
+max(temperature) > 22
+
+temperature > 20
+hot = temperature > 20
+
+temperature[hot]
+
+```
+
 
