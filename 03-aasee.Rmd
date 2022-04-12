@@ -19,7 +19,7 @@ knitr::kable(
 
 As a first intermediate goal we want to deal with the following task. We will learn all the necessary skills in R and a bit of statistics in the next lessons, but it is valuable to think about the task / question beforehand! 
 
-> Compare the water temperature of 2021 June 02 and June 21.
+> Compare the water temperature of 2021 June 02 and July 21.
 
 * What does this task actually mean?
 * Reformulate it as a question

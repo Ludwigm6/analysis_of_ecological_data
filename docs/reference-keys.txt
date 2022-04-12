@@ -11,6 +11,7 @@ fig:unnamed-chunk-15
 fig:unnamed-chunk-18
 fig:unnamed-chunk-20
 fig:unnamed-chunk-24
+fig:unnamed-chunk-26
 welcome
 target-audience
 aims-of-this-course
@@ -39,3 +40,15 @@ task-vectors-and-functions
 subsetting
 indexing
 logical-operators
+dataframes
+csv-files
+reading-csv-files
+task-subsetting-dataframes
+project-setup
+r-studio-projects
+string-handling
+the-stringr-package
+leading-zeros
+additional-ressources
+r-cheat-sheets
+useful-keyboard-shortcuts

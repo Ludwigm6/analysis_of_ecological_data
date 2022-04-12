@@ -4,13 +4,11 @@ author: "Marvin Ludwig"
 # date: "Spring 2022"
 site: bookdown::bookdown_site
 documentclass: book
-# cover-image: "/ressources/cover_image.png"
 description: |
   This is currently a slide collection for the ILOEK Course "Analysis of ecological data in R" but could eventually turn into a more comprehensive ressource collection.
 link-citations: yes
 bibliography: "/home/marvin/literature/zotero/references.bib"
 github-repo: Ludwigm6/analysis_of_ecological_data
-monofont: "mononoki"
 output:
   bookdown::gitbook:
     highlight: default

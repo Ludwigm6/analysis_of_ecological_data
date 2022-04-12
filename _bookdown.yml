@@ -4,8 +4,10 @@ rmd_files: ["index.Rmd",
            "01-R_basics.Rmd",
            "03-aasee.Rmd",
            "04-vectors.Rmd",
-           #"05-dataframes.Rmd",
-           #"06-functions.Rmd"
+           "05-dataframes.Rmd",
+           "06-project_setup.Rmd",
+           "07-strings.Rmd",
+           "98-additional_resources.Rmd",
            "references.Rmd"]
 delete_merged_file: true
 new_session: no

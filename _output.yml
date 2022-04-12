@@ -6,6 +6,8 @@ bookdown::gitbook:
         <li><a href="./">Analysis of Ecological Data</a></li>
       after: |
         <li><a href="https://github.com/rstudio/bookdown" target="blank">Made with bookdown</a></li>
+    toc_depth: 1
+    collapse: section
     edit: https://github.com/USERNAME/REPO/edit/BRANCH/%s
     download: ["pdf"]
     sharing:

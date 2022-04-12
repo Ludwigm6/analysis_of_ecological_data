@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>References | Analysis of Ecological Data with R</title>
+  <title>7 Project Setup | Analysis of Ecological Data with R</title>
   <meta name="description" content="This is currently a slide collection for the ILOEK Course “Analysis of ecological data in R” but could eventually turn into a more comprehensive ressource collection." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="References | Analysis of Ecological Data with R" />
+  <meta property="og:title" content="7 Project Setup | Analysis of Ecological Data with R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="Ludwigm6/analysis_of_ecological_data" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="References | Analysis of Ecological Data with R" />
+  <meta name="twitter:title" content="7 Project Setup | Analysis of Ecological Data with R" />
   
   <meta name="twitter:description" content="This is currently a slide collection for the ILOEK Course “Analysis of ecological data in R” but could eventually turn into a more comprehensive ressource collection." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="additional-ressources.html"/>
-
+<link rel="prev" href="dataframes.html"/>
+<link rel="next" href="string-handling.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -261,22 +261,44 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="references" class="section level1 unnumbered">
-<h1>References</h1>
+<div id="project-setup" class="section level1" number="7">
+<h1><span class="header-section-number">7</span> Project Setup</h1>
+<p>Once you deal with external files (e.g. loading a .csv), saving outputs or reports, you have to deal with a senseful file structure.
+This is often harder than the actual R code itself. To keep everything easy and consistent within R (at least for this course), I recommend using Rstudio Projects with a standardized directory setup.</p>
+<div id="r-studio-projects" class="section level2" number="7.1">
+<h2><span class="header-section-number">7.1</span> R studio Projects</h2>
+<p>Here is an example from a blog entry at <a href="https://www.r-bloggers.com/2020/01/rstudio-projects-and-working-directories-a-beginners-guide/">r-bloggers.com</a></p>
+<div class="figure">
+<img src="https://i1.wp.com/raw.githubusercontent.com/martinctc/blog/master/images/RPROJECT_2000dpi.png?w=578&amp;ssl=1" alt="" />
+<p class="caption">A good starting point for project setup</p>
+</div>
+<p>Inside a project, you can then use relative paths to files.</p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="project-setup.html#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example of absolute path</span></span>
+<span id="cb75-2"><a href="project-setup.html#cb75-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb75-3"><a href="project-setup.html#cb75-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Linux</span></span>
+<span id="cb75-4"><a href="project-setup.html#cb75-4" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;/home/marvin/projects/rcourse/session02/data/file.csv&quot;</span></span>
+<span id="cb75-5"><a href="project-setup.html#cb75-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb75-6"><a href="project-setup.html#cb75-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Windows</span></span>
+<span id="cb75-7"><a href="project-setup.html#cb75-7" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;C:\Users\Marvin\Dokumente</span><span class="sc">\r</span><span class="st">course\session02\data</span><span class="sc">\f</span><span class="st">ile.csv&quot;</span></span>
+<span id="cb75-8"><a href="project-setup.html#cb75-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb75-9"><a href="project-setup.html#cb75-9" aria-hidden="true" tabindex="-1"></a><span class="co"># If the R project is set up in the &quot;session02&quot; directory we can use relative paths:</span></span>
+<span id="cb75-10"><a href="project-setup.html#cb75-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb75-11"><a href="project-setup.html#cb75-11" aria-hidden="true" tabindex="-1"></a><span class="co"># relative path to project root</span></span>
+<span id="cb75-12"><a href="project-setup.html#cb75-12" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/file.csv&quot;</span>)</span></code></pre></div>
+<p><strong>Additional thoughts</strong></p>
+<ul>
+<li>always keep raw data</li>
+<li><strong>backups!</strong></li>
+<li>filepaths:
+<ul>
+<li>no spaces</li>
+<li>no dots</li>
+<li>no weird characters</li>
+</ul></li>
+<li>Windows uses backslash <code>\</code>, R wants forward slash <code>/</code></li>
+<li>you can use the <code>dir.create</code> function to create a new empty directory</li>
+</ul>
 
-<div id="refs" class="references csl-bib-body hanging-indent">
-<div class="csl-entry">
-Chambers, John M. 2016. <em>Extending <span>R</span></em>. The <span>R</span> Series. <span>Boca Raton, Fla. London New York</span>: <span>CRC Press, Taylor &amp; Francis Group</span>.
-</div>
-<div class="csl-entry">
-Chambers, John, M. 2020. <span>“S, <span>R</span>, and <span>Data Science</span>.”</span> <em>The R Journal</em> 12 (1): 462. <a href="https://doi.org/10.32614/RJ-2020-028">https://doi.org/10.32614/RJ-2020-028</a>.
-</div>
-<div class="csl-entry">
-Slater, Louise J., Guillaume Thirel, Shaun Harrigan, Olivier Delaigue, Alexander Hurley, Abdou Khouakhi, Ilaria Prosdocimi, Claudia Vitolo, and Katie Smith. 2019. <span>“Using <span>R</span> in Hydrology: A Review of Recent Developments and Future Directions.”</span> <em>Hydrology and Earth System Sciences</em> 23 (7): 2939–63. <a href="https://doi.org/10.5194/hess-23-2939-2019">https://doi.org/10.5194/hess-23-2939-2019</a>.
-</div>
-<div class="csl-entry">
-Turner, W. 2014. <span>“Sensing Biodiversity.”</span> <em>Science</em> 346 (6207): 301–2. <a href="https://doi.org/10.1126/science.1256014">https://doi.org/10.1126/science.1256014</a>.
-</div>
 </div>
 </div>
             </section>
@@ -284,8 +306,8 @@ Turner, W. 2014. <span>“Sensing Biodiversity.”</span> <em>Science</em> 346 (
           </div>
         </div>
       </div>
-<a href="additional-ressources.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="dataframes.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="string-handling.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -316,7 +338,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/references.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/06-project_setup.Rmd",
 "text": "Edit"
 },
 "history": {

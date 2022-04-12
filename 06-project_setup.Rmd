@@ -1,0 +1,51 @@
+# Project Setup
+
+Once you deal with external files (e.g. loading a .csv), saving outputs or reports, you have to deal with a senseful file structure.
+This is often harder than the actual R code itself. To keep everything easy and consistent within R (at least for this course), I recommend using Rstudio Projects with a standardized directory setup.
+
+
+## R studio Projects
+
+Here is an example from a blog entry at [r-bloggers.com](https://www.r-bloggers.com/2020/01/rstudio-projects-and-working-directories-a-beginners-guide/)
+
+![A good starting point for project setup](https://i1.wp.com/raw.githubusercontent.com/martinctc/blog/master/images/RPROJECT_2000dpi.png?w=578&ssl=1)
+
+Inside a project, you can then use relative paths to files.
+
+
+
+```{r, eval = FALSE}
+
+# Example of absolute path
+
+## Linux
+"/home/marvin/projects/rcourse/session02/data/file.csv"
+
+## Windows
+"C:\Users\Marvin\Dokumente\rcourse\session02\data\file.csv"
+
+# If the R project is set up in the "session02" directory we can use relative paths:
+
+# relative path to project root
+data = read.csv("data/file.csv")
+
+
+
+```
+
+
+
+**Additional thoughts**
+
+* always keep raw data
+* **backups!**
+* filepaths:
+    * no spaces
+    * no dots
+    * no weird characters
+* Windows uses backslash `\`, R wants forward slash `/`
+* you can use the `dir.create` function to create a new empty directory
+
+
+
+

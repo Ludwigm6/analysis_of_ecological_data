@@ -1,0 +1,127 @@
+# Dataframes
+
+
+> From a data science perspective, the most important class of objects is the data frame - @Chambers2020
+
+
+* Dataframes combine multiple vector in a structured format
+* Intuitive - most people have seen a spreadsheet before
+* Each column is regarded as a vector
+* Each vector can have a different data type
+
+
+```{r, echo = FALSE, fig.cap = "data.frames are a named list of vectors"}
+knitr::include_graphics("assets/r_dataframe.svg")
+```
+
+
+
+```{r}
+df = data.frame(plotID = seq(3),
+                soil_ph = c(5.5, 5.4, 6.1),
+                soil_temperature = c(10, 11, 12),
+                forest_type = c("coniferous", "coniferous", "deciduous"))
+
+df
+```
+
+
+
+## CSV Files
+
+Dataframes can be loaded from and saved to `.csv` files.
+
+* Comma Separated Values
+* Caution: In Germany "," is used as the decimal point. You often find ";" as the delimiter in csvs.
+* Caution: If you open csv files in Excel, things can get messy
+
+
+```
+Datum,Wassertemperatur,pH-Wert,Sauerstoffgehalt
+2021-05-31 23:57,17.98,8.05,10.53
+2021-06-01 00:09,17.66,8.04,9.64
+2021-06-01 00:19,18.03,8.12,11.30
+2021-06-01 00:27,18.08,8.14,11.32
+2021-06-01 00:39,18.06,8.12,11.06
+2021-06-01 00:49,18.01,8.10,10.91
+```
+
+
+### Reading CSV files
+
+
+```{r}
+data = read.csv(file = "data/2021-06_aasee.csv", dec = ".", sep = ",")
+
+head(data)
+
+tail(data)
+
+str(data)
+
+
+View(data)
+
+```
+
+
+
+## TASK: Subsetting dataframes
+
+* Setup a Rstudio Project. Have at least a scripts and a data directory.
+* Get the Aasee Dataset into R.
+* Try out the following functions: `nrow()`, `ncol()`, `summary()`, `colnames()`
+* Create a new dataframe that only contains observations where the pH is above 8.
+* Create a new dataframe that contains exactly the first half of the observations.
+
+
+**Hint:** Think of a data.frame as a two-dimensional vector. Subsetting the data.frame therefore requires also two values: one for the row, one for the column.
+
+
+```{r}
+
+# row 1, column 2
+data[1,2]
+
+
+# the first row
+data[1,]
+
+# the first 3 rows, column 3 and 4
+data[seq(3), c(3,4)]
+
+```
+
+
+Individual columns can also be accessed by their name with the `$` operator.
+
+```{r}
+# Access by column name
+data$Wassertemperatur
+```
+
+
+
+New columns can also be created with `$`.
+
+
+```{r, error=TRUE}
+# Assign the same value to each row
+data$newcolumn1 = "valid"
+
+# Works, because 4225 rows are a multiple of 5.
+data$newcolumn2 = seq(5)
+
+# Won't work because the vector of length 2 does not fit exactly into 4225.
+data$newcolumn3 = c(2,4)
+
+
+data$t_kelvin = data$Wassertemperatur + 273.15
+
+data$index = seq(nrow(data))
+
+head(data)
+
+tail(data)
+```
+
