@@ -1,5 +1,3 @@
-# (PART) Introduction {-}
-
 # Ecological data 
 
 Take a few minutes to think about

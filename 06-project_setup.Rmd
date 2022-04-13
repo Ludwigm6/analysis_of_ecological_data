@@ -43,6 +43,7 @@ data = read.csv("data/file.csv")
     * no spaces
     * no dots
     * no weird characters
+* [How to name files](https://speakerdeck.com/jennybc/how-to-name-files)
 * Windows uses backslash `\`, R wants forward slash `/`
 * you can use the `dir.create` function to create a new empty directory
 

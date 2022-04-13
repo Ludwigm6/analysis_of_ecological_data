@@ -31,8 +31,6 @@ library(stringr)
 ```
 
 
-
-
 ```{r, eval = FALSE}
 install.packages("stringr")
 
@@ -68,7 +66,7 @@ str_replace(string_vector, pattern = " is", replacement = ":")
 
 ## Leading Zeros
 
-`str_pad` one can be quite important to keep you sane. It formats strings to a consistent length by adding the character specified with the `pad` argument.
+`str_pad` one can be quite important to keep you sane.
 
 
 ```{r}

@@ -1,7 +1,6 @@
 --- 
 title: "Analysis of Ecological Data with R"
 author: "Marvin Ludwig"
-# date: "Spring 2022"
 site: bookdown::bookdown_site
 documentclass: book
 description: |
@@ -9,9 +8,6 @@ description: |
 link-citations: yes
 bibliography: "/home/marvin/literature/zotero/references.bib"
 github-repo: Ludwigm6/analysis_of_ecological_data
-output:
-  bookdown::gitbook:
-    highlight: default
 ---
 
 

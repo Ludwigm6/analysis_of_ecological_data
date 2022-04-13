@@ -1,5 +1,3 @@
-# (PART) Aasee water monitoring {-}
-
 # The Aasee Dataset
 
 To learn the basics about data types, data handling and the fundamentals of R, we will work with a dataset from the Aasee in Muenster:

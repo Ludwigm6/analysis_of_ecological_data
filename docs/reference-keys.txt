@@ -42,7 +42,6 @@ indexing
 logical-operators
 dataframes
 csv-files
-reading-csv-files
 task-subsetting-dataframes
 project-setup
 r-studio-projects
