@@ -1,4 +1,4 @@
-# The Aasee Dataset
+# The Aasee Dataset 
 
 To learn the basics about data types, data handling and the fundamentals of R, we will work with a dataset from the Aasee in Muenster:
 Inform yourself real quick [here](https://opendata.stadt-muenster.de/dataset/aasee-m%C3%BCnster-tagesaktuelle-sensordaten) about the origin of the dataset. You can download it here: [https://github.com/od-ms/aasee-monitoring](https://github.com/od-ms/aasee-monitoring)
@@ -22,4 +22,68 @@ As a first intermediate goal we want to deal with the following task. We will le
 * What does this task actually mean?
 * Reformulate it as a question
 * Outline steps to answer the question
+
+## Solution
+
+<details>
+<summary>Click for Answer</summary>
+
+
+```{r}
+# load needed packages
+library(stringr)
+
+# data input
+
+june = read.csv("data/2021-06_aasee.csv")
+july = read.csv("data/2021-07_aasee.csv")
+
+
+# actual processing ----
+# get the day information from the Datum string
+june$day = str_sub(june$Datum, start = 6, end = 10)
+july$day = str_sub(july$Datum, start = 6, end = 10)
+
+# reduce data to the needed days
+june = june[june$day == "06-02",]
+july = july[july$day == "07-21",]
+
+mean(june$Wassertemperatur)
+mean(july$Wassertemperatur)
+
+# visual comparison
+aasee = rbind(june, july)
+boxplot(aasee$Wassertemperatur ~ aasee$day)
+```
+
+
+
+> What are the flaws of this code?
+
+If we want a different month or day we have to make changes in the code. 
+As an R beginner, this is not something you should worry about to much - better spend your time to figure out what the R functions do and get the job done. Later on in your R journey this is something you should keep in mind and write more generalized code by writing your own R functions.
+
+
+**Side Note: Creating R functions**
+
+
+```{r}
+aasee_daily_mean = function(data, day){
+    data$day = str_sub(data$Datum, start = 6, end = 10)
+    data = data[data$day == day,]
+    result = mean(data$Wassertemperatur)
+    return(result)
+}
+
+
+
+july = read.csv("data/2021-07_aasee.csv")
+aasee_daily_mean(july, "07-17")
+```
+
+
+</details>
+
+
+
 

@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>8 String handling | Analysis of Ecological Data with R</title>
   <meta name="description" content="This is currently a slide collection for the ILOEK Course “Analysis of ecological data in R” but could eventually turn into a more comprehensive ressource collection." />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
 
   <meta property="og:title" content="8 String handling | Analysis of Ecological Data with R" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This is currently a slide collection for the ILOEK Course “Analysis of ecological data in R” but could eventually turn into a more comprehensive ressource collection." />
   <meta name="github-repo" content="Ludwigm6/analysis_of_ecological_data" />
@@ -31,8 +30,7 @@
   
   
 <link rel="prev" href="project-setup.html"/>
-<link rel="next" href="additional-ressources.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<link rel="next" href="casestudy-aasee-fish-mortality.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -50,8 +48,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
 <link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
 <script src="libs/leaflet-1.3.1/leaflet.js"></script>
@@ -59,9 +58,9 @@
 <script src="libs/proj4-2.6.2/proj4.min.js"></script>
 <script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
 <link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
-<script src="libs/leaflet-binding-2.0.4.1/leaflet.js"></script>
+<script src="libs/leaflet-binding-2.1.1/leaflet.js"></script>
 <script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
-<script src="libs/leaflet-providers-plugin-2.0.4.1/leaflet-providers-plugin.js"></script>
+<script src="libs/leaflet-providers-plugin-2.1.1/leaflet-providers-plugin.js"></script>
 <link href="libs/HomeButton-0.0.1/home-button.css" rel="stylesheet" />
 <script src="libs/HomeButton-0.0.1/home-button.js"></script>
 <script src="libs/HomeButton-0.0.1/easy-button-src.min.js"></script>
@@ -174,16 +173,19 @@ div.csl-indent {
 <li><a href="./">Analysis of Ecological Data</a></li>
 
 <li class="divider"></li>
-<li><a href="index.html#welcome" id="toc-welcome"><span class="toc-section-number">1</span> Welcome</a></li>
-<li><a href="ecological-data.html#ecological-data" id="toc-ecological-data"><span class="toc-section-number">2</span> Ecological data</a></li>
-<li><a href="what-is-r.html#what-is-r" id="toc-what-is-r"><span class="toc-section-number">3</span> What is R?</a></li>
-<li><a href="the-aasee-dataset.html#the-aasee-dataset" id="toc-the-aasee-dataset"><span class="toc-section-number">4</span> The Aasee Dataset</a></li>
-<li><a href="r-foundations.html#r-foundations" id="toc-r-foundations"><span class="toc-section-number">5</span> R foundations</a></li>
-<li><a href="dataframes.html#dataframes" id="toc-dataframes"><span class="toc-section-number">6</span> Dataframes</a></li>
-<li><a href="project-setup.html#project-setup" id="toc-project-setup"><span class="toc-section-number">7</span> Project Setup</a></li>
-<li><a href="string-handling.html#string-handling" id="toc-string-handling"><span class="toc-section-number">8</span> String handling</a></li>
-<li><a href="additional-ressources.html#additional-ressources" id="toc-additional-ressources"><span class="toc-section-number">9</span> Additional Ressources</a></li>
-<li><a href="references.html#references" id="toc-references">References</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Welcome</a></li>
+<li class="chapter" data-level="2" data-path="ecological-data.html"><a href="ecological-data.html"><i class="fa fa-check"></i><b>2</b> Ecological data</a></li>
+<li class="chapter" data-level="3" data-path="what-is-r.html"><a href="what-is-r.html"><i class="fa fa-check"></i><b>3</b> What is R?</a></li>
+<li class="chapter" data-level="4" data-path="the-aasee-dataset.html"><a href="the-aasee-dataset.html"><i class="fa fa-check"></i><b>4</b> The Aasee Dataset</a></li>
+<li class="chapter" data-level="5" data-path="r-foundations.html"><a href="r-foundations.html"><i class="fa fa-check"></i><b>5</b> R foundations</a></li>
+<li class="chapter" data-level="6" data-path="dataframes.html"><a href="dataframes.html"><i class="fa fa-check"></i><b>6</b> Dataframes</a></li>
+<li class="chapter" data-level="7" data-path="project-setup.html"><a href="project-setup.html"><i class="fa fa-check"></i><b>7</b> Project Setup</a></li>
+<li class="chapter" data-level="8" data-path="string-handling.html"><a href="string-handling.html"><i class="fa fa-check"></i><b>8</b> String handling</a></li>
+<li class="chapter" data-level="9" data-path="casestudy-aasee-fish-mortality.html"><a href="casestudy-aasee-fish-mortality.html"><i class="fa fa-check"></i><b>9</b> Casestudy: Aasee fish mortality</a></li>
+<li class="chapter" data-level="10" data-path="tidyverse-functions.html"><a href="tidyverse-functions.html"><i class="fa fa-check"></i><b>10</b> Tidyverse functions</a></li>
+<li class="chapter" data-level="11" data-path="visualizations.html"><a href="visualizations.html"><i class="fa fa-check"></i><b>11</b> Visualizations</a></li>
+<li class="chapter" data-level="12" data-path="additional-ressources.html"><a href="additional-ressources.html"><i class="fa fa-check"></i><b>12</b> Additional Ressources</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Made with bookdown</a></li>
 
@@ -204,63 +206,67 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="string-handling" class="section level1" number="8">
-<h1><span class="header-section-number">8</span> String handling</h1>
+<div id="string-handling" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">8</span> String handling<a href="string-handling.html#string-handling" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Modifying strings (i.e. text) is a very common task but can be a bit tricky if you start out.
 Here are some functions to try out:</p>
 <ul>
 <li>create strings from multiple “substrings” with the <code>paste</code> or <code>paste0</code> function</li>
 </ul>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="string-handling.html#cb72-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="dv">5</span></span>
-<span id="cb72-2"><a href="string-handling.html#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;The number five:&quot;</span>, n)</span></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="string-handling.html#cb79-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="dv">5</span></span>
+<span id="cb79-2"><a href="string-handling.html#cb79-2" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;The number five:&quot;</span>, n)</span></code></pre></div>
 <pre><code>## [1] &quot;The number five: 5&quot;</code></pre>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="string-handling.html#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co"># again functions are vectorized</span></span>
-<span id="cb74-2"><a href="string-handling.html#cb74-2" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="fu">seq</span>(<span class="dv">10</span>), <span class="st">&quot;is&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;odd&quot;</span>, <span class="st">&quot;even&quot;</span>))</span></code></pre></div>
-<pre><code>##  [1] &quot;1 is odd&quot;   &quot;2 is even&quot;  &quot;3 is odd&quot;   &quot;4 is even&quot;  &quot;5 is odd&quot;   &quot;6 is even&quot;  &quot;7 is odd&quot;   &quot;8 is even&quot;  &quot;9 is odd&quot;  
-## [10] &quot;10 is even&quot;</code></pre>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="string-handling.html#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="co"># paste0 defaults to no character for separating the strings</span></span>
-<span id="cb76-2"><a href="string-handling.html#cb76-2" aria-hidden="true" tabindex="-1"></a><span class="fu">paste0</span>(n, <span class="st">&quot;five&quot;</span>, n)</span></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="string-handling.html#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="co"># again functions are vectorized</span></span>
+<span id="cb81-2"><a href="string-handling.html#cb81-2" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="fu">seq</span>(<span class="dv">10</span>), <span class="st">&quot;is&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;odd&quot;</span>, <span class="st">&quot;even&quot;</span>))</span></code></pre></div>
+<pre><code>##  [1] &quot;1 is odd&quot;   &quot;2 is even&quot;  &quot;3 is odd&quot;   &quot;4 is even&quot;  &quot;5 is odd&quot;  
+##  [6] &quot;6 is even&quot;  &quot;7 is odd&quot;   &quot;8 is even&quot;  &quot;9 is odd&quot;   &quot;10 is even&quot;</code></pre>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="string-handling.html#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="co"># paste0 defaults to no character for separating the strings</span></span>
+<span id="cb83-2"><a href="string-handling.html#cb83-2" aria-hidden="true" tabindex="-1"></a><span class="fu">paste0</span>(n, <span class="st">&quot;five&quot;</span>, n)</span></code></pre></div>
 <pre><code>## [1] &quot;5five5&quot;</code></pre>
-<div id="the-stringr-package" class="section level2" number="8.1">
-<h2><span class="header-section-number">8.1</span> The stringr package</h2>
+<div id="the-stringr-package" class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">8.1</span> The stringr package<a href="string-handling.html#the-stringr-package" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>For advanced string handling we will make our lives easier by using the <code>stringr</code> package.</p>
 <p>To use functions from a package we have to load it first with the <code>library</code> function. The first time you want to use a package you might have to install it first with <code>install.packages</code>.</p>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="string-handling.html#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;stringr&quot;</span>)</span>
-<span id="cb78-2"><a href="string-handling.html#cb78-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb78-3"><a href="string-handling.html#cb78-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="string-handling.html#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;stringr&quot;</span>)</span>
+<span id="cb85-2"><a href="string-handling.html#cb85-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb85-3"><a href="string-handling.html#cb85-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span></code></pre></div>
 <p>Many packages have so called <code>vignettes</code> which are tutorial style help pages about the package.
 You can access vignettes via the “Packages” Pane in R studio or with a quick <a href="https://www.google.com/search?q=stringr+vignette">Google search</a>.</p>
 <p>It is a good idea to go over the vignette when using a new package.</p>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="string-handling.html#cb79-1" aria-hidden="true" tabindex="-1"></a>s <span class="ot">=</span> <span class="st">&quot;Hi Mom!&quot;</span></span>
-<span id="cb79-2"><a href="string-handling.html#cb79-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb79-3"><a href="string-handling.html#cb79-3" aria-hidden="true" tabindex="-1"></a><span class="co"># you can indicate in your script from which package a function comes from</span></span>
-<span id="cb79-4"><a href="string-handling.html#cb79-4" aria-hidden="true" tabindex="-1"></a><span class="co"># by using ::</span></span>
-<span id="cb79-5"><a href="string-handling.html#cb79-5" aria-hidden="true" tabindex="-1"></a>stringr<span class="sc">::</span><span class="fu">str_length</span>(s)</span></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="string-handling.html#cb86-1" aria-hidden="true" tabindex="-1"></a>s <span class="ot">=</span> <span class="st">&quot;Hi Mom!&quot;</span></span>
+<span id="cb86-2"><a href="string-handling.html#cb86-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb86-3"><a href="string-handling.html#cb86-3" aria-hidden="true" tabindex="-1"></a><span class="co"># you can indicate in your script from which package a function comes from</span></span>
+<span id="cb86-4"><a href="string-handling.html#cb86-4" aria-hidden="true" tabindex="-1"></a><span class="co"># by using ::</span></span>
+<span id="cb86-5"><a href="string-handling.html#cb86-5" aria-hidden="true" tabindex="-1"></a>stringr<span class="sc">::</span><span class="fu">str_length</span>(s)</span></code></pre></div>
 <pre><code>## [1] 7</code></pre>
-<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="string-handling.html#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_sub</span>(<span class="at">string =</span> s, <span class="at">start =</span> <span class="dv">1</span>, <span class="at">end =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="string-handling.html#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_sub</span>(<span class="at">string =</span> s, <span class="at">start =</span> <span class="dv">1</span>, <span class="at">end =</span> <span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;Hi&quot;</code></pre>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="string-handling.html#cb83-1" aria-hidden="true" tabindex="-1"></a>string_vector <span class="ot">=</span> <span class="fu">paste</span>(<span class="fu">seq</span>(<span class="dv">10</span>), <span class="st">&quot;is&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;odd&quot;</span>, <span class="st">&quot;even&quot;</span>))</span>
-<span id="cb83-2"><a href="string-handling.html#cb83-2" aria-hidden="true" tabindex="-1"></a>string_vector</span></code></pre></div>
-<pre><code>##  [1] &quot;1 is odd&quot;   &quot;2 is even&quot;  &quot;3 is odd&quot;   &quot;4 is even&quot;  &quot;5 is odd&quot;   &quot;6 is even&quot;  &quot;7 is odd&quot;   &quot;8 is even&quot;  &quot;9 is odd&quot;  
-## [10] &quot;10 is even&quot;</code></pre>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="string-handling.html#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_remove</span>(string_vector, <span class="at">pattern =</span> <span class="st">&quot;is &quot;</span>)</span></code></pre></div>
-<pre><code>##  [1] &quot;1 odd&quot;   &quot;2 even&quot;  &quot;3 odd&quot;   &quot;4 even&quot;  &quot;5 odd&quot;   &quot;6 even&quot;  &quot;7 odd&quot;   &quot;8 even&quot;  &quot;9 odd&quot;   &quot;10 even&quot;</code></pre>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="string-handling.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace</span>(string_vector, <span class="at">pattern =</span> <span class="st">&quot; is&quot;</span>, <span class="at">replacement =</span> <span class="st">&quot;:&quot;</span>)</span></code></pre></div>
-<pre><code>##  [1] &quot;1: odd&quot;   &quot;2: even&quot;  &quot;3: odd&quot;   &quot;4: even&quot;  &quot;5: odd&quot;   &quot;6: even&quot;  &quot;7: odd&quot;   &quot;8: even&quot;  &quot;9: odd&quot;   &quot;10: even&quot;</code></pre>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="string-handling.html#cb90-1" aria-hidden="true" tabindex="-1"></a>string_vector <span class="ot">=</span> <span class="fu">paste</span>(<span class="fu">seq</span>(<span class="dv">10</span>), <span class="st">&quot;is&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;odd&quot;</span>, <span class="st">&quot;even&quot;</span>))</span>
+<span id="cb90-2"><a href="string-handling.html#cb90-2" aria-hidden="true" tabindex="-1"></a>string_vector</span></code></pre></div>
+<pre><code>##  [1] &quot;1 is odd&quot;   &quot;2 is even&quot;  &quot;3 is odd&quot;   &quot;4 is even&quot;  &quot;5 is odd&quot;  
+##  [6] &quot;6 is even&quot;  &quot;7 is odd&quot;   &quot;8 is even&quot;  &quot;9 is odd&quot;   &quot;10 is even&quot;</code></pre>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="string-handling.html#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_remove</span>(string_vector, <span class="at">pattern =</span> <span class="st">&quot;is &quot;</span>)</span></code></pre></div>
+<pre><code>##  [1] &quot;1 odd&quot;   &quot;2 even&quot;  &quot;3 odd&quot;   &quot;4 even&quot;  &quot;5 odd&quot;   &quot;6 even&quot;  &quot;7 odd&quot;  
+##  [8] &quot;8 even&quot;  &quot;9 odd&quot;   &quot;10 even&quot;</code></pre>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="string-handling.html#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace</span>(string_vector, <span class="at">pattern =</span> <span class="st">&quot; is&quot;</span>, <span class="at">replacement =</span> <span class="st">&quot;:&quot;</span>)</span></code></pre></div>
+<pre><code>##  [1] &quot;1: odd&quot;   &quot;2: even&quot;  &quot;3: odd&quot;   &quot;4: even&quot;  &quot;5: odd&quot;   &quot;6: even&quot; 
+##  [7] &quot;7: odd&quot;   &quot;8: even&quot;  &quot;9: odd&quot;   &quot;10: even&quot;</code></pre>
 </div>
-<div id="leading-zeros" class="section level2" number="8.2">
-<h2><span class="header-section-number">8.2</span> Leading Zeros</h2>
+<div id="leading-zeros" class="section level2 hasAnchor" number="8.2">
+<h2><span class="header-section-number">8.2</span> Leading Zeros<a href="string-handling.html#leading-zeros" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><code>str_pad</code> one can be quite important to keep you sane.</p>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="string-handling.html#cb89-1" aria-hidden="true" tabindex="-1"></a>string_vector <span class="ot">=</span> <span class="fu">paste</span>(<span class="fu">seq</span>(<span class="dv">15</span>), <span class="st">&quot;is&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;odd&quot;</span>, <span class="st">&quot;even&quot;</span>))</span>
-<span id="cb89-2"><a href="string-handling.html#cb89-2" aria-hidden="true" tabindex="-1"></a>string_vector</span></code></pre></div>
-<pre><code>##  [1] &quot;1 is odd&quot;   &quot;2 is even&quot;  &quot;3 is odd&quot;   &quot;4 is even&quot;  &quot;5 is odd&quot;   &quot;6 is even&quot;  &quot;7 is odd&quot;   &quot;8 is even&quot;  &quot;9 is odd&quot;  
-## [10] &quot;10 is even&quot; &quot;11 is odd&quot;  &quot;12 is even&quot; &quot;13 is odd&quot;  &quot;14 is even&quot; &quot;15 is odd&quot;</code></pre>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="string-handling.html#cb91-1" aria-hidden="true" tabindex="-1"></a>string_vector_pad <span class="ot">=</span> <span class="fu">paste</span>(<span class="fu">str_pad</span>(<span class="fu">seq</span>(<span class="dv">15</span>), <span class="at">width =</span> <span class="dv">2</span>, <span class="at">pad =</span> <span class="dv">0</span>, <span class="at">side =</span> <span class="st">&quot;left&quot;</span>),</span>
-<span id="cb91-2"><a href="string-handling.html#cb91-2" aria-hidden="true" tabindex="-1"></a>                          <span class="st">&quot;is&quot;</span>,</span>
-<span id="cb91-3"><a href="string-handling.html#cb91-3" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">c</span>(<span class="st">&quot;odd&quot;</span>, <span class="st">&quot;even&quot;</span>))</span>
-<span id="cb91-4"><a href="string-handling.html#cb91-4" aria-hidden="true" tabindex="-1"></a>string_vector_pad</span></code></pre></div>
-<pre><code>##  [1] &quot;01 is odd&quot;  &quot;02 is even&quot; &quot;03 is odd&quot;  &quot;04 is even&quot; &quot;05 is odd&quot;  &quot;06 is even&quot; &quot;07 is odd&quot;  &quot;08 is even&quot; &quot;09 is odd&quot; 
-## [10] &quot;10 is even&quot; &quot;11 is odd&quot;  &quot;12 is even&quot; &quot;13 is odd&quot;  &quot;14 is even&quot; &quot;15 is odd&quot;</code></pre>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="string-handling.html#cb96-1" aria-hidden="true" tabindex="-1"></a>string_vector <span class="ot">=</span> <span class="fu">paste</span>(<span class="fu">seq</span>(<span class="dv">15</span>), <span class="st">&quot;is&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;odd&quot;</span>, <span class="st">&quot;even&quot;</span>))</span>
+<span id="cb96-2"><a href="string-handling.html#cb96-2" aria-hidden="true" tabindex="-1"></a>string_vector</span></code></pre></div>
+<pre><code>##  [1] &quot;1 is odd&quot;   &quot;2 is even&quot;  &quot;3 is odd&quot;   &quot;4 is even&quot;  &quot;5 is odd&quot;  
+##  [6] &quot;6 is even&quot;  &quot;7 is odd&quot;   &quot;8 is even&quot;  &quot;9 is odd&quot;   &quot;10 is even&quot;
+## [11] &quot;11 is odd&quot;  &quot;12 is even&quot; &quot;13 is odd&quot;  &quot;14 is even&quot; &quot;15 is odd&quot;</code></pre>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="string-handling.html#cb98-1" aria-hidden="true" tabindex="-1"></a>string_vector_pad <span class="ot">=</span> <span class="fu">paste</span>(<span class="fu">str_pad</span>(<span class="fu">seq</span>(<span class="dv">15</span>), <span class="at">width =</span> <span class="dv">2</span>, <span class="at">pad =</span> <span class="dv">0</span>, <span class="at">side =</span> <span class="st">&quot;left&quot;</span>),</span>
+<span id="cb98-2"><a href="string-handling.html#cb98-2" aria-hidden="true" tabindex="-1"></a>                          <span class="st">&quot;is&quot;</span>,</span>
+<span id="cb98-3"><a href="string-handling.html#cb98-3" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">c</span>(<span class="st">&quot;odd&quot;</span>, <span class="st">&quot;even&quot;</span>))</span>
+<span id="cb98-4"><a href="string-handling.html#cb98-4" aria-hidden="true" tabindex="-1"></a>string_vector_pad</span></code></pre></div>
+<pre><code>##  [1] &quot;01 is odd&quot;  &quot;02 is even&quot; &quot;03 is odd&quot;  &quot;04 is even&quot; &quot;05 is odd&quot; 
+##  [6] &quot;06 is even&quot; &quot;07 is odd&quot;  &quot;08 is even&quot; &quot;09 is odd&quot;  &quot;10 is even&quot;
+## [11] &quot;11 is odd&quot;  &quot;12 is even&quot; &quot;13 is odd&quot;  &quot;14 is even&quot; &quot;15 is odd&quot;</code></pre>
 
 </div>
 </div>
@@ -270,7 +276,7 @@ You can access vignettes via the “Packages” Pane in R studio or with a quick
         </div>
       </div>
 <a href="project-setup.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="additional-ressources.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="casestudy-aasee-fish-mortality.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

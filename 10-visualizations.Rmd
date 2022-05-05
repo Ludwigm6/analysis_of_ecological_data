@@ -1,0 +1,59 @@
+# Visualizations
+
+
+## Boxplots
+
+* distribution of values
+* great for comparisons
+
+
+![https://miro.medium.com/max/1400/1*2c21SkzJMf3frPXPAR_gZA.png](https://miro.medium.com/max/1400/1*2c21SkzJMf3frPXPAR_gZA.png)
+
+
+
+```{r}
+july = read.csv("data/2021-07_aasee.csv")
+boxplot(july$Wassertemperatur)
+```
+
+
+
+```{r}
+summary(july$Wassertemperatur)
+```
+
+
+## Histograms
+
+* distribution of values
+* aggregated to `bins`
+* multiple ways to adjust bin size
+
+```{r}
+hist(july$Wassertemperatur)
+
+hist(july$Wassertemperatur, breaks = 20)
+
+hist(july$Wassertemperatur, breaks = seq(min(july$Wassertemperatur),
+                                         max(july$Wassertemperatur)+0.2,
+                                         0.1))
+```
+
+
+
+## Scatterplots
+
+* classic x-y plot
+* relation between two variables
+
+```{r}
+plot(july$Wassertemperatur)
+
+plot(x = july$Wassertemperatur, y = july$Sauerstoffgehalt)
+```
+
+
+
+
+
+
