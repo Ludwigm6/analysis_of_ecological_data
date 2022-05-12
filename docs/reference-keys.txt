@@ -12,6 +12,7 @@ fig:unnamed-chunk-20
 fig:unnamed-chunk-22
 fig:unnamed-chunk-26
 fig:unnamed-chunk-28
+tab:unnamed-chunk-48
 welcome
 target-audience
 aims-of-this-course
@@ -58,6 +59,8 @@ visualizations
 boxplots
 histograms
 scatterplots
+species-data
+task-crops-vs.-species
 additional-ressources
 r-cheat-sheets
 useful-keyboard-shortcuts

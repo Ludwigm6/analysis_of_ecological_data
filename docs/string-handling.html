@@ -184,7 +184,8 @@ div.csl-indent {
 <li class="chapter" data-level="9" data-path="casestudy-aasee-fish-mortality.html"><a href="casestudy-aasee-fish-mortality.html"><i class="fa fa-check"></i><b>9</b> Casestudy: Aasee fish mortality</a></li>
 <li class="chapter" data-level="10" data-path="tidyverse-functions.html"><a href="tidyverse-functions.html"><i class="fa fa-check"></i><b>10</b> Tidyverse functions</a></li>
 <li class="chapter" data-level="11" data-path="visualizations.html"><a href="visualizations.html"><i class="fa fa-check"></i><b>11</b> Visualizations</a></li>
-<li class="chapter" data-level="12" data-path="additional-ressources.html"><a href="additional-ressources.html"><i class="fa fa-check"></i><b>12</b> Additional Ressources</a></li>
+<li class="chapter" data-level="12" data-path="species-data.html"><a href="species-data.html"><i class="fa fa-check"></i><b>12</b> Species data</a></li>
+<li class="chapter" data-level="13" data-path="additional-ressources.html"><a href="additional-ressources.html"><i class="fa fa-check"></i><b>13</b> Additional Ressources</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Made with bookdown</a></li>
@@ -218,8 +219,8 @@ Here are some functions to try out:</p>
 <pre><code>## [1] &quot;The number five: 5&quot;</code></pre>
 <div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="string-handling.html#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="co"># again functions are vectorized</span></span>
 <span id="cb81-2"><a href="string-handling.html#cb81-2" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="fu">seq</span>(<span class="dv">10</span>), <span class="st">&quot;is&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;odd&quot;</span>, <span class="st">&quot;even&quot;</span>))</span></code></pre></div>
-<pre><code>##  [1] &quot;1 is odd&quot;   &quot;2 is even&quot;  &quot;3 is odd&quot;   &quot;4 is even&quot;  &quot;5 is odd&quot;  
-##  [6] &quot;6 is even&quot;  &quot;7 is odd&quot;   &quot;8 is even&quot;  &quot;9 is odd&quot;   &quot;10 is even&quot;</code></pre>
+<pre><code>##  [1] &quot;1 is odd&quot;   &quot;2 is even&quot;  &quot;3 is odd&quot;   &quot;4 is even&quot;  &quot;5 is odd&quot;   &quot;6 is even&quot;  &quot;7 is odd&quot;   &quot;8 is even&quot; 
+##  [9] &quot;9 is odd&quot;   &quot;10 is even&quot;</code></pre>
 <div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="string-handling.html#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="co"># paste0 defaults to no character for separating the strings</span></span>
 <span id="cb83-2"><a href="string-handling.html#cb83-2" aria-hidden="true" tabindex="-1"></a><span class="fu">paste0</span>(n, <span class="st">&quot;five&quot;</span>, n)</span></code></pre></div>
 <pre><code>## [1] &quot;5five5&quot;</code></pre>
@@ -243,30 +244,27 @@ You can access vignettes via the “Packages” Pane in R studio or with a quick
 <pre><code>## [1] &quot;Hi&quot;</code></pre>
 <div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="string-handling.html#cb90-1" aria-hidden="true" tabindex="-1"></a>string_vector <span class="ot">=</span> <span class="fu">paste</span>(<span class="fu">seq</span>(<span class="dv">10</span>), <span class="st">&quot;is&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;odd&quot;</span>, <span class="st">&quot;even&quot;</span>))</span>
 <span id="cb90-2"><a href="string-handling.html#cb90-2" aria-hidden="true" tabindex="-1"></a>string_vector</span></code></pre></div>
-<pre><code>##  [1] &quot;1 is odd&quot;   &quot;2 is even&quot;  &quot;3 is odd&quot;   &quot;4 is even&quot;  &quot;5 is odd&quot;  
-##  [6] &quot;6 is even&quot;  &quot;7 is odd&quot;   &quot;8 is even&quot;  &quot;9 is odd&quot;   &quot;10 is even&quot;</code></pre>
+<pre><code>##  [1] &quot;1 is odd&quot;   &quot;2 is even&quot;  &quot;3 is odd&quot;   &quot;4 is even&quot;  &quot;5 is odd&quot;   &quot;6 is even&quot;  &quot;7 is odd&quot;   &quot;8 is even&quot; 
+##  [9] &quot;9 is odd&quot;   &quot;10 is even&quot;</code></pre>
 <div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="string-handling.html#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_remove</span>(string_vector, <span class="at">pattern =</span> <span class="st">&quot;is &quot;</span>)</span></code></pre></div>
-<pre><code>##  [1] &quot;1 odd&quot;   &quot;2 even&quot;  &quot;3 odd&quot;   &quot;4 even&quot;  &quot;5 odd&quot;   &quot;6 even&quot;  &quot;7 odd&quot;  
-##  [8] &quot;8 even&quot;  &quot;9 odd&quot;   &quot;10 even&quot;</code></pre>
+<pre><code>##  [1] &quot;1 odd&quot;   &quot;2 even&quot;  &quot;3 odd&quot;   &quot;4 even&quot;  &quot;5 odd&quot;   &quot;6 even&quot;  &quot;7 odd&quot;   &quot;8 even&quot;  &quot;9 odd&quot;   &quot;10 even&quot;</code></pre>
 <div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="string-handling.html#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace</span>(string_vector, <span class="at">pattern =</span> <span class="st">&quot; is&quot;</span>, <span class="at">replacement =</span> <span class="st">&quot;:&quot;</span>)</span></code></pre></div>
-<pre><code>##  [1] &quot;1: odd&quot;   &quot;2: even&quot;  &quot;3: odd&quot;   &quot;4: even&quot;  &quot;5: odd&quot;   &quot;6: even&quot; 
-##  [7] &quot;7: odd&quot;   &quot;8: even&quot;  &quot;9: odd&quot;   &quot;10: even&quot;</code></pre>
+<pre><code>##  [1] &quot;1: odd&quot;   &quot;2: even&quot;  &quot;3: odd&quot;   &quot;4: even&quot;  &quot;5: odd&quot;   &quot;6: even&quot;  &quot;7: odd&quot;   &quot;8: even&quot;  &quot;9: odd&quot;  
+## [10] &quot;10: even&quot;</code></pre>
 </div>
 <div id="leading-zeros" class="section level2 hasAnchor" number="8.2">
 <h2><span class="header-section-number">8.2</span> Leading Zeros<a href="string-handling.html#leading-zeros" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><code>str_pad</code> one can be quite important to keep you sane.</p>
 <div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="string-handling.html#cb96-1" aria-hidden="true" tabindex="-1"></a>string_vector <span class="ot">=</span> <span class="fu">paste</span>(<span class="fu">seq</span>(<span class="dv">15</span>), <span class="st">&quot;is&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;odd&quot;</span>, <span class="st">&quot;even&quot;</span>))</span>
 <span id="cb96-2"><a href="string-handling.html#cb96-2" aria-hidden="true" tabindex="-1"></a>string_vector</span></code></pre></div>
-<pre><code>##  [1] &quot;1 is odd&quot;   &quot;2 is even&quot;  &quot;3 is odd&quot;   &quot;4 is even&quot;  &quot;5 is odd&quot;  
-##  [6] &quot;6 is even&quot;  &quot;7 is odd&quot;   &quot;8 is even&quot;  &quot;9 is odd&quot;   &quot;10 is even&quot;
-## [11] &quot;11 is odd&quot;  &quot;12 is even&quot; &quot;13 is odd&quot;  &quot;14 is even&quot; &quot;15 is odd&quot;</code></pre>
+<pre><code>##  [1] &quot;1 is odd&quot;   &quot;2 is even&quot;  &quot;3 is odd&quot;   &quot;4 is even&quot;  &quot;5 is odd&quot;   &quot;6 is even&quot;  &quot;7 is odd&quot;   &quot;8 is even&quot; 
+##  [9] &quot;9 is odd&quot;   &quot;10 is even&quot; &quot;11 is odd&quot;  &quot;12 is even&quot; &quot;13 is odd&quot;  &quot;14 is even&quot; &quot;15 is odd&quot;</code></pre>
 <div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="string-handling.html#cb98-1" aria-hidden="true" tabindex="-1"></a>string_vector_pad <span class="ot">=</span> <span class="fu">paste</span>(<span class="fu">str_pad</span>(<span class="fu">seq</span>(<span class="dv">15</span>), <span class="at">width =</span> <span class="dv">2</span>, <span class="at">pad =</span> <span class="dv">0</span>, <span class="at">side =</span> <span class="st">&quot;left&quot;</span>),</span>
 <span id="cb98-2"><a href="string-handling.html#cb98-2" aria-hidden="true" tabindex="-1"></a>                          <span class="st">&quot;is&quot;</span>,</span>
 <span id="cb98-3"><a href="string-handling.html#cb98-3" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">c</span>(<span class="st">&quot;odd&quot;</span>, <span class="st">&quot;even&quot;</span>))</span>
 <span id="cb98-4"><a href="string-handling.html#cb98-4" aria-hidden="true" tabindex="-1"></a>string_vector_pad</span></code></pre></div>
-<pre><code>##  [1] &quot;01 is odd&quot;  &quot;02 is even&quot; &quot;03 is odd&quot;  &quot;04 is even&quot; &quot;05 is odd&quot; 
-##  [6] &quot;06 is even&quot; &quot;07 is odd&quot;  &quot;08 is even&quot; &quot;09 is odd&quot;  &quot;10 is even&quot;
-## [11] &quot;11 is odd&quot;  &quot;12 is even&quot; &quot;13 is odd&quot;  &quot;14 is even&quot; &quot;15 is odd&quot;</code></pre>
+<pre><code>##  [1] &quot;01 is odd&quot;  &quot;02 is even&quot; &quot;03 is odd&quot;  &quot;04 is even&quot; &quot;05 is odd&quot;  &quot;06 is even&quot; &quot;07 is odd&quot;  &quot;08 is even&quot;
+##  [9] &quot;09 is odd&quot;  &quot;10 is even&quot; &quot;11 is odd&quot;  &quot;12 is even&quot; &quot;13 is odd&quot;  &quot;14 is even&quot; &quot;15 is odd&quot;</code></pre>
 
 </div>
 </div>

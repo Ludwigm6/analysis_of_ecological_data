@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>9 Casestudy: Aasee fish mortality | Analysis of Ecological Data with R</title>
+  <title>12 Species data | Analysis of Ecological Data with R</title>
   <meta name="description" content="This is currently a slide collection for the ILOEK Course “Analysis of ecological data in R” but could eventually turn into a more comprehensive ressource collection." />
   <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="9 Casestudy: Aasee fish mortality | Analysis of Ecological Data with R" />
+  <meta property="og:title" content="12 Species data | Analysis of Ecological Data with R" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is currently a slide collection for the ILOEK Course “Analysis of ecological data in R” but could eventually turn into a more comprehensive ressource collection." />
   <meta name="github-repo" content="Ludwigm6/analysis_of_ecological_data" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="9 Casestudy: Aasee fish mortality | Analysis of Ecological Data with R" />
+  <meta name="twitter:title" content="12 Species data | Analysis of Ecological Data with R" />
   
   <meta name="twitter:description" content="This is currently a slide collection for the ILOEK Course “Analysis of ecological data in R” but could eventually turn into a more comprehensive ressource collection." />
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="string-handling.html"/>
-<link rel="next" href="tidyverse-functions.html"/>
+<link rel="prev" href="visualizations.html"/>
+<link rel="next" href="additional-ressources.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -207,39 +207,196 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="casestudy-aasee-fish-mortality" class="section level1 hasAnchor" number="9">
-<h1><span class="header-section-number">9</span> Casestudy: Aasee fish mortality<a href="casestudy-aasee-fish-mortality.html#casestudy-aasee-fish-mortality" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>In 2018, more than twenty tons of fish died in the Aasee due to low oxygen concentrations: <a href="https://www.uni-muenster.de/news/view.php?cmdid=9768">https://www.uni-muenster.de/news/view.php?cmdid=9768</a>.</p>
-<p>Based on this event, a reasonable question might be:</p>
-<blockquote>
-<p>On how many days does the Aasee reach critical oxygen concentrations (4 mg/l)?</p>
-</blockquote>
-<div id="task-aasee-critical-oxygen-concentrations" class="section level2 hasAnchor" number="9.1">
-<h2><span class="header-section-number">9.1</span> TASK: Aasee Critical Oxygen Concentrations<a href="casestudy-aasee-fish-mortality.html#task-aasee-critical-oxygen-concentrations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="species-data" class="section level1 hasAnchor" number="12">
+<h1><span class="header-section-number">12</span> Species data<a href="species-data.html#species-data" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Many studies in landscape ecology deal with species data. Usually, these studies follow a plot based design to compare different environments and ecosystems in terms of abundances or species diversity. To practice everything we’ve learned so far and to go on further we want to have a look at another real world dataset.
+The species data below was collected by Michael Meyer. To find out more about the original goal of why this data was collected you can have a look at <span class="citation">Meyer et al. (<a href="#ref-MeyerM2019" role="doc-biblioref">2019</a>)</span>.
+While the statistical analysis of this paper is more advanced and not suited for this beginner course, the structure of the data is very easy and also allows the practice of more simple methods.</p>
+<table>
+<caption><span id="tab:unnamed-chunk-48">Table 12.1: </span>First entries of species data by Meyer et at. 2019</caption>
+<colgroup>
+<col width="9%" />
+<col width="9%" />
+<col width="7%" />
+<col width="8%" />
+<col width="8%" />
+<col width="9%" />
+<col width="10%" />
+<col width="11%" />
+<col width="10%" />
+<col width="11%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="right">plotcode</th>
+<th align="left">Croptype</th>
+<th align="right">AraInd</th>
+<th align="right">AraSpec</th>
+<th align="right">CaraInd</th>
+<th align="right">CaraSpec</th>
+<th align="right">IsoMyrInd</th>
+<th align="right">IsoMyrSpec</th>
+<th align="right">IsoDipInd</th>
+<th align="right">IsoDipSpec</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="left">WW</td>
+<td align="right">111</td>
+<td align="right">17</td>
+<td align="right">191</td>
+<td align="right">15</td>
+<td align="right">6</td>
+<td align="right">2</td>
+<td align="right">6</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="left">SM</td>
+<td align="right">102</td>
+<td align="right">20</td>
+<td align="right">149</td>
+<td align="right">14</td>
+<td align="right">52</td>
+<td align="right">2</td>
+<td align="right">52</td>
+<td align="right">2</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="left">WW</td>
+<td align="right">154</td>
+<td align="right">19</td>
+<td align="right">96</td>
+<td align="right">11</td>
+<td align="right">16</td>
+<td align="right">4</td>
+<td align="right">15</td>
+<td align="right">3</td>
+</tr>
+<tr class="even">
+<td align="right">10</td>
+<td align="left">SM</td>
+<td align="right">13</td>
+<td align="right">8</td>
+<td align="right">80</td>
+<td align="right">12</td>
+<td align="right">10</td>
+<td align="right">1</td>
+<td align="right">10</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="right">12</td>
+<td align="left">ZR</td>
+<td align="right">125</td>
+<td align="right">14</td>
+<td align="right">108</td>
+<td align="right">18</td>
+<td align="right">14</td>
+<td align="right">4</td>
+<td align="right">13</td>
+<td align="right">3</td>
+</tr>
+<tr class="even">
+<td align="right">13</td>
+<td align="left">WW</td>
+<td align="right">107</td>
+<td align="right">15</td>
+<td align="right">178</td>
+<td align="right">18</td>
+<td align="right">23</td>
+<td align="right">3</td>
+<td align="right">23</td>
+<td align="right">3</td>
+</tr>
+<tr class="odd">
+<td align="right">16</td>
+<td align="left">WW</td>
+<td align="right">81</td>
+<td align="right">19</td>
+<td align="right">97</td>
+<td align="right">12</td>
+<td align="right">23</td>
+<td align="right">3</td>
+<td align="right">23</td>
+<td align="right">3</td>
+</tr>
+<tr class="even">
+<td align="right">20</td>
+<td align="left">WR</td>
+<td align="right">132</td>
+<td align="right">20</td>
+<td align="right">327</td>
+<td align="right">12</td>
+<td align="right">8</td>
+<td align="right">3</td>
+<td align="right">7</td>
+<td align="right">2</td>
+</tr>
+<tr class="odd">
+<td align="right">24</td>
+<td align="left">KE</td>
+<td align="right">66</td>
+<td align="right">12</td>
+<td align="right">141</td>
+<td align="right">13</td>
+<td align="right">9</td>
+<td align="right">2</td>
+<td align="right">9</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="right">26</td>
+<td align="left">WW</td>
+<td align="right">100</td>
+<td align="right">17</td>
+<td align="right">136</td>
+<td align="right">17</td>
+<td align="right">4</td>
+<td align="right">2</td>
+<td align="right">4</td>
+<td align="right">2</td>
+</tr>
+</tbody>
+</table>
+<p>The column names and crop types appear very cryptic at first sight. Here are some explanations:</p>
 <ul>
-<li>On how many days of July 2021 did the Aasee reach critical oxygen concentrations (4 mg/l)?</li>
-<li>Define the necessary steps!</li>
-<li>Work in your project environment!</li>
-<li>How could a good visualization of this look like?</li>
+<li><p>GP = Grain Pea</p></li>
+<li><p>SB = Sugar Beet</p></li>
+<li><p>SM = Silage Maize</p></li>
+<li><p>WR = Winter oilseed Rape</p></li>
+<li><p>WW = Winter Wheat</p></li>
+<li><p>Ara = Araneae</p></li>
+<li><p>Cara = Carabidae</p></li>
+<li><p>IsoDip = Isopoda and Diplopoda</p></li>
+<li><p>IsoMyr = Isopoda and Myriapoda</p></li>
+<li><p>Ind = Number of individual animals</p></li>
+<li><p>Spec = Number of species</p></li>
 </ul>
-</div>
-<div id="task-oxygen-vs.-temperature" class="section level2 hasAnchor" number="9.2">
-<h2><span class="header-section-number">9.2</span> TASK: Oxygen vs. Temperature<a href="casestudy-aasee-fish-mortality.html#task-oxygen-vs.-temperature" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The oxygen concentration in water is partly based on the water temperature. An idealized relation between Oxygen and Temperature might look like this:</p>
-<div class="figure">
-<img src="https://www.garnelenhaus.de/media/image/2f/30/57/Ricardo-Castellanos-Sauerstoff-Grafik.jpg" alt="" />
-<p class="caption"><a href="https://www.garnelenhaus.de/media/image/2f/30/57/Ricardo-Castellanos-Sauerstoff-Grafik.jpg" class="uri">https://www.garnelenhaus.de/media/image/2f/30/57/Ricardo-Castellanos-Sauerstoff-Grafik.jpg</a></p>
-</div>
-<p>We want to find out if this holds true for the Aasee.</p>
-<blockquote>
-<p>Formulate a hypothesis.</p>
-</blockquote>
+<div id="task-crops-vs.-species" class="section level2 hasAnchor" number="12.1">
+<h2><span class="header-section-number">12.1</span> TASK: Crops vs. Species<a href="species-data.html#task-crops-vs.-species" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
-<li>Aggregate temperature and oxygen to daily means.</li>
-<li>Visualize the relation between temperature and oxygen in the Aasee.</li>
-<li>Interpret this visualization!</li>
+<li><p>How many different crop types where analysed in the study?</p></li>
+<li><p>How many plots are there for each crop type?</p></li>
+<li><p>Which plot had the most individual animals? (regardless of species)</p></li>
+<li><p>Which plot was the most diverse?</p></li>
+<li><p>What is the average number of Carabidaes on all the plots containing winter wheat?</p></li>
+<li><p>What is the minimum number of species per crop type?</p></li>
+<li><p>Visualize the difference of Carabidaes per crop type.</p></li>
+<li><p>Plot the number of Araneae species in relation to the number of individual Araneae.</p></li>
+<li><p>If there are more individual Araneae on a plot, are there also more Araneae species?</p></li>
 </ul>
 
+</div>
+</div>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-MeyerM2019" class="csl-entry">
+Meyer, Michael, David Ott, Philipp Götze, Heinz-Josef Koch, and Christoph Scherber. 2019. <span>“Crop Identity and Memory Effects on Aboveground Arthropods in a Long-Term Crop Rotation Experiment.”</span> <em>Ecology and Evolution</em> 9 (12): 7307–23. <a href="https://doi.org/10.1002/ece3.5302">https://doi.org/10.1002/ece3.5302</a>.
 </div>
 </div>
             </section>
@@ -247,8 +404,8 @@ div.csl-indent {
           </div>
         </div>
       </div>
-<a href="string-handling.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="tidyverse-functions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="visualizations.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="additional-ressources.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -279,7 +436,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/08-aasee_oxy.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/12-species.Rmd",
 "text": "Edit"
 },
 "history": {
