@@ -1,0 +1,164 @@
+# Linear Models
+
+Linear models describe the relation between two variables. 
+In a non-technical description we can think about linear model like:
+
+> Find a line that is as close as possible to all the points of a scatterplot.
+
+
+```{r, echo = FALSE}
+library(dplyr)
+library(ggplot2)
+
+bd = read.csv("data/crop_species.csv")
+
+bd = bd %>% mutate(Abundance = AraInd + CaraInd + IsoMyrInd,
+              Species = AraSpec, CaraSpec, IsoMyrSpec)
+
+
+ggplot(bd, aes(Abundance, Species))+
+    geom_point()+
+    geom_smooth(method = "lm", se = FALSE)+
+    theme_bw()
+```
+
+
+For example, we can use a linear model to depict the relation between the amount of samples animals and the number of different species found in a given area. To create a linear model, we need two vectors (here as two columns of a data.frame) with the matching data pairs (Abundance and Species Number). The `lm` function then need a formula with the vector/column names separated by `~`.
+Think about the `~` like _as a function of_. So `lm(Species ~ Abundance)` means: Give me the number of species as a function of species abundance. 
+
+
+```{r}
+library(dplyr)
+bd = read.csv("data/crop_species.csv")
+
+bd = bd %>% mutate(TotalInd = AraInd + CaraInd + IsoMyrInd,
+              TotalSpec = AraSpec, CaraSpec, IsoMyrSpec)
+
+lmod = lm(bd$TotalSpec ~ bd$TotalInd)
+lmod
+```
+
+## Linear Model Summary
+
+Calling the model returns the intercept and slope. To get a more useful output use the `summary` function.
+In the following we will go over the output of the `summary` function on linear models.
+The explanations are mostly taken from this blog entry: [https://feliperego.github.io/blog/2015/10/23/Interpreting-Model-Output-In-R](https://feliperego.github.io/blog/2015/10/23/Interpreting-Model-Output-In-R)
+
+```{r}
+summary(lmod)
+```
+
+### Call
+
+* the function that was used to create the model
+
+### Residuals
+
+* summary statistic of the model error
+* "How far away are the real values from the model?"
+* should follow a normal distribution (e.g. by plotting a histogram)
+
+```{r, echo = FALSE}
+library(ggplot2)
+library(ggpubr)
+
+bd$pred = predict(lmod, bd)
+
+ggplot(bd, aes(TotalInd, TotalSpec))+
+    geom_point()+
+    geom_smooth(method = "lm", se = FALSE)+
+    geom_segment(aes(yend = pred, xend = TotalInd), col = "red")+
+    stat_regline_equation()+
+    theme_bw()
+
+```
+
+```{r}
+hist(lmod$residuals)
+```
+
+
+
+
+### Coefficients
+
+#### Estimate
+
+* again the slope and intercept
+* we can expect to observed at least 10.7 different species on a plot (if we collect 103 animals)
+* for each additional animal observed, the species count increases by 0.017
+
+#### Std. Error
+
+* the expected error of the coefficients
+* for each additional animal observed, the species number increases by 0.017 +- 0.0037
+
+#### t value
+
+* how many standard deviation is the std. error away from zero?
+* far away from zero is better. Reduces the probability that the result is due to chance
+* usually not interpreted
+
+#### Pr(>|t|)
+
+* probability that the observed value is larger than t
+* small value means that there is a high chance that the relation is not based on chance
+* __p values < than 0.05__ is the convention that we can neglect the H0 hypothesis (the model actually depicts a relation)
+
+
+#### Signif. codes
+
+* a legend for the significance level of the p-value
+
+#### Residuals standard error
+
+* the average deviation of the real values from the model value
+* degree of freedom: on how many observations is this value based on?
+
+#### Multiple R-squared
+
+* How much of the variance is explained by the model?
+* Values between 0 and 1
+* 0 means no explanation, 1 means perfect fit
+* Depends on the specific example!
+
+#### F-statistics
+
+* Is there a relation between the predictor and the response?
+* Is my model better than if all the coefficients are zero?
+* Away from 1 is good!
+* Depend on number of data points.
+
+
+## Linear Model Plot
+
+Plotting the linear model gives you 4 different figures that indicate if the model is statisically valid in the first place, i.e. if the residuals follow a normal distribution and if they are homoscedatic.
+
+
+### Residuals vs. Fitted
+
+* Is it actually a linear relation?
+* Points randomly scattered around a horizontal line indicates this
+
+
+### Normal Q-Q
+
+* Are the residuals normally distributed?
+* Points on the 1-1 line indicates this
+* Depicted are the actual residuals vs. a theoretical normal distribution
+
+### Scale location
+
+* Are the residuals _homoscedatic_?
+* This means that the range of the residuals are more or less equal for the whole data range
+* Equally spread points around the line indicates this
+
+### Residuals vs. Levarage
+
+* Are there outliers in the data that have influence on the model?
+* In this example, if we would leave out point #12, the model outcome would change.
+
+```{r}
+plot(lmod)
+```
+

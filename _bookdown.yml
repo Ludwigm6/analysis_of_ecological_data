@@ -10,6 +10,7 @@ rmd_files: ["index.Rmd",
            "08-aasee_oxy.Rmd",
            "09-tidyverse.Rmd",
            "10-visualizations.Rmd",
+           "11-linear_models.Rmd",
            "12-species.Rmd",
            "98-additional_resources.Rmd",
            "references.Rmd"]

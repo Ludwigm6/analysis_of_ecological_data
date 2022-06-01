@@ -44,7 +44,7 @@ The column names and crop types appear very cryptic at first sight. Here are som
 
 * What is the average number of Carabidaes on all the plots containing winter wheat?
 * What is the minimum number of species per crop type?
-* Visualize the difference of Carabidaes per crop type.
+* Visualize the number of Carabidaes per crop type.
 
 * Plot the number of Araneae species in relation to the number of individual Araneae.
 * If there are more individual Araneae on a plot, are there also more Araneae species?

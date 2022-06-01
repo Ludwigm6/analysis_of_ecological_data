@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>12 Species data | Analysis of Ecological Data with R</title>
+  <title>13 Species data | Analysis of Ecological Data with R</title>
   <meta name="description" content="This is currently a slide collection for the ILOEK Course “Analysis of ecological data in R” but could eventually turn into a more comprehensive ressource collection." />
   <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="12 Species data | Analysis of Ecological Data with R" />
+  <meta property="og:title" content="13 Species data | Analysis of Ecological Data with R" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is currently a slide collection for the ILOEK Course “Analysis of ecological data in R” but could eventually turn into a more comprehensive ressource collection." />
   <meta name="github-repo" content="Ludwigm6/analysis_of_ecological_data" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="12 Species data | Analysis of Ecological Data with R" />
+  <meta name="twitter:title" content="13 Species data | Analysis of Ecological Data with R" />
   
   <meta name="twitter:description" content="This is currently a slide collection for the ILOEK Course “Analysis of ecological data in R” but could eventually turn into a more comprehensive ressource collection." />
   
@@ -29,7 +29,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="visualizations.html"/>
+<link rel="prev" href="linear-models.html"/>
 <link rel="next" href="additional-ressources.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -184,8 +184,9 @@ div.csl-indent {
 <li class="chapter" data-level="9" data-path="casestudy-aasee-fish-mortality.html"><a href="casestudy-aasee-fish-mortality.html"><i class="fa fa-check"></i><b>9</b> Casestudy: Aasee fish mortality</a></li>
 <li class="chapter" data-level="10" data-path="tidyverse-functions.html"><a href="tidyverse-functions.html"><i class="fa fa-check"></i><b>10</b> Tidyverse functions</a></li>
 <li class="chapter" data-level="11" data-path="visualizations.html"><a href="visualizations.html"><i class="fa fa-check"></i><b>11</b> Visualizations</a></li>
-<li class="chapter" data-level="12" data-path="species-data.html"><a href="species-data.html"><i class="fa fa-check"></i><b>12</b> Species data</a></li>
-<li class="chapter" data-level="13" data-path="additional-ressources.html"><a href="additional-ressources.html"><i class="fa fa-check"></i><b>13</b> Additional Ressources</a></li>
+<li class="chapter" data-level="12" data-path="linear-models.html"><a href="linear-models.html"><i class="fa fa-check"></i><b>12</b> Linear Models</a></li>
+<li class="chapter" data-level="13" data-path="species-data.html"><a href="species-data.html"><i class="fa fa-check"></i><b>13</b> Species data</a></li>
+<li class="chapter" data-level="14" data-path="additional-ressources.html"><a href="additional-ressources.html"><i class="fa fa-check"></i><b>14</b> Additional Ressources</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Made with bookdown</a></li>
@@ -207,13 +208,13 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="species-data" class="section level1 hasAnchor" number="12">
-<h1><span class="header-section-number">12</span> Species data<a href="species-data.html#species-data" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="species-data" class="section level1 hasAnchor" number="13">
+<h1><span class="header-section-number">13</span> Species data<a href="species-data.html#species-data" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Many studies in landscape ecology deal with species data. Usually, these studies follow a plot based design to compare different environments and ecosystems in terms of abundances or species diversity. To practice everything we’ve learned so far and to go on further we want to have a look at another real world dataset.
 The species data below was collected by Michael Meyer. To find out more about the original goal of why this data was collected you can have a look at <span class="citation">Meyer et al. (<a href="#ref-MeyerM2019" role="doc-biblioref">2019</a>)</span>.
 While the statistical analysis of this paper is more advanced and not suited for this beginner course, the structure of the data is very easy and also allows the practice of more simple methods.</p>
 <table>
-<caption><span id="tab:unnamed-chunk-48">Table 12.1: </span>First entries of species data by Meyer et at. 2019</caption>
+<caption><span id="tab:unnamed-chunk-54">Table 13.1: </span>First entries of species data by Meyer et at. 2019</caption>
 <colgroup>
 <col width="9%" />
 <col width="9%" />
@@ -377,8 +378,8 @@ While the statistical analysis of this paper is more advanced and not suited for
 <li><p>Ind = Number of individual animals</p></li>
 <li><p>Spec = Number of species</p></li>
 </ul>
-<div id="task-crops-vs.-species" class="section level2 hasAnchor" number="12.1">
-<h2><span class="header-section-number">12.1</span> TASK: Crops vs. Species<a href="species-data.html#task-crops-vs.-species" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="task-crops-vs.-species" class="section level2 hasAnchor" number="13.1">
+<h2><span class="header-section-number">13.1</span> TASK: Crops vs. Species<a href="species-data.html#task-crops-vs.-species" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li><p>How many different crop types where analysed in the study?</p></li>
 <li><p>How many plots are there for each crop type?</p></li>
@@ -386,7 +387,7 @@ While the statistical analysis of this paper is more advanced and not suited for
 <li><p>Which plot was the most diverse?</p></li>
 <li><p>What is the average number of Carabidaes on all the plots containing winter wheat?</p></li>
 <li><p>What is the minimum number of species per crop type?</p></li>
-<li><p>Visualize the difference of Carabidaes per crop type.</p></li>
+<li><p>Visualize the number of Carabidaes per crop type.</p></li>
 <li><p>Plot the number of Araneae species in relation to the number of individual Araneae.</p></li>
 <li><p>If there are more individual Araneae on a plot, are there also more Araneae species?</p></li>
 </ul>
@@ -404,7 +405,7 @@ Meyer, Michael, David Ott, Philipp Götze, Heinz-Josef Koch, and Christoph Scher
           </div>
         </div>
       </div>
-<a href="visualizations.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="linear-models.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="additional-ressources.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
