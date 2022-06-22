@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4 The Aasee Dataset | Analysis of Ecological Data with R</title>
+  <title>14 Urban Trees | Analysis of Ecological Data with R</title>
   <meta name="description" content="This is currently a slide collection for the ILOEK Course “Analysis of ecological data in R” but could eventually turn into a more comprehensive ressource collection." />
   <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4 The Aasee Dataset | Analysis of Ecological Data with R" />
+  <meta property="og:title" content="14 Urban Trees | Analysis of Ecological Data with R" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is currently a slide collection for the ILOEK Course “Analysis of ecological data in R” but could eventually turn into a more comprehensive ressource collection." />
   <meta name="github-repo" content="Ludwigm6/analysis_of_ecological_data" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4 The Aasee Dataset | Analysis of Ecological Data with R" />
+  <meta name="twitter:title" content="14 Urban Trees | Analysis of Ecological Data with R" />
   
   <meta name="twitter:description" content="This is currently a slide collection for the ILOEK Course “Analysis of ecological data in R” but could eventually turn into a more comprehensive ressource collection." />
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="what-is-r.html"/>
-<link rel="next" href="r-foundations.html"/>
+<link rel="prev" href="species-data.html"/>
+<link rel="next" href="additional-ressources.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -209,143 +209,59 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="the-aasee-dataset" class="section level1 hasAnchor" number="4">
-<h1><span class="header-section-number">4</span> The Aasee Dataset<a href="the-aasee-dataset.html#the-aasee-dataset" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>To learn the basics about data types, data handling and the fundamentals of R, we will work with a dataset from the Aasee in Muenster:
-Inform yourself real quick <a href="https://opendata.stadt-muenster.de/dataset/aasee-m%C3%BCnster-tagesaktuelle-sensordaten">here</a> about the origin of the dataset. You can download it here: <a href="https://github.com/od-ms/aasee-monitoring">https://github.com/od-ms/aasee-monitoring</a></p>
-<p>Here is an excerpt of the data:</p>
-<table>
-<caption><span id="tab:unnamed-chunk-10">Table 4.1: </span>First entries of the Aasee monitoring dataset</caption>
-<thead>
-<tr class="header">
-<th align="left">Datum</th>
-<th align="right">Wassertemperatur</th>
-<th align="right">pH.Wert</th>
-<th align="right">Sauerstoffgehalt</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">2021-05-31 23:57</td>
-<td align="right">17.98</td>
-<td align="right">8.05</td>
-<td align="right">10.53</td>
-</tr>
-<tr class="even">
-<td align="left">2021-06-01 00:09</td>
-<td align="right">17.66</td>
-<td align="right">8.04</td>
-<td align="right">9.64</td>
-</tr>
-<tr class="odd">
-<td align="left">2021-06-01 00:19</td>
-<td align="right">18.03</td>
-<td align="right">8.12</td>
-<td align="right">11.30</td>
-</tr>
-<tr class="even">
-<td align="left">2021-06-01 00:27</td>
-<td align="right">18.08</td>
-<td align="right">8.14</td>
-<td align="right">11.32</td>
-</tr>
-<tr class="odd">
-<td align="left">2021-06-01 00:39</td>
-<td align="right">18.06</td>
-<td align="right">8.12</td>
-<td align="right">11.06</td>
-</tr>
-<tr class="even">
-<td align="left">2021-06-01 00:49</td>
-<td align="right">18.01</td>
-<td align="right">8.10</td>
-<td align="right">10.91</td>
-</tr>
-<tr class="odd">
-<td align="left">2021-06-01 00:59</td>
-<td align="right">18.02</td>
-<td align="right">8.10</td>
-<td align="right">10.96</td>
-</tr>
-<tr class="even">
-<td align="left">2021-06-01 01:08</td>
-<td align="right">18.06</td>
-<td align="right">8.10</td>
-<td align="right">10.83</td>
-</tr>
-<tr class="odd">
-<td align="left">2021-06-01 01:19</td>
-<td align="right">18.08</td>
-<td align="right">8.10</td>
-<td align="right">10.82</td>
-</tr>
-<tr class="even">
-<td align="left">2021-06-01 01:29</td>
-<td align="right">18.08</td>
-<td align="right">8.10</td>
-<td align="right">10.62</td>
-</tr>
-</tbody>
-</table>
-<p>As a first intermediate goal we want to deal with the following task. We will learn all the necessary skills in R and a bit of statistics in the next lessons, but it is valuable to think about the task / question beforehand!</p>
-<blockquote>
-<p>Compare the water temperature of 2021 June 02 and July 21.</p>
-</blockquote>
+<div id="urban-trees" class="section level1 hasAnchor" number="14">
+<h1><span class="header-section-number">14</span> Urban Trees<a href="urban-trees.html#urban-trees" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>In the <a href="https://opendata.stadt-muenster.de/dataset/digitales-baumkataster-m%C3%BCnster">open data portal Münster</a> you can find the location and species group of all the trees that are managed by the city. From there, one can also find the district borders. To put into practice what we have learned for far, below are some tasks using both tree and district information.
+<strong>You can download the two datasets from the learnweb (slightly modified for the course).</strong></p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-65"></span>
+<img src="ecoanalysis_files/figure-html/unnamed-chunk-65-1.png" alt="Tree positions in Muenster" width="672" />
+<p class="caption">
+Figure 14.1: Tree positions in Muenster
+</p>
+</div>
+<div id="tasks-urban-tree-diversity" class="section level2 hasAnchor" number="14.1">
+<h2><span class="header-section-number">14.1</span> Tasks: Urban Tree Diversity<a href="urban-trees.html#tasks-urban-tree-diversity" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li>Tree Abundances</li>
+</ol>
 <ul>
-<li>What does this task actually mean?</li>
-<li>Reformulate it as a question</li>
-<li>Outline steps to answer the question</li>
+<li>Load the datasets <code>muenster_baume.csv</code> and <code>muenster_bezirke.csv</code>.</li>
+<li>Which district has the most trees?</li>
 </ul>
-<div id="solution" class="section level2 hasAnchor" number="4.1">
-<h2><span class="header-section-number">4.1</span> Solution<a href="the-aasee-dataset.html#solution" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol start="2" style="list-style-type: decimal">
+<li>Modelling</li>
+</ol>
+<ul>
+<li>Compare the number of trees in a district with its area: Plot this relation.</li>
+<li>Is a linear model applicable here?</li>
+<li>Transform both variables into a logarithmic scale (<code>log()</code>). Plot the relation again and compare.</li>
+<li>Model the relation between district area and number of trees. Is the model valid?</li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li>Tree species</li>
+</ol>
+<ul>
+<li>Which districts inhabit “endemic” species?</li>
+<li>Which district is the most diverse?
+<ul>
+<li>Calculate the Shannon index for each district.</li>
+<li>For this we need a community matrix. Each Row is a District, Each Column a Species.</li>
+<li>Use the <code>diversity()</code> function from the <code>vegan</code> package on the community matrix.</li>
+</ul></li>
+</ul>
 <details>
 <summary>
-Click for Answer
+Bonus: Geospatial Data
 </summary>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="the-aasee-dataset.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load needed packages</span></span>
-<span id="cb7-2"><a href="the-aasee-dataset.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
-<span id="cb7-3"><a href="the-aasee-dataset.html#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="the-aasee-dataset.html#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># data input</span></span>
-<span id="cb7-5"><a href="the-aasee-dataset.html#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-6"><a href="the-aasee-dataset.html#cb7-6" aria-hidden="true" tabindex="-1"></a>june <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/2021-06_aasee.csv&quot;</span>)</span>
-<span id="cb7-7"><a href="the-aasee-dataset.html#cb7-7" aria-hidden="true" tabindex="-1"></a>july <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/2021-07_aasee.csv&quot;</span>)</span>
-<span id="cb7-8"><a href="the-aasee-dataset.html#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-9"><a href="the-aasee-dataset.html#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-10"><a href="the-aasee-dataset.html#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co"># actual processing ----</span></span>
-<span id="cb7-11"><a href="the-aasee-dataset.html#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co"># get the day information from the Datum string</span></span>
-<span id="cb7-12"><a href="the-aasee-dataset.html#cb7-12" aria-hidden="true" tabindex="-1"></a>june<span class="sc">$</span>day <span class="ot">=</span> <span class="fu">str_sub</span>(june<span class="sc">$</span>Datum, <span class="at">start =</span> <span class="dv">6</span>, <span class="at">end =</span> <span class="dv">10</span>)</span>
-<span id="cb7-13"><a href="the-aasee-dataset.html#cb7-13" aria-hidden="true" tabindex="-1"></a>july<span class="sc">$</span>day <span class="ot">=</span> <span class="fu">str_sub</span>(july<span class="sc">$</span>Datum, <span class="at">start =</span> <span class="dv">6</span>, <span class="at">end =</span> <span class="dv">10</span>)</span>
-<span id="cb7-14"><a href="the-aasee-dataset.html#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-15"><a href="the-aasee-dataset.html#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="co"># reduce data to the needed days</span></span>
-<span id="cb7-16"><a href="the-aasee-dataset.html#cb7-16" aria-hidden="true" tabindex="-1"></a>june <span class="ot">=</span> june[june<span class="sc">$</span>day <span class="sc">==</span> <span class="st">&quot;06-02&quot;</span>,]</span>
-<span id="cb7-17"><a href="the-aasee-dataset.html#cb7-17" aria-hidden="true" tabindex="-1"></a>july <span class="ot">=</span> july[july<span class="sc">$</span>day <span class="sc">==</span> <span class="st">&quot;07-21&quot;</span>,]</span>
-<span id="cb7-18"><a href="the-aasee-dataset.html#cb7-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-19"><a href="the-aasee-dataset.html#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(june<span class="sc">$</span>Wassertemperatur)</span></code></pre></div>
-<pre><code>## [1] 19.50693</code></pre>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="the-aasee-dataset.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(july<span class="sc">$</span>Wassertemperatur)</span></code></pre></div>
-<pre><code>## [1] 22.09403</code></pre>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="the-aasee-dataset.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># visual comparison</span></span>
-<span id="cb11-2"><a href="the-aasee-dataset.html#cb11-2" aria-hidden="true" tabindex="-1"></a>aasee <span class="ot">=</span> <span class="fu">rbind</span>(june, july)</span>
-<span id="cb11-3"><a href="the-aasee-dataset.html#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(aasee<span class="sc">$</span>Wassertemperatur <span class="sc">~</span> aasee<span class="sc">$</span>day)</span></code></pre></div>
-<p><img src="ecoanalysis_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
-<blockquote>
-<p>What are the flaws of this code?</p>
-</blockquote>
-<p>If we want a different month or day we have to make changes in the code.
-As an R beginner, this is not something you should worry about to much - better spend your time to figure out what the R functions do and get the job done. Later on in your R journey this is something you should keep in mind and write more generalized code by writing your own R functions.</p>
-<p><strong>Side Note: Creating R functions</strong></p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="the-aasee-dataset.html#cb12-1" aria-hidden="true" tabindex="-1"></a>aasee_daily_mean <span class="ot">=</span> <span class="cf">function</span>(data, day){</span>
-<span id="cb12-2"><a href="the-aasee-dataset.html#cb12-2" aria-hidden="true" tabindex="-1"></a>    data<span class="sc">$</span>day <span class="ot">=</span> <span class="fu">str_sub</span>(data<span class="sc">$</span>Datum, <span class="at">start =</span> <span class="dv">6</span>, <span class="at">end =</span> <span class="dv">10</span>)</span>
-<span id="cb12-3"><a href="the-aasee-dataset.html#cb12-3" aria-hidden="true" tabindex="-1"></a>    data <span class="ot">=</span> data[data<span class="sc">$</span>day <span class="sc">==</span> day,]</span>
-<span id="cb12-4"><a href="the-aasee-dataset.html#cb12-4" aria-hidden="true" tabindex="-1"></a>    result <span class="ot">=</span> <span class="fu">mean</span>(data<span class="sc">$</span>Wassertemperatur)</span>
-<span id="cb12-5"><a href="the-aasee-dataset.html#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(result)</span>
-<span id="cb12-6"><a href="the-aasee-dataset.html#cb12-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb12-7"><a href="the-aasee-dataset.html#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-8"><a href="the-aasee-dataset.html#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-9"><a href="the-aasee-dataset.html#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-10"><a href="the-aasee-dataset.html#cb12-10" aria-hidden="true" tabindex="-1"></a>july <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/2021-07_aasee.csv&quot;</span>)</span>
-<span id="cb12-11"><a href="the-aasee-dataset.html#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="fu">aasee_daily_mean</span>(july, <span class="st">&quot;07-17&quot;</span>)</span></code></pre></div>
-<pre><code>## [1] 21.54029</code></pre>
+<ul>
+<li>Load or install the <code>sf</code> package.</li>
+<li>Look at the help page for <code>st_as_sf()</code>.
+<ul>
+<li>Which arguments do you need?</li>
+</ul></li>
+<li>Convert the trees from a <code>data.frame</code> to a <code>sf points</code> object. What has changed?</li>
+<li>Plot the trees.</li>
+</ul>
 </details>
 
 </div>
@@ -355,8 +271,8 @@ As an R beginner, this is not something you should worry about to much - better 
           </div>
         </div>
       </div>
-<a href="what-is-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="r-foundations.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="species-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="additional-ressources.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -387,7 +303,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/03-aasee.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/13-trees.Rmd",
 "text": "Edit"
 },
 "history": {

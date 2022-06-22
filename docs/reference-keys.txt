@@ -13,6 +13,7 @@ fig:unnamed-chunk-22
 fig:unnamed-chunk-26
 fig:unnamed-chunk-28
 tab:unnamed-chunk-54
+fig:unnamed-chunk-65
 welcome
 target-audience
 aims-of-this-course
@@ -79,6 +80,18 @@ scale-location
 residuals-vs.-levarage
 species-data
 task-crops-vs.-species
+solution-1
+how-many-different-crop-types-where-analysed-in-the-study
+how-many-plots-are-there-for-each-crop-type
+which-plot-had-the-most-individual-animals-regardless-of-species
+which-plot-was-the-most-diverse
+what-is-the-average-number-of-carabidaes-on-all-the-plots-containing-winter-wheat
+what-is-the-minimum-number-of-species-per-crop-type
+visualize-carabidaes-abunadances-per-crop-type.
+plot-the-number-of-araneae-species-in-relation-to-the-number-of-individual-araneae.
+if-there-are-more-individual-araneae-on-a-plot-are-there-also-more-araneae-species
+urban-trees
+tasks-urban-tree-diversity
 additional-ressources
 r-cheat-sheets
 useful-keyboard-shortcuts

@@ -1,0 +1,90 @@
+# Urban Trees
+
+In the [open data portal Münster](https://opendata.stadt-muenster.de/dataset/digitales-baumkataster-m%C3%BCnster) you can find the location and species group of all the trees that are managed by the city. From there, one can also find the district borders. To put into practice what we have learned for far, below are some tasks using both tree and district information.
+**You can download the two datasets from the learnweb (slightly modified for the course).**
+
+
+
+
+```{r, echo = FALSE, fig.cap="Tree positions in Muenster"}
+library(sf)
+library(tmap)
+
+
+trees = st_read("data/baumkataster.geojson", quiet = TRUE)
+trees = st_transform(trees, 25832)
+trees$str_schl = NULL
+colnames(trees) = c("species", "geometry")
+
+
+bez = st_read("data/muenster_stadtbezirke/stadtteil.shp", quiet = TRUE)
+bez = bez[,c("OBJECTID", "NAME_STATI", "STADTBEZIR", "SHAPE_AREA", "geometry")]
+colnames(bez) = c("id", "district", "district_group", "area", "geometry")
+
+
+tm_shape(bez)+
+    tm_borders()+
+    tm_shape(trees)+
+    tm_dots(alpha = 0.2, size = 0.003, col = c("#A2CD5A"))+
+    tm_layout(frame = FALSE)
+
+```
+
+
+```{r, eval = FALSE, include = FALSE}
+trees = st_join(trees, bez[,c("district", "geometry")], left = TRUE)
+trees = cbind(trees, st_coordinates(trees))
+trees = st_drop_geometry(trees)
+trees = trees %>% filter(species != "")
+trees = trees %>% filter(species != "Baumgruppe")
+trees = trees %>% filter(species != "Unbekannt")
+trees = trees %>% filter(species != "Baum Amt62")
+trees = trees %>% filter(species != "Standort")
+trees = trees %>% filter(species != "Leerer")
+trees = trees %>% filter(species != "Leerer Standort")
+
+bez = st_drop_geometry(bez)
+
+write.csv(trees, "data/muenster_trees.csv", row.names = FALSE)
+write.csv(bez, "data/muenster_districts.csv", row.names = FALSE)
+```
+
+
+
+
+
+## Tasks: Urban Tree Diversity
+
+
+1. Tree Abundances
+
+* Load the datasets `muenster_baume.csv` and `muenster_bezirke.csv`.
+* Which district has the most trees?
+
+2. Modelling
+
+* Compare the number of trees in a district with its area: Plot this relation.
+* Is a linear model applicable here?
+* Transform both variables into a logarithmic scale (`log()`). Plot the relation again and compare.
+* Model the relation between district area and number of trees. Is the model valid?
+
+3. Tree species
+
+* Which districts inhabit "endemic" species? 
+* Which district is the most diverse?
+    * Calculate the Shannon index for each district.
+    * For this we need a community matrix. Each Row is a District, Each Column a Species.
+    * Use the `diversity()` function from the `vegan` package on the community matrix.
+
+
+<details>
+<summary>Bonus: Geospatial Data</summary>
+
+* Load or install the `sf` package.
+* Look at the help page for `st_as_sf()`.
+    * Which arguments do you need?
+* Convert the trees from a `data.frame` to a `sf points` object. What has changed?
+* Plot the trees.
+
+</details>
+

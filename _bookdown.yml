@@ -12,6 +12,7 @@ rmd_files: ["index.Rmd",
            "10-visualizations.Rmd",
            "11-linear_models.Rmd",
            "12-species.Rmd",
+           "13-trees.Rmd",
            "98-additional_resources.Rmd",
            "references.Rmd"]
 delete_merged_file: true

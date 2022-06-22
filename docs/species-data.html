@@ -30,7 +30,7 @@
   
   
 <link rel="prev" href="linear-models.html"/>
-<link rel="next" href="additional-ressources.html"/>
+<link rel="next" href="urban-trees.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -186,7 +186,8 @@ div.csl-indent {
 <li class="chapter" data-level="11" data-path="visualizations.html"><a href="visualizations.html"><i class="fa fa-check"></i><b>11</b> Visualizations</a></li>
 <li class="chapter" data-level="12" data-path="linear-models.html"><a href="linear-models.html"><i class="fa fa-check"></i><b>12</b> Linear Models</a></li>
 <li class="chapter" data-level="13" data-path="species-data.html"><a href="species-data.html"><i class="fa fa-check"></i><b>13</b> Species data</a></li>
-<li class="chapter" data-level="14" data-path="additional-ressources.html"><a href="additional-ressources.html"><i class="fa fa-check"></i><b>14</b> Additional Ressources</a></li>
+<li class="chapter" data-level="14" data-path="urban-trees.html"><a href="urban-trees.html"><i class="fa fa-check"></i><b>14</b> Urban Trees</a></li>
+<li class="chapter" data-level="15" data-path="additional-ressources.html"><a href="additional-ressources.html"><i class="fa fa-check"></i><b>15</b> Additional Ressources</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Made with bookdown</a></li>
@@ -391,7 +392,156 @@ While the statistical analysis of this paper is more advanced and not suited for
 <li><p>Plot the number of Araneae species in relation to the number of individual Araneae.</p></li>
 <li><p>If there are more individual Araneae on a plot, are there also more Araneae species?</p></li>
 </ul>
+</div>
+<div id="solution-1" class="section level2 hasAnchor" number="13.2">
+<h2><span class="header-section-number">13.2</span> Solution<a href="species-data.html#solution-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<details>
+<summary>
+Click for Answer
+</summary>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="species-data.html#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb132-2"><a href="species-data.html#cb132-2" aria-hidden="true" tabindex="-1"></a>bd <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/crop_species.csv&quot;</span>)</span></code></pre></div>
+<div id="how-many-different-crop-types-where-analysed-in-the-study" class="section level3 hasAnchor" number="13.2.1">
+<h3><span class="header-section-number">13.2.1</span> How many different crop types where analysed in the study?<a href="species-data.html#how-many-different-crop-types-where-analysed-in-the-study" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="species-data.html#cb133-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(bd<span class="sc">$</span>Croptype))</span></code></pre></div>
+<pre><code>## [1] 5</code></pre>
+</div>
+<div id="how-many-plots-are-there-for-each-crop-type" class="section level3 hasAnchor" number="13.2.2">
+<h3><span class="header-section-number">13.2.2</span> How many plots are there for each crop type?<a href="species-data.html#how-many-plots-are-there-for-each-crop-type" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="species-data.html#cb135-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(bd<span class="sc">$</span>plotcode[bd<span class="sc">$</span>Croptype <span class="sc">==</span> <span class="st">&quot;KE&quot;</span>])</span></code></pre></div>
+<pre><code>## [1] 3</code></pre>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="species-data.html#cb137-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(bd<span class="sc">$</span>plotcode[bd<span class="sc">$</span>Croptype <span class="sc">==</span> <span class="st">&quot;SM&quot;</span>])</span></code></pre></div>
+<pre><code>## [1] 9</code></pre>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="species-data.html#cb139-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(bd<span class="sc">$</span>plotcode[bd<span class="sc">$</span>Croptype <span class="sc">==</span> <span class="st">&quot;WR&quot;</span>])</span></code></pre></div>
+<pre><code>## [1] 6</code></pre>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="species-data.html#cb141-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(bd<span class="sc">$</span>plotcode[bd<span class="sc">$</span>Croptype <span class="sc">==</span> <span class="st">&quot;WW&quot;</span>])</span></code></pre></div>
+<pre><code>## [1] 33</code></pre>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="species-data.html#cb143-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(bd<span class="sc">$</span>plotcode[bd<span class="sc">$</span>Croptype <span class="sc">==</span> <span class="st">&quot;ZR&quot;</span>])</span></code></pre></div>
+<pre><code>## [1] 9</code></pre>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="species-data.html#cb145-1" aria-hidden="true" tabindex="-1"></a><span class="co"># for all croptypes at once</span></span>
+<span id="cb145-2"><a href="species-data.html#cb145-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb145-3"><a href="species-data.html#cb145-3" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(bd<span class="sc">$</span>Croptype)</span></code></pre></div>
+<pre><code>## 
+## KE SM WR WW ZR 
+##  3  9  6 33  9</code></pre>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="species-data.html#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dplyr</span></span>
+<span id="cb147-2"><a href="species-data.html#cb147-2" aria-hidden="true" tabindex="-1"></a>bd <span class="sc">%&gt;%</span> <span class="fu">count</span>(Croptype)</span></code></pre></div>
+<pre><code>##   Croptype  n
+## 1       KE  3
+## 2       SM  9
+## 3       WR  6
+## 4       WW 33
+## 5       ZR  9</code></pre>
+</div>
+<div id="which-plot-had-the-most-individual-animals-regardless-of-species" class="section level3 hasAnchor" number="13.2.3">
+<h3><span class="header-section-number">13.2.3</span> Which plot had the most individual animals? (regardless of species)<a href="species-data.html#which-plot-had-the-most-individual-animals-regardless-of-species" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="species-data.html#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate the total individuals for each plot</span></span>
+<span id="cb149-2"><a href="species-data.html#cb149-2" aria-hidden="true" tabindex="-1"></a>bd<span class="sc">$</span>TotalInd <span class="ot">=</span> bd<span class="sc">$</span>AraInd <span class="sc">+</span> bd<span class="sc">$</span>CaraInd <span class="sc">+</span> bd<span class="sc">$</span>IsoMyrInd</span>
+<span id="cb149-3"><a href="species-data.html#cb149-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-4"><a href="species-data.html#cb149-4" aria-hidden="true" tabindex="-1"></a><span class="co"># find out on which plotcode the total number is the maximum total number</span></span>
+<span id="cb149-5"><a href="species-data.html#cb149-5" aria-hidden="true" tabindex="-1"></a>bd<span class="sc">$</span>plotcode[bd<span class="sc">$</span>TotalInd <span class="sc">==</span> <span class="fu">max</span>(bd<span class="sc">$</span>TotalInd)]</span></code></pre></div>
+<pre><code>## [1] 30</code></pre>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="species-data.html#cb151-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dplyr pipeline</span></span>
+<span id="cb151-2"><a href="species-data.html#cb151-2" aria-hidden="true" tabindex="-1"></a>bd <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">TotalInd =</span> AraInd <span class="sc">+</span> CaraInd <span class="sc">+</span> IsoMyrInd) <span class="sc">%&gt;%</span> </span>
+<span id="cb151-3"><a href="species-data.html#cb151-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(TotalInd <span class="sc">==</span> <span class="fu">max</span>(TotalInd)) <span class="sc">%&gt;%</span></span>
+<span id="cb151-4"><a href="species-data.html#cb151-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(plotcode)</span></code></pre></div>
+<pre><code>##   plotcode
+## 1       30</code></pre>
+</div>
+<div id="which-plot-was-the-most-diverse" class="section level3 hasAnchor" number="13.2.4">
+<h3><span class="header-section-number">13.2.4</span> Which plot was the most diverse?<a href="species-data.html#which-plot-was-the-most-diverse" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="species-data.html#cb153-1" aria-hidden="true" tabindex="-1"></a>bd<span class="sc">$</span>TotalSpec <span class="ot">=</span> bd<span class="sc">$</span>AraSpec <span class="sc">+</span> bd<span class="sc">$</span>CaraSpec <span class="sc">+</span> bd<span class="sc">$</span>IsoMyrSpec</span>
+<span id="cb153-2"><a href="species-data.html#cb153-2" aria-hidden="true" tabindex="-1"></a>bd<span class="sc">$</span>plotcode[bd<span class="sc">$</span>TotalSpec <span class="sc">==</span> <span class="fu">max</span>(bd<span class="sc">$</span>TotalSpec)]</span></code></pre></div>
+<pre><code>## [1] 98</code></pre>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="species-data.html#cb155-1" aria-hidden="true" tabindex="-1"></a>bd <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">TotalSpec =</span> AraSpec <span class="sc">+</span> CaraSpec <span class="sc">+</span> IsoMyrSpec) <span class="sc">%&gt;%</span> </span>
+<span id="cb155-2"><a href="species-data.html#cb155-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(TotalSpec <span class="sc">==</span> <span class="fu">max</span>(TotalSpec)) <span class="sc">%&gt;%</span> </span>
+<span id="cb155-3"><a href="species-data.html#cb155-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(plotcode, TotalSpec)</span></code></pre></div>
+<pre><code>##   plotcode TotalSpec
+## 1       98        41</code></pre>
+</div>
+<div id="what-is-the-average-number-of-carabidaes-on-all-the-plots-containing-winter-wheat" class="section level3 hasAnchor" number="13.2.5">
+<h3><span class="header-section-number">13.2.5</span> What is the average number of Carabidaes on all the plots containing winter wheat?<a href="species-data.html#what-is-the-average-number-of-carabidaes-on-all-the-plots-containing-winter-wheat" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="species-data.html#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(bd<span class="sc">$</span>CaraInd[bd<span class="sc">$</span>Croptype <span class="sc">==</span> <span class="st">&quot;WW&quot;</span>])</span></code></pre></div>
+<pre><code>## [1] 119.697</code></pre>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="species-data.html#cb159-1" aria-hidden="true" tabindex="-1"></a>bd <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Croptype <span class="sc">==</span> <span class="st">&quot;WW&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb159-2"><a href="species-data.html#cb159-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">MeanCara =</span> <span class="fu">mean</span>(CaraInd))</span></code></pre></div>
+<pre><code>##   MeanCara
+## 1  119.697</code></pre>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="species-data.html#cb161-1" aria-hidden="true" tabindex="-1"></a>bd <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Croptype <span class="sc">==</span> <span class="st">&quot;WW&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb161-2"><a href="species-data.html#cb161-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pull</span>(CaraInd) <span class="sc">%&gt;%</span> </span>
+<span id="cb161-3"><a href="species-data.html#cb161-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mean</span>()</span></code></pre></div>
+<pre><code>## [1] 119.697</code></pre>
+</div>
+<div id="what-is-the-minimum-number-of-species-per-crop-type" class="section level3 hasAnchor" number="13.2.6">
+<h3><span class="header-section-number">13.2.6</span> What is the minimum number of species per crop type?<a href="species-data.html#what-is-the-minimum-number-of-species-per-crop-type" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="species-data.html#cb163-1" aria-hidden="true" tabindex="-1"></a><span class="co"># for one crop type</span></span>
+<span id="cb163-2"><a href="species-data.html#cb163-2" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(bd<span class="sc">$</span>TotalSpec[bd<span class="sc">$</span>Croptype <span class="sc">==</span> <span class="st">&quot;WW&quot;</span>])</span></code></pre></div>
+<pre><code>## [1] 26</code></pre>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="species-data.html#cb165-1" aria-hidden="true" tabindex="-1"></a>bd <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(Croptype) <span class="sc">%&gt;%</span> </span>
+<span id="cb165-2"><a href="species-data.html#cb165-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">MinSpec =</span> <span class="fu">min</span>(TotalSpec))</span></code></pre></div>
+<pre><code>## # A tibble: 5 × 2
+##   Croptype MinSpec
+##   &lt;chr&gt;      &lt;int&gt;
+## 1 KE            27
+## 2 SM            21
+## 3 WR            24
+## 4 WW            26
+## 5 ZR            23</code></pre>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="species-data.html#cb167-1" aria-hidden="true" tabindex="-1"></a><span class="co"># if we didn&#39;t compute total species before:</span></span>
+<span id="cb167-2"><a href="species-data.html#cb167-2" aria-hidden="true" tabindex="-1"></a>bd <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(Croptype) <span class="sc">%&gt;%</span> </span>
+<span id="cb167-3"><a href="species-data.html#cb167-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">TotalSpec =</span> AraSpec <span class="sc">+</span> CaraSpec <span class="sc">+</span> IsoMyrSpec) <span class="sc">%&gt;%</span> </span>
+<span id="cb167-4"><a href="species-data.html#cb167-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">MinSpec =</span> <span class="fu">min</span>(TotalSpec))</span></code></pre></div>
+<pre><code>## # A tibble: 5 × 2
+##   Croptype MinSpec
+##   &lt;chr&gt;      &lt;int&gt;
+## 1 KE            27
+## 2 SM            21
+## 3 WR            24
+## 4 WW            26
+## 5 ZR            23</code></pre>
+</div>
+<div id="visualize-carabidaes-abunadances-per-crop-type." class="section level3 hasAnchor" number="13.2.7">
+<h3><span class="header-section-number">13.2.7</span> Visualize Carabidaes abunadances per crop type.<a href="species-data.html#visualize-carabidaes-abunadances-per-crop-type." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="species-data.html#cb169-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(bd<span class="sc">$</span>CaraInd <span class="sc">~</span> bd<span class="sc">$</span>Croptype)</span></code></pre></div>
+<p><img src="ecoanalysis_files/figure-html/unnamed-chunk-62-1.png" width="672" /></p>
+</div>
+<div id="plot-the-number-of-araneae-species-in-relation-to-the-number-of-individual-araneae." class="section level3 hasAnchor" number="13.2.8">
+<h3><span class="header-section-number">13.2.8</span> Plot the number of Araneae species in relation to the number of individual Araneae.<a href="species-data.html#plot-the-number-of-araneae-species-in-relation-to-the-number-of-individual-araneae." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="species-data.html#cb170-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(bd<span class="sc">$</span>AraInd, bd<span class="sc">$</span>AraSpec)</span></code></pre></div>
+<p><img src="ecoanalysis_files/figure-html/unnamed-chunk-63-1.png" width="672" /></p>
+</div>
+<div id="if-there-are-more-individual-araneae-on-a-plot-are-there-also-more-araneae-species" class="section level3 hasAnchor" number="13.2.9">
+<h3><span class="header-section-number">13.2.9</span> If there are more individual Araneae on a plot, are there also more Araneae species?<a href="species-data.html#if-there-are-more-individual-araneae-on-a-plot-are-there-also-more-araneae-species" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="species-data.html#cb171-1" aria-hidden="true" tabindex="-1"></a><span class="co"># build a linear model</span></span>
+<span id="cb171-2"><a href="species-data.html#cb171-2" aria-hidden="true" tabindex="-1"></a>ara_model <span class="ot">=</span> <span class="fu">lm</span>(bd<span class="sc">$</span>AraSpec <span class="sc">~</span> bd<span class="sc">$</span>AraInd)</span>
+<span id="cb171-3"><a href="species-data.html#cb171-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(ara_model)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = bd$AraSpec ~ bd$AraInd)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -4.6170 -1.4779 -0.2867  1.3864  7.2698 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  9.95648    1.18793   8.381 1.41e-11 ***
+## bd$AraInd    0.04977    0.01084   4.593 2.40e-05 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 2.443 on 58 degrees of freedom
+## Multiple R-squared:  0.2667, Adjusted R-squared:  0.2541 
+## F-statistic: 21.09 on 1 and 58 DF,  p-value: 2.401e-05</code></pre>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="species-data.html#cb173-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(AraSpec <span class="sc">~</span> AraInd, <span class="at">data =</span> bd)</span>
+<span id="cb173-2"><a href="species-data.html#cb173-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(ara_model)</span></code></pre></div>
+<p><img src="ecoanalysis_files/figure-html/unnamed-chunk-64-1.png" width="672" /></p>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="species-data.html#cb174-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(AraSpec <span class="sc">~</span> AraInd, <span class="at">data =</span> bd, <span class="at">asp =</span> <span class="dv">1</span>)</span>
+<span id="cb174-2"><a href="species-data.html#cb174-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(ara_model)</span></code></pre></div>
+<p><img src="ecoanalysis_files/figure-html/unnamed-chunk-64-2.png" width="672" /></p>
+</details>
 
+</div>
 </div>
 </div>
 <h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -406,7 +556,7 @@ Meyer, Michael, David Ott, Philipp Götze, Heinz-Josef Koch, and Christoph Scher
         </div>
       </div>
 <a href="linear-models.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="additional-ressources.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="urban-trees.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
