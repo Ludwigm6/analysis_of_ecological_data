@@ -88,3 +88,152 @@ write.csv(bez, "data/muenster_districts.csv", row.names = FALSE)
 
 </details>
 
+
+## Solution
+
+
+<details>
+<summary>Click for Answer</summary>
+
+
+### District with the most trees
+
+```{r}
+# Load the packages.
+# Load the datasets.
+
+library(tidyverse)
+trees = read.csv("data/muenster_trees.csv")
+districts = read.csv("data/muenster_districts.csv")
+
+head(trees)
+head(districts)
+```
+
+
+
+```{r}
+## Which district has the most trees?
+district_summary = trees %>% group_by(district) %>% 
+    summarise(ntrees = length(district))
+
+district_summary %>% filter(ntrees == max(ntrees))
+
+# or:
+table(trees$district)
+```
+
+
+
+### Modelling
+
+```{r}
+# Compare the number of trees in a district with its area. 
+
+## We need a data.frame with the information from both csv files (area and ntrees)
+## We use a join for that.
+
+districts = left_join(districts, district_summary, by = "district")
+```
+
+
+
+```{r}
+# Plot this relation
+# Is a linear model applicable? -> No
+plot(ntrees ~ area, data = districts)
+```
+
+
+```{r}
+# Log transformations
+districts$area_l10 = log10(districts$area)
+districts$ntrees_l10 = log10(districts$ntrees)
+
+# After log transformation, a linear model is more feasible
+
+plot(districts$area_l10, districts$ntrees_l10)
+```
+
+
+
+```{r}
+mod = lm(ntrees_l10 ~ area_l10, data = districts)
+
+summary(mod)
+plot(mod)
+```
+
+
+
+```{r}
+plot(districts$area_l10, districts$ntrees_l10)
+abline(mod, col = "blue")
+```
+
+
+
+
+```{r}
+
+new_area = data.frame(area_l10 = log10(10000000))
+new_area$ntrees_l10 = predict(object = mod, newdata = new_area)
+
+plot(districts$area_l10, districts$ntrees_l10)
+abline(mod, col = "blue")
+points(new_area$area_l10, new_area$ntrees_l10, col = "red")
+
+
+new_area$ntrees_l10
+
+# invert log10
+
+10^new_area$ntrees_l10
+
+
+```
+
+
+### Tree diversity
+
+```{r}
+# Which districts inhabit "endemic" species?
+
+
+## Count the unique districts per tree species,
+## Where is this == 1?
+endemic_species = trees %>% group_by(species) %>% 
+    summarise(ndistricts = length(unique(district))) %>% 
+    filter(ndistricts == 1)
+
+
+trees %>% filter(species %in% endemic_species$species) %>% 
+    pull(district) %>% unique()
+
+trees %>% filter(species %in% endemic_species$species)
+```
+
+
+
+
+```{r}
+# Shannon Index
+
+# install.packages("vegan")
+library(vegan)
+
+# Community Matrix
+## Rows: districts
+## Columns: species
+cont = table(trees$district, trees$species)
+vegan::diversity(cont)
+
+```
+
+
+
+</details>
+
+
+
+

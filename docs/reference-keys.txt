@@ -56,7 +56,7 @@ task-aasee-critical-oxygen-concentrations
 task-oxygen-vs.-temperature
 tidyverse-functions
 dplyr
-visualizations
+simple-visualizations
 boxplots
 histograms
 scatterplots
@@ -92,6 +92,18 @@ plot-the-number-of-araneae-species-in-relation-to-the-number-of-individual-arane
 if-there-are-more-individual-araneae-on-a-plot-are-there-also-more-araneae-species
 urban-trees
 tasks-urban-tree-diversity
+solution-2
+district-with-the-most-trees
+modelling
+tree-diversity
+advanced-visualizations
+the-grammar-of-graphics
+initialze-the-plot
+geometry-types
+axis-formats
+color-scales
+themes
+task-publication-ready-figures
 additional-ressources
 r-cheat-sheets
 useful-keyboard-shortcuts

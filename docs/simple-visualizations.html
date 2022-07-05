@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>9 Casestudy: Aasee fish mortality | Analysis of Ecological Data with R</title>
+  <title>11 Simple Visualizations | Analysis of Ecological Data with R</title>
   <meta name="description" content="This is currently a slide collection for the ILOEK Course “Analysis of ecological data in R” but could eventually turn into a more comprehensive ressource collection." />
   <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="9 Casestudy: Aasee fish mortality | Analysis of Ecological Data with R" />
+  <meta property="og:title" content="11 Simple Visualizations | Analysis of Ecological Data with R" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is currently a slide collection for the ILOEK Course “Analysis of ecological data in R” but could eventually turn into a more comprehensive ressource collection." />
   <meta name="github-repo" content="Ludwigm6/analysis_of_ecological_data" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="9 Casestudy: Aasee fish mortality | Analysis of Ecological Data with R" />
+  <meta name="twitter:title" content="11 Simple Visualizations | Analysis of Ecological Data with R" />
   
   <meta name="twitter:description" content="This is currently a slide collection for the ILOEK Course “Analysis of ecological data in R” but could eventually turn into a more comprehensive ressource collection." />
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="string-handling.html"/>
-<link rel="next" href="tidyverse-functions.html"/>
+<link rel="prev" href="tidyverse-functions.html"/>
+<link rel="next" href="linear-models.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -210,38 +210,51 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="casestudy-aasee-fish-mortality" class="section level1 hasAnchor" number="9">
-<h1><span class="header-section-number">9</span> Casestudy: Aasee fish mortality<a href="casestudy-aasee-fish-mortality.html#casestudy-aasee-fish-mortality" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>In 2018, more than twenty tons of fish died in the Aasee due to low oxygen concentrations: <a href="https://www.uni-muenster.de/news/view.php?cmdid=9768">https://www.uni-muenster.de/news/view.php?cmdid=9768</a>.</p>
-<p>Based on this event, a reasonable question might be:</p>
-<blockquote>
-<p>On how many days does the Aasee reach critical oxygen concentrations (4 mg/l)?</p>
-</blockquote>
-<div id="task-aasee-critical-oxygen-concentrations" class="section level2 hasAnchor" number="9.1">
-<h2><span class="header-section-number">9.1</span> TASK: Aasee Critical Oxygen Concentrations<a href="casestudy-aasee-fish-mortality.html#task-aasee-critical-oxygen-concentrations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="simple-visualizations" class="section level1 hasAnchor" number="11">
+<h1><span class="header-section-number">11</span> Simple Visualizations<a href="simple-visualizations.html#simple-visualizations" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="boxplots" class="section level2 hasAnchor" number="11.1">
+<h2><span class="header-section-number">11.1</span> Boxplots<a href="simple-visualizations.html#boxplots" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
-<li>On how many days of July 2021 did the Aasee reach critical oxygen concentrations (4 mg/l)?</li>
-<li>Define the necessary steps!</li>
-<li>Work in your project environment!</li>
-<li>How could a good visualization of this look like?</li>
+<li>distribution of values</li>
+<li>great for comparisons</li>
 </ul>
-</div>
-<div id="task-oxygen-vs.-temperature" class="section level2 hasAnchor" number="9.2">
-<h2><span class="header-section-number">9.2</span> TASK: Oxygen vs. Temperature<a href="casestudy-aasee-fish-mortality.html#task-oxygen-vs.-temperature" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The oxygen concentration in water is partly based on the water temperature. An idealized relation between Oxygen and Temperature might look like this:</p>
 <div class="figure">
-<img src="https://www.garnelenhaus.de/media/image/2f/30/57/Ricardo-Castellanos-Sauerstoff-Grafik.jpg" alt="" />
-<p class="caption"><a href="https://www.garnelenhaus.de/media/image/2f/30/57/Ricardo-Castellanos-Sauerstoff-Grafik.jpg" class="uri">https://www.garnelenhaus.de/media/image/2f/30/57/Ricardo-Castellanos-Sauerstoff-Grafik.jpg</a></p>
+<img src="https://miro.medium.com/max/1400/1*2c21SkzJMf3frPXPAR_gZA.png" alt="" />
+<p class="caption"><a href="https://miro.medium.com/max/1400/1*2c21SkzJMf3frPXPAR_gZA.png" class="uri">https://miro.medium.com/max/1400/1*2c21SkzJMf3frPXPAR_gZA.png</a></p>
 </div>
-<p>We want to find out if this holds true for the Aasee.</p>
-<blockquote>
-<p>Formulate a hypothesis.</p>
-</blockquote>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="simple-visualizations.html#cb118-1" aria-hidden="true" tabindex="-1"></a>july <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/2021-07_aasee.csv&quot;</span>)</span>
+<span id="cb118-2"><a href="simple-visualizations.html#cb118-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(july<span class="sc">$</span>Wassertemperatur)</span></code></pre></div>
+<p><img src="ecoanalysis_files/figure-html/unnamed-chunk-44-1.png" width="672" /></p>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="simple-visualizations.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(july<span class="sc">$</span>Wassertemperatur)</span></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   20.91   21.91   22.33   22.45   22.81   25.24</code></pre>
+</div>
+<div id="histograms" class="section level2 hasAnchor" number="11.2">
+<h2><span class="header-section-number">11.2</span> Histograms<a href="simple-visualizations.html#histograms" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
-<li>Aggregate temperature and oxygen to daily means.</li>
-<li>Visualize the relation between temperature and oxygen in the Aasee.</li>
-<li>Interpret this visualization!</li>
+<li>distribution of values</li>
+<li>aggregated to <code>bins</code></li>
+<li>multiple ways to adjust bin size</li>
 </ul>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="simple-visualizations.html#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(july<span class="sc">$</span>Wassertemperatur)</span></code></pre></div>
+<p><img src="ecoanalysis_files/figure-html/unnamed-chunk-46-1.png" width="672" /></p>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="simple-visualizations.html#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(july<span class="sc">$</span>Wassertemperatur, <span class="at">breaks =</span> <span class="dv">20</span>)</span></code></pre></div>
+<p><img src="ecoanalysis_files/figure-html/unnamed-chunk-46-2.png" width="672" /></p>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="simple-visualizations.html#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(july<span class="sc">$</span>Wassertemperatur, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="fu">min</span>(july<span class="sc">$</span>Wassertemperatur),</span>
+<span id="cb123-2"><a href="simple-visualizations.html#cb123-2" aria-hidden="true" tabindex="-1"></a>                                         <span class="fu">max</span>(july<span class="sc">$</span>Wassertemperatur)<span class="sc">+</span><span class="fl">0.2</span>,</span>
+<span id="cb123-3"><a href="simple-visualizations.html#cb123-3" aria-hidden="true" tabindex="-1"></a>                                         <span class="fl">0.1</span>))</span></code></pre></div>
+<p><img src="ecoanalysis_files/figure-html/unnamed-chunk-46-3.png" width="672" /></p>
+</div>
+<div id="scatterplots" class="section level2 hasAnchor" number="11.3">
+<h2><span class="header-section-number">11.3</span> Scatterplots<a href="simple-visualizations.html#scatterplots" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>classic x-y plot</li>
+<li>relation between two variables</li>
+</ul>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="simple-visualizations.html#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(july<span class="sc">$</span>Wassertemperatur)</span></code></pre></div>
+<p><img src="ecoanalysis_files/figure-html/unnamed-chunk-47-1.png" width="672" /></p>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="simple-visualizations.html#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> july<span class="sc">$</span>Wassertemperatur, <span class="at">y =</span> july<span class="sc">$</span>Sauerstoffgehalt)</span></code></pre></div>
+<p><img src="ecoanalysis_files/figure-html/unnamed-chunk-47-2.png" width="672" /></p>
 
 </div>
 </div>
@@ -250,8 +263,8 @@ div.csl-indent {
           </div>
         </div>
       </div>
-<a href="string-handling.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="tidyverse-functions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="tidyverse-functions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="linear-models.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -282,7 +295,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/08-aasee_oxy.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/10-visualizations.Rmd",
 "text": "Edit"
 },
 "history": {
