@@ -1,0 +1,2088 @@
+--- 
+title: "Analysis of Ecological Data with R"
+author: "Marvin Ludwig"
+site: bookdown::bookdown_site
+documentclass: book
+description: |
+  This is currently a slide collection for the ILOEK Course "Analysis of ecological data in R" but could eventually turn into a more comprehensive ressource collection.
+link-citations: yes
+bibliography: "/home/marvin/literature/zotero/references.bib"
+github-repo: Ludwigm6/analysis_of_ecological_data
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+
+
+library(sf)
+library(tmap)
+library(tidyverse)
+library(stars)
+library(mapview)
+library(ggplot2)
+library(lubridate)
+
+mapview::mapviewOptions(fgb = FALSE)
+
+
+```
+
+
+# Welcome
+
+```{r, fig.cap = "Landscape Ecology with R", echo = FALSE}
+knitr::include_graphics("assets/cover_image.png")
+```
+
+
+## Target audience
+
+* You want answers to questions (in landscape ecology)!
+* Primarily ecologists but the methods and skills are useful in many fields.
+* No R knowledge is required (or other programming skills)
+* It is helpful if you know what a spreadsheet is
+* Minimum amount of statistic needed (course explains all the necessary stuff)
+
+
+## Aims of this course
+
+* Developing ideas, answering questions
+* Defining steps how to solve a problem
+* Translating these steps into R code
+* Learning the R language "on the fly"
+* Data handling. A lot of data handling.
+* I believe a good understanding of data is one of the most important things in science and work.
+* Learn statistics. Use statistics as a tool.
+* developing good scripting and project management habits from the start (makes live so much easier)
+
+
+## What this course is not
+
+* statistics as in mathematical equations
+
+$$
+\left( {\begin{array}{*{20}c}
+   n  \\
+   k  \\
+\end{array}} \right) = \frac{{n!}}{{k!\left( {n - k} \right)!}}
+$$
+
+$$
+\sigma ^2  = \mu _2  = \sum {\left( {x - \mu _1 } \right)^2 P\left( x \right)}
+$$
+
+* R as in computer science
+* You probably won't find out anything you didn't already know about nature
+
+
+## Course Outline 2022
+
+```{r nice-tab, tidy=FALSE, echo = FALSE}
+
+df = read.csv("assets/2022_course_dates.csv")
+
+knitr::kable(
+  df, caption = 'Course Outline',
+  booktabs = TRUE
+)
+```
+
+
+<!--chapter:end:index.Rmd-->
+
+# Ecological data 
+
+Take a few minutes to think about
+
+* what kind of data you know or have used before?
+* what kind of data would be interesting for you?
+
+
+```{r mofrgb, echo = FALSE, fig.cap="Marburg Open Forest, 2019-05-13 Planetscope RGB"}
+mof_water = st_read("data/mof/mof_supplementary.gpkg", layer =  "water", quiet = TRUE)
+mof_rgb = read_stars("data/mof/mof_basemaps.gpkg", sub = "planetscope_20190513", quiet = TRUE)
+
+tm_shape(mof_rgb)+
+    tm_rgb(saturation = 0.4)+
+    tm_shape(mof_water)+
+    tm_lines(col = "skyblue", lwd = 2.5)+
+    tm_layout(frame = FALSE)
+```
+
+
+> Ask yourself how you could describe and quantify a landscape like the one in Fig. \@ref(fig:mofrgb).
+
+
+## Plot surveys
+
+* plots with ID and surveyed environmental information
+* bread and butter of ecology
+
+```{r, echo = FALSE}
+df = data.frame(plotID = c("P1", "P2", "P3"),
+           soil_ph = c(5.5, 5.4, 6.1),
+           soil_temperature = c(10, 11, 12),
+           forest_type = c("coniferous", "coniferous", "deciduous"))
+
+knitr::kable(
+  df, caption = 'Field survery data on a plot level',
+  booktabs = TRUE
+)
+```
+
+
+## Time Series
+
+```{r, echo = FALSE, fig.cap="Visualization of time series data"}
+df <- read.csv(file = "data/2021-06_aasee.csv")
+colnames(df) = c("date", "temperature", "ph", "o2")
+df$date <- as.Date(df$date)
+
+dfmean <- df %>% group_by(date) %>% summarise(temperature = mean(temperature))
+
+ggplot(dfmean, aes(date, temperature))+
+    geom_line()+
+    theme_light()
+```
+
+
+* continuous measurements
+* measurement interval flexible
+* mainly climate, soil, remote sensing
+
+
+```{r, echo = FALSE}
+knitr::kable(
+  df[c(5,10,15,20,25),], caption = 'Time series data: Aasee sensor measurements',
+  booktabs = TRUE, row.names = FALSE
+)
+```
+
+
+## Species Lists
+
+* mostly plot based
+* monitoring of conservation sites
+* biodiversity assessment
+
+
+```{r, echo = FALSE}
+df = data.frame(species = c("Digitalis purpurea", "Galium odoratum", "Fagus Sylvatica","..."),
+                n = c("4", "25", "20", "..."))
+knitr::kable(
+  df, caption = 'Species Lists: Occurence on a plot',
+  booktabs = TRUE
+)
+```
+
+
+> What are the differences between the plot based survey example and the species list example?
+
+
+## Geospatial Data
+
+* defined by explicit location on the earth surface
+* information attached to coordinates
+
+```{r, echo = FALSE}
+set.seed(10)
+mof_trees = st_read("data/mof/mof_trees.gpkg", quiet = TRUE) %>% 
+    na.omit() %>%
+    slice_sample(n = 5) %>% 
+    select(-socialposition) %>% 
+    mutate(dbh = round(dbh, 2))
+
+
+knitr::kable(
+  mof_trees, caption = 'Geospatial Data: Tree locations',
+  booktabs = TRUE
+)
+
+mapview::mapview(mof_trees, zcol = "dbh")
+```
+
+
+
+## Want more?
+
+
+![@Turner2014 : Sensing Biodiversity](https://www.science.org/cms/10.1126/science.1256014/asset/1e767e07-e785-4851-9ea0-6604203398a1/assets/graphic/346_301_f1.jpeg)
+
+
+* Animal movement data
+* Lab / Field experiments
+* Individuum based information (e.g. traits)
+* Camera Traps
+* Socio-Economic data (also useful for landscape ecology)
+* ...
+
+
+
+<!--chapter:end:02-data_examples.Rmd-->
+
+# What is R?
+
+* Script Language
+* Version 1.0 from 2000 (concept dates back to the 1974)
+* Aim: Statistical Analysis
+* Designed for data analysis and "interactive" use
+* Download: [r-project.org](https://www.r-project.org/)
+
+![r-project.org](https://www.r-project.org/Rlogo.png)
+
+
+![What you see when you start R](assets/R_window.png)
+
+
+## R Code
+
+How R code looks like:
+
+```{r, eval = FALSE, echo = TRUE}
+data <- c(12, 45, 65, 1, 3, 87)
+mean(data)
+
+data <- data + 5
+sort(data)
+```
+
+
+How R code looks like with output:
+
+```{r, eval = TRUE, echo = TRUE}
+data <- c(12, 45, 65, 1, 3, 87)
+mean(data)
+
+data <- data + 5
+sort(data)
+```
+
+
+
+## Why R?
+
+* Easy to get into (although it might not feel that way at first)
+* Designed for solving scientific problems
+* Big community - Getting help is really easy.
+* Open-source, active development
+
+
+> The R package structure has been the key addition to the software - @Chambers2020
+
+
+* Expandable with `packages` provided by other R users
+    * Specialized analysis for specific fields
+    * Machine Learning
+    * Medicine
+    * Writing Books
+    * ...
+* Used in science, industry, healthcare, NGOs, ... 
+
+
+![@Slater2019 : Workflow with R packages](https://hess.copernicus.org/articles/23/2939/2019/hess-23-2939-2019-f03-web.png)
+
+
+## Rstudio
+
+* Integrated Development Environment (IDE)
+* Makes R "convenient" to use
+* Text Editor + R Console
+* Project Environments, Package Management, Help Pages, Plot Viewer, File Browser ...
+
+
+## TASK: R and Rstudio
+
+1. Open R studio and get familiar with the interface.
+2. Create a new, empty R script.
+3. What is the difference between the script editor and the console?
+4. Copy the code below into the R script and run it line by line. Try to understand what each line does.
+
+
+```{r, eval = FALSE, echo = TRUE}
+a <- 5
+b <- 10
+
+a + b
+
+p <- a*b
+
+v <- c(3,12,6,9,23)
+v
+
+v / b
+
+mean(v)
+# sum(v)
+```
+
+
+### Questions you might have
+
+* Why does `p <- a*b` not produce an output?
+* What is `c()`?
+* Why does `# sum(v)` not work?
+
+
+> Everything that exists in R is an object. Everything that happens in R is a function call. - @Chambers2016
+
+
+
+<!--chapter:end:01-R_basics.Rmd-->
+
+# The Aasee Dataset 
+
+To learn the basics about data types, data handling and the fundamentals of R, we will work with a dataset from the Aasee in Muenster:
+Inform yourself real quick [here](https://opendata.stadt-muenster.de/dataset/aasee-m%C3%BCnster-tagesaktuelle-sensordaten) about the origin of the dataset. You can download it here: [https://github.com/od-ms/aasee-monitoring](https://github.com/od-ms/aasee-monitoring)
+
+Here is an excerpt of the data:
+
+
+```{r, echo = FALSE}
+df <- read.csv(file = "data/2021-06_aasee.csv")
+knitr::kable(
+  df[1:10,], caption = 'First entries of the Aasee monitoring dataset',
+  booktabs = TRUE
+)
+```
+
+
+As a first intermediate goal we want to deal with the following task. We will learn all the necessary skills in R and a bit of statistics in the next lessons, but it is valuable to think about the task / question beforehand! 
+
+> Compare the water temperature of 2021 June 02 and July 21.
+
+* What does this task actually mean?
+* Reformulate it as a question
+* Outline steps to answer the question
+
+## Solution
+
+<details>
+<summary>Click for Answer</summary>
+
+
+```{r}
+# load needed packages
+library(stringr)
+
+# data input
+
+june = read.csv("data/2021-06_aasee.csv")
+july = read.csv("data/2021-07_aasee.csv")
+
+
+# actual processing ----
+# get the day information from the Datum string
+june$day = str_sub(june$Datum, start = 6, end = 10)
+july$day = str_sub(july$Datum, start = 6, end = 10)
+
+# reduce data to the needed days
+june = june[june$day == "06-02",]
+july = july[july$day == "07-21",]
+
+mean(june$Wassertemperatur)
+mean(july$Wassertemperatur)
+
+# visual comparison
+aasee = rbind(june, july)
+boxplot(aasee$Wassertemperatur ~ aasee$day)
+```
+
+
+
+> What are the flaws of this code?
+
+If we want a different month or day we have to make changes in the code. 
+As an R beginner, this is not something you should worry about to much - better spend your time to figure out what the R functions do and get the job done. Later on in your R journey this is something you should keep in mind and write more generalized code by writing your own R functions.
+
+
+**Side Note: Creating R functions**
+
+
+```{r}
+aasee_daily_mean = function(data, day){
+    data$day = str_sub(data$Datum, start = 6, end = 10)
+    data = data[data$day == day,]
+    result = mean(data$Wassertemperatur)
+    return(result)
+}
+
+
+
+july = read.csv("data/2021-07_aasee.csv")
+aasee_daily_mean(july, "07-17")
+```
+
+
+</details>
+
+
+
+
+
+<!--chapter:end:03-aasee.Rmd-->
+
+# R foundations
+
+
+## Variables
+
+* assign values to variables either with `<-` or `=`
+* variable on the left, assigned value on the right
+* You decide how to name a variable.
+    * Use recognizable names!
+    * Don't be lazy. Longer, descriptive names can help immensely.
+
+```{r}
+a <- 5
+b = 10
+
+a_big_number = 500000
+```
+
+## Values
+
+* How is data represented in R?
+* Types we need right now:
+    * numeric
+    * character (string / text)
+    * logical
+
+```{r, eval = FALSE}
+# numeric
+1
+68542
+4.5
+
+
+# character
+"f"
+"Hi Mom!"
+
+# logical
+TRUE
+F
+
+# nothing
+NA # there should be something, but it is missing
+NULL # truly nothing
+```
+
+## Functions
+
+* Everything you do in R is a function!
+* Easily identified by function name followed by parenthesis (), e.g. `print()`
+* for common functions there are shortcuts
+
+
+```{r}
+# Really everything you do in R is a function!
+`<-`(a, 5)
+print(a)
+
+# both functions above have shortcuts:
+a <- 5
+a
+```
+
+* most functions need __arguments__
+* input, options, parameters to specify what the function should do
+* each function has a help page where you can read about arguments
+
+
+For example, the `cos()` function computes the cosine of a number. The help page specifies what the function expects as an input. You can access the help page with `?cos()` or by searching for the function in the 'Help' tab in Rstudio (bottom right panel).
+
+```{r, error = TRUE}
+# the cos function needs the argument x of type numeric
+cos(x = 0)
+
+# it throws an error otherwise
+cos(x = "3.14")
+
+# argument names can be neglected
+cos(1)
+```
+
+
+
+## Vectors
+
+* most important data structure in R
+* building block for more complicated structures
+* created with the function `c()`
+* think about a container where you can put in multiple things
+* vectors are atomic - each entry has to be from the same value type
+* each element has an index with which it can be accessed
+
+
+```{r, fig.cap="R vector model", echo = FALSE}
+knitr::include_graphics("assets/r_vector.svg")
+```
+
+
+```{r}
+c(23, 1, 60, 21, 21)
+```
+
+
+
+```{r, error = TRUE}
+# vectors are atomic
+c(23, 1, 60.5, 21, 21)
+
+# to actually use a vector we have to assign it to a variable
+vec = c(23, 1, 60, 21, 21)
+
+```
+
+
+### Vector Maths
+
+
+```{r, fig.cap="R vector addition", echo = FALSE}
+knitr::include_graphics("assets/r_vector_plus.svg")
+```
+
+* most of the functions in R are "vectorised"
+* i.e. functions are applied to all the elements in a vector
+
+
+```{r, warning = TRUE}
+vec1 = c(23, 1, 60, 21, 21, 5)
+vec1 + 6
+
+vec2 = c(5, 1000, 5, 1000, 5, 1000)
+vec1 - vec2
+```
+
+
+```{r, fig.cap="R vector multiplication, different length", echo = FALSE}
+knitr::include_graphics("assets/r_vector_mul.svg")
+```
+
+
+```{r}
+# be careful with vectors of different length!
+vec3 = c(1, 2, 1)
+vec1 * vec3
+
+vec4 = c(1, 2, 1, 2)
+vec1 * vec4
+```
+
+
+
+### TASK: Vectors and functions
+
+The vector below are the temperature values for 2021-06-02 from the Aasee dataset.
+Copy it into an empty are script. 
+
+```{r, results = "hide"}
+temperature <- c(18.81,18.73,18.92,18.87,18.76,18.79,18.87,18.84,18.89,18.89,
+                 18.93,18.95,18.92,18.97,19.00,18.99,19.00,19.00,18.99,19.00,
+                 18.98,18.97,18.97,18.97,18.97,18.98,18.96,18.94,18.94,18.91,
+                 18.90,18.89,18.87,18.85,18.85,18.84,18.83,18.81,18.81,18.81,
+                 18.81,18.81,18.80,18.79,18.80,18.79,18.79,18.78,18.77,18.78,
+                 18.79,18.79,18.79,18.79,18.79,18.79,18.80,18.79,18.81,18.80,
+                 18.81,18.81,18.82,18.84,18.87,18.89,18.89,18.91,18.96,19.02,
+                 19.11,19.15,18.95,18.92,18.84,18.85,18.96,18.92,18.95,18.95,
+                 18.91,19.00,19.02,19.06,19.05,19.47,19.32,19.05,19.66,19.57,
+                 19.23,19.42,19.36,19.66,19.79,19.81,19.99,21.10,21.94,22.52,
+                 22.81,22.43,22.16,21.55,21.80,21.02,21.85,21.45,22.48,22.73,
+                 22.61,22.83,20.85,20.68,19.76,19.81,19.74,19.58,19.35,19.40,
+                 19.75,19.76,19.85,19.82,19.86,20.08,20.06,19.85,20.04,19.90,
+                 19.96,20.12,19.94,20.20,20.17,20.31,20.17,20.37,20.36,20.13)
+```
+
+
+To get familiar with the R syntax and vectors, do the following tasks:
+
+* Convert the temperature from Celsius to Fahrenheit.
+* Try out the following functions: `length()`, `range()`, `seq()`
+
+> Come up with a reasonable questions that someone might have looking at this data.
+
+
+
+## Subsetting
+
+For many questions it is often required to access only parts of the data.
+This is one of the most common things you have to deal with in R.
+
+
+### Indexing
+
+To access single values of a vector, use square brackets `[]`.
+
+
+```{r, error = TRUE}
+# get the third value of the vector
+temperature[3]
+
+
+# accessing multiple elements at once
+temperature[1,2]
+temperature[c(1,2)]
+```
+
+> Using the functions above, what is an easy way to access the first 10 elements of the vector?
+
+
+### Logical Operators
+
+
+```{r, fig.cap="R vector logical operation", echo = FALSE}
+knitr::include_graphics("assets/r_vector_bigger.svg")
+```
+
+
+A more powerful way to subset a vector is by using logical operators. These functions usually return a boolean object (`TRUE, FALSE`) which can then be used to access certain values.
+
+```{r}
+1 > 2
+1 < 2
+
+1 == 2
+
+max(temperature) > 22
+
+temperature > 20
+hot = temperature > 20
+
+temperature[hot]
+
+```
+
+
+
+<!--chapter:end:04-vectors.Rmd-->
+
+# Dataframes
+
+
+> From a data science perspective, the most important class of objects is the data frame - @Chambers2020
+
+
+* Dataframes combine multiple vector in a structured format
+* Intuitive - most people have seen a spreadsheet before
+* Each column is regarded as a vector
+* Each vector can have a different data type
+
+
+```{r, echo = FALSE, fig.cap = "data.frames are a named list of vectors"}
+knitr::include_graphics("assets/r_dataframe.svg")
+```
+
+
+* Create one with `data.frame`
+* The functions need the column name followed by the vector of values
+
+
+```{r}
+df = data.frame(plotID = seq(3),
+                soil_ph = c(5.5, 5.4, 6.1),
+                soil_temperature = c(10, 11, 12),
+                forest_type = c("coniferous", "coniferous", "deciduous"))
+
+df
+```
+
+
+
+## CSV Files
+
+Dataframes can be loaded from and saved to `.csv` files.
+
+* Comma Separated Values
+* Caution: In Germany "," is used as the decimal point. You often find ";" as the delimiter in csvs.
+* Caution: If you open csv files in Excel, things can get messy
+
+
+```
+Datum,Wassertemperatur,pH-Wert,Sauerstoffgehalt
+2021-05-31 23:57,17.98,8.05,10.53
+2021-06-01 00:09,17.66,8.04,9.64
+2021-06-01 00:19,18.03,8.12,11.30
+2021-06-01 00:27,18.08,8.14,11.32
+2021-06-01 00:39,18.06,8.12,11.06
+2021-06-01 00:49,18.01,8.10,10.91
+```
+
+
+* use the `read.csv` function
+* make sure the `dec` and `sep` parameters of the function are properly set
+* when in doubt look at the help page `?read.csv`
+
+
+```{r}
+data = read.csv(file = "data/2021-06_aasee.csv", dec = ".", sep = ",")
+
+
+# show the first few rows of the df
+head(data)
+
+# show the last few rows of the df
+tail(data)
+
+# get a short summary of the structure
+str(data)
+```
+
+
+
+## TASK: Subsetting dataframes
+
+* Setup a Rstudio Project. Have at least a scripts and a data directory.
+* Get the Aasee Dataset into R.
+* Try out the following functions: `length()`, `nrow()`, `ncol()`, `summary()`, `colnames()`
+* Create a new dataframe that only contains observations where the pH is above 8.
+* Create a new dataframe that contains exactly the first half of the observations.
+* Create a new column that contains a unique identifier for each row.
+* Do we actually need this unique identifier in our case?
+
+**Hint 1:** Think of a data.frame as a two-dimensional vector. Subsetting the data.frame therefore requires also two values: one for the row, one for the column.
+
+
+```{r}
+# row 1, column 2
+data[1,2]
+
+# the first row
+data[1,]
+
+# the first 3 rows, column 3 and 4
+data[seq(3), c(3,4)]
+```
+
+
+**Hint 2:** Individual columns can also be accessed by their name with the `$` operator.
+
+```{r, eval = FALSE}
+# Access by column name
+data$Wassertemperatur
+```
+
+This can also be used to create new columns by choosing a new column name and writing values into it.
+
+
+```{r, error=TRUE}
+# Assign the same value to each row
+data$newcolumn1 = "valid"
+
+# Works, because 4225 rows are a multiple of 5.
+data$newcolumn2 = seq(5)
+
+# Won't work because the vector of length 2 does not fit exactly into 4225.
+data$newcolumn3 = c(2,4)
+
+# Use an existing column for the new values
+data$t_kelvin = data$Wassertemperatur + 273.15
+
+# Look at what we did
+head(data)
+```
+
+
+<!--chapter:end:05-dataframes.Rmd-->
+
+# Project Setup
+
+Once you deal with external files (e.g. loading a .csv), saving outputs or reports, you have to deal with a senseful file structure.
+This is often harder than the actual R code itself. To keep everything easy and consistent within R (at least for this course), I recommend using Rstudio Projects with a standardized directory setup.
+
+
+## R studio Projects
+
+Here is an example from a blog entry at [r-bloggers.com](https://www.r-bloggers.com/2020/01/rstudio-projects-and-working-directories-a-beginners-guide/)
+
+![A good starting point for project setup](https://i1.wp.com/raw.githubusercontent.com/martinctc/blog/master/images/RPROJECT_2000dpi.png?w=578&ssl=1)
+
+Inside a project, you can then use relative paths to files.
+
+
+
+```{r, eval = FALSE}
+
+# Example of absolute path
+
+## Linux
+"/home/marvin/projects/rcourse/session02/data/file.csv"
+
+## Windows
+"C:\Users\Marvin\Dokumente\rcourse\session02\data\file.csv"
+
+# If the R project is set up in the "session02" directory we can use relative paths:
+
+# relative path to project root
+data = read.csv("data/file.csv")
+
+
+
+```
+
+
+
+**Additional thoughts**
+
+* always keep raw data
+* **backups!**
+* filepaths:
+    * no spaces
+    * no dots
+    * no weird characters
+* [How to name files](https://speakerdeck.com/jennybc/how-to-name-files)
+* Windows uses backslash `\`, R wants forward slash `/`
+* you can use the `dir.create` function to create a new empty directory
+
+
+
+
+
+<!--chapter:end:06-project_setup.Rmd-->
+
+# String handling
+
+Modifying strings (i.e. text) is a very common task but can be a bit tricky if you start out.
+Here are some functions to try out:
+
+* create strings from multiple "substrings" with the `paste` or `paste0` function
+
+```{r}
+n = 5
+paste("The number five:", n)
+
+
+# again functions are vectorized
+paste(seq(10), "is", c("odd", "even"))
+
+# paste0 defaults to no character for separating the strings
+paste0(n, "five", n)
+
+```
+
+
+## The stringr package
+
+For advanced string handling we will make our lives easier by using the `stringr` package.
+
+To use functions from a package we have to load it first with the `library` function. The first time you want to use a package you might have to install it first with `install.packages`.
+
+
+```{r, include = FALSE}
+library(stringr)
+```
+
+
+```{r, eval = FALSE}
+install.packages("stringr")
+
+library(stringr)
+```
+
+
+Many packages have so called `vignettes` which are tutorial style help pages about the package.
+You can access vignettes via the "Packages" Pane in R studio or with a quick [Google search](https://www.google.com/search?q=stringr+vignette).
+
+It is a good idea to go over the vignette when using a new package.
+
+
+```{r}
+
+s = "Hi Mom!"
+
+# you can indicate in your script from which package a function comes from
+# by using ::
+stringr::str_length(s)
+
+str_sub(string = s, start = 1, end = 2)
+
+
+string_vector = paste(seq(10), "is", c("odd", "even"))
+string_vector
+
+str_remove(string_vector, pattern = "is ")
+str_replace(string_vector, pattern = " is", replacement = ":")
+
+```
+
+
+## Leading Zeros
+
+`str_pad` one can be quite important to keep you sane.
+
+
+```{r}
+string_vector = paste(seq(15), "is", c("odd", "even"))
+string_vector
+
+string_vector_pad = paste(str_pad(seq(15), width = 2, pad = 0, side = "left"),
+                          "is",
+                          c("odd", "even"))
+string_vector_pad
+```
+
+
+
+        
+
+<!--chapter:end:07-strings.Rmd-->
+
+# Casestudy: Aasee fish mortality
+
+
+In 2018, more than twenty tons of fish died in the Aasee due to low oxygen concentrations: [https://www.uni-muenster.de/news/view.php?cmdid=9768](https://www.uni-muenster.de/news/view.php?cmdid=9768).
+
+Based on this event, a reasonable question might be:
+
+> On how many days does the Aasee reach critical oxygen concentrations (4 mg/l)?
+
+
+## TASK: Aasee Critical Oxygen Concentrations
+
+* On how many days of July 2021 did the Aasee reach critical oxygen concentrations (4 mg/l)?
+* Define the necessary steps!
+* Work in your project environment!
+* How could a good visualization of this look like?
+
+
+
+## TASK: Oxygen vs. Temperature
+
+The oxygen concentration in water is partly based on the water temperature. An idealized relation between Oxygen and Temperature might look like this:
+
+![https://www.garnelenhaus.de/media/image/2f/30/57/Ricardo-Castellanos-Sauerstoff-Grafik.jpg](https://www.garnelenhaus.de/media/image/2f/30/57/Ricardo-Castellanos-Sauerstoff-Grafik.jpg)
+
+We want to find out if this holds true for the Aasee.
+
+> Formulate a hypothesis.
+
+* Aggregate temperature and oxygen to daily means.
+* Visualize the relation between temperature and oxygen in the Aasee.
+* Interpret this visualization!
+
+
+<!--chapter:end:08-aasee_oxy.Rmd-->
+
+# Tidyverse functions
+
+* collection of packages
+* `library(tidyverse)` loads multiple packages
+* consistent syntax and workflows
+* makes code more readable
+* pipe operator `%>%` can chain functions together
+* **tidy data approach**
+    * rows are observations
+    * columns are variables / features
+
+
+![https://ajsmit.github.io/Intro_R_Official/figures/tidy_workflow.png](https://ajsmit.github.io/Intro_R_Official/figures/tidy_workflow.png)
+
+
+
+## dplyr
+
+* Provides functions for dataframe manipulation
+* Can complement or replace base R functions
+
+
+![https://biostat2.uni.lu/lectures/img/06/vaudor_dplyr_schema.png](https://biostat2.uni.lu/lectures/img/06/vaudor_dplyr_schema.png)
+
+
+
+
+```{r}
+aasee = read.csv("data/2021-06_aasee.csv")
+
+# slice - gives back a slice of data - i.e. the specified rows
+aasee = slice(aasee, seq(8))
+
+
+# select - selects columns
+select(aasee, Wassertemperatur)
+
+# filter - filters rows based on logical operators
+filter(aasee, Wassertemperatur < 18)
+
+# mutate - mutates the data.frame by adding columns
+mutate(aasee, t_kelvin = Wassertemperatur + 273.15)
+
+# summarise - summarises data
+summarise(aasee, minimum_t = min(Wassertemperatur))
+```
+
+
+The functions itself could all be realized with base R functions:
+
+```{r}
+# the same in base R
+
+# select
+aasee$Wassertemperatur
+
+# filter
+aasee[,aasee$Wassertemperatur < 18]
+
+# mutate
+aasee$t_kelvin = aasee$Wassertemperatur + 273.15
+
+# summarise
+min(aasee$Wassertemperatur)
+
+```
+
+
+
+The strength of dplyr is the possibility to chain functions with `%>%`.
+
+
+```{r}
+aasee %>% 
+    filter(Wassertemperatur < 18) %>% 
+    select(pH.Wert) %>% 
+    max()
+```
+
+
+With base R functions this looks messy, because we have to use functions inside functions.
+
+```{r}
+max(aasee$pH.Wert[aasee$Wassertemperatur < 18])
+```
+
+
+
+
+
+<!--chapter:end:09-tidyverse.Rmd-->
+
+# Simple Visualizations
+
+## Boxplots
+
+* distribution of values
+* great for comparisons
+
+
+![https://miro.medium.com/max/1400/1*2c21SkzJMf3frPXPAR_gZA.png](https://miro.medium.com/max/1400/1*2c21SkzJMf3frPXPAR_gZA.png)
+
+
+
+```{r}
+july = read.csv("data/2021-07_aasee.csv")
+boxplot(july$Wassertemperatur)
+```
+
+
+
+```{r}
+summary(july$Wassertemperatur)
+```
+
+
+## Histograms
+
+* distribution of values
+* aggregated to `bins`
+* multiple ways to adjust bin size
+
+```{r}
+hist(july$Wassertemperatur)
+
+hist(july$Wassertemperatur, breaks = 20)
+
+hist(july$Wassertemperatur, breaks = seq(min(july$Wassertemperatur),
+                                         max(july$Wassertemperatur)+0.2,
+                                         0.1))
+```
+
+
+
+## Scatterplots
+
+* classic x-y plot
+* relation between two variables
+
+```{r}
+plot(july$Wassertemperatur)
+
+plot(x = july$Wassertemperatur, y = july$Sauerstoffgehalt)
+```
+
+
+
+
+<!--chapter:end:10-visualizations.Rmd-->
+
+# Linear Models
+
+Linear models describe the relation between two variables. 
+In a non-technical description we can think about linear model like:
+
+> Find a line that is as close as possible to all the points of a scatterplot.
+
+
+```{r, echo = FALSE}
+library(dplyr)
+library(ggplot2)
+
+bd = read.csv("data/crop_species.csv")
+
+bd = bd %>% mutate(Abundance = AraInd + CaraInd + IsoMyrInd,
+              Species = AraSpec, CaraSpec, IsoMyrSpec)
+
+
+ggplot(bd, aes(Abundance, Species))+
+    geom_point()+
+    geom_smooth(method = "lm", se = FALSE)+
+    theme_bw()
+```
+
+
+For example, we can use a linear model to depict the relation between the amount of samples animals and the number of different species found in a given area. To create a linear model, we need two vectors (here as two columns of a data.frame) with the matching data pairs (Abundance and Species Number). The `lm` function then need a formula with the vector/column names separated by `~`.
+Think about the `~` like _as a function of_. So `lm(Species ~ Abundance)` means: Give me the number of species as a function of species abundance. 
+
+
+```{r}
+library(dplyr)
+bd = read.csv("data/crop_species.csv")
+
+bd = bd %>% mutate(TotalInd = AraInd + CaraInd + IsoMyrInd,
+              TotalSpec = AraSpec, CaraSpec, IsoMyrSpec)
+
+lmod = lm(bd$TotalSpec ~ bd$TotalInd)
+lmod
+```
+
+## Linear Model Summary
+
+Calling the model returns the intercept and slope. To get a more useful output use the `summary` function.
+In the following we will go over the output of the `summary` function on linear models.
+The explanations are mostly taken from this blog entry: [https://feliperego.github.io/blog/2015/10/23/Interpreting-Model-Output-In-R](https://feliperego.github.io/blog/2015/10/23/Interpreting-Model-Output-In-R)
+
+```{r}
+summary(lmod)
+```
+
+### Call
+
+* the function that was used to create the model
+
+### Residuals
+
+* summary statistic of the model error
+* "How far away are the real values from the model?"
+* should follow a normal distribution (e.g. by plotting a histogram)
+
+```{r, echo = FALSE}
+library(ggplot2)
+library(ggpubr)
+
+bd$pred = predict(lmod, bd)
+
+ggplot(bd, aes(TotalInd, TotalSpec))+
+    geom_point()+
+    geom_smooth(method = "lm", se = FALSE)+
+    geom_segment(aes(yend = pred, xend = TotalInd), col = "red")+
+    stat_regline_equation()+
+    theme_bw()
+
+```
+
+```{r}
+hist(lmod$residuals)
+```
+
+
+
+
+### Coefficients
+
+#### Estimate
+
+* again the slope and intercept
+* we can expect to observed at least 10.7 different species on a plot (if we collect 103 animals)
+* for each additional animal observed, the species count increases by 0.017
+
+#### Std. Error
+
+* the expected error of the coefficients
+* for each additional animal observed, the species number increases by 0.017 +- 0.0037
+
+#### t value
+
+* how many standard deviation is the std. error away from zero?
+* far away from zero is better. Reduces the probability that the result is due to chance
+* usually not interpreted
+
+#### Pr(>|t|)
+
+* probability that the observed value is larger than t
+* small value means that there is a high chance that the relation is not based on chance
+* __p values < than 0.05__ is the convention that we can neglect the H0 hypothesis (the model actually depicts a relation)
+
+
+#### Signif. codes
+
+* a legend for the significance level of the p-value
+
+#### Residuals standard error
+
+* the average deviation of the real values from the model value
+* degree of freedom: on how many observations is this value based on?
+
+#### Multiple R-squared
+
+* How much of the variance is explained by the model?
+* Values between 0 and 1
+* 0 means no explanation, 1 means perfect fit
+* Depends on the specific example!
+
+#### F-statistics
+
+* Is there a relation between the predictor and the response?
+* Is my model better than if all the coefficients are zero?
+* Away from 1 is good!
+* Depend on number of data points.
+
+
+## Linear Model Plot
+
+Plotting the linear model gives you 4 different figures that indicate if the model is statisically valid in the first place, i.e. if the residuals follow a normal distribution and if they are homoscedatic.
+
+
+### Residuals vs. Fitted
+
+* Is it actually a linear relation?
+* Points randomly scattered around a horizontal line indicates this
+
+
+### Normal Q-Q
+
+* Are the residuals normally distributed?
+* Points on the 1-1 line indicates this
+* Depicted are the actual residuals vs. a theoretical normal distribution
+
+### Scale location
+
+* Are the residuals _homoscedatic_?
+* This means that the range of the residuals are more or less equal for the whole data range
+* Equally spread points around the line indicates this
+
+### Residuals vs. Levarage
+
+* Are there outliers in the data that have influence on the model?
+* In this example, if we would leave out point #12, the model outcome would change.
+
+```{r}
+plot(lmod)
+```
+
+
+<!--chapter:end:11-linear_models.Rmd-->
+
+# Species data
+
+Many studies in landscape ecology deal with species data. Usually, these studies follow a plot based design to compare different environments and ecosystems in terms of abundances or species diversity. To practice everything we've learned so far and to go on further we want to have a look at another real world dataset.
+The species data below was collected by Michael Meyer. To find out more about the original goal of why this data was collected you can have a look at @MeyerM2019.
+While the statistical analysis of this paper is more advanced and not suited for this beginner course, the structure of the data is very easy and also allows the practice of more simple methods.
+
+
+```{r, echo = FALSE}
+df = read.csv("data/crop_species.csv")
+knitr::kable(
+  df[1:10,], caption = 'First entries of species data by Meyer et at. 2019',
+  booktabs = TRUE
+)
+```
+
+
+
+The column names and crop types appear very cryptic at first sight. Here are some explanations:
+
+
+* GP = Grain Pea
+* SB = Sugar Beet
+* SM = Silage Maize
+* WR = Winter oilseed Rape
+* WW = Winter Wheat
+
+* Ara = Araneae
+* Cara = Carabidae
+* IsoDip = Isopoda and Diplopoda
+* IsoMyr = Isopoda and Myriapoda
+
+* Ind = Number of individual animals
+* Spec = Number of species
+
+
+
+
+## TASK: Crops vs. Species
+
+* How many different crop types where analysed in the study?
+* How many plots are there for each crop type?
+* Which plot had the most individual animals? (regardless of species)
+* Which plot was the most diverse?
+
+* What is the average number of Carabidaes on all the plots containing winter wheat?
+* What is the minimum number of species per crop type?
+* Visualize the number of Carabidaes per crop type.
+
+* Plot the number of Araneae species in relation to the number of individual Araneae.
+* If there are more individual Araneae on a plot, are there also more Araneae species?
+
+
+## Solution
+
+<details>
+<summary>Click for Answer</summary>
+
+```{r, echo = TRUE, message=FALSE, warning=FALSE}
+library(dplyr)
+bd = read.csv("data/crop_species.csv")
+```
+
+
+### How many different crop types where analysed in the study?
+    
+```{r}
+length(unique(bd$Croptype))
+```
+
+
+### How many plots are there for each crop type?
+
+```{r}
+length(bd$plotcode[bd$Croptype == "KE"])
+length(bd$plotcode[bd$Croptype == "SM"])
+length(bd$plotcode[bd$Croptype == "WR"])
+length(bd$plotcode[bd$Croptype == "WW"])
+length(bd$plotcode[bd$Croptype == "ZR"])
+
+
+# for all croptypes at once
+
+table(bd$Croptype)
+
+# dplyr
+bd %>% count(Croptype)
+
+```
+
+
+    
+### Which plot had the most individual animals? (regardless of species)
+
+```{r}
+
+# calculate the total individuals for each plot
+bd$TotalInd = bd$AraInd + bd$CaraInd + bd$IsoMyrInd
+
+# find out on which plotcode the total number is the maximum total number
+bd$plotcode[bd$TotalInd == max(bd$TotalInd)]
+
+# dplyr pipeline
+bd %>% mutate(TotalInd = AraInd + CaraInd + IsoMyrInd) %>% 
+    filter(TotalInd == max(TotalInd)) %>%
+    select(plotcode)
+```
+
+
+### Which plot was the most diverse?
+
+```{r}
+bd$TotalSpec = bd$AraSpec + bd$CaraSpec + bd$IsoMyrSpec
+bd$plotcode[bd$TotalSpec == max(bd$TotalSpec)]
+
+
+bd %>% mutate(TotalSpec = AraSpec + CaraSpec + IsoMyrSpec) %>% 
+    filter(TotalSpec == max(TotalSpec)) %>% 
+    select(plotcode, TotalSpec)
+```
+
+    
+### What is the average number of Carabidaes on all the plots containing winter wheat?
+
+```{r}
+mean(bd$CaraInd[bd$Croptype == "WW"])
+
+bd %>% filter(Croptype == "WW") %>% 
+    summarise(MeanCara = mean(CaraInd))
+
+bd %>% filter(Croptype == "WW") %>% 
+    pull(CaraInd) %>% 
+    mean()
+```
+
+
+
+    
+### What is the minimum number of species per crop type?
+
+```{r}
+# for one crop type
+min(bd$TotalSpec[bd$Croptype == "WW"])
+
+
+bd %>% group_by(Croptype) %>% 
+    summarise(MinSpec = min(TotalSpec))
+
+# if we didn't compute total species before:
+bd %>% group_by(Croptype) %>% 
+    mutate(TotalSpec = AraSpec + CaraSpec + IsoMyrSpec) %>% 
+    summarise(MinSpec = min(TotalSpec))
+```
+
+
+### Visualize Carabidaes abunadances per crop type.
+
+```{r}
+boxplot(bd$CaraInd ~ bd$Croptype)
+```
+
+
+### Plot the number of Araneae species in relation to the number of individual Araneae.
+
+
+```{r}
+plot(bd$AraInd, bd$AraSpec)
+```
+
+
+
+### If there are more individual Araneae on a plot, are there also more Araneae species?
+
+
+```{r}
+# build a linear model
+ara_model = lm(bd$AraSpec ~ bd$AraInd)
+summary(ara_model)
+
+plot(AraSpec ~ AraInd, data = bd)
+abline(ara_model)
+
+plot(AraSpec ~ AraInd, data = bd, asp = 1)
+abline(ara_model)
+
+
+```
+
+
+
+
+
+
+</details>
+
+<!--chapter:end:12-species.Rmd-->
+
+# Urban Trees
+
+In the [open data portal Münster](https://opendata.stadt-muenster.de/dataset/digitales-baumkataster-m%C3%BCnster) you can find the location and species group of all the trees that are managed by the city. From there, one can also find the district borders. To put into practice what we have learned for far, below are some tasks using both tree and district information.
+**You can download the two datasets from the learnweb (slightly modified for the course).**
+
+
+
+
+```{r, echo = FALSE, fig.cap="Tree positions in Muenster"}
+library(sf)
+library(tmap)
+
+
+trees = st_read("data/baumkataster.geojson", quiet = TRUE)
+trees = st_transform(trees, 25832)
+trees$str_schl = NULL
+colnames(trees) = c("species", "geometry")
+
+
+bez = st_read("data/muenster_stadtbezirke/stadtteil.shp", quiet = TRUE)
+bez = bez[,c("OBJECTID", "NAME_STATI", "STADTBEZIR", "SHAPE_AREA", "geometry")]
+colnames(bez) = c("id", "district", "district_group", "area", "geometry")
+
+
+tm_shape(bez)+
+    tm_borders()+
+    tm_shape(trees)+
+    tm_dots(alpha = 0.2, size = 0.003, col = c("#A2CD5A"))+
+    tm_layout(frame = FALSE)
+
+```
+
+
+```{r, eval = FALSE, include = FALSE}
+trees = st_join(trees, bez[,c("district", "geometry")], left = TRUE)
+trees = cbind(trees, st_coordinates(trees))
+trees = st_drop_geometry(trees)
+trees = trees %>% filter(species != "")
+trees = trees %>% filter(species != "Baumgruppe")
+trees = trees %>% filter(species != "Unbekannt")
+trees = trees %>% filter(species != "Baum Amt62")
+trees = trees %>% filter(species != "Standort")
+trees = trees %>% filter(species != "Leerer")
+trees = trees %>% filter(species != "Leerer Standort")
+
+bez = st_drop_geometry(bez)
+
+write.csv(trees, "data/muenster_trees.csv", row.names = FALSE)
+write.csv(bez, "data/muenster_districts.csv", row.names = FALSE)
+```
+
+
+
+
+
+## Tasks: Urban Tree Diversity
+
+
+1. Tree Abundances
+
+* Load the datasets `muenster_baume.csv` and `muenster_bezirke.csv`.
+* Which district has the most trees?
+
+2. Modelling
+
+* Compare the number of trees in a district with its area: Plot this relation.
+* Is a linear model applicable here?
+* Transform both variables into a logarithmic scale (`log()`). Plot the relation again and compare.
+* Model the relation between district area and number of trees. Is the model valid?
+
+3. Tree species
+
+* Which districts inhabit "endemic" species? 
+* Which district is the most diverse?
+    * Calculate the Shannon index for each district.
+    * For this we need a community matrix. Each Row is a District, Each Column a Species.
+    * Use the `diversity()` function from the `vegan` package on the community matrix.
+
+
+<details>
+<summary>Bonus: Geospatial Data</summary>
+
+* Load or install the `sf` package.
+* Look at the help page for `st_as_sf()`.
+    * Which arguments do you need?
+* Convert the trees from a `data.frame` to a `sf points` object. What has changed?
+* Plot the trees.
+
+</details>
+
+
+## Solution
+
+
+<details>
+<summary>Click for Answer</summary>
+
+
+### District with the most trees
+
+```{r}
+# Load the packages.
+# Load the datasets.
+
+library(tidyverse)
+trees = read.csv("data/muenster_trees.csv")
+districts = read.csv("data/muenster_districts.csv")
+
+head(trees)
+head(districts)
+```
+
+
+
+```{r}
+## Which district has the most trees?
+district_summary = trees %>% group_by(district) %>% 
+    summarise(ntrees = length(district))
+
+district_summary %>% filter(ntrees == max(ntrees))
+
+# or:
+table(trees$district)
+```
+
+
+
+### Modelling
+
+```{r}
+# Compare the number of trees in a district with its area. 
+
+## We need a data.frame with the information from both csv files (area and ntrees)
+## We use a join for that.
+
+districts = left_join(districts, district_summary, by = "district")
+```
+
+
+
+```{r}
+# Plot this relation
+# Is a linear model applicable? -> No
+plot(ntrees ~ area, data = districts)
+```
+
+
+```{r}
+# Log transformations
+districts$area_l10 = log10(districts$area)
+districts$ntrees_l10 = log10(districts$ntrees)
+
+# After log transformation, a linear model is more feasible
+
+plot(districts$area_l10, districts$ntrees_l10)
+```
+
+
+
+```{r}
+mod = lm(ntrees_l10 ~ area_l10, data = districts)
+
+summary(mod)
+plot(mod)
+```
+
+
+
+```{r}
+plot(districts$area_l10, districts$ntrees_l10)
+abline(mod, col = "blue")
+```
+
+
+
+
+```{r}
+
+new_area = data.frame(area_l10 = log10(10000000))
+new_area$ntrees_l10 = predict(object = mod, newdata = new_area)
+
+plot(districts$area_l10, districts$ntrees_l10)
+abline(mod, col = "blue")
+points(new_area$area_l10, new_area$ntrees_l10, col = "red")
+
+
+new_area$ntrees_l10
+
+# invert log10
+
+10^new_area$ntrees_l10
+
+
+```
+
+
+### Tree diversity
+
+```{r}
+# Which districts inhabit "endemic" species?
+
+
+## Count the unique districts per tree species,
+## Where is this == 1?
+endemic_species = trees %>% group_by(species) %>% 
+    summarise(ndistricts = length(unique(district))) %>% 
+    filter(ndistricts == 1)
+
+
+trees %>% filter(species %in% endemic_species$species) %>% 
+    pull(district) %>% unique()
+
+trees %>% filter(species %in% endemic_species$species)
+```
+
+
+
+
+```{r}
+# Shannon Index
+
+# install.packages("vegan")
+library(vegan)
+
+# Community Matrix
+## Rows: districts
+## Columns: species
+cont = table(trees$district, trees$species)
+vegan::diversity(cont)
+
+```
+
+
+
+</details>
+
+
+
+
+
+<!--chapter:end:13-trees.Rmd-->
+
+# Advanced Visualizations
+
+
+> Es gibt nur eine Breitbandleitung ins Hirn und das sind die Augen. [David Krisel](https://www.youtube.com/watch?v=QqVFEP3_BtY)
+
+
+In the course, we used three datasets. All of them have different features and difficulties that we need to keep in mind when we want to visualize parts of the data to point out some interesting facts!
+
+The **Aasee Water Monitoring** data has a temporal component and "continuous" measurements. The **arthoropode species on crop fields** follow the classic plot based design and allows for comparisons between different groups. The **trees and districts of Muenster** potentially have a spatial component to it but also allow for comparisons of the different species and districts.
+
+
+## The grammar of graphics
+
+Scientific figures and advanced visualization in R are usually done with the `ggplot2` package.
+
+
+* [https://ggplot2.tidyverse.org/](https://ggplot2.tidyverse.org/)
+* tidyverse package: synergies and integration with e.g. dplyr
+* layer based language that are combined with `+`
+* differentiated by "static" and "dynamic" parameters
+* many extensions: [https://exts.ggplot2.tidyverse.org/gallery/](https://exts.ggplot2.tidyverse.org/gallery/)
+* Gallery for inspiration: [https://r-graph-gallery.com/index.html](https://r-graph-gallery.com/index.html)
+
+
+```{r}
+library(ggplot2)
+library(viridis)
+# data overview
+species = read.csv("data/crop_species.csv")
+```
+
+
+### Initialze the plot
+
+Tell ggplot which `data.frame` is the basis for the plot.
+
+```{r}
+ggplot(data = species)
+```
+
+
+The `mapping` argument of the `ggplot()` function handles which columns of the data should be used for which purpose.
+To specify this, we use the `aes()` function (aesthetics). Common things that we specify:
+
+* x
+* y
+* group
+* color
+* fill
+
+
+Here we specify that on the x-axis in our plot represent the `AraInd` column. As a result we get the proper y-axis, but still no data is shown. For this, we have to specify in which form the data should be depicted.
+
+```{r}
+ggplot(data = species, mapping = aes(x = AraInd))
+```
+
+
+### Geometry types
+
+There are many different geometry types build into `ggplot2` and even more from additional packages. The functions to create the geometry layers usually start with `geom_`. The geom functions also have their own arguments you can specify.
+
+* geom_point
+* geom_line
+* geom_boxplot
+* geom_histogram
+* ...
+
+
+```{r}
+ggplot(species, aes(x = AraInd))+
+    geom_histogram()
+```
+
+
+
+```{r}
+ggplot(species, aes(x = AraInd))+
+    geom_histogram(binwidth = 10, fill = "darkgreen", color = "black")
+```
+
+Different geometry types require more than one aesthetic. E.g. `geom_point` needs the x and y aesthetics.
+
+```{r}
+ggplot(species, aes(x = Croptype, y = AraInd))+
+    geom_point()
+```
+
+
+
+### Axis Formats
+
+The Axis format depends on the type of variable you want to plot. We have to be aware of what scale type we have.
+
+* discrete scale for categorical data
+* continuous scale for numeric data
+* limits, ticks, labels ...
+
+
+```{r}
+ggplot(species, aes(x = Croptype, y = AraInd))+
+    geom_point(size = 4, alpha = 0.8, shape = 18)+
+    scale_x_discrete(labels = c("KE" = "Grain Pea",
+                                "SM" = "Silage Maize",
+                                "WR" = "Winter Oilseed Rape",
+                                "WW" = "Winter Wheat",
+                                "ZR" = "Sugar Beet"))+
+    scale_y_continuous(name = "Aranae [n]", limits = c(0,200))
+```
+
+
+We can also save the plot to a object to reuse and modify it later.
+
+
+```{r}
+araind_plot = ggplot(species, aes(x = Croptype, y = AraInd))+
+    geom_point(size = 4, alpha = 0.8, shape = 18)+
+    scale_x_discrete(labels = c("KE" = "Grain Pea",
+                                "SM" = "Silage Maize",
+                                "WR" = "Winter Oilseed Rape",
+                                "WW" = "Winter Wheat",
+                                "ZR" = "Sugar Beet"))+
+    scale_y_continuous(name = "Aranae [n]", limits = c(0,200))
+
+
+
+araind_plot + ggtitle("Aranae [n] per crop type")
+```
+
+
+### Color Scales
+
+With the `color` and `fill` arguments in `aes()` we specify which columns of the data.frame should be represented as a color scale in the plot.
+
+
+```{r}
+ggplot(species, aes(x = Croptype, y = AraInd, color = AraSpec))+
+    geom_point(size = 4, alpha = 0.8, shape = 18)+
+    scale_x_discrete(name = "Crop Type")+
+    scale_y_continuous(name = "Aranae [n]", limits = c(0,200))
+```
+
+We can specify the colors by adding a `scale_color_` layer. Just like with the axis, there are discrete and continuous color scales available!
+
+```{r}
+ggplot(species, aes(x = Croptype, y = AraInd, color = AraSpec))+
+    geom_point(size = 4, alpha = 0.8, shape = 18)+
+    scale_color_gradient(name = "Aranae\nSpecies [n]", low = "yellow", high = "red")+
+    scale_x_discrete(name = "Crop Type")+
+    scale_y_continuous(name = "Aranae [n]", limits = c(0,200))
+```
+
+
+
+
+### Themes
+
+There are many prebuild themes...
+
+```{r}
+ggplot(species, aes(x = Croptype, y = AraInd, color = AraSpec))+
+    geom_point(size = 4, alpha = 0.8, shape = 18)+
+    scale_color_gradientn(name = "Aranae\nSpecies [n]",colors = mako(50))+
+    scale_x_discrete(name = "Crop Type")+
+    scale_y_continuous(name = "Aranae [n]", limits = c(0,200))+
+    theme_minimal()
+```
+
+
+... or you can specify your own:
+
+```{r}
+ggplot(species, aes(x = Croptype, y = AraInd, color = AraSpec))+
+    geom_point(size = 4, alpha = 0.8, shape = 18)+
+    scale_color_gradientn(name = "Aranae\nSpecies [n]",colors = mako(50))+
+    scale_x_discrete(name = "Crop Type")+
+    scale_y_continuous(name = "Aranae [n]", limits = c(0,200), expand = c(0,0))+
+    theme(panel.background = element_blank(),
+          panel.grid.major.y = element_line(color = "black", linetype = "dotted"),
+          axis.line = element_line(color = "black"))
+
+```
+
+
+
+
+## TASK: Publication ready figures
+
+Create the following plots:
+
+1. Boxplots of the Aranae Species per crop type.
+2. Plot the Carabidae Individuums vs. the Carabidae Species and color the points based on the crop on the field.
+3. Create a map of the trees in Münster (with ggplot only!).
+    3. Create a "heatmap" of the trees in Münster (`geom_bin_2d` or `geom_hex`)
+4. A bar plot (`geom_col`) of the Top 10 districts of Münster with the most trees.
+5. A time series of the oxygen content in the Aasee with
+    Hint: Use `lubridate::ymd_hm()` to convert the date into a useful format.
+    3.1 a horizontal line indicating critical oxygen concentrations of 4 mg/l
+    3.2 color the line based on the temperature values. Use an appropriate color scale.
+
+
+## Solution
+
+<details>
+<summary>Click for Answer</summary>
+
+
+
+
+### Boxplots of the Aranae Species per crop type.
+
+```{r}
+library(ggplot2)
+
+cropspecies = read.csv("data/crop_species.csv")
+
+ggplot(data = cropspecies,
+       mapping = aes(x = Croptype,
+                     y = AraSpec,
+                     fill = Croptype))+
+    geom_boxplot()+
+    scale_fill_manual(values = c("red", "blue", "green", "yellow", "black"))
+
+
+## Define colors beforehand
+sc = c("KE" = "#66CD00",
+       "ZR" = "#FFB90F",
+       "SM" = "#FF7F00",
+       "WR" = "yellow",
+       "WW" = "black")
+
+
+ggplot(data = cropspecies,
+       mapping = aes(x = Croptype,
+                     y = AraSpec,
+                     fill = Croptype))+
+    geom_boxplot()+
+    scale_fill_manual(values = sc)
+
+```
+
+
+
+
+
+
+### Plot the Carabidae Individuums vs. the Carabidae Species and color the points based on the crop on the field.
+
+
+```{r}
+ggplot(cropspecies, aes(x = CaraInd,
+                        y = CaraSpec))+
+    geom_point()+
+    geom_smooth(method = "lm")+
+    geom_point(aes(color = Croptype))
+```
+
+
+### Create a map of the trees in Münster + Heatmap
+
+
+```{r}
+trees = read.csv("data/muenster_trees.csv")
+
+
+ggplot(trees, aes(x = X, y = Y))+
+    geom_point(alpha = 0.5)
+
+ggplot(trees, aes(x = X, y = Y))+
+    geom_bin_2d(bins = 40)
+
+ggplot(trees, aes(x = X, y = Y))+
+    geom_hex()+
+    theme_bw()
+```
+
+
+
+
+### A bar plot (geom_col) of the Top 10 districts of Münster with the most trees.
+
+```{r}
+districts = table(trees$district)
+districts = as.data.frame(districts)
+
+
+districts = districts[order(districts$Freq, decreasing = TRUE),]
+districts_t10 = districts[seq(10),]
+
+ggplot(districts_t10, aes(y = reorder(Var1, Freq), x = Freq))+
+    geom_col()
+```
+
+
+
+
+
+
+
+### A time series of the oxygen content in the Aasee
+
+
+```{r}
+library(lubridate)
+
+aasee = read.csv("data/2021-07_aasee.csv")
+aasee$Datum = lubridate::ymd_hm(aasee$Datum)
+
+
+ggplot(aasee, aes(x = Datum, y = Sauerstoffgehalt, color = Wassertemperatur))+
+    geom_line()+
+    geom_abline(slope = 0, intercept = 1, color = "red")+
+    scale_x_datetime(name = "Datum")+
+    annotate(geom = "text",
+             label = "Text",
+             x = lubridate::ymd_hm("2021-07-01 02:00"), y = 4)+
+    scale_color_gradientn(colors = viridis::inferno(50))
+```
+
+
+
+
+
+</details>
+
+
+<!--chapter:end:14-ggplot.Rmd-->
+
+# Additional Ressources
+
+
+## R cheat sheets
+
+
+These are compact overview of R functions and how to use them.
+
+[https://www.rstudio.com/resources/cheatsheets/](https://www.rstudio.com/resources/cheatsheets/)
+
+Useful for the course are the following:
+
+* [Base R](https://github.com/rstudio/cheatsheets/blob/main/base-r.pdf)
+* [stringr](https://raw.githubusercontent.com/rstudio/cheatsheets/main/strings.pdf)
+* [lubridate](https://raw.githubusercontent.com/rstudio/cheatsheets/main/lubridate.pdf)
+* [dplyr](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-transformation.pdf)
+* [ggplot2](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf)
+
+
+
+## Useful Keyboard shortcuts
+
+* Ctrl + i: indent automatically
+* Ctrl + shift + c: comment / uncomment marked lines
+* Ctrl + s: save script
+* Ctrl + shift + m: insert pipe operator `%>%`
+* F1: open help page of marked function
+* F2: open source code of marked function
+
+
+
+
+<!--chapter:end:98-additional_resources.Rmd-->
+
+`r if (knitr::is_html_output()) '
+# References {-}
+'`
+
+<!--chapter:end:references.Rmd-->
+
