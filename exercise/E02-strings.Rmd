@@ -1,0 +1,30 @@
+## Strings
+
+
+- Erstelle eine Variable die deinen Vornamen enthält.
+- Erstelle eine Variable die deinen Nachnamen enthält.
+
+```{r}
+
+
+```
+
+
+## Funktionen mit Strings
+
+- Die `paste` Funktion kann Texte zusammenfügen. Probiere die Funktion mit den Variablen die deine Namen enthält.
+
+
+```{r}
+
+```
+
+
+- Sieh dir die Hilfeseite von `paste` an (z.B. mit `?paste` oder über das Hilfe-Fenster rechts)
+    - Die Funktion benutzt ein Argument mit Default Wert: `sep = " "`.
+    - Was macht dieses Argument?
+    - Nutze `paste` wieder mit deinen beiden Namen-Variablen aber ändere den Wert von `sep` zu einem anderen String.
+
+```{r}
+
+```

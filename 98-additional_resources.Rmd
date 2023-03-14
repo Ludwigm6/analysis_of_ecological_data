@@ -1,4 +1,4 @@
-# Additional Ressources
+# Additional Ressources {.unnumbered}
 
 
 ## R cheat sheets
@@ -23,7 +23,7 @@ Useful for the course are the following:
 * Ctrl + i: indent automatically
 * Ctrl + shift + c: comment / uncomment marked lines
 * Ctrl + s: save script
-* Ctrl + shift + m: insert pipe operator `%>%`
+* Ctrl + shift + m: insert pipe operator `%>%`/`|>`
 * F1: open help page of marked function
 * F2: open source code of marked function
 

@@ -7,6 +7,12 @@ Take a few minutes to think about
 
 
 ```{r mofrgb, echo = FALSE, fig.cap="Marburg Open Forest, 2019-05-13 Planetscope RGB"}
+library(sf)
+library(tmap)
+library(stars)
+library(tidyverse)
+
+
 mof_water = st_read("data/mof/mof_supplementary.gpkg", layer =  "water", quiet = TRUE)
 mof_rgb = read_stars("data/mof/mof_basemaps.gpkg", sub = "planetscope_20190513", quiet = TRUE)
 

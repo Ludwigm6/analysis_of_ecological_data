@@ -1,12 +1,9 @@
 --- 
 title: "Analysis of Ecological Data with R"
 author: "Marvin Ludwig"
-site: bookdown::bookdown_site
-documentclass: book
 description: |
-  This is currently a slide collection for the ILOEK Course "Analysis of ecological data in R" but could eventually turn into a more comprehensive ressource collection.
+  This is a slide and execise collection for the ILOEK Course "Analysis of ecological data in R".
 link-citations: yes
-bibliography: "/home/marvin/literature/zotero/references.bib"
 github-repo: Ludwigm6/analysis_of_ecological_data
 ---
 
@@ -22,6 +19,7 @@ library(stars)
 library(mapview)
 library(ggplot2)
 library(lubridate)
+library(here)
 
 mapview::mapviewOptions(fgb = FALSE)
 
@@ -29,7 +27,7 @@ mapview::mapviewOptions(fgb = FALSE)
 ```
 
 
-# Welcome
+# Welcome {.unnumbered}
 
 ```{r, fig.cap = "Landscape Ecology with R", echo = FALSE}
 knitr::include_graphics("assets/cover_image.png")
@@ -50,11 +48,10 @@ knitr::include_graphics("assets/cover_image.png")
 * Developing ideas, answering questions
 * Defining steps how to solve a problem
 * Translating these steps into R code
-* Learning the R language "on the fly"
+* Learning the necessary R language on the way
 * Data handling. A lot of data handling.
 * I believe a good understanding of data is one of the most important things in science and work.
 * Learn statistics. Use statistics as a tool.
-* developing good scripting and project management habits from the start (makes live so much easier)
 
 
 ## What this course is not
@@ -76,11 +73,16 @@ $$
 * You probably won't find out anything you didn't already know about nature
 
 
-## Course Outline 2022
+## Course Outline
+
+* Summary and Exercises from last week
+* New Input
+* Exercises
+* __Studienleistung:__ 8 Abgaben - Bestanden mit 50%
 
 ```{r nice-tab, tidy=FALSE, echo = FALSE}
 
-df = read.csv("assets/2022_course_dates.csv")
+df = read.csv("assets/course_dates.csv")
 
 knitr::kable(
   df, caption = 'Course Outline',

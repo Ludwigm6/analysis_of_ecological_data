@@ -1,0 +1,32 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  title: "Analysis of Ecological Data"
+  author: "Marvin Ludwig"
+  chapters:
+    - index.Rmd
+    - part: "Resources"
+      chapters:
+      - 01-R_basics.Rmd
+      - 02-data_examples.Rmd
+    - part: "Exercises"
+      chapters:
+      - "exercise/E01-variablen.Rmd"
+  
+  appendices:
+  - 98-additional_resources.Rmd
+  - references.qmd
+    
+bibliography: "/home/marvin/literature/zotero/references.bib"
+number-depth: 0
+format:
+  html:
+    theme: cosmo
+    number-sections: false
+  pdf:
+    documentclass: scrreprt
+
+
+

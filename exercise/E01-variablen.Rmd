@@ -1,0 +1,49 @@
+# E01: Variablen, Funktionen, Vektoren
+
+
+## Variablen
+
+- Erstelle eine Variable die die Zahl 1650 enthält.
+- Erstelle eine Variable die die Zahl 140 enthält.
+- Berechne das Produkt deiner erstellten Variablen.
+
+```{r}
+
+
+```
+
+- Erstelle eine Variable die deinen Vornamen enthält.
+- Erstelle eine Variable die deinen Nachnamen enthält.
+- Die `paste` Funktion kann Texte zusammenfügen. Probiere die Funktion mit den Variablen die deine Namen enthalten.
+
+
+```{r}
+
+```
+
+
+## Vektoren & Funktionen
+
+- Erstelle einen Vektor der die Zahlen 4, 3, 8, 16 und 90 enthält.
+- Teste die Funktionen `length()`, `sum()`, `sqrt()`, und `min()`.
+- Was macht die `sqrt()` Funktion?
+- Was ist der Unterschied zwischen der `max()` Funktion und der `which.max()` Funktion?
+
+
+```{r}
+
+
+```
+
+
+- Die `seq()` Funktion erzeugt einen Vektor der Zahlenfolgenfolgen enthält. Sieh dir die Hilfeseite von `seq()` an und erstelle einen Vektor der alle 100er Zahlen von 0 bis 10000 enthält.
+
+
+```{r}
+
+```
+
+
+
+
+

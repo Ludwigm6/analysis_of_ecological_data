@@ -1,229 +1,224 @@
 <!DOCTYPE html>
-<html lang="" xml:lang="">
-<head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Analysis of Ecological Data with R</title>
-  <meta name="description" content="This is currently a slide collection for the ILOEK Course “Analysis of ecological data in R” but could eventually turn into a more comprehensive ressource collection." />
-  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
 
-  <meta property="og:title" content="Analysis of Ecological Data with R" />
-  <meta property="og:type" content="book" />
-  
-  <meta property="og:description" content="This is currently a slide collection for the ILOEK Course “Analysis of ecological data in R” but could eventually turn into a more comprehensive ressource collection." />
-  <meta name="github-repo" content="Ludwigm6/analysis_of_ecological_data" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Analysis of Ecological Data with R" />
-  
-  <meta name="twitter:description" content="This is currently a slide collection for the ILOEK Course “Analysis of ecological data in R” but could eventually turn into a more comprehensive ressource collection." />
-  
+<meta name="author" content="Marvin Ludwig">
+<meta name="description" content="This is a slide and execise collection for the ILOEK Course “Analysis of ecological data in R”.">
 
-<meta name="author" content="Marvin Ludwig" />
-
-
-
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  
-  
-
-<link rel="next" href="ecological-data.html"/>
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
-
-
-
-
-
-
-
-<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
-<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
-<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
-<script src="libs/leaflet-1.3.1/leaflet.js"></script>
-<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
-<script src="libs/proj4-2.6.2/proj4.min.js"></script>
-<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
-<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
-<script src="libs/leaflet-binding-2.1.1/leaflet.js"></script>
-<script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
-<script src="libs/leaflet-providers-plugin-2.1.1/leaflet-providers-plugin.js"></script>
-<link href="libs/HomeButton-0.0.1/home-button.css" rel="stylesheet" />
-<script src="libs/HomeButton-0.0.1/home-button.js"></script>
-<script src="libs/HomeButton-0.0.1/easy-button-src.min.js"></script>
-<script src="libs/clipboard-0.0.1/setClipboardText.js"></script>
-<link href="libs/mapviewCSS-0.0.1/mapview-popup.css" rel="stylesheet" />
-<link href="libs/mapviewCSS-0.0.1/mapview.css" rel="stylesheet" />
-
-
-<style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
+<title>Analysis of Ecological Data</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
 }
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./01-R_basics.html" rel="next">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
+}</script>
 
-<style type="text/css">
-/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}
-</style>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
-<body>
+<body class="nav-sidebar floating">
 
-
-
-  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
-
-    <div class="book-summary">
-      <nav role="navigation">
-
-<ul class="summary">
-<li><a href="./">Analysis of Ecological Data</a></li>
-
-<li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Welcome</a></li>
-<li class="chapter" data-level="2" data-path="ecological-data.html"><a href="ecological-data.html"><i class="fa fa-check"></i><b>2</b> Ecological data</a></li>
-<li class="chapter" data-level="3" data-path="what-is-r.html"><a href="what-is-r.html"><i class="fa fa-check"></i><b>3</b> What is R?</a></li>
-<li class="chapter" data-level="4" data-path="the-aasee-dataset.html"><a href="the-aasee-dataset.html"><i class="fa fa-check"></i><b>4</b> The Aasee Dataset</a></li>
-<li class="chapter" data-level="5" data-path="r-foundations.html"><a href="r-foundations.html"><i class="fa fa-check"></i><b>5</b> R foundations</a></li>
-<li class="chapter" data-level="6" data-path="dataframes.html"><a href="dataframes.html"><i class="fa fa-check"></i><b>6</b> Dataframes</a></li>
-<li class="chapter" data-level="7" data-path="project-setup.html"><a href="project-setup.html"><i class="fa fa-check"></i><b>7</b> Project Setup</a></li>
-<li class="chapter" data-level="8" data-path="string-handling.html"><a href="string-handling.html"><i class="fa fa-check"></i><b>8</b> String handling</a></li>
-<li class="chapter" data-level="9" data-path="casestudy-aasee-fish-mortality.html"><a href="casestudy-aasee-fish-mortality.html"><i class="fa fa-check"></i><b>9</b> Casestudy: Aasee fish mortality</a></li>
-<li class="chapter" data-level="10" data-path="tidyverse-functions.html"><a href="tidyverse-functions.html"><i class="fa fa-check"></i><b>10</b> Tidyverse functions</a></li>
-<li class="chapter" data-level="11" data-path="simple-visualizations.html"><a href="simple-visualizations.html"><i class="fa fa-check"></i><b>11</b> Simple Visualizations</a></li>
-<li class="chapter" data-level="12" data-path="linear-models.html"><a href="linear-models.html"><i class="fa fa-check"></i><b>12</b> Linear Models</a></li>
-<li class="chapter" data-level="13" data-path="species-data.html"><a href="species-data.html"><i class="fa fa-check"></i><b>13</b> Species data</a></li>
-<li class="chapter" data-level="14" data-path="urban-trees.html"><a href="urban-trees.html"><i class="fa fa-check"></i><b>14</b> Urban Trees</a></li>
-<li class="chapter" data-level="15" data-path="advanced-visualizations.html"><a href="advanced-visualizations.html"><i class="fa fa-check"></i><b>15</b> Advanced Visualizations</a></li>
-<li class="chapter" data-level="16" data-path="additional-ressources.html"><a href="additional-ressources.html"><i class="fa fa-check"></i><b>16</b> Additional Ressources</a></li>
-<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
-<li class="divider"></li>
-<li><a href="https://github.com/rstudio/bookdown" target="blank">Made with bookdown</a></li>
-
-</ul>
-
-      </nav>
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Analysis of Ecological Data</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
     </div>
-
-    <div class="book-body">
-      <div class="body-inner">
-        <div class="book-header" role="navigation">
-          <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Analysis of Ecological Data with R</a>
-          </h1>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Analysis of Ecological Data</a> 
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
         </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Analysis of Ecological Data with R</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Resources</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-R_basics.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">What is R?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-data_examples.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Ecological data</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Exercises</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./exercise/E01-variablen.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E01: Variablen, Funktionen, Vektoren</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Appendices</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./98-additional_resources.html" class="sidebar-item-text sidebar-link">Additional Ressources</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#welcome" id="toc-welcome" class="nav-link active" data-scroll-target="#welcome">Welcome</a>
+  <ul class="collapse">
+  <li><a href="#target-audience" id="toc-target-audience" class="nav-link" data-scroll-target="#target-audience">Target audience</a></li>
+  <li><a href="#aims-of-this-course" id="toc-aims-of-this-course" class="nav-link" data-scroll-target="#aims-of-this-course">Aims of this course</a></li>
+  <li><a href="#what-this-course-is-not" id="toc-what-this-course-is-not" class="nav-link" data-scroll-target="#what-this-course-is-not">What this course is not</a></li>
+  <li><a href="#course-outline" id="toc-course-outline" class="nav-link" data-scroll-target="#course-outline">Course Outline</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
 
-        <div class="page-wrapper" tabindex="-1" role="main">
-          <div class="page-inner">
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">Analysis of Ecological Data</h1>
+</div>
 
-            <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Analysis of Ecological Data with R</h1>
-<p class="author"><em>Marvin Ludwig</em></p>
+<div>
+  <div class="description">
+    <p>This is a slide and execise collection for the ILOEK Course “Analysis of ecological data in R”.</p>
+  </div>
 </div>
-<div id="welcome" class="section level1 hasAnchor" number="1">
-<h1><span class="header-section-number">1</span> Welcome<a href="index.html#welcome" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-1"></span>
-<img src="assets/cover_image.png" alt="Landscape Ecology with R" width="634" />
-<p class="caption">
-Figure 1.1: Landscape Ecology with R
-</p>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Marvin Ludwig </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="welcome" class="level1 unnumbered">
+<h1 class="unnumbered">Welcome</h1>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/cover_image.png" class="img-fluid figure-img" width="634"></p>
+<p></p><figcaption class="figure-caption">Landscape Ecology with R</figcaption><p></p>
+</figure>
 </div>
-<div id="target-audience" class="section level2 hasAnchor" number="1.1">
-<h2><span class="header-section-number">1.1</span> Target audience<a href="index.html#target-audience" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+</div>
+<section id="target-audience" class="level2">
+<h2 class="anchored" data-anchor-id="target-audience">Target audience</h2>
 <ul>
 <li>You want answers to questions (in landscape ecology)!</li>
 <li>Primarily ecologists but the methods and skills are useful in many fields.</li>
@@ -231,22 +226,21 @@ Figure 1.1: Landscape Ecology with R
 <li>It is helpful if you know what a spreadsheet is</li>
 <li>Minimum amount of statistic needed (course explains all the necessary stuff)</li>
 </ul>
-</div>
-<div id="aims-of-this-course" class="section level2 hasAnchor" number="1.2">
-<h2><span class="header-section-number">1.2</span> Aims of this course<a href="index.html#aims-of-this-course" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</section>
+<section id="aims-of-this-course" class="level2">
+<h2 class="anchored" data-anchor-id="aims-of-this-course">Aims of this course</h2>
 <ul>
 <li>Developing ideas, answering questions</li>
 <li>Defining steps how to solve a problem</li>
 <li>Translating these steps into R code</li>
-<li>Learning the R language “on the fly”</li>
+<li>Learning the necessary R language on the way</li>
 <li>Data handling. A lot of data handling.</li>
 <li>I believe a good understanding of data is one of the most important things in science and work.</li>
 <li>Learn statistics. Use statistics as a tool.</li>
-<li>developing good scripting and project management habits from the start (makes live so much easier)</li>
 </ul>
-</div>
-<div id="what-this-course-is-not" class="section level2 hasAnchor" number="1.3">
-<h2><span class="header-section-number">1.3</span> What this course is not<a href="index.html#what-this-course-is-not" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</section>
+<section id="what-this-course-is-not" class="level2">
+<h2 class="anchored" data-anchor-id="what-this-course-is-not">What this course is not</h2>
 <ul>
 <li>statistics as in mathematical equations</li>
 </ul>
@@ -263,162 +257,244 @@ Figure 1.1: Landscape Ecology with R
 <li>R as in computer science</li>
 <li>You probably won’t find out anything you didn’t already know about nature</li>
 </ul>
-</div>
-<div id="course-outline-2022" class="section level2 hasAnchor" number="1.4">
-<h2><span class="header-section-number">1.4</span> Course Outline 2022<a href="index.html#course-outline-2022" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<table>
-<caption><span id="tab:nice-tab">Table 1.1: </span>Course Outline</caption>
+</section>
+<section id="course-outline" class="level2">
+<h2 class="anchored" data-anchor-id="course-outline">Course Outline</h2>
+<ul>
+<li>Summary and Exercises from last week</li>
+<li>New Input</li>
+<li>Exercises</li>
+<li><strong>Studienleistung:</strong> 8 Abgaben - Bestanden mit 50%</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-sm table-striped">
+<caption>Course Outline</caption>
 <colgroup>
-<col width="9%" />
-<col width="90%" />
+<col style="width: 9%">
+<col style="width: 90%">
 </colgroup>
 <thead>
 <tr class="header">
-<th align="left">Date</th>
-<th align="left">Content</th>
+<th style="text-align: left;">Date</th>
+<th style="text-align: left;">Content</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">07.04.</td>
-<td align="left">Organization - Topic Overview - What is R? - What is ecological data?</td>
+<td style="text-align: left;">06.04.</td>
+<td style="text-align: left;">Organization - Topic Overview - What is R? - What is ecological data?</td>
 </tr>
 <tr class="even">
-<td align="left">14.04.</td>
-<td align="left">R foundations - functions - vectors</td>
+<td style="text-align: left;">13.04.</td>
+<td style="text-align: left;">R foundations I - functions - vectors</td>
 </tr>
 <tr class="odd">
-<td align="left">21.04.</td>
-<td align="left">Aasee water monitoring - dataframes - data input - subsetting</td>
+<td style="text-align: left;">20.04.</td>
+<td style="text-align: left;">R foundations II - lists - logical operators</td>
 </tr>
 <tr class="even">
-<td align="left">28.04.</td>
-<td align="left">Aasee water monitoring - strings - boxplots - comparisons</td>
+<td style="text-align: left;">27.04.</td>
+<td style="text-align: left;">Aasee water monitoring - data.frames - subsetting</td>
 </tr>
 <tr class="odd">
-<td align="left">05.05.</td>
-<td align="left">Aasee water monitoring - fish mortality - tidyverse</td>
+<td style="text-align: left;">04.05.</td>
+<td style="text-align: left;">Aasee water monitoring - strings</td>
 </tr>
 <tr class="even">
-<td align="left">12.05.</td>
-<td align="left">Aasee water monitoring - correlations - linear models</td>
+<td style="text-align: left;">11.05.</td>
+<td style="text-align: left;">Aasee water monitoring - correlations - linear models</td>
 </tr>
 <tr class="odd">
-<td align="left">19.05.</td>
-<td align="left">Biodiversity Data - Task and Tutorium (Vertretung)</td>
+<td style="text-align: left;">18.05.</td>
+<td style="text-align: left;">—- Feiertag —-</td>
 </tr>
 <tr class="even">
-<td align="left">26.05.</td>
-<td align="left">—- Feiertag —-</td>
+<td style="text-align: left;">25.05.</td>
+<td style="text-align: left;">Buffer</td>
 </tr>
 <tr class="odd">
-<td align="left">02.06.</td>
-<td align="left">Besprechung Task and Tutorium</td>
+<td style="text-align: left;">02.06.</td>
+<td style="text-align: left;">—- Pfingstferien —-</td>
 </tr>
 <tr class="even">
-<td align="left">09.06.</td>
-<td align="left">—- Pfingstferien —-</td>
+<td style="text-align: left;">08.06.</td>
+<td style="text-align: left;">—- Feiertag —-</td>
 </tr>
 <tr class="odd">
-<td align="left">16.06.</td>
-<td align="left">—- Feiertag —-</td>
+<td style="text-align: left;">15.06.</td>
+<td style="text-align: left;">Biodiversity Data</td>
 </tr>
 <tr class="even">
-<td align="left">23.06.</td>
-<td align="left">Biodiversity Data</td>
+<td style="text-align: left;">22.06.</td>
+<td style="text-align: left;">Biodiversity Data</td>
 </tr>
 <tr class="odd">
-<td align="left">30.06.</td>
-<td align="left">Visualizations - ggplot</td>
+<td style="text-align: left;">29.06.</td>
+<td style="text-align: left;">Visualizations - ggplot</td>
 </tr>
 <tr class="even">
-<td align="left">07.07.</td>
-<td align="left">Open Topics</td>
+<td style="text-align: left;">06.07.</td>
+<td style="text-align: left;">Visualizations - ggplot</td>
 </tr>
 <tr class="odd">
-<td align="left">14.07.</td>
-<td align="left">Wrap up</td>
+<td style="text-align: left;">13.07.</td>
+<td style="text-align: left;">Wrap up</td>
 </tr>
 </tbody>
 </table>
-
 </div>
 </div>
-            </section>
 
-          </div>
-        </div>
-      </div>
 
-<a href="ecological-data.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
-    </div>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
   </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
-<script>
-gitbook.require(["gitbook"], function(gitbook) {
-gitbook.start({
-"sharing": {
-"github": true,
-"facebook": false,
-"twitter": false,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/index.Rmd",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["ecoanalysis.pdf"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "section",
-"scroll_highlight": true
-}
-});
-});
-</script>
+  <div class="nav-page nav-page-next">
+      <a href="./01-R_basics.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-title">What is R?</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
-</body>
 
-</html>
+
+</body></html>
