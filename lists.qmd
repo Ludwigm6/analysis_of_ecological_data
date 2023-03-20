@@ -1,0 +1,100 @@
+# Lists
+
+
+
+- stores arbitrary content (string, numeric, vectors...)
+- created with `list()`, entries separated by `,`
+
+
+```{r}
+
+number = 6
+l = list(5, number, "Hi Mom", c(1,5))
+l
+```
+
+
+## Some generic functions with lists
+
+```{r}
+length(l)
+
+summary(l)
+```
+
+
+
+## Subsetting Lists
+
+
+There are multiple ways to subset a list (i.e. get a specific or multiple entries).
+
+Subsetting with `[ ]` returns a list.
+```{r}
+l[1]
+class(l[1])
+
+
+# We can select multiple entries by using a vector
+l[c(1,3)]
+```
+
+
+More commonly you don't want a list, but the content that is stored in the list.
+For this you use double square brackets `[[ ]]`.
+
+
+```{r}
+#| error: true
+
+l[[2]]
+class(l[[2]])
+
+
+# Selecting multiple entires is not possible
+
+l[[c(1,2)]]
+```
+
+
+## Named entries
+
+Lists become even more useful when we start to name list entries.
+Our created list does not have names (we declared no names in the list creation).
+
+
+```{r}
+names(l)
+names(l) = c("a", "b", "c", "d")
+l
+```
+
+Calling the list now also shows the entry names (after the `$`).
+We can use the names now to select specific entries.
+
+```{r}
+
+# single brackets: return list
+l[c("c", "a")]
+
+# double brackets: return value
+l[["b"]]
+# or
+l$b
+```
+
+
+```{r}
+# Preisfrage:
+l[c(1,"b")]
+```
+
+
+```{r}
+
+```
+
+
+
+
+

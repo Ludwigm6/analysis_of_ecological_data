@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Analysis of Ecological Data - 6&nbsp; E01: Variablen, Funktionen, Vektoren</title>
+<title>Analysis of Ecological Data - 2&nbsp; What is R?</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -83,28 +83,47 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="../98-additional_resources.html" rel="next">
-<link href="../04-vectors.html" rel="prev">
-<link href="..//home/marvin/images/pictogramms/ecoR.svg" rel="icon" type="image/svg+xml">
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./02-data_examples.html" rel="next">
+<link href="./index.html" rel="prev">
+<link href=".//home/marvin/images/pictogramms/ecoR.svg" rel="icon" type="image/svg+xml">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -134,7 +153,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-title">E01: Variablen, Funktionen, Vektoren</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-title">What is R?</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -147,7 +166,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../">Analysis of Ecological Data</a> 
+      <a href="./">Analysis of Ecological Data</a> 
     </div>
       </div>
       <div class="mt-2 flex-shrink-0 align-items-center">
@@ -159,7 +178,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Analysis of Ecological Data with R</span></a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Analysis of Ecological Data with R</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -172,22 +191,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../02-data_examples.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Ecological data</span></a>
+  <a href="./R_basics-01.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">What is R?</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../R_basics-01.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">What is R?</span></a>
+  <a href="./02-data_examples.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Ecological data</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../R_basics-02.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">The very basics</span></a>
+  <a href="./R_basics-02.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">The very basics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../04-vectors.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Vectors</span></a>
+  <a href="./04-vectors.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Vectors</span></a>
   </div>
 </li>
       </ul>
@@ -202,7 +221,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../exercise/E01-variablen.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">E01: Variablen, Funktionen, Vektoren</span></a>
+  <a href="./exercise/E01-variablen.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E01: Variablen, Funktionen, Vektoren</span></a>
   </div>
 </li>
       </ul>
@@ -217,12 +236,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../98-additional_resources.html" class="sidebar-item-text sidebar-link">Additional Ressources</a>
+  <a href="./98-additional_resources.html" class="sidebar-item-text sidebar-link">Additional Ressources</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../references.html" class="sidebar-item-text sidebar-link">References</a>
+  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
   </div>
 </li>
       </ul>
@@ -236,8 +255,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#variablen" id="toc-variablen" class="nav-link active" data-scroll-target="#variablen">Variablen</a></li>
-  <li><a href="#funktionen" id="toc-funktionen" class="nav-link" data-scroll-target="#funktionen">Funktionen</a></li>
+  <li><a href="#r-code" id="toc-r-code" class="nav-link active" data-scroll-target="#r-code">R Code</a></li>
+  <li><a href="#why-r" id="toc-why-r" class="nav-link" data-scroll-target="#why-r">Why R?</a></li>
+  <li><a href="#rstudio" id="toc-rstudio" class="nav-link" data-scroll-target="#rstudio">Rstudio</a></li>
+  <li><a href="#task-r-and-rstudio" id="toc-task-r-and-rstudio" class="nav-link" data-scroll-target="#task-r-and-rstudio">TASK: R and Rstudio</a>
+  <ul class="collapse">
+  <li><a href="#questions-you-might-have" id="toc-questions-you-might-have" class="nav-link" data-scroll-target="#questions-you-might-have">Questions you might have</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -246,7 +270,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-title">E01: Variablen, Funktionen, Vektoren</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-title">What is R?</span></h1>
 </div>
 
 
@@ -261,55 +285,135 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<section id="variablen" class="level2">
-<h2 class="anchored" data-anchor-id="variablen">Variablen</h2>
 <ul>
-<li>Erstelle eine Variable die die Zahl 1650 enthält.</li>
-<li>Erstelle eine Variable die die Zahl 140 enthält.</li>
-<li>Erstelle eine Variable die die Zahl 5 enthält.</li>
-<li>Berechne das Produkt deiner erstellten Variablen.</li>
-<li>Berechne den Mittelwert deiner erstellten Variablen.</li>
+<li>Script Language</li>
+<li>Version 1.0 from 2000 (concept dates back to the 1974)</li>
+<li>Aim: Statistical Analysis</li>
+<li>Designed for data analysis and “interactive” use</li>
+<li>Download: <a href="https://www.r-project.org/">r-project.org</a></li>
 </ul>
-<div class="cell">
-
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://www.r-project.org/Rlogo.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">r-project.org</figcaption><p></p>
+</figure>
 </div>
-<ul>
-<li>Erstelle eine Variable die deinen Vornamen enthält.</li>
-<li>Erstelle eine Variable die deinen Nachnamen enthält.</li>
-<li>Die <code>paste</code> Funktion kann Texte zusammenfügen. Probiere die Funktion mit den Variablen die deine Namen enthalten aus.</li>
-</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/R_window.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">What you see when you start R</figcaption><p></p>
+</figure>
+</div>
+<section id="r-code" class="level2">
+<h2 class="anchored" data-anchor-id="r-code">R Code</h2>
+<p>How R code looks like:</p>
 <div class="cell">
-
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">45</span>, <span class="dv">65</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">87</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(data)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">+</span> <span class="dv">5</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>How R code looks like with output:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">45</span>, <span class="dv">65</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">87</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 35.5</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">+</span> <span class="dv">5</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  6  8 17 50 70 92</code></pre>
+</div>
 </div>
 </section>
-<section id="funktionen" class="level2">
-<h2 class="anchored" data-anchor-id="funktionen">Funktionen</h2>
+<section id="why-r" class="level2">
+<h2 class="anchored" data-anchor-id="why-r">Why R?</h2>
 <ul>
-<li>Vektoren in R sind Folgen von Werten enthalten also z.B. mehrere Zahlen. Sie werden mit der Funktion <code>c()</code> erstellt:</li>
+<li>Easy to get into (although it might not feel that way at first)</li>
+<li>Designed for solving scientific problems</li>
+<li>Big community - Getting help is really easy.</li>
+<li>Open-source, active development</li>
 </ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>numbers <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">8</span>, <span class="dv">90</span>, <span class="dv">16</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>numbers</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1]  4  3  8 90 16</code></pre>
-</div>
-</div>
+<blockquote class="blockquote">
+<p>The R package structure has been the key addition to the software - <span class="citation" data-cites="Chambers2020">J. Chambers M. (<a href="references.html#ref-Chambers2020" role="doc-biblioref">2020</a>)</span></p>
+</blockquote>
 <ul>
-<li>Teste die Funktionen <code>length()</code>, <code>sum()</code>, <code>sqrt()</code>, und <code>min()</code> mit dem Vektor.</li>
-<li>Was macht die <code>sqrt()</code> Funktion?</li>
-<li>Was ist der Unterschied zwischen der <code>max()</code> Funktion und der <code>which.max()</code> Funktion?</li>
-</ul>
-<div class="cell">
-
-</div>
+<li>Expandable with <code>packages</code> provided by other R users
 <ul>
-<li>Die <code>seq()</code> Funktion erzeugt einen Vektor der Zahlenfolgenfolgen enthält. Sieh dir die Hilfeseite von <code>seq()</code> an und erstelle einen Vektor der alle 100er Zahlen von 0 bis 10000 enthält (also 0, 100, 200, … ,9900, 10000).</li>
+<li>Specialized analysis for specific fields</li>
+<li>Machine Learning</li>
+<li>Medicine</li>
+<li>Writing Books</li>
+<li>…</li>
+</ul></li>
+<li>Used in science, industry, healthcare, NGOs, …</li>
 </ul>
-<div class="cell">
-
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://hess.copernicus.org/articles/23/2939/2019/hess-23-2939-2019-f03-web.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption"><span class="citation" data-cites="Slater2019">Slater et al. (<a href="references.html#ref-Slater2019" role="doc-biblioref">2019</a>)</span> : Workflow with R packages</figcaption><p></p>
+</figure>
 </div>
+</section>
+<section id="rstudio" class="level2">
+<h2 class="anchored" data-anchor-id="rstudio">Rstudio</h2>
+<ul>
+<li>Integrated Development Environment (IDE)</li>
+<li>Makes R “convenient” to use</li>
+<li>Text Editor + R Console</li>
+<li>Project Environments, Package Management, Help Pages, Plot Viewer, File Browser …</li>
+</ul>
+</section>
+<section id="task-r-and-rstudio" class="level2">
+<h2 class="anchored" data-anchor-id="task-r-and-rstudio">TASK: R and Rstudio</h2>
+<ol type="1">
+<li>Open R studio and get familiar with the interface.</li>
+<li>Create a new, empty R script.</li>
+<li>What is the difference between the script editor and the console?</li>
+<li>Copy the code below into the R script and run it line by line. Try to understand what each line does.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>a <span class="sc">+</span> b</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> a<span class="sc">-</span>b</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">12</span>,<span class="dv">6</span>,<span class="dv">9</span>,<span class="dv">23</span>)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>v</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>v <span class="sc">/</span> b</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(v)</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="co"># sum(v)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="questions-you-might-have" class="level3">
+<h3 class="anchored" data-anchor-id="questions-you-might-have">Questions you might have</h3>
+<ul>
+<li>Why does <code>p &lt;- a*b</code> not produce an output?</li>
+<li>What is <code>c()</code>?</li>
+<li>Why does <code># sum(v)</code> not work?</li>
+</ul>
+<blockquote class="blockquote">
+<p>Everything that exists in R is an object. Everything that happens in R is a function call. - <span class="citation" data-cites="Chambers2016">J. M. Chambers (<a href="references.html#ref-Chambers2016" role="doc-biblioref">2016</a>)</span></p>
+</blockquote>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
+<div id="ref-Chambers2016" class="csl-entry" role="doc-biblioentry">
+Chambers, John M. 2016. <em>Extending <span>R</span></em>. The <span>R</span> Series. <span>Boca Raton, Fla. London New York</span>: <span>CRC Press, Taylor &amp; Francis Group</span>.
+</div>
+<div id="ref-Chambers2020" class="csl-entry" role="doc-biblioentry">
+Chambers, John, M. 2020. <span>“S, <span>R</span>, and <span>Data Science</span>.”</span> <em>The R Journal</em> 12 (1): 462. <a href="https://doi.org/10.32614/RJ-2020-028">https://doi.org/10.32614/RJ-2020-028</a>.
+</div>
+<div id="ref-Slater2019" class="csl-entry" role="doc-biblioentry">
+Slater, Louise J., Guillaume Thirel, Shaun Harrigan, Olivier Delaigue, Alexander Hurley, Abdou Khouakhi, Ilaria Prosdocimi, Claudia Vitolo, and Katie Smith. 2019. <span>“Using <span>R</span> in Hydrology: A Review of Recent Developments and Future Directions.”</span> <em>Hydrology and Earth System Sciences</em> 23 (7): 2939–63. <a href="https://doi.org/10.5194/hess-23-2939-2019">https://doi.org/10.5194/hess-23-2939-2019</a>.
+</div>
+</div>
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -448,13 +552,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../04-vectors.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Vectors</span></span>
+      <a href="./index.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Analysis of Ecological Data with R</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../98-additional_resources.html" class="pagination-link">
-        <span class="nav-page-text">Additional Ressources</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./02-data_examples.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-title">Ecological data</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

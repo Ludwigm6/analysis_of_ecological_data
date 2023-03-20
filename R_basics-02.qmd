@@ -1,0 +1,84 @@
+# The very basics
+
+## Variables
+
+* assign values to variables either with `<-` or `=`
+* variable on the left, assigned value on the right
+* You decide how to name a variable.
+    * Use recognizable names!
+    * Don't be lazy. Longer, descriptive names help immensely.
+
+```{r}
+a <- 5
+b = 10
+
+a_big_number = 500000
+```
+
+## Values
+
+* How is data represented in R?
+* Types we need right now:
+    * numeric
+    * character (string / text)
+    * logical
+    * "nothing"
+
+```{r, eval = FALSE}
+# numeric
+1
+68542
+4.5
+
+
+# character
+"f"
+"Hi Mom!"
+
+# logical
+TRUE
+F
+
+# nothing
+NA # there should be something, but it is missing
+NULL # truly nothing
+```
+
+## Functions
+
+* Everything you do in R is a function!
+* Easily identified by function name followed by parenthesis (), e.g. `print()`
+* for common functions there are shortcuts
+
+
+```{r}
+# the class() function returns the type of the input
+a <- 5
+class(a)
+
+# the nchar() function returns the number of characters in a string
+nchar("Hi Mom")
+
+
+# Really everything you do in R is a function!
+`<-`(b, 10)
+print(b)
+```
+
+* most functions need __arguments__
+* input, options, parameters to specify what the function should do
+* each function has a help page where you can read about arguments
+
+
+For example, the `cos()` function computes the cosine of a number. The help page specifies what the function expects as an input. You can access the help page with `?cos()` or by searching for the function in the 'Help' tab in Rstudio (bottom right panel).
+
+```{r, error = TRUE}
+# the cos function needs the argument x of type numeric
+cos(x = 0)
+
+# it throws an error otherwise
+cos(x = "3.14")
+
+# argument names can be neglected
+cos(1)
+```

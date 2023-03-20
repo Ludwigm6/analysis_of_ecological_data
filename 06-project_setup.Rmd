@@ -1,6 +1,6 @@
 # Project Setup
 
-Once you deal with external files (e.g. loading a .csv), saving outputs or reports, you have to deal with a senseful file structure.
+Once you deal with external files (e.g. loading a .csv), saving outputs or reports, you have to deal with directory and file structure.
 This is often harder than the actual R code itself. To keep everything easy and consistent within R (at least for this course), I recommend using Rstudio Projects with a standardized directory setup.
 
 

@@ -1,87 +1,4 @@
-# R foundations
-
-
-## Variables
-
-* assign values to variables either with `<-` or `=`
-* variable on the left, assigned value on the right
-* You decide how to name a variable.
-    * Use recognizable names!
-    * Don't be lazy. Longer, descriptive names can help immensely.
-
-```{r}
-a <- 5
-b = 10
-
-a_big_number = 500000
-```
-
-## Values
-
-* How is data represented in R?
-* Types we need right now:
-    * numeric
-    * character (string / text)
-    * logical
-
-```{r, eval = FALSE}
-# numeric
-1
-68542
-4.5
-
-
-# character
-"f"
-"Hi Mom!"
-
-# logical
-TRUE
-F
-
-# nothing
-NA # there should be something, but it is missing
-NULL # truly nothing
-```
-
-## Functions
-
-* Everything you do in R is a function!
-* Easily identified by function name followed by parenthesis (), e.g. `print()`
-* for common functions there are shortcuts
-
-
-```{r}
-# Really everything you do in R is a function!
-`<-`(a, 5)
-print(a)
-
-# both functions above have shortcuts:
-a <- 5
-a
-```
-
-* most functions need __arguments__
-* input, options, parameters to specify what the function should do
-* each function has a help page where you can read about arguments
-
-
-For example, the `cos()` function computes the cosine of a number. The help page specifies what the function expects as an input. You can access the help page with `?cos()` or by searching for the function in the 'Help' tab in Rstudio (bottom right panel).
-
-```{r, error = TRUE}
-# the cos function needs the argument x of type numeric
-cos(x = 0)
-
-# it throws an error otherwise
-cos(x = "3.14")
-
-# argument names can be neglected
-cos(1)
-```
-
-
-
-## Vectors
+# Vectors
 
 * most important data structure in R
 * building block for more complicated structures
@@ -112,7 +29,7 @@ vec = c(23, 1, 60, 21, 21)
 ```
 
 
-### Vector Maths
+## Vector Maths
 
 
 ```{r, fig.cap="R vector addition", echo = FALSE}
@@ -148,10 +65,9 @@ vec1 * vec4
 
 
 
-### TASK: Vectors and functions
+## Vectors and functions
 
-The vector below are the temperature values for 2021-06-02 from the Aasee dataset.
-Copy it into an empty are script. 
+The vector below are the temperature values for the Aasee in Münster from the 2021-06-02.
 
 ```{r, results = "hide"}
 temperature <- c(18.81,18.73,18.92,18.87,18.76,18.79,18.87,18.84,18.89,18.89,
@@ -169,15 +85,6 @@ temperature <- c(18.81,18.73,18.92,18.87,18.76,18.79,18.87,18.84,18.89,18.89,
                  19.75,19.76,19.85,19.82,19.86,20.08,20.06,19.85,20.04,19.90,
                  19.96,20.12,19.94,20.20,20.17,20.31,20.17,20.37,20.36,20.13)
 ```
-
-
-To get familiar with the R syntax and vectors, do the following tasks:
-
-* Convert the temperature from Celsius to Fahrenheit.
-* Try out the following functions: `length()`, `range()`, `seq()`
-
-> Come up with a reasonable questions that someone might have looking at this data.
-
 
 
 ## Subsetting
