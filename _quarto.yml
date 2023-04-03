@@ -7,19 +7,17 @@ book:
   title: "Analysis of Ecological Data"
   author: "Marvin Ludwig"
   chapters:
-    - index.Rmd
-    - part: "Resources"
-      chapters:
-      - "02-data_examples.Rmd"
-      - "R_basics-01.qmd"
-      - "R_basics-02.qmd"
-      - "04-vectors.qmd"
+    - "index.Rmd"
+    - "D01_data_examples.Rmd"
+    - "R01_introduction.qmd"
+    - "R02_basics.qmd"
+    - "R03_vectors.qmd"
     - part: "Exercises"
       chapters:
       - "exercise/E01-variablen.Rmd"
   appendices:
-  - 98-additional_resources.Rmd
-  - references.qmd
+  - "98-additional_resources.Rmd"
+  - "references.qmd"
   favicon: "/home/marvin/images/pictogramms/ecoR.svg"
     
 bibliography: "/home/marvin/literature/zotero/references.bib"

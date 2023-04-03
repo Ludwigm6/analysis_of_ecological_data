@@ -109,14 +109,14 @@
     "href": "index.html#course-outline",
     "title": "Analysis of Ecological Data",
     "section": "Course Outline",
-    "text": "Course Outline\n\nSummary and Exercises from last week\nNew Input\nExercises\nStudienleistung: 8 Abgaben - Bestanden mit 50%\n\n\n\n\nCourse Outline\n\n\n\n\n\n\nDate\nContent\n\n\n\n\n06.04.\nOrganization - Topic Overview - What is R? - What is ecological data?\n\n\n13.04.\nR foundations I - functions - vectors\n\n\n20.04.\nR foundations II - lists - logical operators\n\n\n27.04.\nAasee water monitoring - data.frames - subsetting\n\n\n04.05.\nAasee water monitoring - strings\n\n\n11.05.\nAasee water monitoring - correlations - linear models\n\n\n18.05.\n—- Feiertag —-\n\n\n25.05.\nBuffer\n\n\n02.06.\n—- Pfingstferien —-\n\n\n08.06.\n—- Feiertag —-\n\n\n15.06.\nBiodiversity Data\n\n\n22.06.\nBiodiversity Data\n\n\n29.06.\nVisualizations - ggplot\n\n\n06.07.\nVisualizations - ggplot\n\n\n13.07.\nWrap up"
+    "text": "Course Outline\n\nSummary and Exercises from last week\nNew Input\nExercises\nStudienleistung: 10 assignments - Passed with 6 assignments > 50%\n\n\n\n\nCourse Outline\n\n\n\n\n\n\nDate\nContent\n\n\n\n\n06.04.\nOrganization - Topic Overview - What is R? - What is ecological data?\n\n\n13.04.\nR foundations I - functions - vectors\n\n\n20.04.\nR foundations II - lists - logical operators\n\n\n27.04.\nAasee water monitoring - data.frames - subsetting\n\n\n04.05.\nAasee water monitoring - strings\n\n\n11.05.\nAasee water monitoring - correlations - linear models\n\n\n18.05.\n—- Feiertag —-\n\n\n25.05.\nBuffer\n\n\n02.06.\n—- Pfingstferien —-\n\n\n08.06.\n—- Feiertag —-\n\n\n15.06.\nBiodiversity Data\n\n\n22.06.\nBiodiversity Data\n\n\n29.06.\nVisualizations - ggplot\n\n\n06.07.\nVisualizations - ggplot\n\n\n13.07.\nWrap up"
   },
   {
     "objectID": "exercise/E01-variablen.html#funktionen",
     "href": "exercise/E01-variablen.html#funktionen",
-    "title": "E01: Variablen, Funktionen, Vektoren",
+    "title": "E01: Variablen, Funktionen",
     "section": "Funktionen",
-    "text": "Funktionen\n\nVektoren in R sind Folgen von Werten enthalten also z.B. mehrere Zahlen. Sie werden mit der Funktion c() erstellt:\n\n\nnumbers = c(4, 3, 8, 90, 16)\nnumbers\n\n[1]  4  3  8 90 16\n\n\n\nTeste die Funktionen length(), sum(), sqrt(), und min() mit dem Vektor.\nWas macht die sqrt() Funktion?\nWas ist der Unterschied zwischen der max() Funktion und der which.max() Funktion?\n\n\n\n\n\nDie seq() Funktion erzeugt einen Vektor der Zahlenfolgenfolgen enthält. Sieh dir die Hilfeseite von seq() an und erstelle einen Vektor der alle 100er Zahlen von 0 bis 10000 enthält (also 0, 100, 200, … ,9900, 10000)."
+    "text": "Funktionen\n\nVektoren in R sind Folgen von Werten, enthalten also z.B. mehrere Zahlen. Sie werden mit der Funktion c() erstellt:\n\n\nnumbers = c(4, 3, 8, 90, 16)\nnumbers\n\n[1]  4  3  8 90 16\n\n\n\nTeste die Funktionen length(), sum(), sqrt(), und min() mit dem Vektor.\nWas macht die sqrt() Funktion?\nWas ist der Unterschied zwischen der max() Funktion und der which.max() Funktion?\n\n\n\n\n\nDie seq() Funktion erzeugt einen Vektor der Zahlenfolgenfolgen enthält. Sieh dir die Hilfeseite von seq() an und erstelle einen Vektor der alle 100er Zahlen von 0 bis 10000 enthält (also 0, 100, 200, … ,9900, 10000)."
   },
   {
     "objectID": "exercise/E01-variablen.html#vektoren-funktionen",
@@ -142,7 +142,7 @@
   {
     "objectID": "exercise/E01-variablen.html#variablen",
     "href": "exercise/E01-variablen.html#variablen",
-    "title": "E01: Variablen, Funktionen, Vektoren",
+    "title": "E01: Variablen, Funktionen",
     "section": "Variablen",
     "text": "Variablen\n\nErstelle eine Variable die die Zahl 1650 enthält.\nErstelle eine Variable die die Zahl 140 enthält.\nErstelle eine Variable die die Zahl 5 enthält.\nBerechne das Produkt deiner erstellten Variablen.\nBerechne den Mittelwert deiner erstellten Variablen.\n\n\n\n\n\nErstelle eine Variable die deinen Vornamen enthält.\nErstelle eine Variable die deinen Nachnamen enthält.\nDie paste Funktion kann Texte zusammenfügen. Probiere die Funktion mit den Variablen die deine Namen enthalten aus."
   },
@@ -213,6 +213,111 @@
     "objectID": "04-vectors.html#subsetting",
     "href": "04-vectors.html#subsetting",
     "title": "Vectors",
+    "section": "Subsetting",
+    "text": "Subsetting\nFor many questions it is often required to access only parts of the data. This is one of the most common things you have to deal with in R.\n\nIndexing\nTo access single values of a vector, use square brackets [].\n\n# get the third value of the vector\ntemperature[3]\n\n[1] 18.92\n\n# accessing multiple elements at once\ntemperature[1,2]\n\nError in temperature[1, 2]: incorrect number of dimensions\n\ntemperature[c(1,2)]\n\n[1] 18.81 18.73\n\n\n\nUsing the functions above, what is an easy way to access the first 10 elements of the vector?\n\n\n\nLogical Operators\n\n\n\n\n\nR vector logical operation\n\n\n\n\nA more powerful way to subset a vector is by using logical operators. These functions usually return a boolean object (TRUE, FALSE) which can then be used to access certain values.\n\n1 > 2\n\n[1] FALSE\n\n1 < 2\n\n[1] TRUE\n\n1 == 2\n\n[1] FALSE\n\nmax(temperature) > 22\n\n[1] TRUE\n\ntemperature > 20\n\n  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [13] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [25] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [37] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [49] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [61] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [73] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [85] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [97] FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE\n[109]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE\n[121] FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE  TRUE FALSE FALSE  TRUE\n[133] FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE\n\nhot = temperature > 20\n\ntemperature[hot]\n\n [1] 21.10 21.94 22.52 22.81 22.43 22.16 21.55 21.80 21.02 21.85 21.45 22.48\n[13] 22.73 22.61 22.83 20.85 20.68 20.08 20.06 20.04 20.12 20.20 20.17 20.31\n[25] 20.17 20.37 20.36 20.13"
+  },
+  {
+    "objectID": "D01_data_examples.html#plot-surveys",
+    "href": "D01_data_examples.html#plot-surveys",
+    "title": "D01: Ecological data",
+    "section": "Plot surveys",
+    "text": "Plot surveys\n\nplots with ID and surveyed environmental information\nbread and butter of ecology\n\n\n\n\nField survery data on a plot level\n\n\nplotID\nsoil_ph\nsoil_temperature\nforest_type\n\n\n\n\nP1\n5.5\n10\nconiferous\n\n\nP2\n5.4\n11\nconiferous\n\n\nP3\n6.1\n12\ndeciduous"
+  },
+  {
+    "objectID": "D01_data_examples.html#time-series",
+    "href": "D01_data_examples.html#time-series",
+    "title": "D01: Ecological data",
+    "section": "Time Series",
+    "text": "Time Series\n\n\n\n\n\nVisualization of time series data\n\n\n\n\n\ncontinuous measurements\nmeasurement interval flexible\nmainly climate, soil, remote sensing\n\n\n\n\nTime series data: Aasee sensor measurements\n\n\ndate\ntemperature\nph\no2\n\n\n\n\n2021-06-01\n18.06\n8.12\n11.06\n\n\n2021-06-01\n18.08\n8.10\n10.62\n\n\n2021-06-01\n17.93\n8.15\n11.20\n\n\n2021-06-01\n17.78\n8.19\n11.92\n\n\n2021-06-01\n17.79\n8.13\n11.39"
+  },
+  {
+    "objectID": "D01_data_examples.html#species-lists",
+    "href": "D01_data_examples.html#species-lists",
+    "title": "D01: Ecological data",
+    "section": "Species Lists",
+    "text": "Species Lists\n\nmostly plot based\nmonitoring of conservation sites\nbiodiversity assessment\n\n\n\n\nSpecies Lists: Occurence on a plot\n\n\nspecies\nn\n\n\n\n\nDigitalis purpurea\n4\n\n\nGalium odoratum\n25\n\n\nFagus Sylvatica\n20\n\n\n…\n…\n\n\n\n\n\n\nWhat are the differences between the plot based survey example and the species list example?"
+  },
+  {
+    "objectID": "D01_data_examples.html#geospatial-data",
+    "href": "D01_data_examples.html#geospatial-data",
+    "title": "D01: Ecological data",
+    "section": "Geospatial Data",
+    "text": "Geospatial Data\n\ndefined by explicit location on the earth surface\ninformation attached to coordinates\n\n\n\n\nGeospatial Data: Tree locations\n\n\n\n\n\n\n\n\n\n\ntree_id\neasting\nnorthing\nspecies_code\ndbh\ngeom\n\n\n\n\nr00430\n477422.4\n5631970\nBUR\n0.12\nPOINT (477422.4 5631970)\n\n\nr01106\n477411.7\n5631946\nBUR\n0.68\nPOINT (477411.7 5631946)\n\n\nb00818\n477796.0\n5632316\nBUR\n0.23\nPOINT (477796 5632316)\n\n\nr00170\n477816.9\n5632201\nEIT\n0.59\nPOINT (477816.9 5632201)\n\n\nr00334\n477737.2\n5632250\nERS\n0.68\nPOINT (477737.2 5632250)"
+  },
+  {
+    "objectID": "D01_data_examples.html#want-more",
+    "href": "D01_data_examples.html#want-more",
+    "title": "D01: Ecological data",
+    "section": "Want more?",
+    "text": "Want more?\n\n\n\nTurner (2014) : Sensing Biodiversity\n\n\n\nAnimal movement data\nLab / Field experiments\nIndividuum based information (e.g. traits)\nCamera Traps\nSocio-Economic data (also useful for landscape ecology)\n…\n\n\n\n\n\nTurner, W. 2014. “Sensing Biodiversity.” Science 346 (6207): 301–2. https://doi.org/10.1126/science.1256014."
+  },
+  {
+    "objectID": "R01_introduction.html#r-code",
+    "href": "R01_introduction.html#r-code",
+    "title": "R01: What is R?",
+    "section": "R Code",
+    "text": "R Code\nHow R code looks like:\n\ndata <- c(12, 45, 65, 1, 3, 87)\nmean(data)\n\ndata <- data + 5\nsort(data)\n\nHow R code looks like with output:\n\ndata <- c(12, 45, 65, 1, 3, 87)\nmean(data)\n\n[1] 35.5\n\ndata <- data + 5\nsort(data)\n\n[1]  6  8 17 50 70 92"
+  },
+  {
+    "objectID": "R01_introduction.html#why-r",
+    "href": "R01_introduction.html#why-r",
+    "title": "R01: What is R?",
+    "section": "Why R?",
+    "text": "Why R?\n\nEasy to get into (although it might not feel that way at first)\nDesigned for solving scientific problems\nBig community - Getting help is really easy.\nOpen-source, active development\n\n\nThe R package structure has been the key addition to the software - J. Chambers M. (2020)\n\n\nExpandable with packages provided by other R users\n\nSpecialized analysis for specific fields\nMachine Learning\nMedicine\nWriting Books\n…\n\nUsed in science, industry, healthcare, NGOs, …\n\n\n\n\nSlater et al. (2019) : Workflow with R packages"
+  },
+  {
+    "objectID": "R01_introduction.html#rstudio",
+    "href": "R01_introduction.html#rstudio",
+    "title": "R01: What is R?",
+    "section": "Rstudio",
+    "text": "Rstudio\n\nIntegrated Development Environment (IDE)\nMakes R “convenient” to use\nText Editor + R Console\nProject Environments, Package Management, Help Pages, Plot Viewer, File Browser …"
+  },
+  {
+    "objectID": "R01_introduction.html#task-r-and-rstudio",
+    "href": "R01_introduction.html#task-r-and-rstudio",
+    "title": "R01: What is R?",
+    "section": "TASK: R and Rstudio",
+    "text": "TASK: R and Rstudio\n\nOpen R studio and get familiar with the interface.\nCreate a new, empty R script.\nWhat is the difference between the script editor and the console?\nCopy the code below into the R script and run it line by line. Try to understand what each line does.\n\n\na <- 5\nb <- 10\n\na + b\n\np <- a-b\n\nv <- c(3,12,6,9,23)\nv\n\nv / b\n\nmean(v)\n# sum(v)\n\n\nQuestions you might have\n\nWhy does p <- a*b not produce an output?\nWhat is c()?\nWhy does # sum(v) not work?\n\n\nEverything that exists in R is an object. Everything that happens in R is a function call. - J. M. Chambers (2016)\n\n\n\n\n\nChambers, John M. 2016. Extending R. The R Series. Boca Raton, Fla. London New York: CRC Press, Taylor & Francis Group.\n\n\nChambers, John, M. 2020. “S, R, and Data Science.” The R Journal 12 (1): 462. https://doi.org/10.32614/RJ-2020-028.\n\n\nSlater, Louise J., Guillaume Thirel, Shaun Harrigan, Olivier Delaigue, Alexander Hurley, Abdou Khouakhi, Ilaria Prosdocimi, Claudia Vitolo, and Katie Smith. 2019. “Using R in Hydrology: A Review of Recent Developments and Future Directions.” Hydrology and Earth System Sciences 23 (7): 2939–63. https://doi.org/10.5194/hess-23-2939-2019."
+  },
+  {
+    "objectID": "R02_basics.html#variables",
+    "href": "R02_basics.html#variables",
+    "title": "R02: The very basics",
+    "section": "Variables",
+    "text": "Variables\n\nassign values to variables either with <- or =\nvariable on the left, assigned value on the right\nYou decide how to name a variable.\n\nUse recognizable names!\nDon’t be lazy. Longer, descriptive names help immensely.\n\n\n\na <- 5\nb = 10\n\na_big_number = 500000"
+  },
+  {
+    "objectID": "R02_basics.html#values",
+    "href": "R02_basics.html#values",
+    "title": "R02: The very basics",
+    "section": "Values",
+    "text": "Values\n\nHow is data represented in R?\nTypes we need right now:\n\nnumeric\ncharacter (string / text)\nlogical\n“nothing”\n\n\n\n# numeric\n1\n68542\n4.5\n\n\n# character\n\"f\"\n\"Hi Mom!\"\n\n# logical\nTRUE\nF\n\n# nothing\nNA # there should be something, but it is missing\nNULL # truly nothing"
+  },
+  {
+    "objectID": "R02_basics.html#functions",
+    "href": "R02_basics.html#functions",
+    "title": "R02: The very basics",
+    "section": "Functions",
+    "text": "Functions\n\nEverything you do in R is a function!\nEasily identified by function name followed by parenthesis (), e.g. print()\nfor common functions there are shortcuts\n\n\n# the class() function returns the type of the input\na <- 5\nclass(a)\n\n[1] \"numeric\"\n\n# the nchar() function returns the number of characters in a string\nnchar(\"Hi Mom\")\n\n[1] 6\n\n# Really everything you do in R is a function!\n`<-`(b, 10)\nprint(b)\n\n[1] 10\n\n\n\nmost functions need arguments\ninput, options, parameters to specify what the function should do\neach function has a help page where you can read about arguments\n\nFor example, the cos() function computes the cosine of a number. The help page specifies what the function expects as an input. You can access the help page with ?cos() or by searching for the function in the ‘Help’ tab in Rstudio (bottom right panel).\n\n# the cos function needs the argument x of type numeric\ncos(x = 0)\n\n[1] 1\n\n# it throws an error otherwise\ncos(x = \"3.14\")\n\nError in cos(x = \"3.14\"): non-numeric argument to mathematical function\n\n# argument names can be neglected\ncos(1)\n\n[1] 0.5403023"
+  },
+  {
+    "objectID": "R03_vectors.html#vector-maths",
+    "href": "R03_vectors.html#vector-maths",
+    "title": "R03: Vectors",
+    "section": "Vector Maths",
+    "text": "Vector Maths\n\n\n\n\n\nR vector addition\n\n\n\n\n\nmost of the functions in R are “vectorised”\ni.e. functions are applied to all the elements in a vector\n\n\nvec1 = c(23, 1, 60, 21, 21, 5)\nvec1 + 6\n\n[1] 29  7 66 27 27 11\n\nvec2 = c(5, 1000, 5, 1000, 5, 1000)\nvec1 - vec2\n\n[1]   18 -999   55 -979   16 -995\n\n\n\n\n\n\n\nR vector multiplication, different length\n\n\n\n\n\n# be careful with vectors of different length!\nvec3 = c(1, 2, 1)\nvec1 * vec3\n\n[1] 23  2 60 21 42  5\n\nvec4 = c(1, 2, 1, 2)\nvec1 * vec4\n\n[1] 23  2 60 42 21 10"
+  },
+  {
+    "objectID": "R03_vectors.html#vectors-and-functions",
+    "href": "R03_vectors.html#vectors-and-functions",
+    "title": "R03: Vectors",
+    "section": "Vectors and functions",
+    "text": "Vectors and functions\nThe vector below are the temperature values for the Aasee in Münster from the 2021-06-02.\n\ntemperature <- c(18.81,18.73,18.92,18.87,18.76,18.79,18.87,18.84,18.89,18.89,\n                 18.93,18.95,18.92,18.97,19.00,18.99,19.00,19.00,18.99,19.00,\n                 18.98,18.97,18.97,18.97,18.97,18.98,18.96,18.94,18.94,18.91,\n                 18.90,18.89,18.87,18.85,18.85,18.84,18.83,18.81,18.81,18.81,\n                 18.81,18.81,18.80,18.79,18.80,18.79,18.79,18.78,18.77,18.78,\n                 18.79,18.79,18.79,18.79,18.79,18.79,18.80,18.79,18.81,18.80,\n                 18.81,18.81,18.82,18.84,18.87,18.89,18.89,18.91,18.96,19.02,\n                 19.11,19.15,18.95,18.92,18.84,18.85,18.96,18.92,18.95,18.95,\n                 18.91,19.00,19.02,19.06,19.05,19.47,19.32,19.05,19.66,19.57,\n                 19.23,19.42,19.36,19.66,19.79,19.81,19.99,21.10,21.94,22.52,\n                 22.81,22.43,22.16,21.55,21.80,21.02,21.85,21.45,22.48,22.73,\n                 22.61,22.83,20.85,20.68,19.76,19.81,19.74,19.58,19.35,19.40,\n                 19.75,19.76,19.85,19.82,19.86,20.08,20.06,19.85,20.04,19.90,\n                 19.96,20.12,19.94,20.20,20.17,20.31,20.17,20.37,20.36,20.13)"
+  },
+  {
+    "objectID": "R03_vectors.html#subsetting",
+    "href": "R03_vectors.html#subsetting",
+    "title": "R03: Vectors",
     "section": "Subsetting",
     "text": "Subsetting\nFor many questions it is often required to access only parts of the data. This is one of the most common things you have to deal with in R.\n\nIndexing\nTo access single values of a vector, use square brackets [].\n\n# get the third value of the vector\ntemperature[3]\n\n[1] 18.92\n\n# accessing multiple elements at once\ntemperature[1,2]\n\nError in temperature[1, 2]: incorrect number of dimensions\n\ntemperature[c(1,2)]\n\n[1] 18.81 18.73\n\n\n\nUsing the functions above, what is an easy way to access the first 10 elements of the vector?\n\n\n\nLogical Operators\n\n\n\n\n\nR vector logical operation\n\n\n\n\nA more powerful way to subset a vector is by using logical operators. These functions usually return a boolean object (TRUE, FALSE) which can then be used to access certain values.\n\n1 > 2\n\n[1] FALSE\n\n1 < 2\n\n[1] TRUE\n\n1 == 2\n\n[1] FALSE\n\nmax(temperature) > 22\n\n[1] TRUE\n\ntemperature > 20\n\n  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [13] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [25] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [37] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [49] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [61] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [73] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [85] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [97] FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE\n[109]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE\n[121] FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE  TRUE FALSE FALSE  TRUE\n[133] FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE\n\nhot = temperature > 20\n\ntemperature[hot]\n\n [1] 21.10 21.94 22.52 22.81 22.43 22.16 21.55 21.80 21.02 21.85 21.45 22.48\n[13] 22.73 22.61 22.83 20.85 20.68 20.08 20.06 20.04 20.12 20.20 20.17 20.31\n[25] 20.17 20.37 20.36 20.13"
   }

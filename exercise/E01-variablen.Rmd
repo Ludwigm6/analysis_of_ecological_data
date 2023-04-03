@@ -1,4 +1,4 @@
-# E01: Variablen, Funktionen, Vektoren
+# E01: Variablen, Funktionen
 
 
 ## Variablen
@@ -26,7 +26,7 @@
 ## Funktionen
 
 
-- Vektoren in R sind Folgen von Werten enthalten also z.B. mehrere Zahlen. Sie werden mit der Funktion `c()` erstellt:
+- Vektoren in R sind Folgen von Werten, enthalten also z.B. mehrere Zahlen. Sie werden mit der Funktion `c()` erstellt:
 
 ```{r}
 numbers = c(4, 3, 8, 90, 16)

@@ -78,7 +78,7 @@ $$
 * Summary and Exercises from last week
 * New Input
 * Exercises
-* __Studienleistung:__ 8 Abgaben - Bestanden mit 50%
+* __Studienleistung:__ 10 assignments - Passed with 6 assignments > 50%
 
 ```{r nice-tab, tidy=FALSE, echo = FALSE}
 
