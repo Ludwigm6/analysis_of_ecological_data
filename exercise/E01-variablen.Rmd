@@ -1,3 +1,8 @@
+---
+code-fold: true
+eval: false
+---
+
 # E01: Variablen, Funktionen
 
 

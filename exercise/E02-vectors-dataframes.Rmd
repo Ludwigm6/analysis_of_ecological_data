@@ -85,7 +85,7 @@ head(iris)
 
 
 
-## Ein bisschen Statistik
+## Bonus: Ein bisschen Statistik
 
 * Was ist die durchschnittliche Sepal.Length von "virginica"?
 * Zeichne ein Histogramm der Sepal.Width.
