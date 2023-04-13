@@ -28,14 +28,12 @@ book:
   - "references.qmd"
   favicon: "/home/marvin/images/pictogramms/ecoR.svg"
     
-bibliography: "/home/marvin/literature/zotero/references.bib"
+bibliography: "../../literature/zotero/references.bib"
 number-depth: 0
 format:
   html:
     theme: cosmo
     number-sections: false
-  pdf:
-    documentclass: scrreprt
 execute: 
   warning: false
   message: false
