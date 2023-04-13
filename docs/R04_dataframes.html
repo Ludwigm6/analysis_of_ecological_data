@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Analysis of Ecological Data - 6&nbsp; R02: The very basics</title>
+<title>Analysis of Ecological Data - 8&nbsp; R04: Dataframes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -83,6 +83,25 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 
@@ -93,8 +112,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./R03_vectors.html" rel="next">
-<link href="./R01_introduction.html" rel="prev">
+<link href="./exercise/E01-variablen.html" rel="next">
+<link href="./R03_vectors.html" rel="prev">
 <link href=".//home/marvin/images/pictogramms/ecoR.svg" rel="icon" type="image/svg+xml">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -134,7 +153,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-title">R02: The very basics</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-title">R04: Dataframes</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -202,7 +221,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R02_basics.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">R02: The very basics</span></a>
+  <a href="./R02_basics.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R02: The very basics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -212,7 +231,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R04_dataframes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R04: Dataframes</span></a>
+  <a href="./R04_dataframes.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">R04: Dataframes</span></a>
   </div>
 </li>
       </ul>
@@ -266,9 +285,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#variables" id="toc-variables" class="nav-link active" data-scroll-target="#variables">Variables</a></li>
-  <li><a href="#values" id="toc-values" class="nav-link" data-scroll-target="#values">Values</a></li>
-  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a></li>
+  <li><a href="#csv-files" id="toc-csv-files" class="nav-link active" data-scroll-target="#csv-files">CSV Files</a></li>
   </ul>
 </nav>
     </div>
@@ -277,7 +294,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-title">R02: The very basics</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-title">R04: Dataframes</span></h1>
 </div>
 
 
@@ -292,107 +309,106 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<section id="variables" class="level2">
-<h2 class="anchored" data-anchor-id="variables">Variables</h2>
+<blockquote class="blockquote">
+<p>From a data science perspective, the most important class of objects is the data frame - <span class="citation" data-cites="Chambers2020">Chambers (<a href="references.html#ref-Chambers2020" role="doc-biblioref">2020</a>)</span></p>
+</blockquote>
 <ul>
-<li>assign values to variables either with <code>&lt;-</code> or <code>=</code></li>
-<li>variable on the left, assigned value on the right</li>
-<li>You decide how to name a variable.
-<ul>
-<li>Use recognizable names!</li>
-<li>Don’t be lazy. Longer, descriptive names help immensely.</li>
-</ul></li>
+<li>Dataframes combine multiple vector in a structured format</li>
+<li>Intuitive - most people have seen a spreadsheet before</li>
+<li>Each column is regarded as a vector</li>
+<li>Each vector can have a different data type</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">=</span> <span class="dv">10</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>a_big_number <span class="ot">=</span> <span class="dv">500000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/r_dataframe.svg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">data.frames are a named list of vectors</figcaption><p></p>
+</figure>
 </div>
-</section>
-<section id="values" class="level2">
-<h2 class="anchored" data-anchor-id="values">Values</h2>
+</div>
+</div>
 <ul>
-<li>How is data represented in R?</li>
-<li>Types we need right now:
-<ul>
-<li>numeric</li>
-<li>character (string / text)</li>
-<li>logical</li>
-<li>“nothing”</li>
-</ul></li>
+<li>Create one with <code>data.frame</code></li>
+<li>The functions need the column name followed by the vector of values</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># numeric</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="dv">68542</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fl">4.5</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># character</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="st">"f"</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="st">"Hi Mom!"</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># logical</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="cn">TRUE</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>F</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co"># nothing</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="cn">NA</span> <span class="co"># there should be something, but it is missing</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="cn">NULL</span> <span class="co"># truly nothing</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">plotID =</span> <span class="fu">seq</span>(<span class="dv">3</span>),</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">soil_ph =</span> <span class="fu">c</span>(<span class="fl">5.5</span>, <span class="fl">5.4</span>, <span class="fl">6.1</span>),</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">soil_temperature =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>),</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">forest_type =</span> <span class="fu">c</span>(<span class="st">"coniferous"</span>, <span class="st">"coniferous"</span>, <span class="st">"deciduous"</span>))</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  plotID soil_ph soil_temperature forest_type
+1      1     5.5               10  coniferous
+2      2     5.4               11  coniferous
+3      3     6.1               12   deciduous</code></pre>
 </div>
-</section>
-<section id="functions" class="level2">
-<h2 class="anchored" data-anchor-id="functions">Functions</h2>
+</div>
+<section id="csv-files" class="level2">
+<h2 class="anchored" data-anchor-id="csv-files">CSV Files</h2>
+<p>Dataframes can be loaded from and saved to <code>.csv</code> files.</p>
 <ul>
-<li>Everything you do in R is a function!</li>
-<li>Easily identified by function name followed by parenthesis (), e.g.&nbsp;<code>print()</code></li>
-<li>for common functions there are shortcuts</li>
+<li>Comma Separated Values</li>
+<li>Caution: In Germany “,” is used as the decimal point. You often find “;” as the delimiter in csvs.</li>
+<li>Caution: If you open csv files in Excel, things can get messy</li>
+</ul>
+<pre><code>Datum,Wassertemperatur,pH-Wert,Sauerstoffgehalt
+2021-05-31 23:57,17.98,8.05,10.53
+2021-06-01 00:09,17.66,8.04,9.64
+2021-06-01 00:19,18.03,8.12,11.30
+2021-06-01 00:27,18.08,8.14,11.32
+2021-06-01 00:39,18.06,8.12,11.06
+2021-06-01 00:49,18.01,8.10,10.91</code></pre>
+<ul>
+<li>use the <code>read.csv</code> function</li>
+<li>make sure the <code>dec</code> and <code>sep</code> parameters of the function are properly set</li>
+<li>when in doubt look at the help page <code>?read.csv</code></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the class() function returns the type of the input</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">"data/2021-06_aasee.csv"</span>, <span class="at">dec =</span> <span class="st">"."</span>, <span class="at">sep =</span> <span class="st">","</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># show the first few rows of the df</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "numeric"</code></pre>
+<pre><code>             Datum Wassertemperatur pH.Wert Sauerstoffgehalt
+1 2021-05-31 23:57            17.98    8.05            10.53
+2 2021-06-01 00:09            17.66    8.04             9.64
+3 2021-06-01 00:19            18.03    8.12            11.30
+4 2021-06-01 00:27            18.08    8.14            11.32
+5 2021-06-01 00:39            18.06    8.12            11.06
+6 2021-06-01 00:49            18.01    8.10            10.91</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the nchar() function returns the number of characters in a string</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nchar</span>(<span class="st">"Hi Mom"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># show the last few rows of the df</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 6</code></pre>
+<pre><code>                Datum Wassertemperatur pH.Wert Sauerstoffgehalt
+4220 2021-06-30 22:57            23.73    8.78            17.80
+4221 2021-06-30 23:09            23.70    8.72            17.66
+4222 2021-06-30 23:18            23.68    8.73            17.72
+4223 2021-06-30 23:29            23.64    8.81            18.38
+4224 2021-06-30 23:39            23.62    8.76            17.93
+4225 2021-06-30 23:49            23.63    8.77            17.82</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Really everything you do in R is a function!</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">&lt;-</span><span class="st">`</span>(b, <span class="dv">10</span>)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get a short summary of the structure</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 10</code></pre>
-</div>
-</div>
-<ul>
-<li>most functions need <strong>arguments</strong></li>
-<li>input, options, parameters to specify what the function should do</li>
-<li>each function has a help page where you can read about arguments</li>
-</ul>
-<p>For example, the <code>cos()</code> function computes the cosine of a number. The help page specifies what the function expects as an input. You can access the help page with <code>?cos()</code> or by searching for the function in the ‘Help’ tab in Rstudio (bottom right panel).</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the cos function needs the argument x of type numeric</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cos</span>(<span class="at">x =</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># it throws an error otherwise</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cos</span>(<span class="at">x =</span> <span class="st">"3.14"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in cos(x = "3.14"): non-numeric argument to mathematical function</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># argument names can be neglected</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cos</span>(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.5403023</code></pre>
+<pre><code>'data.frame':   4225 obs. of  4 variables:
+ $ Datum           : chr  "2021-05-31 23:57" "2021-06-01 00:09" "2021-06-01 00:19" "2021-06-01 00:27" ...
+ $ Wassertemperatur: num  18 17.7 18 18.1 18.1 ...
+ $ pH.Wert         : num  8.05 8.04 8.12 8.14 8.12 8.1 8.1 8.1 8.1 8.1 ...
+ $ Sauerstoffgehalt: num  10.53 9.64 11.3 11.32 11.06 ...</code></pre>
 </div>
 </div>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
+<div id="ref-Chambers2020" class="csl-entry" role="doc-biblioentry">
+Chambers, John, M. 2020. <span>“S, <span>R</span>, and <span>Data Science</span>.”</span> <em>The R Journal</em> 12 (1): 462. <a href="https://doi.org/10.32614/RJ-2020-028">https://doi.org/10.32614/RJ-2020-028</a>.
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->
@@ -531,13 +547,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./R01_introduction.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">R01: What is R?</span></span>
+      <a href="./R03_vectors.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">R03: Vectors</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./R03_vectors.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-title">R03: Vectors</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./exercise/E01-variablen.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-title">E01: Variablen, Funktionen</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

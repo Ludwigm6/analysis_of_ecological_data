@@ -1,7 +1,5 @@
 # Lists
 
-
-
 - stores arbitrary content (string, numeric, vectors...)
 - created with `list()`, entries separated by `,`
 
@@ -21,7 +19,6 @@ length(l)
 
 summary(l)
 ```
-
 
 
 ## Subsetting Lists
@@ -51,7 +48,7 @@ l[[2]]
 class(l[[2]])
 
 
-# Selecting multiple entires is not possible
+# Selecting multiple entries like this is not possible
 
 l[[c(1,2)]]
 ```
@@ -79,22 +76,9 @@ l[c("c", "a")]
 
 # double brackets: return value
 l[["b"]]
-# or
+# or use the dollar sign $
 l$b
 ```
-
-
-```{r}
-# Preisfrage:
-l[c(1,"b")]
-```
-
-
-```{r}
-
-```
-
-
 
 
 

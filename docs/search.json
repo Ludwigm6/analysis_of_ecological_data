@@ -320,5 +320,61 @@
     "title": "R03: Vectors",
     "section": "Subsetting",
     "text": "Subsetting\nFor many questions it is often required to access only parts of the data. This is one of the most common things you have to deal with in R.\n\nIndexing\nTo access single values of a vector, use square brackets [].\n\n# get the third value of the vector\ntemperature[3]\n\n[1] 18.92\n\n# accessing multiple elements at once\ntemperature[1,2]\n\nError in temperature[1, 2]: incorrect number of dimensions\n\ntemperature[c(1,2)]\n\n[1] 18.81 18.73\n\n\n\nUsing the functions above, what is an easy way to access the first 10 elements of the vector?\n\n\n\nLogical Operators\n\n\n\n\n\nR vector logical operation\n\n\n\n\nA more powerful way to subset a vector is by using logical operators. These functions usually return a boolean object (TRUE, FALSE) which can then be used to access certain values.\n\n1 > 2\n\n[1] FALSE\n\n1 < 2\n\n[1] TRUE\n\n1 == 2\n\n[1] FALSE\n\nmax(temperature) > 22\n\n[1] TRUE\n\ntemperature > 20\n\n  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [13] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [25] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [37] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [49] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [61] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [73] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [85] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [97] FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE\n[109]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE\n[121] FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE  TRUE FALSE FALSE  TRUE\n[133] FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE\n\nhot = temperature > 20\n\ntemperature[hot]\n\n [1] 21.10 21.94 22.52 22.81 22.43 22.16 21.55 21.80 21.02 21.85 21.45 22.48\n[13] 22.73 22.61 22.83 20.85 20.68 20.08 20.06 20.04 20.12 20.20 20.17 20.31\n[25] 20.17 20.37 20.36 20.13"
+  },
+  {
+    "objectID": "R04_dataframes.html#csv-files",
+    "href": "R04_dataframes.html#csv-files",
+    "title": "R04: Dataframes",
+    "section": "CSV Files",
+    "text": "CSV Files\nDataframes can be loaded from and saved to .csv files.\n\nComma Separated Values\nCaution: In Germany “,” is used as the decimal point. You often find “;” as the delimiter in csvs.\nCaution: If you open csv files in Excel, things can get messy\n\nDatum,Wassertemperatur,pH-Wert,Sauerstoffgehalt\n2021-05-31 23:57,17.98,8.05,10.53\n2021-06-01 00:09,17.66,8.04,9.64\n2021-06-01 00:19,18.03,8.12,11.30\n2021-06-01 00:27,18.08,8.14,11.32\n2021-06-01 00:39,18.06,8.12,11.06\n2021-06-01 00:49,18.01,8.10,10.91\n\nuse the read.csv function\nmake sure the dec and sep parameters of the function are properly set\nwhen in doubt look at the help page ?read.csv\n\n\ndata = read.csv(file = \"data/2021-06_aasee.csv\", dec = \".\", sep = \",\")\n\n\n# show the first few rows of the df\nhead(data)\n\n             Datum Wassertemperatur pH.Wert Sauerstoffgehalt\n1 2021-05-31 23:57            17.98    8.05            10.53\n2 2021-06-01 00:09            17.66    8.04             9.64\n3 2021-06-01 00:19            18.03    8.12            11.30\n4 2021-06-01 00:27            18.08    8.14            11.32\n5 2021-06-01 00:39            18.06    8.12            11.06\n6 2021-06-01 00:49            18.01    8.10            10.91\n\n# show the last few rows of the df\ntail(data)\n\n                Datum Wassertemperatur pH.Wert Sauerstoffgehalt\n4220 2021-06-30 22:57            23.73    8.78            17.80\n4221 2021-06-30 23:09            23.70    8.72            17.66\n4222 2021-06-30 23:18            23.68    8.73            17.72\n4223 2021-06-30 23:29            23.64    8.81            18.38\n4224 2021-06-30 23:39            23.62    8.76            17.93\n4225 2021-06-30 23:49            23.63    8.77            17.82\n\n# get a short summary of the structure\nstr(data)\n\n'data.frame':   4225 obs. of  4 variables:\n $ Datum           : chr  \"2021-05-31 23:57\" \"2021-06-01 00:09\" \"2021-06-01 00:19\" \"2021-06-01 00:27\" ...\n $ Wassertemperatur: num  18 17.7 18 18.1 18.1 ...\n $ pH.Wert         : num  8.05 8.04 8.12 8.14 8.12 8.1 8.1 8.1 8.1 8.1 ...\n $ Sauerstoffgehalt: num  10.53 9.64 11.3 11.32 11.06 ...\n\n\n\n\n\n\nChambers, John, M. 2020. “S, R, and Data Science.” The R Journal 12 (1): 462. https://doi.org/10.32614/RJ-2020-028."
+  },
+  {
+    "objectID": "D02_aasee.html",
+    "href": "D02_aasee.html",
+    "title": "D02: The Aasee Dataset",
+    "section": "",
+    "text": "To learn the basics about data types, data handling and the fundamentals of R, we will work with a dataset from the Aasee in Muenster: Inform yourself real quick here about the origin of the dataset. You can download it here: https://github.com/od-ms/aasee-monitoring\nHere is an excerpt of the data:\n\n\n\nFirst entries of the Aasee monitoring dataset\n\n\nDatum\nWassertemperatur\npH.Wert\nSauerstoffgehalt\n\n\n\n\n2021-05-31 23:57\n17.98\n8.05\n10.53\n\n\n2021-06-01 00:09\n17.66\n8.04\n9.64\n\n\n2021-06-01 00:19\n18.03\n8.12\n11.30\n\n\n2021-06-01 00:27\n18.08\n8.14\n11.32\n\n\n2021-06-01 00:39\n18.06\n8.12\n11.06\n\n\n2021-06-01 00:49\n18.01\n8.10\n10.91\n\n\n2021-06-01 00:59\n18.02\n8.10\n10.96\n\n\n2021-06-01 01:08\n18.06\n8.10\n10.83\n\n\n2021-06-01 01:19\n18.08\n8.10\n10.82\n\n\n2021-06-01 01:29\n18.08\n8.10\n10.62\n\n\n\n\n\nAs a first intermediate goal we want to deal with the following task. We will learn all the necessary skills in R and a bit of statistics in the next lessons, but it is valuable to think about the task / question beforehand!\n\nCompare the water temperature of 2022 April and 2022 May.\n\n\nWhat does this task actually mean?\nReformulate it as a question\nOutline steps to answer the question"
+  },
+  {
+    "objectID": "D03_project_setup.html#r-studio-projects",
+    "href": "D03_project_setup.html#r-studio-projects",
+    "title": "D03: Project Setup",
+    "section": "R studio Projects",
+    "text": "R studio Projects\nHere is an example from a blog entry at r-bloggers.com\n\n\n\nA good starting point for project setup\n\n\nInside a project, you can then use relative paths to files.\n\n# Example of absolute path\n\n## Linux\n\"/home/marvin/projects/rcourse/session02/data/file.csv\"\n\n## Windows\n\"C:\\Users\\Marvin\\Dokumente\\rcourse\\session02\\data\\file.csv\"\n\n# If the R project is set up in the \"session02\" directory we can use relative paths:\n\n# relative path to project root\ndata = read.csv(\"data/file.csv\")\n\nAdditional thoughts\n\nalways keep raw data\nbackups!\nfilepaths:\n\nno spaces\nno dots\nno weird characters\n\nHow to name files\nWindows uses backslash \\, R wants forward slash /\nyou can use the dir.create function to create a new empty directory"
+  },
+  {
+    "objectID": "exercise/E02-vectors-dataframes.html#indexing-und-logische-operatoren",
+    "href": "exercise/E02-vectors-dataframes.html#indexing-und-logische-operatoren",
+    "title": "E02: Vektoren, Dataframes",
+    "section": "Indexing und Logische Operatoren",
+    "text": "Indexing und Logische Operatoren\n\nGib den 5ten Wert des Vektors aus.\nGib nur den letzten Wert des Vektors aus.\nSpeichere die ersten 20 Temperaturen in einer neuen Variablen.\nSpeichere die 30 niedrigsten Temperaturen in einer neuen Variablen.\n\n\n\n\n\nGib alle Temperaturen aus die 22°C überschreiten.\nWie oft wurde genau 18.79°C gemessen?"
+  },
+  {
+    "objectID": "exercise/E02-vectors-dataframes.html#dataframes",
+    "href": "exercise/E02-vectors-dataframes.html#dataframes",
+    "title": "E02: Vektoren, Dataframes",
+    "section": "Dataframes",
+    "text": "Dataframes\nZum Testen von Funktionen und zur Übung stellt R verschiedene Datensätze zur Verfügung. Der wohl bekannteste Datensatz davon ist iris er kann folgendermaßen geladen werden:\n\ndata(iris)\nhead(iris)\n\n  Sepal.Length Sepal.Width Petal.Length Petal.Width Species\n1          5.1         3.5          1.4         0.2  setosa\n2          4.9         3.0          1.4         0.2  setosa\n3          4.7         3.2          1.3         0.2  setosa\n4          4.6         3.1          1.5         0.2  setosa\n5          5.0         3.6          1.4         0.2  setosa\n6          5.4         3.9          1.7         0.4  setosa"
+  },
+  {
+    "objectID": "exercise/E02-vectors-dataframes.html#dataframes-funktionen",
+    "href": "exercise/E02-vectors-dataframes.html#dataframes-funktionen",
+    "title": "E02: Vektoren, Dataframes",
+    "section": "Dataframes Funktionen",
+    "text": "Dataframes Funktionen\n\nTeste folgende Funktionen mit dem Iris Datensatz: length(), nrow(), ncol(), summary(), colnames().\nSpeichere die Species Spalte in einer neuen Variablen. Um was für ein R Objekt handelt es sich nun?\nWie viele Species sind im Datensatz enthalten und wie oft kommt jede Species vor?"
+  },
+  {
+    "objectID": "exercise/E02-vectors-dataframes.html#dataframe-subsets",
+    "href": "exercise/E02-vectors-dataframes.html#dataframe-subsets",
+    "title": "E02: Vektoren, Dataframes",
+    "section": "Dataframe Subsets",
+    "text": "Dataframe Subsets\n\nErstelle einen neuen dataframe der nur die Beobachtungen der Species “virginica” enthält.\nErstelle einen neuen dataframe der nur die Beobachtungen der Species “setosa” und “versicolor” enthält.\nErstelle einen neuen dataframe der extakt die erste Hälfte der Beobachtungen enthält.\nErstelle einen neuen dataframe der nur Beobachtungen enthält mit einer Sepal.Length zwischen 5.5 und 7."
+  },
+  {
+    "objectID": "exercise/E02-vectors-dataframes.html#ein-bisschen-statistik",
+    "href": "exercise/E02-vectors-dataframes.html#ein-bisschen-statistik",
+    "title": "E02: Vektoren, Dataframes",
+    "section": "Ein bisschen Statistik",
+    "text": "Ein bisschen Statistik\n\nWas ist die durchschnittliche Sepal.Length von “virginica”?\nZeichne ein Histogramm der Sepal.Width.\nBerechne die Varianz und Standardabweichung der Sepal.Width.\nZeichne einen Scatterplot mit der Sepal.Length auf der x-Achse und der Petal.Length auf der y-Achse.\n\n\nHint 1: Data.frames können als 2-Dimensionale Vektoren aufgefasst werden. Subsetting von data.frames benötigen deshalb 2 Werte, einen für die Reihe, einen für die Spalte.\n\n# row 1, column 2\niris[1,2]\n\n[1] 3.5\n\n# the first row, empty means \"everything\"\niris[1,]\n\n  Sepal.Length Sepal.Width Petal.Length Petal.Width Species\n1          5.1         3.5          1.4         0.2  setosa\n\n# the first 3 rows, column 3 and 4\niris[seq(3), c(3,4)]\n\n  Petal.Length Petal.Width\n1          1.4         0.2\n2          1.4         0.2\n3          1.3         0.2\n\n\nHint 2: Einzele Spalten können mit $ angewählt werden.\nHint 3: Googlen!"
   }
 ]

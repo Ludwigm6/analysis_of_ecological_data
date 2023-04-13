@@ -1,4 +1,4 @@
-# Dataframes
+# R04: Dataframes
 
 
 > From a data science perspective, the most important class of objects is the data frame - @Chambers2020
@@ -69,57 +69,4 @@ tail(data)
 str(data)
 ```
 
-
-
-## TASK: Subsetting dataframes
-
-* Setup a Rstudio Project. Have at least a scripts and a data directory.
-* Get the Aasee Dataset into R.
-* Try out the following functions: `length()`, `nrow()`, `ncol()`, `summary()`, `colnames()`
-* Create a new dataframe that only contains observations where the pH is above 8.
-* Create a new dataframe that contains exactly the first half of the observations.
-* Create a new column that contains a unique identifier for each row.
-* Do we actually need this unique identifier in our case?
-
-**Hint 1:** Think of a data.frame as a two-dimensional vector. Subsetting the data.frame therefore requires also two values: one for the row, one for the column.
-
-
-```{r}
-# row 1, column 2
-data[1,2]
-
-# the first row
-data[1,]
-
-# the first 3 rows, column 3 and 4
-data[seq(3), c(3,4)]
-```
-
-
-**Hint 2:** Individual columns can also be accessed by their name with the `$` operator.
-
-```{r, eval = FALSE}
-# Access by column name
-data$Wassertemperatur
-```
-
-This can also be used to create new columns by choosing a new column name and writing values into it.
-
-
-```{r, error=TRUE}
-# Assign the same value to each row
-data$newcolumn1 = "valid"
-
-# Works, because 4225 rows are a multiple of 5.
-data$newcolumn2 = seq(5)
-
-# Won't work because the vector of length 2 does not fit exactly into 4225.
-data$newcolumn3 = c(2,4)
-
-# Use an existing column for the new values
-data$t_kelvin = data$Wassertemperatur + 273.15
-
-# Look at what we did
-head(data)
-```
 

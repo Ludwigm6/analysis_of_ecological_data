@@ -8,13 +8,21 @@ book:
   author: "Marvin Ludwig"
   chapters:
     - "index.Rmd"
-    - "D01_data_examples.Rmd"
-    - "R01_introduction.qmd"
-    - "R02_basics.qmd"
-    - "R03_vectors.qmd"
+    - part: "Data"
+      chapters:
+      - "D01_data_examples.Rmd"
+      - "D02_aasee.Rmd"
+      - "D03_project_setup.Rmd"
+    - part: "R"
+      chapters:
+      - "R01_introduction.qmd"
+      - "R02_basics.qmd"
+      - "R03_vectors.qmd"
+      - "R04_dataframes.qmd"
     - part: "Exercises"
       chapters:
       - "exercise/E01-variablen.Rmd"
+      - "exercise/E02-vectors-dataframes.Rmd"
   appendices:
   - "98-additional_resources.Rmd"
   - "references.qmd"
