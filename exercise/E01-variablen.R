@@ -17,6 +17,10 @@
 ### Erstelle eine Variable die deinen Nachnamen enthält.
 ### Die `paste` Funktion kann Texte zusammenfügen. Probiere die Funktion mit den Variablen die deine Namen enthalten aus.
 
+paste(vorname, nachname)
+vorname = "Marvin"
+nachname = "Ludwig"
+
 
 
 
@@ -30,6 +34,12 @@ numbers
 
 ### Teste die Funktionen `length()`, `sum()`, `sqrt()`, und `min()` mit dem Vektor.
 ### Was macht die `sqrt()` Funktion?
+Berechnet die Quadratwurzel
+
+
+
+
+
 ### Was ist der Unterschied zwischen der `max()` Funktion und der `which.max()` Funktion?
     
     

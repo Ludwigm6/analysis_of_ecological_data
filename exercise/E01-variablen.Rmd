@@ -10,7 +10,14 @@
 - Berechne den Mittelwert deiner erstellten Variablen.
 
 ```{r}
+a = 1650
+b = 140
+c <- 5
 
+a*b*c
+
+hilfsvektor = c(a,b,c)
+mean(hilfsvektor)
 
 ```
 
@@ -20,7 +27,10 @@
 
 
 ```{r}
+vorname = "Marvin"
+nachname = "Ludwig"
 
+paste(vorname, nachname)
 ```
 
 ## Funktionen
@@ -40,8 +50,11 @@ numbers
 
 
 ```{r}
-
-
+length(numbers)
+sum(numbers)
+sqrt(numbers) # Squareroot, Quadratwurzel (vektorisiert, d.h. fuer jedes Element)
+max(numbers) # maximaler Wert im Vektor
+which.max(numbers) # Position (Index) des maximalen Wertes im Vektor
 ```
 
 
@@ -49,7 +62,8 @@ numbers
 
 
 ```{r}
-
+hunderter = seq(0, 10000, by = 100)
+hunderter
 ```
 
 
