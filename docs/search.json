@@ -165,35 +165,35 @@
     "href": "exercise/E01-variablen.html#variablen",
     "title": "E01: Variablen, Funktionen",
     "section": "Variablen",
-    "text": "Variablen\n\nErstelle eine Variable die die Zahl 1650 enthält.\nErstelle eine Variable die die Zahl 140 enthält.\nErstelle eine Variable die die Zahl 5 enthält.\nBerechne das Produkt deiner erstellten Variablen.\nBerechne den Mittelwert deiner erstellten Variablen.\n\n\n\nCode\na = 1650\nb = 140\nc <- 5\n\na*b*c\n\nhilfsvektor = c(a,b,c)\nmean(hilfsvektor)\n\n\n\nErstelle eine Variable die deinen Vornamen enthält.\nErstelle eine Variable die deinen Nachnamen enthält.\nDie paste Funktion kann Texte zusammenfügen. Probiere die Funktion mit den Variablen die deine Namen enthalten aus.\n\n\n\nCode\nvorname = \"Marvin\"\nnachname = \"Ludwig\"\n\npaste(vorname, nachname)"
+    "text": "Variablen\n\nErstelle eine Variable die die Zahl 1650 enthält.\nErstelle eine Variable die die Zahl 140 enthält.\nErstelle eine Variable die die Zahl 5 enthält.\nBerechne das Produkt deiner erstellten Variablen.\nBerechne den Mittelwert deiner erstellten Variablen.\n\n\n\nSolution\na = 1650\nb = 140\nc <- 5\n\na*b*c\n\nhilfsvektor = c(a,b,c)\nmean(hilfsvektor)\n\n\n\nErstelle eine Variable die deinen Vornamen enthält.\nErstelle eine Variable die deinen Nachnamen enthält.\nDie paste Funktion kann Texte zusammenfügen. Probiere die Funktion mit den Variablen die deine Namen enthalten aus.\n\n\n\nSolution\nvorname = \"Marvin\"\nnachname = \"Ludwig\"\n\npaste(vorname, nachname)"
   },
   {
     "objectID": "exercise/E01-variablen.html#funktionen",
     "href": "exercise/E01-variablen.html#funktionen",
     "title": "E01: Variablen, Funktionen",
     "section": "Funktionen",
-    "text": "Funktionen\n\nVektoren in R sind Folgen von Werten, enthalten also z.B. mehrere Zahlen. Sie werden mit der Funktion c() erstellt:\n\n\n\nCode\nnumbers = c(4, 3, 8, 90, 16)\nnumbers\n\n\n\nTeste die Funktionen length(), sum(), sqrt(), und min() mit dem Vektor.\nWas macht die sqrt() Funktion?\nWas ist der Unterschied zwischen der max() Funktion und der which.max() Funktion?\n\n\n\nCode\nlength(numbers)\nsum(numbers)\nsqrt(numbers) # Squareroot, Quadratwurzel (vektorisiert, d.h. fuer jedes Element)\nmax(numbers) # maximaler Wert im Vektor\nwhich.max(numbers) # Position (Index) des maximalen Wertes im Vektor\n\n\n\nDie seq() Funktion erzeugt einen Vektor der Zahlenfolgenfolgen enthält. Sieh dir die Hilfeseite von seq() an und erstelle einen Vektor der alle 100er Zahlen von 0 bis 10000 enthält (also 0, 100, 200, … ,9900, 10000).\n\n\n\nCode\nhunderter = seq(0, 10000, by = 100)\nhunderter"
+    "text": "Funktionen\n\nVektoren in R sind Folgen von Werten, enthalten also z.B. mehrere Zahlen. Sie werden mit der Funktion c() erstellt:\n\n\nnumbers = c(4, 3, 8, 90, 16)\nnumbers\n\n\nTeste die Funktionen length(), sum(), sqrt(), und min() mit dem Vektor.\nWas macht die sqrt() Funktion?\nWas ist der Unterschied zwischen der max() Funktion und der which.max() Funktion?\n\n\n\nSolution\nlength(numbers)\nsum(numbers)\nsqrt(numbers) # Squareroot, Quadratwurzel (vektorisiert, d.h. fuer jedes Element)\nmax(numbers) # maximaler Wert im Vektor\nwhich.max(numbers) # Position (Index) des maximalen Wertes im Vektor\n\n\n\nDie seq() Funktion erzeugt einen Vektor der Zahlenfolgenfolgen enthält. Sieh dir die Hilfeseite von seq() an und erstelle einen Vektor der alle 100er Zahlen von 0 bis 10000 enthält (also 0, 100, 200, … ,9900, 10000).\n\n\n\nSolution\nhunderter = seq(0, 10000, by = 100)\nhunderter"
   },
   {
     "objectID": "exercise/E02-vectors-dataframes.html#indexing-und-logische-operatoren",
     "href": "exercise/E02-vectors-dataframes.html#indexing-und-logische-operatoren",
     "title": "E02: Vektoren, Dataframes",
     "section": "Indexing und Logische Operatoren",
-    "text": "Indexing und Logische Operatoren\n\nGib den 5ten Wert des Vektors aus.\nGib nur den letzten Wert des Vektors aus.\nSpeichere die ersten 20 Temperaturen in einer neuen Variablen.\nSpeichere die 30 niedrigsten Temperaturen in einer neuen Variablen.\n\n\n\n\n\nGib alle Temperaturen aus die 22°C überschreiten.\nWie oft wurde genau 18.79°C gemessen?"
+    "text": "Indexing und Logische Operatoren\n\nGib den 5ten Wert des Vektors aus.\nGib nur den letzten Wert des Vektors aus.\nSpeichere die ersten 20 Temperaturen in einer neuen Variablen.\nSpeichere die 30 niedrigsten Temperaturen in einer neuen Variablen.\n\n\n\nSolution\ntemperature[5]\ntemperature[length(temperature)]\n\ntemp_first_20 = temperature[seq(1,20)]\ntemp_low_30 = sort(temperature)[1:30]\n\n\n\nGib alle Temperaturen aus die 22°C überschreiten.\nWie oft wurde genau 18.79°C gemessen?\n\n\n\nSolution\ntemperature[temperature > 22]\n\nsum(temperature == 18.79)\n#oder\nlength(temperature[temperature == 18.79])"
   },
   {
     "objectID": "exercise/E02-vectors-dataframes.html#dataframes",
     "href": "exercise/E02-vectors-dataframes.html#dataframes",
     "title": "E02: Vektoren, Dataframes",
     "section": "Dataframes",
-    "text": "Dataframes\nZum Testen von Funktionen und zur Übung stellt R verschiedene Datensätze zur Verfügung. Der wohl bekannteste Datensatz davon ist iris er kann folgendermaßen geladen werden:\n\ndata(iris)\nhead(iris)\n\n  Sepal.Length Sepal.Width Petal.Length Petal.Width Species\n1          5.1         3.5          1.4         0.2  setosa\n2          4.9         3.0          1.4         0.2  setosa\n3          4.7         3.2          1.3         0.2  setosa\n4          4.6         3.1          1.5         0.2  setosa\n5          5.0         3.6          1.4         0.2  setosa\n6          5.4         3.9          1.7         0.4  setosa\n\n\n\nTeste folgende Funktionen mit dem Iris Datensatz: length(), nrow(), ncol(), summary(), colnames().\nSpeichere die Species Spalte in einer neuen Variablen. Um was für ein R Objekt handelt es sich nun?\nWie viele Species sind im Datensatz enthalten und wie oft kommt jede Species vor?"
+    "text": "Dataframes\nZum Testen von Funktionen und zur Übung stellt R verschiedene Datensätze zur Verfügung. Der wohl bekannteste Datensatz davon ist iris er kann folgendermaßen geladen werden:\n\n\nSolution\ndata(iris)\nhead(iris)\n\n\n\nTeste folgende Funktionen mit dem Iris Datensatz: length(), nrow(), ncol(), summary(), colnames().\nSpeichere die Species Spalte in einer neuen Variablen. Um was für ein R Objekt handelt es sich nun?\nWie viele Species sind im Datensatz enthalten und wie oft kommt jede Species vor?\n\n\n\nSolution\nlength(iris)\nnrow(iris)\nncol(iris)\nsummary(iris)\nsummary(iris$Sepal.Length)\ncolnames(iris); names(iris)"
   },
   {
     "objectID": "exercise/E02-vectors-dataframes.html#dataframe-subsetting",
     "href": "exercise/E02-vectors-dataframes.html#dataframe-subsetting",
     "title": "E02: Vektoren, Dataframes",
     "section": "Dataframe subsetting",
-    "text": "Dataframe subsetting\n\nErstelle einen neuen dataframe der nur die Beobachtungen der Species “virginica” enthält.\nErstelle einen neuen dataframe der nur die Beobachtungen der Species “setosa” und “versicolor” enthält.\nErstelle einen neuen dataframe der extakt die erste Hälfte der Beobachtungen enthält.\nErstelle einen neuen dataframe der nur Beobachtungen enthält mit einer Sepal.Length zwischen 5.5 und 7."
+    "text": "Dataframe subsetting\n\nErstelle einen neuen dataframe der nur die Beobachtungen der Species “virginica” enthält.\nErstelle einen neuen dataframe der nur die Beobachtungen der Species “setosa” und “versicolor” enthält.\nErstelle einen neuen dataframe der extakt die erste Hälfte der Beobachtungen enthält.\nErstelle einen neuen dataframe der nur Beobachtungen enthält mit einer Sepal.Length zwischen 5.5 und 7.\n\n\n\nSolution\nvir = iris[iris$Species == \"virginica\",]\nset_ver = iris[iris$Species == \"setosa\" | iris$Species == \"versicolor\",]\n# oder\nset_ver = iris[iris$Species != \"virginica\",]\n# oder\nset_ver = iris[iris$Species %in% c(\"setosa\", \"versicolor\"),]\n\n\niris_half = iris[1:(nrow(iris)/2),]\n\niris_sepal = iris[iris$Sepal.Length > 5.5 & iris$Sepal.Length < 7,]"
   },
   {
     "objectID": "exercise/E02-vectors-dataframes.html#ein-bisschen-statistik",
@@ -228,6 +228,27 @@
     "href": "exercise/E02-vectors-dataframes.html#bonus-ein-bisschen-statistik",
     "title": "E02: Vektoren, Dataframes",
     "section": "Bonus: Ein bisschen Statistik",
-    "text": "Bonus: Ein bisschen Statistik\n\nWas ist die durchschnittliche Sepal.Length von “virginica”?\nZeichne ein Histogramm der Sepal.Width.\nBerechne die Varianz und Standardabweichung der Sepal.Width.\nZeichne einen Scatterplot mit der Sepal.Length auf der x-Achse und der Petal.Length auf der y-Achse.\n\n\n\n\n\nTipp 1: Data.frames können als 2-Dimensionale Vektoren aufgefasst werden. Subsetting von data.frames benötigen deshalb 2 Werte, einen für die Reihe, einen für die Spalte.\n\n# row 1, column 2\niris[1,2]\n\n[1] 3.5\n\n# the first row, empty means \"everything\"\niris[1,]\n\n  Sepal.Length Sepal.Width Petal.Length Petal.Width Species\n1          5.1         3.5          1.4         0.2  setosa\n\n# the first 3 rows, column 3 and 4\niris[seq(3), c(3,4)]\n\n  Petal.Length Petal.Width\n1          1.4         0.2\n2          1.4         0.2\n3          1.3         0.2\n\n\nTipp 2: Einzele Spalten können mit $ angewählt werden.\n\niris$Sepal.Length\n\n  [1] 5.1 4.9 4.7 4.6 5.0 5.4 4.6 5.0 4.4 4.9 5.4 4.8 4.8 4.3 5.8 5.7 5.4 5.1\n [19] 5.7 5.1 5.4 5.1 4.6 5.1 4.8 5.0 5.0 5.2 5.2 4.7 4.8 5.4 5.2 5.5 4.9 5.0\n [37] 5.5 4.9 4.4 5.1 5.0 4.5 4.4 5.0 5.1 4.8 5.1 4.6 5.3 5.0 7.0 6.4 6.9 5.5\n [55] 6.5 5.7 6.3 4.9 6.6 5.2 5.0 5.9 6.0 6.1 5.6 6.7 5.6 5.8 6.2 5.6 5.9 6.1\n [73] 6.3 6.1 6.4 6.6 6.8 6.7 6.0 5.7 5.5 5.5 5.8 6.0 5.4 6.0 6.7 6.3 5.6 5.5\n [91] 5.5 6.1 5.8 5.0 5.6 5.7 5.7 6.2 5.1 5.7 6.3 5.8 7.1 6.3 6.5 7.6 4.9 7.3\n[109] 6.7 7.2 6.5 6.4 6.8 5.7 5.8 6.4 6.5 7.7 7.7 6.0 6.9 5.6 7.7 6.3 6.7 7.2\n[127] 6.2 6.1 6.4 7.2 7.4 7.9 6.4 6.3 6.1 7.7 6.3 6.4 6.0 6.9 6.7 6.9 5.8 6.8\n[145] 6.7 6.7 6.3 6.5 6.2 5.9\n\n\nTipp 3: Googlen!"
+    "text": "Bonus: Ein bisschen Statistik\n\nWas ist die durchschnittliche Sepal.Length von “virginica”?\nZeichne ein Histogramm der Sepal.Width.\nBerechne die Varianz und Standardabweichung der Sepal.Width.\nZeichne einen Scatterplot mit der Sepal.Length auf der x-Achse und der Petal.Length auf der y-Achse.\n\n\n\nSolution\nmean(vir$Sepal.Length)\nhist(iris$Sepal.Width)\n\nvar(iris$Sepal.Width)\nsd(iris$Sepal.Width)\nplot(iris$Sepal.Length, iris$Petal.Length)\n\n\n\nTipp 1: Data.frames können als 2-Dimensionale Vektoren aufgefasst werden. Subsetting von data.frames benötigen deshalb 2 Werte, einen für die Reihe, einen für die Spalte.\n\n\nSolution\n# row 1, column 2\niris[1,2]\n\n# the first row, empty means \"everything\"\niris[1,]\n\n# the first 3 rows, column 3 and 4\niris[seq(3), c(3,4)]\n\n\nTipp 2: Einzele Spalten können mit $ angewählt werden.\n\n\nSolution\niris$Sepal.Length\n\n\nTipp 3: Googlen!"
+  },
+  {
+    "objectID": "exercise/E03-more-dataframes.html#münsters-bezirke",
+    "href": "exercise/E03-more-dataframes.html#münsters-bezirke",
+    "title": "E03: Mehr Dataframes",
+    "section": "Münsters Bezirke",
+    "text": "Münsters Bezirke\n\nWelcher Bezirk Münsters ist am größten?\n\n\n\n\n\nWie groß ist die Bezirksgruppe “Altstadt”?\n\n\n\n\n\nZu welcher Bezirksgruppe gehört der Bezirk “Schloss”?\n\n\n\n\n\nAus Welchen Bezirken besteht die Bezirksgruppe “Münster-West”?"
+  },
+  {
+    "objectID": "exercise/E03-more-dataframes.html#münsters-bäume",
+    "href": "exercise/E03-more-dataframes.html#münsters-bäume",
+    "title": "E03: Mehr Dataframes",
+    "section": "Münsters Bäume",
+    "text": "Münsters Bäume\n\nWie viele Baumarten gibt es in Münster?\n\n\n\n\n\nWie viele Buchen (species: Fagus) gibt es in Münster?\n\n\n\n\n\nIn welchem Bezirk stehen die meisten Bäume?\n\n\n\n\n\nIn welchem Bezirk stehen die meisten Magnolien (species: Magnolia)?"
+  },
+  {
+    "objectID": "exercise/E03-more-dataframes.html#und-noch-was-zum-knobeln",
+    "href": "exercise/E03-more-dataframes.html#und-noch-was-zum-knobeln",
+    "title": "E03: Mehr Dataframes",
+    "section": "Und noch was zum Knobeln:",
+    "text": "Und noch was zum Knobeln:\n\nErstelle eine Karte aller Bäume in den Bezirksgruppen “Altstadt” und “Innenstadtring”."
   }
 ]

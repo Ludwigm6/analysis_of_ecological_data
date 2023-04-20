@@ -23,6 +23,7 @@ book:
       chapters:
       - "exercise/E01-variablen.Rmd"
       - "exercise/E02-vectors-dataframes.Rmd"
+      - "exercise/E03-more-dataframes.Rmd"
   appendices:
   - "98-additional_resources.Rmd"
   - "references.qmd"

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Analysis of Ecological Data - 9&nbsp; E01: Variablen, Funktionen</title>
+<title>Analysis of Ecological Data - 11&nbsp; E03: Mehr Dataframes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,69 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -93,8 +30,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../exercise/E02-vectors-dataframes.html" rel="next">
-<link href="../R04_dataframes.html" rel="prev">
+<link href="../98-additional_resources.html" rel="next">
+<link href="../exercise/E02-vectors-dataframes.html" rel="prev">
 <link href="..//home/marvin/images/pictogramms/ecoR.svg" rel="icon" type="image/svg+xml">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -134,7 +71,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-title">E01: Variablen, Funktionen</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-title">E03: Mehr Dataframes</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -227,12 +164,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../exercise/E01-variablen.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">E01: Variablen, Funktionen</span></a>
+  <a href="../exercise/E01-variablen.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E01: Variablen, Funktionen</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../exercise/E02-vectors-dataframes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E02: Vektoren, Dataframes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercise/E03-more-dataframes.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">E03: Mehr Dataframes</span></a>
   </div>
 </li>
       </ul>
@@ -266,8 +208,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#variablen" id="toc-variablen" class="nav-link active" data-scroll-target="#variablen">Variablen</a></li>
-  <li><a href="#funktionen" id="toc-funktionen" class="nav-link" data-scroll-target="#funktionen">Funktionen</a></li>
+  <li><a href="#münsters-bezirke" id="toc-münsters-bezirke" class="nav-link active" data-scroll-target="#münsters-bezirke">Münsters Bezirke</a></li>
+  <li><a href="#münsters-bäume" id="toc-münsters-bäume" class="nav-link" data-scroll-target="#münsters-bäume">Münsters Bäume</a></li>
+  <li><a href="#und-noch-was-zum-knobeln" id="toc-und-noch-was-zum-knobeln" class="nav-link" data-scroll-target="#und-noch-was-zum-knobeln">Und noch was zum Knobeln:</a></li>
   </ul>
 </nav>
     </div>
@@ -276,7 +219,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-title">E01: Variablen, Funktionen</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-title">E03: Mehr Dataframes</span></h1>
 </div>
 
 
@@ -291,76 +234,86 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<section id="variablen" class="level2">
-<h2 class="anchored" data-anchor-id="variablen">Variablen</h2>
+<p>Im Learnweb finden sich die Dateien <code>muenster_districts.csv</code> und <code>muenster_trees.csv</code>. Sie beinhalten Informationen zu den Stadtbezirken und Bäumen in Münster.</p>
 <ul>
-<li>Erstelle eine Variable die die Zahl 1650 enthält.</li>
-<li>Erstelle eine Variable die die Zahl 140 enthält.</li>
-<li>Erstelle eine Variable die die Zahl 5 enthält.</li>
-<li>Berechne das Produkt deiner erstellten Variablen.</li>
-<li>Berechne den Mittelwert deiner erstellten Variablen.</li>
+<li>Lade beide Dateien in R.</li>
 </ul>
 <div class="cell">
-<details>
-<summary>Solution</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="dv">1650</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">=</span> <span class="dv">140</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>c <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>a<span class="sc">*</span>b<span class="sc">*</span>c</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>hilfsvektor <span class="ot">=</span> <span class="fu">c</span>(a,b,c)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(hilfsvektor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+
 </div>
 <ul>
-<li>Erstelle eine Variable die deinen Vornamen enthält.</li>
-<li>Erstelle eine Variable die deinen Nachnamen enthält.</li>
-<li>Die <code>paste</code> Funktion kann Texte zusammenfügen. Probiere die Funktion mit den Variablen die deine Namen enthalten aus.</li>
+<li>Verschaffe dir einen Überblick über die beiden data.frames mit den Funktionen <code>head()</code>, <code>str()</code>.</li>
 </ul>
 <div class="cell">
-<details>
-<summary>Solution</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>vorname <span class="ot">=</span> <span class="st">"Marvin"</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>nachname <span class="ot">=</span> <span class="st">"Ludwig"</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(vorname, nachname)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+
+</div>
+<ul>
+<li>Um Informationen über einzelne Spalten zu erhalten sind die Funktionen <code>table()</code> und <code>unique()</code> sehr nützlich. Teste die Funktionen mit der <code>district_group</code> Spalte.</li>
+</ul>
+<div class="cell">
+
+</div>
+<section id="münsters-bezirke" class="level2">
+<h2 class="anchored" data-anchor-id="münsters-bezirke">Münsters Bezirke</h2>
+<ul>
+<li>Welcher Bezirk Münsters ist am größten?</li>
+</ul>
+<div class="cell">
+
+</div>
+<ul>
+<li>Wie groß ist die Bezirksgruppe “Altstadt”?</li>
+</ul>
+<div class="cell">
+
+</div>
+<ul>
+<li>Zu welcher Bezirksgruppe gehört der Bezirk “Schloss”?</li>
+</ul>
+<div class="cell">
+
+</div>
+<ul>
+<li>Aus Welchen Bezirken besteht die Bezirksgruppe “Münster-West”?</li>
+</ul>
+<div class="cell">
+
 </div>
 </section>
-<section id="funktionen" class="level2">
-<h2 class="anchored" data-anchor-id="funktionen">Funktionen</h2>
+<section id="münsters-bäume" class="level2">
+<h2 class="anchored" data-anchor-id="münsters-bäume">Münsters Bäume</h2>
 <ul>
-<li>Vektoren in R sind Folgen von Werten, enthalten also z.B. mehrere Zahlen. Sie werden mit der Funktion <code>c()</code> erstellt:</li>
+<li>Wie viele Baumarten gibt es in Münster?</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>numbers <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">8</span>, <span class="dv">90</span>, <span class="dv">16</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>numbers</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
 </div>
 <ul>
-<li>Teste die Funktionen <code>length()</code>, <code>sum()</code>, <code>sqrt()</code>, und <code>min()</code> mit dem Vektor.</li>
-<li>Was macht die <code>sqrt()</code> Funktion?</li>
-<li>Was ist der Unterschied zwischen der <code>max()</code> Funktion und der <code>which.max()</code> Funktion?</li>
+<li>Wie viele Buchen (species: Fagus) gibt es in Münster?</li>
 </ul>
 <div class="cell">
-<details>
-<summary>Solution</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(numbers)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(numbers)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(numbers) <span class="co"># Squareroot, Quadratwurzel (vektorisiert, d.h. fuer jedes Element)</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(numbers) <span class="co"># maximaler Wert im Vektor</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">which.max</span>(numbers) <span class="co"># Position (Index) des maximalen Wertes im Vektor</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+
 </div>
 <ul>
-<li>Die <code>seq()</code> Funktion erzeugt einen Vektor der Zahlenfolgenfolgen enthält. Sieh dir die Hilfeseite von <code>seq()</code> an und erstelle einen Vektor der alle 100er Zahlen von 0 bis 10000 enthält (also 0, 100, 200, … ,9900, 10000).</li>
+<li>In welchem Bezirk stehen die meisten Bäume?</li>
 </ul>
 <div class="cell">
-<details>
-<summary>Solution</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>hunderter <span class="ot">=</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">10000</span>, <span class="at">by =</span> <span class="dv">100</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>hunderter</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+
+</div>
+<ul>
+<li>In welchem Bezirk stehen die meisten Magnolien (species: Magnolia)?</li>
+</ul>
+<div class="cell">
+
+</div>
+</section>
+<section id="und-noch-was-zum-knobeln" class="level2">
+<h2 class="anchored" data-anchor-id="und-noch-was-zum-knobeln">Und noch was zum Knobeln:</h2>
+<ul>
+<li>Erstelle eine Karte aller Bäume in den Bezirksgruppen “Altstadt” und “Innenstadtring”.</li>
+</ul>
+<div class="cell">
+
 </div>
 
 
@@ -502,13 +455,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../R04_dataframes.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">R04: Dataframes</span></span>
+      <a href="../exercise/E02-vectors-dataframes.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">E02: Vektoren, Dataframes</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../exercise/E02-vectors-dataframes.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-title">E02: Vektoren, Dataframes</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../98-additional_resources.html" class="pagination-link">
+        <span class="nav-page-text">Additional Ressources</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
