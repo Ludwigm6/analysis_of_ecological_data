@@ -32,7 +32,7 @@
     "href": "index.html#course-outline",
     "title": "Analysis of Ecological Data",
     "section": "Course Outline",
-    "text": "Course Outline\n\nSummary and Exercises from last week\nNew Input\nExercises\nStudienleistung: 10 assignments - Passed with 6 assignments > 50%\n\n\n\n\nCourse Outline\n\n\n\n\n\n\nDate\nContent\n\n\n\n\n06.04.\nOrganization - Topic Overview - What is R? - What is ecological data?\n\n\n13.04.\nR foundations I - functions - vectors - data.frames\n\n\n20.04.\nR foundations II - lists - logical operators\n\n\n27.04.\nAasee water monitoring - tidyverse\n\n\n04.05.\nAasee water monitoring - strings\n\n\n11.05.\nAasee water monitoring - correlations - linear models\n\n\n18.05.\n—- Feiertag —-\n\n\n25.05.\nBuffer\n\n\n02.06.\n—- Pfingstferien —-\n\n\n08.06.\n—- Feiertag —-\n\n\n15.06.\nBiodiversity Data\n\n\n22.06.\nBiodiversity Data\n\n\n29.06.\nVisualizations - ggplot\n\n\n06.07.\nVisualizations - ggplot\n\n\n13.07.\nWrap up"
+    "text": "Course Outline\n\nSummary and Exercises from last week\nNew Input\nExercises\nStudienleistung: 10 assignments - Passed with 6 assignments > 50%\n\n\n\n\nCourse Outline\n\n\n\n\n\n\n\n\nDate\nContent\n\n\n\n\n06.04.\nOrganization - Topic Overview - What is R? - What is ecological data?\n\n\n\n13.04.\nR foundations I - functions - vectors - data.frames\n\n\n\n20.04.\nR foundations II - R Projects\ndata.frames\n\n\n27.04.\nAasee water monitoring - tidyverse\nstrings\n\n\n04.05.\nAasee water monitoring - correlations\n\n\n\n11.05.\nAasee water monitoring - linear models\n\n\n\n18.05.\n—- Feiertag —-\n\n\n\n25.05.\nBuffer\n\n\n\n02.06.\n—- Pfingstferien —-\n\n\n\n08.06.\n—- Feiertag —-\n\n\n\n15.06.\nBiodiversity Data\n\n\n\n22.06.\nBiodiversity Data\n\n\n\n29.06.\nVisualizations - ggplot\n\n\n\n06.07.\nVisualizations - ggplot\n\n\n\n13.07.\nWrap up"
   },
   {
     "objectID": "D01_data_examples.html#plot-surveys",
@@ -196,34 +196,6 @@
     "text": "Dataframe subsetting\n\nErstelle einen neuen dataframe der nur die Beobachtungen der Species “virginica” enthält.\nErstelle einen neuen dataframe der nur die Beobachtungen der Species “setosa” und “versicolor” enthält.\nErstelle einen neuen dataframe der extakt die erste Hälfte der Beobachtungen enthält.\nErstelle einen neuen dataframe der nur Beobachtungen enthält mit einer Sepal.Length zwischen 5.5 und 7.\n\n\n\nSolution\nvir = iris[iris$Species == \"virginica\",]\nset_ver = iris[iris$Species == \"setosa\" | iris$Species == \"versicolor\",]\n# oder\nset_ver = iris[iris$Species != \"virginica\",]\n# oder\nset_ver = iris[iris$Species %in% c(\"setosa\", \"versicolor\"),]\n\n\niris_half = iris[1:(nrow(iris)/2),]\n\niris_sepal = iris[iris$Sepal.Length > 5.5 & iris$Sepal.Length < 7,]"
   },
   {
-    "objectID": "exercise/E02-vectors-dataframes.html#ein-bisschen-statistik",
-    "href": "exercise/E02-vectors-dataframes.html#ein-bisschen-statistik",
-    "title": "E02: Vektoren, Dataframes",
-    "section": "Ein bisschen Statistik",
-    "text": "Ein bisschen Statistik\n\nWas ist die durchschnittliche Sepal.Length von “virginica”?\nZeichne ein Histogramm der Sepal.Width.\nBerechne die Varianz und Standardabweichung der Sepal.Width.\nZeichne einen Scatterplot mit der Sepal.Length auf der x-Achse und der Petal.Length auf der y-Achse.\n\n\n\n\n\nTipp 1: Data.frames können als 2-Dimensionale Vektoren aufgefasst werden. Subsetting von data.frames benötigen deshalb 2 Werte, einen für die Reihe, einen für die Spalte.\n\n# row 1, column 2\niris[1,2]\n\n[1] 3.5\n\n# the first row, empty means \"everything\"\niris[1,]\n\n  Sepal.Length Sepal.Width Petal.Length Petal.Width Species\n1          5.1         3.5          1.4         0.2  setosa\n\n# the first 3 rows, column 3 and 4\niris[seq(3), c(3,4)]\n\n  Petal.Length Petal.Width\n1          1.4         0.2\n2          1.4         0.2\n3          1.3         0.2\n\n\nTipp 2: Einzele Spalten können mit $ angewählt werden.\n\niris$Sepal.Length\n\n  [1] 5.1 4.9 4.7 4.6 5.0 5.4 4.6 5.0 4.4 4.9 5.4 4.8 4.8 4.3 5.8 5.7 5.4 5.1\n [19] 5.7 5.1 5.4 5.1 4.6 5.1 4.8 5.0 5.0 5.2 5.2 4.7 4.8 5.4 5.2 5.5 4.9 5.0\n [37] 5.5 4.9 4.4 5.1 5.0 4.5 4.4 5.0 5.1 4.8 5.1 4.6 5.3 5.0 7.0 6.4 6.9 5.5\n [55] 6.5 5.7 6.3 4.9 6.6 5.2 5.0 5.9 6.0 6.1 5.6 6.7 5.6 5.8 6.2 5.6 5.9 6.1\n [73] 6.3 6.1 6.4 6.6 6.8 6.7 6.0 5.7 5.5 5.5 5.8 6.0 5.4 6.0 6.7 6.3 5.6 5.5\n [91] 5.5 6.1 5.8 5.0 5.6 5.7 5.7 6.2 5.1 5.7 6.3 5.8 7.1 6.3 6.5 7.6 4.9 7.3\n[109] 6.7 7.2 6.5 6.4 6.8 5.7 5.8 6.4 6.5 7.7 7.7 6.0 6.9 5.6 7.7 6.3 6.7 7.2\n[127] 6.2 6.1 6.4 7.2 7.4 7.9 6.4 6.3 6.1 7.7 6.3 6.4 6.0 6.9 6.7 6.9 5.8 6.8\n[145] 6.7 6.7 6.3 6.5 6.2 5.9\n\n\nTipp 3: Googlen!"
-  },
-  {
-    "objectID": "98-additional_resources.html#r-cheat-sheets",
-    "href": "98-additional_resources.html#r-cheat-sheets",
-    "title": "Additional Ressources",
-    "section": "R cheat sheets",
-    "text": "R cheat sheets\nThese are compact overview of R functions and how to use them.\nhttps://www.rstudio.com/resources/cheatsheets/\nUseful for the course are the following:\n\nBase R\nstringr\nlubridate\ndplyr\nggplot2"
-  },
-  {
-    "objectID": "98-additional_resources.html#useful-keyboard-shortcuts",
-    "href": "98-additional_resources.html#useful-keyboard-shortcuts",
-    "title": "Additional Ressources",
-    "section": "Useful Keyboard shortcuts",
-    "text": "Useful Keyboard shortcuts\n\nCtrl + i: indent automatically\nCtrl + shift + c: comment / uncomment marked lines\nCtrl + s: save script\nCtrl + shift + m: insert pipe operator %>%/|>\nF1: open help page of marked function\nF2: open source code of marked function"
-  },
-  {
-    "objectID": "references.html",
-    "href": "references.html",
-    "title": "References",
-    "section": "",
-    "text": "Chambers, John M. 2016. Extending R. The\nR Series. Boca Raton, Fla. London New York:\nCRC Press, Taylor & Francis Group.\n\n\nChambers, John, M. 2020. “S, R, and Data\nScience.” The R Journal 12 (1): 462. https://doi.org/10.32614/RJ-2020-028.\n\n\nSlater, Louise J., Guillaume Thirel, Shaun Harrigan, Olivier Delaigue,\nAlexander Hurley, Abdou Khouakhi, Ilaria Prosdocimi, Claudia Vitolo, and\nKatie Smith. 2019. “Using R in Hydrology: A Review of\nRecent Developments and Future Directions.” Hydrology and\nEarth System Sciences 23 (7): 2939–63. https://doi.org/10.5194/hess-23-2939-2019.\n\n\nTurner, W. 2014. “Sensing Biodiversity.” Science\n346 (6207): 301–2. https://doi.org/10.1126/science.1256014."
-  },
-  {
     "objectID": "exercise/E02-vectors-dataframes.html#bonus-ein-bisschen-statistik",
     "href": "exercise/E02-vectors-dataframes.html#bonus-ein-bisschen-statistik",
     "title": "E02: Vektoren, Dataframes",
@@ -250,5 +222,26 @@
     "title": "E03: Mehr Dataframes",
     "section": "Und noch was zum Knobeln:",
     "text": "Und noch was zum Knobeln:\n\nErstelle eine Karte aller Bäume in den Bezirksgruppen “Altstadt” und “Innenstadtring”."
+  },
+  {
+    "objectID": "98-additional_resources.html#r-cheat-sheets",
+    "href": "98-additional_resources.html#r-cheat-sheets",
+    "title": "Additional Ressources",
+    "section": "R cheat sheets",
+    "text": "R cheat sheets\nThese are compact overview of R functions and how to use them.\nhttps://www.rstudio.com/resources/cheatsheets/\nUseful for the course are the following:\n\nBase R\nstringr\nlubridate\ndplyr\nggplot2"
+  },
+  {
+    "objectID": "98-additional_resources.html#useful-keyboard-shortcuts",
+    "href": "98-additional_resources.html#useful-keyboard-shortcuts",
+    "title": "Additional Ressources",
+    "section": "Useful Keyboard shortcuts",
+    "text": "Useful Keyboard shortcuts\n\nCtrl + i: indent automatically\nCtrl + shift + c: comment / uncomment marked lines\nCtrl + s: save script\nCtrl + shift + m: insert pipe operator %>%/|>\nF1: open help page of marked function\nF2: open source code of marked function"
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "References",
+    "section": "",
+    "text": "Chambers, John M. 2016. Extending R. The\nR Series. Boca Raton, Fla. London New York:\nCRC Press, Taylor & Francis Group.\n\n\nChambers, John, M. 2020. “S, R, and Data\nScience.” The R Journal 12 (1): 462. https://doi.org/10.32614/RJ-2020-028.\n\n\nSlater, Louise J., Guillaume Thirel, Shaun Harrigan, Olivier Delaigue,\nAlexander Hurley, Abdou Khouakhi, Ilaria Prosdocimi, Claudia Vitolo, and\nKatie Smith. 2019. “Using R in Hydrology: A Review of\nRecent Developments and Future Directions.” Hydrology and\nEarth System Sciences 23 (7): 2939–63. https://doi.org/10.5194/hess-23-2939-2019.\n\n\nTurner, W. 2014. “Sensing Biodiversity.” Science\n346 (6207): 301–2. https://doi.org/10.1126/science.1256014."
   }
 ]
