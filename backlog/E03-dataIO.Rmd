@@ -1,0 +1,100 @@
+## Daten Input und Output
+
+
+- Lade die Dateien "2022-05.csv" und "2022-06.csv" in R - `read.csv()`.
+
+```{r}
+
+
+
+```
+
+
+- Erstelle in jedem dataframe eine neue Spalte die den Monatsnamen enthält.
+
+
+```{r}
+
+
+
+```
+
+- Kombiniere dann beide Datensätze zu einem dataframe.
+
+```{r}
+
+
+
+```
+
+
+- Speichere den kombinierten dataframe als csv datei ab.
+
+```{r}
+
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Bonus: Alles auf einmal
+
+Mit der folgenden Funktion kann der gesamte Aasee Datensatz als eine Tabelle geladen werden.
+Die Funktion heißt `read_aasee()` uns als Argument benötigt sie den Orderpfad zu den csv Dateien (also z.b. `Daten/aasee-monitoring/data`)
+
+- Wende die Funktion an.
+- Erstelle einen Boxplot der Wassertemperatur. Was fällt auf?
+- Wie könnte das Problem behoben werden?
+
+
+```{r}
+
+# folder: string, orderpfad zu den csv Dateien
+
+read_aasee = function(folder){
+    aasee_files = list.files(folder, full.names = TRUE, pattern = ".csv$")
+    aasee = lapply(aasee_files, read.csv)
+    aasee = do.call(rbind, aasee)
+    return(aasee)
+}
+
+
+
+
+
+```
+
+
+
+
+
+

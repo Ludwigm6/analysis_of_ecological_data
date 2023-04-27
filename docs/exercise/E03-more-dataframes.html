@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -265,47 +299,233 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li>Lade beide Dateien in R.</li>
 </ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># zur besseren unterscheidung: "bezirke" ist der data.frame, "district" ist der spaltenname</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>bezirke <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">"../data/muenster_districts.csv"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>trees <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">"../data/muenster_trees.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <ul>
 <li>Verschaffe dir einen Überblick über die beiden data.frames mit den Funktionen <code>head()</code>, <code>str()</code>.</li>
 </ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(bezirke)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  id   district  district_group       area
+1 15    Bahnhof  Innenstadtring   363089.2
+2 16  Albachten    Münster-West 12965147.7
+3 17 Angelmodde  Münster-Südost  5016879.5
+4 18      Kreuz  Innenstadtring  1014690.9
+5 19 Berg Fidel Münster-Hiltrup  4781065.8
+6 20   Düesberg       Mitte-Süd  2185161.9</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(trees)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   species  district        X       Y
+1    Tilia Uppenberg 404685.2 5759126
+2    Tilia Uppenberg 404698.5 5759130
+3 Carpinus Uppenberg 404693.0 5759279
+4 Carpinus Uppenberg 404692.9 5759289
+5 Carpinus Uppenberg 404692.1 5759319
+6    Tilia Uppenberg 404685.6 5759520</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(bezirke)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   45 obs. of  4 variables:
+ $ id            : int  15 16 17 18 19 20 21 22 23 24 ...
+ $ district      : chr  "Bahnhof" "Albachten" "Angelmodde" "Kreuz" ...
+ $ district_group: chr  "Innenstadtring" "Münster-West" "Münster-Südost" "Innenstadtring" ...
+ $ area          : num  363089 12965148 5016880 1014691 4781066 ...</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(trees)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   39532 obs. of  4 variables:
+ $ species : chr  "Tilia" "Tilia" "Carpinus" "Carpinus" ...
+ $ district: chr  "Uppenberg" "Uppenberg" "Uppenberg" "Uppenberg" ...
+ $ X       : num  404685 404698 404693 404693 404692 ...
+ $ Y       : num  5759126 5759130 5759279 5759289 5759319 ...</code></pre>
+</div>
+</div>
 <ul>
 <li>Um Informationen über einzelne Spalten zu erhalten sind die Funktionen <code>table()</code> und <code>unique()</code> sehr nützlich. Teste die Funktionen mit der <code>district_group</code> Spalte.</li>
 </ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(bezirke<span class="sc">$</span>district_group)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+       Altstadt  Innenstadtring   Mitte-Nordost       Mitte-Süd Münster-Hiltrup 
+              5               9               5               4               5 
+   Münster-Nord     Münster-Ost  Münster-Südost    Münster-West 
+              4               3               4               6 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(bezirke<span class="sc">$</span>district_group)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Innenstadtring"  "Münster-West"    "Münster-Südost"  "Münster-Hiltrup"
+[5] "Mitte-Süd"       "Mitte-Nordost"   "Münster-Ost"     "Altstadt"       
+[9] "Münster-Nord"   </code></pre>
+</div>
+</div>
 <section id="münsters-bezirke" class="level2">
 <h2 class="anchored" data-anchor-id="münsters-bezirke">Münsters Bezirke</h2>
 <ul>
 <li>Welcher Bezirk Münsters ist am größten?</li>
 </ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>bezirke<span class="sc">$</span>district[<span class="fu">which.max</span>(bezirke<span class="sc">$</span>area)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Amelsbüren"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># oder:</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>bezirke[bezirke<span class="sc">$</span>area <span class="sc">==</span> <span class="fu">max</span>(bezirke<span class="sc">$</span>area),]<span class="sc">$</span>district</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Amelsbüren"</code></pre>
+</div>
+</div>
 <ul>
 <li>Wie groß ist die Bezirksgruppe “Altstadt”?</li>
 </ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(bezirke[bezirke<span class="sc">$</span>district_group <span class="sc">==</span> <span class="st">"Altstadt"</span>,]<span class="sc">$</span>area)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1194248</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># oder:</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(bezirke<span class="sc">$</span>area[<span class="fu">which</span>(bezirke<span class="sc">$</span>district_group <span class="sc">==</span> <span class="st">"Altstadt"</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1194248</code></pre>
+</div>
+</div>
 <ul>
 <li>Zu welcher Bezirksgruppe gehört der Bezirk “Schloss”?</li>
 </ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>bezirke[<span class="fu">which</span>(bezirke<span class="sc">$</span>district<span class="sc">==</span><span class="st">"Schloss"</span>),]<span class="sc">$</span>district_group</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Innenstadtring"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># oder</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>bezirke<span class="sc">$</span>district_group[<span class="fu">which</span>(bezirke<span class="sc">$</span>district<span class="sc">==</span><span class="st">"Schloss"</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Innenstadtring"</code></pre>
+</div>
+</div>
 <ul>
 <li>Aus Welchen Bezirken besteht die Bezirksgruppe “Münster-West”?</li>
 </ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>mw <span class="ot">=</span> <span class="fu">which</span>(bezirke<span class="sc">$</span>district_group <span class="sc">==</span> <span class="st">"Münster-West"</span>)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>bezirke[mw,]<span class="sc">$</span>district</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Albachten"   "Gievenbeck"  "Roxel"       "Mecklenbeck" "Nienberge"  
+[6] "Sentrup"    </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># oder</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>bezirke<span class="sc">$</span>district[bezirke<span class="sc">$</span>district_group <span class="sc">==</span> <span class="st">"Münster-West"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Albachten"   "Gievenbeck"  "Roxel"       "Mecklenbeck" "Nienberge"  
+[6] "Sentrup"    </code></pre>
+</div>
+</div>
 </section>
 <section id="münsters-bäume" class="level2">
 <h2 class="anchored" data-anchor-id="münsters-bäume">Münsters Bäume</h2>
 <ul>
 <li>Wie viele Baumarten gibt es in Münster?</li>
 </ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>v <span class="ot">=</span> trees<span class="sc">$</span>species</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(v))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 67</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># oder</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">table</span>(trees<span class="sc">$</span>species))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 67</code></pre>
+</div>
+</div>
 <ul>
 <li>Wie viele Buchen (species: Fagus) gibt es in Münster?</li>
 </ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(trees<span class="sc">$</span>species <span class="sc">==</span> <span class="st">"Fagus"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 420</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># oder:</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>fagus <span class="ot">=</span> trees[trees<span class="sc">$</span>species <span class="sc">==</span> <span class="st">"Fagus"</span>,]</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(fagus)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 420</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(fagus<span class="sc">$</span>species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 420</code></pre>
+</div>
+</div>
 <ul>
 <li>In welchem Bezirk stehen die meisten Bäume?</li>
 </ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>v1 <span class="ot">=</span> <span class="fu">sort</span>(<span class="fu">table</span>(trees<span class="sc">$</span>district), <span class="at">decreasing =</span> <span class="cn">TRUE</span>)[<span class="dv">1</span>]</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>v1 <span class="co"># Name mit Baumanzahl</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Nienberge 
+     2407 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">which.max</span>(<span class="fu">table</span>(trees<span class="sc">$</span>district)) <span class="co"># Name mit Index</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Nienberge 
+       34 </code></pre>
+</div>
+</div>
 <ul>
 <li>In welchem Bezirk stehen die meisten Magnolien (species: Magnolia)?</li>
 </ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">which.max</span>(<span class="fu">table</span>(trees<span class="sc">$</span>district[trees<span class="sc">$</span>species <span class="sc">==</span> <span class="st">"Magnolia"</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Bahnhof 
+      2 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>muenster_Magnolia <span class="ot">&lt;-</span> trees[trees<span class="sc">$</span>species<span class="sc">==</span> <span class="st">"Magnolia"</span>,]</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(muenster_Magnolia<span class="sc">$</span>district)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+      Aaseestadt          Bahnhof              Dom         Düesberg 
+               1               25                1                8 
+Gremmendorf-West        Herz-Jesu    Hiltrup-Mitte      Hiltrup-Ost 
+               1                1                5                8 
+ Kinderhaus-West    Mauritz-Mitte      Mecklenbeck      Schlachthof 
+               4                7                2                6 
+         Schloss 
+               7 </code></pre>
+</div>
+</div>
 </section>
 <section id="und-noch-was-zum-knobeln" class="level2">
 <h2 class="anchored" data-anchor-id="und-noch-was-zum-knobeln">Und noch was zum Knobeln:</h2>
 <ul>
 <li>Erstelle eine Karte aller Bäume in den Bezirksgruppen “Altstadt” und “Innenstadtring”.</li>
 </ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Welche districts sind in den districtgruppen "Altstadt" und "Innnestadtring"?</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>innermuenster <span class="ot">=</span> bezirke<span class="sc">$</span>district[bezirke<span class="sc">$</span>district_group <span class="sc">==</span> <span class="st">"Altstadt"</span><span class="sc">|</span> bezirke<span class="sc">$</span>district_group <span class="sc">==</span> <span class="st">"Innenstadtring"</span>]</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>innermuenster</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "Bahnhof"      "Kreuz"        "Josef"        "Pluggendorf"  "Mauritz-West"
+ [6] "Aegidii"      "Schloss"      "Dom"          "Martini"      "Hansaplatz"  
+[11] "Buddenturm"   "Neutor"       "Überwasser"   "Schlachthof" </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># diesen Vektor benutzen um die Bäume zu filter:</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>muenster_trees_innermuenster <span class="ot">=</span> trees[trees<span class="sc">$</span>district <span class="sc">%in%</span> innermuenster,]</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Dann X und Y plotten, asp = 1 verhindert verzerrung (aspect ratio), cex = 0.1 ist die Punktgrösse</span></span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(muenster_trees_innermuenster<span class="sc">$</span>X, muenster_trees_innermuenster<span class="sc">$</span>Y,</span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">asp =</span> <span class="dv">1</span>, <span class="at">cex =</span> <span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="E03-more-dataframes_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 
 
 </section>

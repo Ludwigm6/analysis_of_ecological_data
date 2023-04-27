@@ -1,3 +1,9 @@
+---
+code-fold: false
+code-summary: "Solution"
+eval: TRUE
+---
+
 # E03: Mehr Dataframes
 
 
@@ -6,13 +12,20 @@ Im Learnweb finden sich die Dateien `muenster_districts.csv` und `muenster_trees
 - Lade beide Dateien in R.
 
 ```{r}
-
+# zur besseren unterscheidung: "bezirke" ist der data.frame, "district" ist der spaltenname
+bezirke = read.csv("../data/muenster_districts.csv")
+trees = read.csv("../data/muenster_trees.csv")
 ```
 
 
 - Verschaffe dir einen Überblick über die beiden data.frames mit den Funktionen `head()`, `str()`.
 
 ```{r}
+head(bezirke)
+head(trees)
+
+str(bezirke)
+str(trees)
 
 ```
 
@@ -21,9 +34,8 @@ Im Learnweb finden sich die Dateien `muenster_districts.csv` und `muenster_trees
 
 
 ```{r}
-
-
-
+table(bezirke$district_group)
+unique(bezirke$district_group)
 ```
 
 
@@ -32,12 +44,18 @@ Im Learnweb finden sich die Dateien `muenster_districts.csv` und `muenster_trees
 - Welcher Bezirk Münsters ist am größten?
 
 ```{r}
-
+bezirke$district[which.max(bezirke$area)]
+# oder:
+bezirke[bezirke$area == max(bezirke$area),]$district
 ```
 
 - Wie groß ist die Bezirksgruppe "Altstadt"?
 
 ```{r}
+sum(bezirke[bezirke$district_group == "Altstadt",]$area)
+# oder:
+sum(bezirke$area[which(bezirke$district_group == "Altstadt")])
+
 
 ```
 
@@ -45,13 +63,19 @@ Im Learnweb finden sich die Dateien `muenster_districts.csv` und `muenster_trees
 - Zu welcher Bezirksgruppe gehört der Bezirk "Schloss"?
 
 ```{r}
-
+bezirke[which(bezirke$district=="Schloss"),]$district_group
+# oder
+bezirke$district_group[which(bezirke$district=="Schloss")]
 ```
 
 - Aus Welchen Bezirken besteht die Bezirksgruppe "Münster-West"?
 
 ```{r}
+mw = which(bezirke$district_group == "Münster-West")
+bezirke[mw,]$district
 
+# oder
+bezirke$district[bezirke$district_group == "Münster-West"]
 ```
 
 
@@ -62,12 +86,21 @@ Im Learnweb finden sich die Dateien `muenster_districts.csv` und `muenster_trees
 
 
 ```{r}
-
+v = trees$species
+length(unique(v))
+# oder
+length(table(trees$species))
 ```
 
 - Wie viele Buchen (species: Fagus) gibt es in Münster?
 
 ```{r}
+sum(trees$species == "Fagus")
+
+# oder:
+fagus = trees[trees$species == "Fagus",]
+nrow(fagus)
+length(fagus$species)
 
 ```
 
@@ -75,15 +108,20 @@ Im Learnweb finden sich die Dateien `muenster_districts.csv` und `muenster_trees
 - In welchem Bezirk stehen die meisten Bäume?
 
 ```{r}
+v1 = sort(table(trees$district), decreasing = TRUE)[1]
+v1 # Name mit Baumanzahl
 
+which.max(table(trees$district)) # Name mit Index
 ```
 
 
 - In welchem Bezirk stehen die meisten Magnolien (species: Magnolia)?
 
 ```{r}
+which.max(table(trees$district[trees$species == "Magnolia"]))
 
-
+muenster_Magnolia <- trees[trees$species== "Magnolia",]
+table(muenster_Magnolia$district)
 ```
 
 
@@ -93,6 +131,18 @@ Im Learnweb finden sich die Dateien `muenster_districts.csv` und `muenster_trees
 
 
 ```{r}
+
+
+# Welche districts sind in den districtgruppen "Altstadt" und "Innnestadtring"?
+innermuenster = bezirke$district[bezirke$district_group == "Altstadt"| bezirke$district_group == "Innenstadtring"]
+innermuenster
+
+# diesen Vektor benutzen um die Bäume zu filter:
+muenster_trees_innermuenster = trees[trees$district %in% innermuenster,]
+
+# Dann X und Y plotten, asp = 1 verhindert verzerrung (aspect ratio), cex = 0.1 ist die Punktgrösse
+plot(muenster_trees_innermuenster$X, muenster_trees_innermuenster$Y,
+     asp = 1, cex = 0.1)
 
 
 ```

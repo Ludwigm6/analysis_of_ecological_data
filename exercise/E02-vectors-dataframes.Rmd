@@ -1,3 +1,10 @@
+---
+code-fold: true
+code-summary: "Solution"
+eval: false
+---
+
+
 # E02: Vektoren, Dataframes
 
 Der folgende Vektor enthält Temperaturdaten vom Aasee in Münster vom 2021-06-02.
@@ -9,6 +16,7 @@ Der folgende Vektor enthält Temperaturdaten vom Aasee in Münster vom 2021-06-0
 
 
 ```{r}
+#| code-fold: false
 temperature <- c(18.81,18.73,18.92,18.87,18.76,18.79,18.87,18.84,18.89,18.89,
                  18.93,18.95,18.92,18.97,19.00,18.99,19.00,19.00,18.99,19.00,
                  18.98,18.97,18.97,18.97,18.97,18.98,18.96,18.94,18.94,18.91,
@@ -23,7 +31,22 @@ temperature <- c(18.81,18.73,18.92,18.87,18.76,18.79,18.87,18.84,18.89,18.89,
                  22.61,22.83,20.85,20.68,19.76,19.81,19.74,19.58,19.35,19.40,
                  19.75,19.76,19.85,19.82,19.86,20.08,20.06,19.85,20.04,19.90,
                  19.96,20.12,19.94,20.20,20.17,20.31,20.17,20.37,20.36,20.13)
+```
 
+
+```{r}
+length(temperature)
+range(temperature)
+summary(temperature)
+boxplot(temperature)
+
+
+# Celsius zu Fahrenheit: 
+fahrenheit = (temperature * 9/5) + 32
+fahrenheit
+
+sort(temperature) # gibt die Werte sortiert zurueck
+order(temperature) # gibt den Index der Werte sortiert zurueck
 
 ```
 
@@ -36,14 +59,22 @@ temperature <- c(18.81,18.73,18.92,18.87,18.76,18.79,18.87,18.84,18.89,18.89,
 - Speichere die 30 niedrigsten Temperaturen in einer neuen Variablen.
 
 ```{r}
+temperature[5]
+temperature[length(temperature)]
 
+temp_first_20 = temperature[seq(1,20)]
+temp_low_30 = sort(temperature)[1:30]
 ```
 
 - Gib alle Temperaturen aus die 22°C überschreiten.
 - Wie oft wurde genau 18.79°C gemessen?
 
 ```{r}
+temperature[temperature > 22]
 
+sum(temperature == 18.79)
+#oder
+length(temperature[temperature == 18.79])
 ```
 
 
@@ -64,8 +95,12 @@ head(iris)
 
 ```{r}
 
-
-
+length(iris)
+nrow(iris)
+ncol(iris)
+summary(iris)
+summary(iris$Sepal.Length)
+colnames(iris); names(iris)
 ```
 
 
@@ -79,6 +114,17 @@ head(iris)
 
 
 ```{r}
+vir = iris[iris$Species == "virginica",]
+set_ver = iris[iris$Species == "setosa" | iris$Species == "versicolor",]
+# oder
+set_ver = iris[iris$Species != "virginica",]
+# oder
+set_ver = iris[iris$Species %in% c("setosa", "versicolor"),]
+
+
+iris_half = iris[1:(nrow(iris)/2),]
+
+iris_sepal = iris[iris$Sepal.Length > 5.5 & iris$Sepal.Length < 7,]
 
 ```
 
@@ -94,9 +140,12 @@ head(iris)
 
 
 ```{r}
+mean(vir$Sepal.Length)
+hist(iris$Sepal.Width)
 
-
-
+var(iris$Sepal.Width)
+sd(iris$Sepal.Width)
+plot(iris$Sepal.Length, iris$Petal.Length)
 ```
 
 
@@ -108,6 +157,7 @@ head(iris)
 
 
 ```{r}
+#| code-fold: false
 # row 1, column 2
 iris[1,2]
 
@@ -122,6 +172,7 @@ iris[seq(3), c(3,4)]
 **Tipp 2:** Einzele Spalten können mit `$` angewählt werden.
 
 ```{r}
+#| code-fold: false
 iris$Sepal.Length
 ```
 
