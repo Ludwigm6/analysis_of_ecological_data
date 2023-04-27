@@ -1,10 +1,10 @@
-# Tidyverse functions
+# R05: Tidyverse functions
 
 * collection of packages
 * `library(tidyverse)` loads multiple packages
 * consistent syntax and workflows
 * makes code more readable
-* pipe operator `%>%` can chain functions together
+* pipe operator `%>%` / `|>` can chain functions together
 * **tidy data approach**
     * rows are observations
     * columns are variables / features
@@ -16,8 +16,8 @@
 
 ## dplyr
 
-* Provides functions for dataframe manipulation
-* Can complement or replace base R functions
+* provides functions for dataframe manipulation
+* can complement or replace base R functions
 
 
 ![https://biostat2.uni.lu/lectures/img/06/vaudor_dplyr_schema.png](https://biostat2.uni.lu/lectures/img/06/vaudor_dplyr_schema.png)
@@ -26,6 +26,7 @@
 
 
 ```{r}
+library(dplyr)
 aasee = read.csv("data/2021-06_aasee.csv")
 
 # slice - gives back a slice of data - i.e. the specified rows
@@ -67,13 +68,13 @@ min(aasee$Wassertemperatur)
 
 
 
-The strength of dplyr is the possibility to chain functions with `%>%`.
+The strength of dplyr is the possibility to chain functions with `%>%` or `|>`.
 
 
 ```{r}
-aasee %>% 
-    filter(Wassertemperatur < 18) %>% 
-    select(pH.Wert) %>% 
+aasee|> 
+    filter(Wassertemperatur < 18) |> 
+    select(pH.Wert) |>  
     max()
 ```
 

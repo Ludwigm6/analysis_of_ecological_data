@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Analysis of Ecological Data - D03: Project Setup</title>
+<title>Analysis of Ecological Data - R05: Tidyverse functions</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,8 +64,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./R01_introduction.html" rel="next">
-<link href="./D02_aasee.html" rel="prev">
+<link href="./R06_strings.html" rel="next">
+<link href="./R04_dataframes.html" rel="prev">
 <link href=".//home/marvin/images/pictogramms/ecoR.svg" rel="icon" type="image/svg+xml">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -108,7 +108,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./D01_data_examples.html">Data</a></li><li class="breadcrumb-item"><a href="./D03_project_setup.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">D03: Project Setup</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./R01_introduction.html">R</a></li><li class="breadcrumb-item"><a href="./R05_tidyverse.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">R05: Tidyverse functions</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -159,7 +159,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./D03_project_setup.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">D03: Project Setup</span></a>
+  <a href="./D03_project_setup.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">D03: Project Setup</span></a>
   </div>
 </li>
       </ul>
@@ -195,7 +195,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R05_tidyverse.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R05: Tidyverse functions</span></a>
+  <a href="./R05_tidyverse.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">R05: Tidyverse functions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -269,7 +269,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#r-studio-projects" id="toc-r-studio-projects" class="nav-link active" data-scroll-target="#r-studio-projects">R studio Projects</a></li>
+  <li><a href="#dplyr" id="toc-dplyr" class="nav-link active" data-scroll-target="#dplyr">dplyr</a></li>
   </ul>
 </nav>
     </div>
@@ -278,7 +278,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">D03: Project Setup</span></h1>
+<h1 class="title"><span class="chapter-title">R05: Tidyverse functions</span></h1>
 </div>
 
 
@@ -293,45 +293,132 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p>Once you deal with external files (e.g.&nbsp;loading a .csv), saving outputs or reports, you have to deal with directory and file structure. This is often harder than the actual R code itself. To keep everything easy and consistent within R (at least for this course), I recommend using Rstudio Projects with a standardized directory setup.</p>
-<section id="r-studio-projects" class="level2">
-<h2 class="anchored" data-anchor-id="r-studio-projects">R studio Projects</h2>
-<p>Here is an example from a blog entry at <a href="https://www.r-bloggers.com/2020/01/rstudio-projects-and-working-directories-a-beginners-guide/">r-bloggers.com</a></p>
+<ul>
+<li>collection of packages</li>
+<li><code>library(tidyverse)</code> loads multiple packages</li>
+<li>consistent syntax and workflows</li>
+<li>makes code more readable</li>
+<li>pipe operator <code>%&gt;%</code> / <code>|&gt;</code> can chain functions together</li>
+<li><strong>tidy data approach</strong>
+<ul>
+<li>rows are observations</li>
+<li>columns are variables / features</li>
+</ul></li>
+</ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://i1.wp.com/raw.githubusercontent.com/martinctc/blog/master/images/RPROJECT_2000dpi.png?w=578&amp;ssl=1" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">A good starting point for project setup</figcaption>
+<p><img src="https://ajsmit.github.io/Intro_R_Official/figures/tidy_workflow.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">https://ajsmit.github.io/Intro_R_Official/figures/tidy_workflow.png</figcaption>
 </figure>
 </div>
-<p>Inside a project, you can then use relative paths to files.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example of absolute path</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Linux</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="st">"/home/marvin/projects/rcourse/session02/data/file.csv"</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Windows</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="st">"C:\Users\Marvin\Dokumente</span><span class="sc">\r</span><span class="st">course\session02\data</span><span class="sc">\f</span><span class="st">ile.csv"</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># If the R project is set up in the "session02" directory we can use relative paths:</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># relative path to project root</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">"data/file.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>Additional thoughts</strong></p>
+<section id="dplyr" class="level2">
+<h2 class="anchored" data-anchor-id="dplyr">dplyr</h2>
 <ul>
-<li>always keep raw data</li>
-<li><strong>backups!</strong></li>
-<li>filepaths:
-<ul>
-<li>no spaces</li>
-<li>no dots</li>
-<li>no weird characters</li>
-</ul></li>
-<li><a href="https://speakerdeck.com/jennybc/how-to-name-files">How to name files</a></li>
-<li>Windows uses backslash <code>\</code>, R wants forward slash <code>/</code></li>
-<li>you can use the <code>dir.create</code> function to create a new empty directory</li>
+<li>provides functions for dataframe manipulation</li>
+<li>can complement or replace base R functions</li>
 </ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://biostat2.uni.lu/lectures/img/06/vaudor_dplyr_schema.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">https://biostat2.uni.lu/lectures/img/06/vaudor_dplyr_schema.png</figcaption>
+</figure>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>aasee <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">"data/2021-06_aasee.csv"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># slice - gives back a slice of data - i.e. the specified rows</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>aasee <span class="ot">=</span> <span class="fu">slice</span>(aasee, <span class="fu">seq</span>(<span class="dv">8</span>))</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># select - selects columns</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(aasee, Wassertemperatur)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Wassertemperatur
+1            17.98
+2            17.66
+3            18.03
+4            18.08
+5            18.06
+6            18.01
+7            18.02
+8            18.06</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># filter - filters rows based on logical operators</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(aasee, Wassertemperatur <span class="sc">&lt;</span> <span class="dv">18</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>             Datum Wassertemperatur pH.Wert Sauerstoffgehalt
+1 2021-05-31 23:57            17.98    8.05            10.53
+2 2021-06-01 00:09            17.66    8.04             9.64</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># mutate - mutates the data.frame by adding columns</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(aasee, <span class="at">t_kelvin =</span> Wassertemperatur <span class="sc">+</span> <span class="fl">273.15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>             Datum Wassertemperatur pH.Wert Sauerstoffgehalt t_kelvin
+1 2021-05-31 23:57            17.98    8.05            10.53   291.13
+2 2021-06-01 00:09            17.66    8.04             9.64   290.81
+3 2021-06-01 00:19            18.03    8.12            11.30   291.18
+4 2021-06-01 00:27            18.08    8.14            11.32   291.23
+5 2021-06-01 00:39            18.06    8.12            11.06   291.21
+6 2021-06-01 00:49            18.01    8.10            10.91   291.16
+7 2021-06-01 00:59            18.02    8.10            10.96   291.17
+8 2021-06-01 01:08            18.06    8.10            10.83   291.21</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># summarise - summarises data</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise</span>(aasee, <span class="at">minimum_t =</span> <span class="fu">min</span>(Wassertemperatur))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  minimum_t
+1     17.66</code></pre>
+</div>
+</div>
+<p>The functions itself could all be realized with base R functions:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the same in base R</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># select</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>aasee<span class="sc">$</span>Wassertemperatur</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 17.98 17.66 18.03 18.08 18.06 18.01 18.02 18.06</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># filter</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>aasee[,aasee<span class="sc">$</span>Wassertemperatur <span class="sc">&lt;</span> <span class="dv">18</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>             Datum Wassertemperatur
+1 2021-05-31 23:57            17.98
+2 2021-06-01 00:09            17.66
+3 2021-06-01 00:19            18.03
+4 2021-06-01 00:27            18.08
+5 2021-06-01 00:39            18.06
+6 2021-06-01 00:49            18.01
+7 2021-06-01 00:59            18.02
+8 2021-06-01 01:08            18.06</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># mutate</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>aasee<span class="sc">$</span>t_kelvin <span class="ot">=</span> aasee<span class="sc">$</span>Wassertemperatur <span class="sc">+</span> <span class="fl">273.15</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># summarise</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(aasee<span class="sc">$</span>Wassertemperatur)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 17.66</code></pre>
+</div>
+</div>
+<p>The strength of dplyr is the possibility to chain functions with <code>%&gt;%</code> or <code>|&gt;</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>aasee<span class="sc">|&gt;</span> </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(Wassertemperatur <span class="sc">&lt;</span> <span class="dv">18</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(pH.Wert) <span class="sc">|&gt;</span>  </span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">max</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 8.05</code></pre>
+</div>
+</div>
+<p>With base R functions this looks messy, because we have to use functions inside functions.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(aasee<span class="sc">$</span>pH.Wert[aasee<span class="sc">$</span>Wassertemperatur <span class="sc">&lt;</span> <span class="dv">18</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 8.05</code></pre>
+</div>
+</div>
 
 
 </section>
@@ -572,13 +659,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./D02_aasee.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">D02: The Aasee Dataset</span></span>
+      <a href="./R04_dataframes.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">R04: Dataframes</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./R01_introduction.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-title">R01: What is R?</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./R06_strings.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-title">R06: String handling</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

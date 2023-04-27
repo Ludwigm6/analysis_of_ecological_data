@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Analysis of Ecological Data",
     "section": "",
-    "text": "Welcome"
+    "text": "Welcome\nLandscape Ecology with R"
   },
   {
     "objectID": "index.html#target-audience",
@@ -32,7 +32,7 @@
     "href": "index.html#course-outline",
     "title": "Analysis of Ecological Data",
     "section": "Course Outline",
-    "text": "Course Outline\n\nSummary and Exercises from last week\nNew Input\nExercises\nStudienleistung: 10 assignments - Passed with 6 assignments > 50%\n\n\n\n\nCourse Outline\n\n\n\n\n\n\n\n\nDate\nContent\n\n\n\n\n06.04.\nOrganization - Topic Overview - What is R? - What is ecological data?\n\n\n\n13.04.\nR foundations I - functions - vectors - data.frames\n\n\n\n20.04.\nR foundations II - R Projects\ndata.frames\n\n\n27.04.\nAasee water monitoring - tidyverse\nstrings\n\n\n04.05.\nAasee water monitoring - correlations\n\n\n\n11.05.\nAasee water monitoring - linear models\n\n\n\n18.05.\n—- Feiertag —-\n\n\n\n25.05.\nBuffer\n\n\n\n02.06.\n—- Pfingstferien —-\n\n\n\n08.06.\n—- Feiertag —-\n\n\n\n15.06.\nBiodiversity Data\n\n\n\n22.06.\nBiodiversity Data\n\n\n\n29.06.\nVisualizations - ggplot\n\n\n\n06.07.\nVisualizations - ggplot\n\n\n\n13.07.\nWrap up"
+    "text": "Course Outline\n\nSummary and Exercises from last week\nNew Input\nExercises\nStudienleistung: 10 assignments - Passed with 6 assignments &gt; 50%\n\n\n\n\nCourse Outline\n\n\n\n\n\n\nDate\nContent\n\n\n\n\n06.04.\nOrganization - Topic Overview - What is R? - What is ecological data?\n\n\n13.04.\nR foundations I - functions - vectors - data.frames\n\n\n20.04.\nR foundations II - R Projects - data.frames\n\n\n27.04.\nAasee water monitoring - tidyverse - strings\n\n\n04.05.\nAasee water monitoring - correlations\n\n\n11.05.\nAasee water monitoring - linear models\n\n\n18.05.\n—- Feiertag —-\n\n\n25.05.\nBuffer\n\n\n02.06.\n—- Pfingstferien —-\n\n\n08.06.\n—- Feiertag —-\n\n\n15.06.\nBiodiversity Data\n\n\n22.06.\nBiodiversity Data\n\n\n29.06.\nVisualizations - ggplot\n\n\n06.07.\nVisualizations - ggplot\n\n\n13.07.\nWrap up"
   },
   {
     "objectID": "D01_data_examples.html#plot-surveys",
@@ -88,7 +88,7 @@
     "href": "R01_introduction.html#r-code",
     "title": "R01: What is R?",
     "section": "R Code",
-    "text": "R Code\nHow R code looks like:\n\ndata <- c(12, 45, 65, 1, 3, 87)\nmean(data)\n\ndata <- data + 5\nsort(data)\n\nHow R code looks like with output:\n\ndata <- c(12, 45, 65, 1, 3, 87)\nmean(data)\n\n[1] 35.5\n\ndata <- data + 5\nsort(data)\n\n[1]  6  8 17 50 70 92"
+    "text": "R Code\nHow R code looks like:\n\ndata &lt;- c(12, 45, 65, 1, 3, 87)\nmean(data)\n\ndata &lt;- data + 5\nsort(data)\n\nHow R code looks like with output:\n\ndata &lt;- c(12, 45, 65, 1, 3, 87)\nmean(data)\n\n[1] 35.5\n\ndata &lt;- data + 5\nsort(data)\n\n[1]  6  8 17 50 70 92"
   },
   {
     "objectID": "R01_introduction.html#why-r",
@@ -109,14 +109,14 @@
     "href": "R01_introduction.html#task-r-and-rstudio",
     "title": "R01: What is R?",
     "section": "TASK: R and Rstudio",
-    "text": "TASK: R and Rstudio\n\nOpen R studio and get familiar with the interface.\nCreate a new, empty R script.\nWhat is the difference between the script editor and the console?\nCopy the code below into the R script and run it line by line. Try to understand what each line does.\n\n\na <- 5\nb <- 10\n\na + b\n\np <- a-b\n\nv <- c(3,12,6,9,23)\nv\n\nv / b\n\nmean(v)\n# sum(v)\n\n\nQuestions you might have\n\nWhy does p <- a*b not produce an output?\nWhat is c()?\nWhy does # sum(v) not work?\n\n\nEverything that exists in R is an object. Everything that happens in R is a function call. - J. M. Chambers (2016)\n\n\n\n\n\nChambers, John M. 2016. Extending R. The R Series. Boca Raton, Fla. London New York: CRC Press, Taylor & Francis Group.\n\n\nChambers, John, M. 2020. “S, R, and Data Science.” The R Journal 12 (1): 462. https://doi.org/10.32614/RJ-2020-028.\n\n\nSlater, Louise J., Guillaume Thirel, Shaun Harrigan, Olivier Delaigue, Alexander Hurley, Abdou Khouakhi, Ilaria Prosdocimi, Claudia Vitolo, and Katie Smith. 2019. “Using R in Hydrology: A Review of Recent Developments and Future Directions.” Hydrology and Earth System Sciences 23 (7): 2939–63. https://doi.org/10.5194/hess-23-2939-2019."
+    "text": "TASK: R and Rstudio\n\nOpen R studio and get familiar with the interface.\nCreate a new, empty R script.\nWhat is the difference between the script editor and the console?\nCopy the code below into the R script and run it line by line. Try to understand what each line does.\n\n\na &lt;- 5\nb &lt;- 10\n\na + b\n\np &lt;- a-b\n\nv &lt;- c(3,12,6,9,23)\nv\n\nv / b\n\nmean(v)\n# sum(v)\n\n\nQuestions you might have\n\nWhy does p &lt;- a*b not produce an output?\nWhat is c()?\nWhy does # sum(v) not work?\n\n\nEverything that exists in R is an object. Everything that happens in R is a function call. - J. M. Chambers (2016)\n\n\n\n\n\nChambers, John M. 2016. Extending R. The R Series. Boca Raton, Fla. London New York: CRC Press, Taylor & Francis Group.\n\n\nChambers, John, M. 2020. “S, R, and Data Science.” The R Journal 12 (1): 462. https://doi.org/10.32614/RJ-2020-028.\n\n\nSlater, Louise J., Guillaume Thirel, Shaun Harrigan, Olivier Delaigue, Alexander Hurley, Abdou Khouakhi, Ilaria Prosdocimi, Claudia Vitolo, and Katie Smith. 2019. “Using R in Hydrology: A Review of Recent Developments and Future Directions.” Hydrology and Earth System Sciences 23 (7): 2939–63. https://doi.org/10.5194/hess-23-2939-2019."
   },
   {
     "objectID": "R02_basics.html#variables",
     "href": "R02_basics.html#variables",
     "title": "R02: The very basics",
     "section": "Variables",
-    "text": "Variables\n\nassign values to variables either with <- or =\nvariable on the left, assigned value on the right\nYou decide how to name a variable.\n\nUse recognizable names!\nDon’t be lazy. Longer, descriptive names help immensely.\n\n\n\na <- 5\nb = 10\n\na_big_number = 500000"
+    "text": "Variables\n\nassign values to variables either with &lt;- or =\nvariable on the left, assigned value on the right\nYou decide how to name a variable.\n\nUse recognizable names!\nDon’t be lazy. Longer, descriptive names help immensely.\n\n\n\na &lt;- 5\nb = 10\n\na_big_number = 500000"
   },
   {
     "objectID": "R02_basics.html#values",
@@ -130,7 +130,7 @@
     "href": "R02_basics.html#functions",
     "title": "R02: The very basics",
     "section": "Functions",
-    "text": "Functions\n\nEverything you do in R is a function!\nEasily identified by function name followed by parenthesis (), e.g. print()\nfor common functions there are shortcuts\n\n\n# the class() function returns the type of the input\na <- 5\nclass(a)\n\n[1] \"numeric\"\n\n# the nchar() function returns the number of characters in a string\nnchar(\"Hi Mom\")\n\n[1] 6\n\n# Really everything you do in R is a function!\n`<-`(b, 10)\nprint(b)\n\n[1] 10\n\n\n\nmost functions need arguments\ninput, options, parameters to specify what the function should do\neach function has a help page where you can read about arguments\n\nFor example, the cos() function computes the cosine of a number. The help page specifies what the function expects as an input. You can access the help page with ?cos() or by searching for the function in the ‘Help’ tab in Rstudio (bottom right panel).\n\n# the cos function needs the argument x of type numeric\ncos(x = 0)\n\n[1] 1\n\n# it throws an error otherwise\ncos(x = \"3.14\")\n\nError in cos(x = \"3.14\"): non-numeric argument to mathematical function\n\n# argument names can be neglected\ncos(1)\n\n[1] 0.5403023"
+    "text": "Functions\n\nEverything you do in R is a function!\nEasily identified by function name followed by parenthesis (), e.g. print()\nfor common functions there are shortcuts\n\n\n# the class() function returns the type of the input\na &lt;- 5\nclass(a)\n\n[1] \"numeric\"\n\n# the nchar() function returns the number of characters in a string\nnchar(\"Hi Mom\")\n\n[1] 6\n\n# Really everything you do in R is a function!\n`&lt;-`(b, 10)\nprint(b)\n\n[1] 10\n\n\n\nmost functions need arguments\ninput, options, parameters to specify what the function should do\neach function has a help page where you can read about arguments\n\nFor example, the cos() function computes the cosine of a number. The help page specifies what the function expects as an input. You can access the help page with ?cos() or by searching for the function in the ‘Help’ tab in Rstudio (bottom right panel).\n\n# the cos function needs the argument x of type numeric\ncos(x = 0)\n\n[1] 1\n\n# it throws an error otherwise\ncos(x = \"3.14\")\n\nError in cos(x = \"3.14\"): non-numeric argument to mathematical function\n\n# argument names can be neglected\ncos(1)\n\n[1] 0.5403023"
   },
   {
     "objectID": "R03_vectors.html#vector-maths",
@@ -144,14 +144,14 @@
     "href": "R03_vectors.html#vectors-and-functions",
     "title": "R03: Vectors",
     "section": "Vectors and functions",
-    "text": "Vectors and functions\nThe vector below are the temperature values for the Aasee in Münster from the 2021-06-02.\n\ntemperature <- c(18.81,18.73,18.92,18.87,18.76,18.79,18.87,18.84,18.89,18.89,\n                 18.93,18.95,18.92,18.97,19.00,18.99,19.00,19.00,18.99,19.00,\n                 18.98,18.97,18.97,18.97,18.97,18.98,18.96,18.94,18.94,18.91,\n                 18.90,18.89,18.87,18.85,18.85,18.84,18.83,18.81,18.81,18.81,\n                 18.81,18.81,18.80,18.79,18.80,18.79,18.79,18.78,18.77,18.78,\n                 18.79,18.79,18.79,18.79,18.79,18.79,18.80,18.79,18.81,18.80,\n                 18.81,18.81,18.82,18.84,18.87,18.89,18.89,18.91,18.96,19.02,\n                 19.11,19.15,18.95,18.92,18.84,18.85,18.96,18.92,18.95,18.95,\n                 18.91,19.00,19.02,19.06,19.05,19.47,19.32,19.05,19.66,19.57,\n                 19.23,19.42,19.36,19.66,19.79,19.81,19.99,21.10,21.94,22.52,\n                 22.81,22.43,22.16,21.55,21.80,21.02,21.85,21.45,22.48,22.73,\n                 22.61,22.83,20.85,20.68,19.76,19.81,19.74,19.58,19.35,19.40,\n                 19.75,19.76,19.85,19.82,19.86,20.08,20.06,19.85,20.04,19.90,\n                 19.96,20.12,19.94,20.20,20.17,20.31,20.17,20.37,20.36,20.13)"
+    "text": "Vectors and functions\nThe vector below are the temperature values for the Aasee in Münster from the 2021-06-02.\n\ntemperature &lt;- c(18.81,18.73,18.92,18.87,18.76,18.79,18.87,18.84,18.89,18.89,\n                 18.93,18.95,18.92,18.97,19.00,18.99,19.00,19.00,18.99,19.00,\n                 18.98,18.97,18.97,18.97,18.97,18.98,18.96,18.94,18.94,18.91,\n                 18.90,18.89,18.87,18.85,18.85,18.84,18.83,18.81,18.81,18.81,\n                 18.81,18.81,18.80,18.79,18.80,18.79,18.79,18.78,18.77,18.78,\n                 18.79,18.79,18.79,18.79,18.79,18.79,18.80,18.79,18.81,18.80,\n                 18.81,18.81,18.82,18.84,18.87,18.89,18.89,18.91,18.96,19.02,\n                 19.11,19.15,18.95,18.92,18.84,18.85,18.96,18.92,18.95,18.95,\n                 18.91,19.00,19.02,19.06,19.05,19.47,19.32,19.05,19.66,19.57,\n                 19.23,19.42,19.36,19.66,19.79,19.81,19.99,21.10,21.94,22.52,\n                 22.81,22.43,22.16,21.55,21.80,21.02,21.85,21.45,22.48,22.73,\n                 22.61,22.83,20.85,20.68,19.76,19.81,19.74,19.58,19.35,19.40,\n                 19.75,19.76,19.85,19.82,19.86,20.08,20.06,19.85,20.04,19.90,\n                 19.96,20.12,19.94,20.20,20.17,20.31,20.17,20.37,20.36,20.13)"
   },
   {
     "objectID": "R03_vectors.html#subsetting",
     "href": "R03_vectors.html#subsetting",
     "title": "R03: Vectors",
     "section": "Subsetting",
-    "text": "Subsetting\nFor many questions it is often required to access only parts of the data. This is one of the most common things you have to deal with in R.\n\nIndexing\nTo access single values of a vector, use square brackets [].\n\n# get the third value of the vector\ntemperature[3]\n\n[1] 18.92\n\n# accessing multiple elements at once\ntemperature[1,2]\n\nError in temperature[1, 2]: incorrect number of dimensions\n\ntemperature[c(1,2)]\n\n[1] 18.81 18.73\n\n\n\nUsing the functions above, what is an easy way to access the first 10 elements of the vector?\n\n\n\nLogical Operators\n\n\n\n\n\nR vector logical operation\n\n\n\n\nA more powerful way to subset a vector is by using logical operators. These functions usually return a boolean object (TRUE, FALSE) which can then be used to access certain values.\n\n1 > 2\n\n[1] FALSE\n\n1 < 2\n\n[1] TRUE\n\n1 == 2\n\n[1] FALSE\n\nmax(temperature) > 22\n\n[1] TRUE\n\ntemperature > 20\n\n  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [13] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [25] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [37] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [49] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [61] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [73] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [85] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [97] FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE\n[109]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE\n[121] FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE  TRUE FALSE FALSE  TRUE\n[133] FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE\n\nhot = temperature > 20\n\ntemperature[hot]\n\n [1] 21.10 21.94 22.52 22.81 22.43 22.16 21.55 21.80 21.02 21.85 21.45 22.48\n[13] 22.73 22.61 22.83 20.85 20.68 20.08 20.06 20.04 20.12 20.20 20.17 20.31\n[25] 20.17 20.37 20.36 20.13"
+    "text": "Subsetting\nFor many questions it is often required to access only parts of the data. This is one of the most common things you have to deal with in R.\n\nIndexing\nTo access single values of a vector, use square brackets [].\n\n# get the third value of the vector\ntemperature[3]\n\n[1] 18.92\n\n# accessing multiple elements at once\ntemperature[1,2]\n\nError in temperature[1, 2]: incorrect number of dimensions\n\ntemperature[c(1,2)]\n\n[1] 18.81 18.73\n\n\n\nUsing the functions above, what is an easy way to access the first 10 elements of the vector?\n\n\n\nLogical Operators\n\n\n\n\n\nR vector logical operation\n\n\n\n\nA more powerful way to subset a vector is by using logical operators. These functions usually return a boolean object (TRUE, FALSE) which can then be used to access certain values.\n\n1 &gt; 2\n\n[1] FALSE\n\n1 &lt; 2\n\n[1] TRUE\n\n1 == 2\n\n[1] FALSE\n\nmax(temperature) &gt; 22\n\n[1] TRUE\n\ntemperature &gt; 20\n\n  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [13] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [25] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [37] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [49] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [61] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [73] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [85] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [97] FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE\n[109]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE\n[121] FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE  TRUE FALSE FALSE  TRUE\n[133] FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE\n\nhot = temperature &gt; 20\n\ntemperature[hot]\n\n [1] 21.10 21.94 22.52 22.81 22.43 22.16 21.55 21.80 21.02 21.85 21.45 22.48\n[13] 22.73 22.61 22.83 20.85 20.68 20.08 20.06 20.04 20.12 20.20 20.17 20.31\n[25] 20.17 20.37 20.36 20.13"
   },
   {
     "objectID": "R04_dataframes.html#csv-files",
@@ -161,11 +161,25 @@
     "text": "CSV Files\nDataframes can be loaded from and saved to .csv files.\n\nComma Separated Values\nCaution: In Germany “,” is used as the decimal point. You often find “;” as the delimiter in csvs.\nCaution: If you open csv files in Excel, things can get messy\n\nDatum,Wassertemperatur,pH-Wert,Sauerstoffgehalt\n2021-05-31 23:57,17.98,8.05,10.53\n2021-06-01 00:09,17.66,8.04,9.64\n2021-06-01 00:19,18.03,8.12,11.30\n2021-06-01 00:27,18.08,8.14,11.32\n2021-06-01 00:39,18.06,8.12,11.06\n2021-06-01 00:49,18.01,8.10,10.91\n\nuse the read.csv function\nmake sure the dec and sep parameters of the function are properly set\nwhen in doubt look at the help page ?read.csv\n\n\ndata = read.csv(file = \"data/2021-06_aasee.csv\", dec = \".\", sep = \",\")\n\n\n# show the first few rows of the df\nhead(data)\n\n             Datum Wassertemperatur pH.Wert Sauerstoffgehalt\n1 2021-05-31 23:57            17.98    8.05            10.53\n2 2021-06-01 00:09            17.66    8.04             9.64\n3 2021-06-01 00:19            18.03    8.12            11.30\n4 2021-06-01 00:27            18.08    8.14            11.32\n5 2021-06-01 00:39            18.06    8.12            11.06\n6 2021-06-01 00:49            18.01    8.10            10.91\n\n# show the last few rows of the df\ntail(data)\n\n                Datum Wassertemperatur pH.Wert Sauerstoffgehalt\n4220 2021-06-30 22:57            23.73    8.78            17.80\n4221 2021-06-30 23:09            23.70    8.72            17.66\n4222 2021-06-30 23:18            23.68    8.73            17.72\n4223 2021-06-30 23:29            23.64    8.81            18.38\n4224 2021-06-30 23:39            23.62    8.76            17.93\n4225 2021-06-30 23:49            23.63    8.77            17.82\n\n# get a short summary of the structure\nstr(data)\n\n'data.frame':   4225 obs. of  4 variables:\n $ Datum           : chr  \"2021-05-31 23:57\" \"2021-06-01 00:09\" \"2021-06-01 00:19\" \"2021-06-01 00:27\" ...\n $ Wassertemperatur: num  18 17.7 18 18.1 18.1 ...\n $ pH.Wert         : num  8.05 8.04 8.12 8.14 8.12 8.1 8.1 8.1 8.1 8.1 ...\n $ Sauerstoffgehalt: num  10.53 9.64 11.3 11.32 11.06 ...\n\n\n\n\n\n\nChambers, John, M. 2020. “S, R, and Data Science.” The R Journal 12 (1): 462. https://doi.org/10.32614/RJ-2020-028."
   },
   {
+    "objectID": "R05_tidyverse.html#dplyr",
+    "href": "R05_tidyverse.html#dplyr",
+    "title": "R05: Tidyverse functions",
+    "section": "dplyr",
+    "text": "dplyr\n\nprovides functions for dataframe manipulation\ncan complement or replace base R functions\n\n\n\n\nhttps://biostat2.uni.lu/lectures/img/06/vaudor_dplyr_schema.png\n\n\n\nlibrary(dplyr)\naasee = read.csv(\"data/2021-06_aasee.csv\")\n\n# slice - gives back a slice of data - i.e. the specified rows\naasee = slice(aasee, seq(8))\n\n\n# select - selects columns\nselect(aasee, Wassertemperatur)\n\n  Wassertemperatur\n1            17.98\n2            17.66\n3            18.03\n4            18.08\n5            18.06\n6            18.01\n7            18.02\n8            18.06\n\n# filter - filters rows based on logical operators\nfilter(aasee, Wassertemperatur &lt; 18)\n\n             Datum Wassertemperatur pH.Wert Sauerstoffgehalt\n1 2021-05-31 23:57            17.98    8.05            10.53\n2 2021-06-01 00:09            17.66    8.04             9.64\n\n# mutate - mutates the data.frame by adding columns\nmutate(aasee, t_kelvin = Wassertemperatur + 273.15)\n\n             Datum Wassertemperatur pH.Wert Sauerstoffgehalt t_kelvin\n1 2021-05-31 23:57            17.98    8.05            10.53   291.13\n2 2021-06-01 00:09            17.66    8.04             9.64   290.81\n3 2021-06-01 00:19            18.03    8.12            11.30   291.18\n4 2021-06-01 00:27            18.08    8.14            11.32   291.23\n5 2021-06-01 00:39            18.06    8.12            11.06   291.21\n6 2021-06-01 00:49            18.01    8.10            10.91   291.16\n7 2021-06-01 00:59            18.02    8.10            10.96   291.17\n8 2021-06-01 01:08            18.06    8.10            10.83   291.21\n\n# summarise - summarises data\nsummarise(aasee, minimum_t = min(Wassertemperatur))\n\n  minimum_t\n1     17.66\n\n\nThe functions itself could all be realized with base R functions:\n\n# the same in base R\n\n# select\naasee$Wassertemperatur\n\n[1] 17.98 17.66 18.03 18.08 18.06 18.01 18.02 18.06\n\n# filter\naasee[,aasee$Wassertemperatur &lt; 18]\n\n             Datum Wassertemperatur\n1 2021-05-31 23:57            17.98\n2 2021-06-01 00:09            17.66\n3 2021-06-01 00:19            18.03\n4 2021-06-01 00:27            18.08\n5 2021-06-01 00:39            18.06\n6 2021-06-01 00:49            18.01\n7 2021-06-01 00:59            18.02\n8 2021-06-01 01:08            18.06\n\n# mutate\naasee$t_kelvin = aasee$Wassertemperatur + 273.15\n\n# summarise\nmin(aasee$Wassertemperatur)\n\n[1] 17.66\n\n\nThe strength of dplyr is the possibility to chain functions with %&gt;% or |&gt;.\n\naasee|&gt; \n    filter(Wassertemperatur &lt; 18) |&gt; \n    select(pH.Wert) |&gt;  \n    max()\n\n[1] 8.05\n\n\nWith base R functions this looks messy, because we have to use functions inside functions.\n\nmax(aasee$pH.Wert[aasee$Wassertemperatur &lt; 18])\n\n[1] 8.05"
+  },
+  {
+    "objectID": "R06_strings.html#the-stringr-package",
+    "href": "R06_strings.html#the-stringr-package",
+    "title": "R06: String handling",
+    "section": "The stringr package",
+    "text": "The stringr package\nFor advanced string handling we will make our lives easier by using the stringr package.\nTo use functions from a package we have to load it first with the library function. The first time you want to use a package you might have to install it first with install.packages.\n\ninstall.packages(\"stringr\")\n\nlibrary(stringr)\n\nMany packages have so called vignettes which are tutorial style help pages about the package. You can access vignettes via the “Packages” Pane in R studio or with a quick Google search.\nIt is a good idea to go over the vignette when using a new package.\n\ns = \"Hi Mom!\"\n\n# you can indicate in your script from which package a function comes from\n# by using ::\nstringr::str_length(s)\n\n[1] 7\n\nstr_sub(string = s, start = 1, end = 2)\n\n[1] \"Hi\"\n\n# vectorized:\nstring_vector = paste(seq(12), \"is\", c(\"odd\", \"even\"))\nstring_vector\n\n [1] \"1 is odd\"   \"2 is even\"  \"3 is odd\"   \"4 is even\"  \"5 is odd\"  \n [6] \"6 is even\"  \"7 is odd\"   \"8 is even\"  \"9 is odd\"   \"10 is even\"\n[11] \"11 is odd\"  \"12 is even\"\n\nstr_remove(string_vector, pattern = \"is \")\n\n [1] \"1 odd\"   \"2 even\"  \"3 odd\"   \"4 even\"  \"5 odd\"   \"6 even\"  \"7 odd\"  \n [8] \"8 even\"  \"9 odd\"   \"10 even\" \"11 odd\"  \"12 even\"\n\n# stringr functions are part of the tidyverse\n# pipes work:\nstring_vector |&gt; str_replace(pattern = \" is\", replacement = \":\")\n\n [1] \"1: odd\"   \"2: even\"  \"3: odd\"   \"4: even\"  \"5: odd\"   \"6: even\" \n [7] \"7: odd\"   \"8: even\"  \"9: odd\"   \"10: even\" \"11: odd\"  \"12: even\"\n\n\n\nPattern matching\nPattern matching are logical operators for strings.\n\nstr_detect(string_vector, pattern = \"odd\")\n\n [1]  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE\n\nstr_which(string_vector, pattern = \"even\")\n\n[1]  2  4  6  8 10 12\n\nstr_starts(string_vector, pattern = \"1\")\n\n [1]  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE\n\nstr_count(string_vector, pattern = \"1\")\n\n [1] 1 0 0 0 0 0 0 0 0 1 2 1\n\n\n\n\nLeading Zeros\nstr_pad one can be quite important to keep you sane.\n\nstring_vector = paste(seq(15), \"is\", c(\"odd\", \"even\"))\nstring_vector\n\n [1] \"1 is odd\"   \"2 is even\"  \"3 is odd\"   \"4 is even\"  \"5 is odd\"  \n [6] \"6 is even\"  \"7 is odd\"   \"8 is even\"  \"9 is odd\"   \"10 is even\"\n[11] \"11 is odd\"  \"12 is even\" \"13 is odd\"  \"14 is even\" \"15 is odd\" \n\nstring_vector_pad = paste(str_pad(seq(15), width = 2, pad = 0, side = \"left\"),\n                          \"is\",\n                          c(\"odd\", \"even\"))\nstring_vector_pad\n\n [1] \"01 is odd\"  \"02 is even\" \"03 is odd\"  \"04 is even\" \"05 is odd\" \n [6] \"06 is even\" \"07 is odd\"  \"08 is even\" \"09 is odd\"  \"10 is even\"\n[11] \"11 is odd\"  \"12 is even\" \"13 is odd\"  \"14 is even\" \"15 is odd\""
+  },
+  {
     "objectID": "exercise/E01-variablen.html#variablen",
     "href": "exercise/E01-variablen.html#variablen",
     "title": "E01: Variablen, Funktionen",
     "section": "Variablen",
-    "text": "Variablen\n\nErstelle eine Variable die die Zahl 1650 enthält.\nErstelle eine Variable die die Zahl 140 enthält.\nErstelle eine Variable die die Zahl 5 enthält.\nBerechne das Produkt deiner erstellten Variablen.\nBerechne den Mittelwert deiner erstellten Variablen.\n\n\n\nSolution\na = 1650\nb = 140\nc <- 5\n\na*b*c\n\nhilfsvektor = c(a,b,c)\nmean(hilfsvektor)\n\n\n\nErstelle eine Variable die deinen Vornamen enthält.\nErstelle eine Variable die deinen Nachnamen enthält.\nDie paste Funktion kann Texte zusammenfügen. Probiere die Funktion mit den Variablen die deine Namen enthalten aus.\n\n\n\nSolution\nvorname = \"Marvin\"\nnachname = \"Ludwig\"\n\npaste(vorname, nachname)"
+    "text": "Variablen\n\nErstelle eine Variable die die Zahl 1650 enthält.\nErstelle eine Variable die die Zahl 140 enthält.\nErstelle eine Variable die die Zahl 5 enthält.\nBerechne das Produkt deiner erstellten Variablen.\nBerechne den Mittelwert deiner erstellten Variablen.\n\n\n\nSolution\na = 1650\nb = 140\nc &lt;- 5\n\na*b*c\n\nhilfsvektor = c(a,b,c)\nmean(hilfsvektor)\n\n\n\nErstelle eine Variable die deinen Vornamen enthält.\nErstelle eine Variable die deinen Nachnamen enthält.\nDie paste Funktion kann Texte zusammenfügen. Probiere die Funktion mit den Variablen die deine Namen enthalten aus.\n\n\n\nSolution\nvorname = \"Marvin\"\nnachname = \"Ludwig\"\n\npaste(vorname, nachname)"
   },
   {
     "objectID": "exercise/E01-variablen.html#funktionen",
@@ -179,7 +193,7 @@
     "href": "exercise/E02-vectors-dataframes.html#indexing-und-logische-operatoren",
     "title": "E02: Vektoren, Dataframes",
     "section": "Indexing und Logische Operatoren",
-    "text": "Indexing und Logische Operatoren\n\nGib den 5ten Wert des Vektors aus.\nGib nur den letzten Wert des Vektors aus.\nSpeichere die ersten 20 Temperaturen in einer neuen Variablen.\nSpeichere die 30 niedrigsten Temperaturen in einer neuen Variablen.\n\n\n\nSolution\ntemperature[5]\ntemperature[length(temperature)]\n\ntemp_first_20 = temperature[seq(1,20)]\ntemp_low_30 = sort(temperature)[1:30]\n\n\n\nGib alle Temperaturen aus die 22°C überschreiten.\nWie oft wurde genau 18.79°C gemessen?\n\n\n\nSolution\ntemperature[temperature > 22]\n\nsum(temperature == 18.79)\n#oder\nlength(temperature[temperature == 18.79])"
+    "text": "Indexing und Logische Operatoren\n\nGib den 5ten Wert des Vektors aus.\nGib nur den letzten Wert des Vektors aus.\nSpeichere die ersten 20 Temperaturen in einer neuen Variablen.\nSpeichere die 30 niedrigsten Temperaturen in einer neuen Variablen.\n\n\n\nSolution\ntemperature[5]\ntemperature[length(temperature)]\n\ntemp_first_20 = temperature[seq(1,20)]\ntemp_low_30 = sort(temperature)[1:30]\n\n\n\nGib alle Temperaturen aus die 22°C überschreiten.\nWie oft wurde genau 18.79°C gemessen?\n\n\n\nSolution\ntemperature[temperature &gt; 22]\n\nsum(temperature == 18.79)\n#oder\nlength(temperature[temperature == 18.79])"
   },
   {
     "objectID": "exercise/E02-vectors-dataframes.html#dataframes",
@@ -193,7 +207,7 @@
     "href": "exercise/E02-vectors-dataframes.html#dataframe-subsetting",
     "title": "E02: Vektoren, Dataframes",
     "section": "Dataframe subsetting",
-    "text": "Dataframe subsetting\n\nErstelle einen neuen dataframe der nur die Beobachtungen der Species “virginica” enthält.\nErstelle einen neuen dataframe der nur die Beobachtungen der Species “setosa” und “versicolor” enthält.\nErstelle einen neuen dataframe der extakt die erste Hälfte der Beobachtungen enthält.\nErstelle einen neuen dataframe der nur Beobachtungen enthält mit einer Sepal.Length zwischen 5.5 und 7.\n\n\n\nSolution\nvir = iris[iris$Species == \"virginica\",]\nset_ver = iris[iris$Species == \"setosa\" | iris$Species == \"versicolor\",]\n# oder\nset_ver = iris[iris$Species != \"virginica\",]\n# oder\nset_ver = iris[iris$Species %in% c(\"setosa\", \"versicolor\"),]\n\n\niris_half = iris[1:(nrow(iris)/2),]\n\niris_sepal = iris[iris$Sepal.Length > 5.5 & iris$Sepal.Length < 7,]"
+    "text": "Dataframe subsetting\n\nErstelle einen neuen dataframe der nur die Beobachtungen der Species “virginica” enthält.\nErstelle einen neuen dataframe der nur die Beobachtungen der Species “setosa” und “versicolor” enthält.\nErstelle einen neuen dataframe der extakt die erste Hälfte der Beobachtungen enthält.\nErstelle einen neuen dataframe der nur Beobachtungen enthält mit einer Sepal.Length zwischen 5.5 und 7.\n\n\n\nSolution\nvir = iris[iris$Species == \"virginica\",]\nset_ver = iris[iris$Species == \"setosa\" | iris$Species == \"versicolor\",]\n# oder\nset_ver = iris[iris$Species != \"virginica\",]\n# oder\nset_ver = iris[iris$Species %in% c(\"setosa\", \"versicolor\"),]\n\n\niris_half = iris[1:(nrow(iris)/2),]\n\niris_sepal = iris[iris$Sepal.Length &gt; 5.5 & iris$Sepal.Length &lt; 7,]"
   },
   {
     "objectID": "exercise/E02-vectors-dataframes.html#bonus-ein-bisschen-statistik",
@@ -207,14 +221,14 @@
     "href": "exercise/E03-more-dataframes.html#münsters-bezirke",
     "title": "E03: Mehr Dataframes",
     "section": "Münsters Bezirke",
-    "text": "Münsters Bezirke\n\nWelcher Bezirk Münsters ist am größten?\n\n\n\n\n\nWie groß ist die Bezirksgruppe “Altstadt”?\n\n\n\n\n\nZu welcher Bezirksgruppe gehört der Bezirk “Schloss”?\n\n\n\n\n\nAus Welchen Bezirken besteht die Bezirksgruppe “Münster-West”?"
+    "text": "Münsters Bezirke\n\nWelcher Bezirk Münsters ist am größten?\n\n\nWie groß ist die Bezirksgruppe “Altstadt”?\n\n\nZu welcher Bezirksgruppe gehört der Bezirk “Schloss”?\n\n\nAus Welchen Bezirken besteht die Bezirksgruppe “Münster-West”?"
   },
   {
     "objectID": "exercise/E03-more-dataframes.html#münsters-bäume",
     "href": "exercise/E03-more-dataframes.html#münsters-bäume",
     "title": "E03: Mehr Dataframes",
     "section": "Münsters Bäume",
-    "text": "Münsters Bäume\n\nWie viele Baumarten gibt es in Münster?\n\n\n\n\n\nWie viele Buchen (species: Fagus) gibt es in Münster?\n\n\n\n\n\nIn welchem Bezirk stehen die meisten Bäume?\n\n\n\n\n\nIn welchem Bezirk stehen die meisten Magnolien (species: Magnolia)?"
+    "text": "Münsters Bäume\n\nWie viele Baumarten gibt es in Münster?\n\n\nWie viele Buchen (species: Fagus) gibt es in Münster?\n\n\nIn welchem Bezirk stehen die meisten Bäume?\n\n\nIn welchem Bezirk stehen die meisten Magnolien (species: Magnolia)?"
   },
   {
     "objectID": "exercise/E03-more-dataframes.html#und-noch-was-zum-knobeln",
@@ -222,6 +236,27 @@
     "title": "E03: Mehr Dataframes",
     "section": "Und noch was zum Knobeln:",
     "text": "Und noch was zum Knobeln:\n\nErstelle eine Karte aller Bäume in den Bezirksgruppen “Altstadt” und “Innenstadtring”."
+  },
+  {
+    "objectID": "exercise/E04-tidyverse.html#münsters-bezirke",
+    "href": "exercise/E04-tidyverse.html#münsters-bezirke",
+    "title": "E04: Tidyverse, strings",
+    "section": "Münsters Bezirke",
+    "text": "Münsters Bezirke\n\nWie groß ist die Bezirksgruppe “Altstadt”?\n\n\nZu welcher Bezirksgruppe gehört der Bezirk “Schloss”?\n\n\nAus welchen Bezirken besteht die Bezirksgruppe “Münster-West”?\n\n\nErstelle eine Tabelle die für jede Bezirksgruppe den Mittelwert und die Standardabweichung der Fläche der jeweiligen Bezirke berechnet. Nutze dafür die Funktionen dplyr::group_by() und dplyr::summarise()"
+  },
+  {
+    "objectID": "exercise/E04-tidyverse.html#münsters-bäume",
+    "href": "exercise/E04-tidyverse.html#münsters-bäume",
+    "title": "E04: Tidyverse, strings",
+    "section": "Münsters Bäume",
+    "text": "Münsters Bäume\n\nWie viele Baumarten gibt es in Münster?\n\n\nWie viele Buchen (species: Fagus) gibt es in Münster?\n\n\nErstelle eine Tabelle die für jeden Bezirk die Anzahl unterschiedlicher Baumarten angibt. Nutze dafür die Funktionen dplyr::group_by() und dplyr::summarise()"
+  },
+  {
+    "objectID": "exercise/E04-tidyverse.html#strings",
+    "href": "exercise/E04-tidyverse.html#strings",
+    "title": "E04: Tidyverse, strings",
+    "section": "Strings",
+    "text": "Strings\nNutze für die folgenden Aufgaben Funktionen des stringr Pakets.\n\nWie viele Bezirke beginnen mit “H”?\n\n\nGib alle Bezirke aus die das Wort “Ost” enthalten.\n\n\nIn der Baumtabelle gibt es in der Spalte species sowohl Einträge mit “Metasequoia” als auch mit “Metasequoia glyptostroboides”. Ändere alle “Metasequoia glyptostroboides” zu “Metasequoia”."
   },
   {
     "objectID": "98-additional_resources.html#r-cheat-sheets",
@@ -235,7 +270,7 @@
     "href": "98-additional_resources.html#useful-keyboard-shortcuts",
     "title": "Additional Ressources",
     "section": "Useful Keyboard shortcuts",
-    "text": "Useful Keyboard shortcuts\n\nCtrl + i: indent automatically\nCtrl + shift + c: comment / uncomment marked lines\nCtrl + s: save script\nCtrl + shift + m: insert pipe operator %>%/|>\nF1: open help page of marked function\nF2: open source code of marked function"
+    "text": "Useful Keyboard shortcuts\n\nCtrl + i: indent automatically\nCtrl + shift + c: comment / uncomment marked lines\nCtrl + s: save script\nCtrl + shift + m: insert pipe operator %&gt;%/|&gt;\nF1: open help page of marked function\nF2: open source code of marked function"
   },
   {
     "objectID": "references.html",

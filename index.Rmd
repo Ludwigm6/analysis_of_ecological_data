@@ -3,7 +3,7 @@ title: "Analysis of Ecological Data with R"
 author: "Marvin Ludwig"
 description: |
   This is a slide and exercise collection for the ILOEK Course "Analysis of ecological data in R".
-link-citations: yes
+link-citations: true
 github-repo: Ludwigm6/analysis_of_ecological_data
 ---
 

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Analysis of Ecological Data - D03: Project Setup</title>
+<title>Analysis of Ecological Data - R06: String handling</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,8 +64,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./R01_introduction.html" rel="next">
-<link href="./D02_aasee.html" rel="prev">
+<link href="./exercise/E01-variablen.html" rel="next">
+<link href="./R05_tidyverse.html" rel="prev">
 <link href=".//home/marvin/images/pictogramms/ecoR.svg" rel="icon" type="image/svg+xml">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -108,7 +108,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./D01_data_examples.html">Data</a></li><li class="breadcrumb-item"><a href="./D03_project_setup.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">D03: Project Setup</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./R01_introduction.html">R</a></li><li class="breadcrumb-item"><a href="./R06_strings.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">R06: String handling</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -159,7 +159,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./D03_project_setup.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">D03: Project Setup</span></a>
+  <a href="./D03_project_setup.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">D03: Project Setup</span></a>
   </div>
 </li>
       </ul>
@@ -200,7 +200,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R06_strings.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R06: String handling</span></a>
+  <a href="./R06_strings.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">R06: String handling</span></a>
   </div>
 </li>
       </ul>
@@ -269,7 +269,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#r-studio-projects" id="toc-r-studio-projects" class="nav-link active" data-scroll-target="#r-studio-projects">R studio Projects</a></li>
+  <li><a href="#the-stringr-package" id="toc-the-stringr-package" class="nav-link active" data-scroll-target="#the-stringr-package">The stringr package</a>
+  <ul class="collapse">
+  <li><a href="#pattern-matching" id="toc-pattern-matching" class="nav-link" data-scroll-target="#pattern-matching">Pattern matching</a></li>
+  <li><a href="#leading-zeros" id="toc-leading-zeros" class="nav-link" data-scroll-target="#leading-zeros">Leading Zeros</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -278,7 +282,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">D03: Project Setup</span></h1>
+<h1 class="title"><span class="chapter-title">R06: String handling</span></h1>
 </div>
 
 
@@ -293,47 +297,119 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p>Once you deal with external files (e.g.&nbsp;loading a .csv), saving outputs or reports, you have to deal with directory and file structure. This is often harder than the actual R code itself. To keep everything easy and consistent within R (at least for this course), I recommend using Rstudio Projects with a standardized directory setup.</p>
-<section id="r-studio-projects" class="level2">
-<h2 class="anchored" data-anchor-id="r-studio-projects">R studio Projects</h2>
-<p>Here is an example from a blog entry at <a href="https://www.r-bloggers.com/2020/01/rstudio-projects-and-working-directories-a-beginners-guide/">r-bloggers.com</a></p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://i1.wp.com/raw.githubusercontent.com/martinctc/blog/master/images/RPROJECT_2000dpi.png?w=578&amp;ssl=1" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">A good starting point for project setup</figcaption>
-</figure>
-</div>
-<p>Inside a project, you can then use relative paths to files.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example of absolute path</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Linux</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="st">"/home/marvin/projects/rcourse/session02/data/file.csv"</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Windows</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="st">"C:\Users\Marvin\Dokumente</span><span class="sc">\r</span><span class="st">course\session02\data</span><span class="sc">\f</span><span class="st">ile.csv"</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># If the R project is set up in the "session02" directory we can use relative paths:</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># relative path to project root</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">"data/file.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>Additional thoughts</strong></p>
+<p>Modifying strings (i.e.&nbsp;text) is a very common task but can be a bit tricky if you start out. Here are some functions to try out:</p>
 <ul>
-<li>always keep raw data</li>
-<li><strong>backups!</strong></li>
-<li>filepaths:
-<ul>
-<li>no spaces</li>
-<li>no dots</li>
-<li>no weird characters</li>
-</ul></li>
-<li><a href="https://speakerdeck.com/jennybc/how-to-name-files">How to name files</a></li>
-<li>Windows uses backslash <code>\</code>, R wants forward slash <code>/</code></li>
-<li>you can use the <code>dir.create</code> function to create a new empty directory</li>
+<li>create strings from multiple “substrings” with the <code>paste</code> or <code>paste0</code> function</li>
 </ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="dv">5</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"The number five:"</span>, n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "The number five: 5"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># again functions are vectorized</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="fu">seq</span>(<span class="dv">10</span>), <span class="st">"is"</span>, <span class="fu">c</span>(<span class="st">"odd"</span>, <span class="st">"even"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "1 is odd"   "2 is even"  "3 is odd"   "4 is even"  "5 is odd"  
+ [6] "6 is even"  "7 is odd"   "8 is even"  "9 is odd"   "10 is even"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># paste0 defaults to no character for separating the strings</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">paste0</span>(n, <span class="st">"five"</span>, n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "5five5"</code></pre>
+</div>
+</div>
+<section id="the-stringr-package" class="level2">
+<h2 class="anchored" data-anchor-id="the-stringr-package">The stringr package</h2>
+<p>For advanced string handling we will make our lives easier by using the <code>stringr</code> package.</p>
+<p>To use functions from a package we have to load it first with the <code>library</code> function. The first time you want to use a package you might have to install it first with <code>install.packages</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"stringr"</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Many packages have so called <code>vignettes</code> which are tutorial style help pages about the package. You can access vignettes via the “Packages” Pane in R studio or with a quick <a href="https://www.google.com/search?q=stringr+vignette">Google search</a>.</p>
+<p>It is a good idea to go over the vignette when using a new package.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>s <span class="ot">=</span> <span class="st">"Hi Mom!"</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># you can indicate in your script from which package a function comes from</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># by using ::</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>stringr<span class="sc">::</span><span class="fu">str_length</span>(s)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 7</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_sub</span>(<span class="at">string =</span> s, <span class="at">start =</span> <span class="dv">1</span>, <span class="at">end =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Hi"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># vectorized:</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>string_vector <span class="ot">=</span> <span class="fu">paste</span>(<span class="fu">seq</span>(<span class="dv">12</span>), <span class="st">"is"</span>, <span class="fu">c</span>(<span class="st">"odd"</span>, <span class="st">"even"</span>))</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>string_vector</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "1 is odd"   "2 is even"  "3 is odd"   "4 is even"  "5 is odd"  
+ [6] "6 is even"  "7 is odd"   "8 is even"  "9 is odd"   "10 is even"
+[11] "11 is odd"  "12 is even"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_remove</span>(string_vector, <span class="at">pattern =</span> <span class="st">"is "</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "1 odd"   "2 even"  "3 odd"   "4 even"  "5 odd"   "6 even"  "7 odd"  
+ [8] "8 even"  "9 odd"   "10 even" "11 odd"  "12 even"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># stringr functions are part of the tidyverse</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co"># pipes work:</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>string_vector <span class="sc">|&gt;</span> <span class="fu">str_replace</span>(<span class="at">pattern =</span> <span class="st">" is"</span>, <span class="at">replacement =</span> <span class="st">":"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "1: odd"   "2: even"  "3: odd"   "4: even"  "5: odd"   "6: even" 
+ [7] "7: odd"   "8: even"  "9: odd"   "10: even" "11: odd"  "12: even"</code></pre>
+</div>
+</div>
+<section id="pattern-matching" class="level3">
+<h3 class="anchored" data-anchor-id="pattern-matching">Pattern matching</h3>
+<p>Pattern matching are logical operators for strings.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(string_vector, <span class="at">pattern =</span> <span class="st">"odd"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_which</span>(string_vector, <span class="at">pattern =</span> <span class="st">"even"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  2  4  6  8 10 12</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_starts</span>(string_vector, <span class="at">pattern =</span> <span class="st">"1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_count</span>(string_vector, <span class="at">pattern =</span> <span class="st">"1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 1 0 0 0 0 0 0 0 0 1 2 1</code></pre>
+</div>
+</div>
+</section>
+<section id="leading-zeros" class="level3">
+<h3 class="anchored" data-anchor-id="leading-zeros">Leading Zeros</h3>
+<p><code>str_pad</code> one can be quite important to keep you sane.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>string_vector <span class="ot">=</span> <span class="fu">paste</span>(<span class="fu">seq</span>(<span class="dv">15</span>), <span class="st">"is"</span>, <span class="fu">c</span>(<span class="st">"odd"</span>, <span class="st">"even"</span>))</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>string_vector</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "1 is odd"   "2 is even"  "3 is odd"   "4 is even"  "5 is odd"  
+ [6] "6 is even"  "7 is odd"   "8 is even"  "9 is odd"   "10 is even"
+[11] "11 is odd"  "12 is even" "13 is odd"  "14 is even" "15 is odd" </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>string_vector_pad <span class="ot">=</span> <span class="fu">paste</span>(<span class="fu">str_pad</span>(<span class="fu">seq</span>(<span class="dv">15</span>), <span class="at">width =</span> <span class="dv">2</span>, <span class="at">pad =</span> <span class="dv">0</span>, <span class="at">side =</span> <span class="st">"left"</span>),</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>                          <span class="st">"is"</span>,</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">c</span>(<span class="st">"odd"</span>, <span class="st">"even"</span>))</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>string_vector_pad</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "01 is odd"  "02 is even" "03 is odd"  "04 is even" "05 is odd" 
+ [6] "06 is even" "07 is odd"  "08 is even" "09 is odd"  "10 is even"
+[11] "11 is odd"  "12 is even" "13 is odd"  "14 is even" "15 is odd" </code></pre>
+</div>
+</div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -572,13 +648,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./D02_aasee.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">D02: The Aasee Dataset</span></span>
+      <a href="./R05_tidyverse.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">R05: Tidyverse functions</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./R01_introduction.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-title">R01: What is R?</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./exercise/E01-variablen.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-title">E01: Variablen, Funktionen</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

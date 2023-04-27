@@ -19,11 +19,14 @@ book:
       - "R02_basics.qmd"
       - "R03_vectors.qmd"
       - "R04_dataframes.qmd"
+      - "R05_tidyverse.qmd"
+      - "R06_strings.qmd"
     - part: "Exercises"
       chapters:
       - "exercise/E01-variablen.Rmd"
       - "exercise/E02-vectors-dataframes.Rmd"
       - "exercise/E03-more-dataframes.Rmd"
+      - "exercise/E04-tidyverse.Rmd"
   appendices:
   - "98-additional_resources.Rmd"
   - "references.qmd"
