@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Analysis of Ecological Data - R04: Dataframes</title>
+<title>Analysis of Ecological Data - E05: Daten aufräumen</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -54,47 +54,28 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./R05_tidyverse.html" rel="next">
-<link href="./R03_vectors.html" rel="prev">
-<link href=".//home/marvin/images/pictogramms/ecoR.svg" rel="icon" type="image/svg+xml">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../exercise/E06-feldfruechte-arthropoden.html" rel="next">
+<link href="../exercise/E04-tidyverse.html" rel="prev">
+<link href="..//home/marvin/images/pictogramms/ecoR.svg" rel="icon" type="image/svg+xml">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -127,7 +108,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./R01_introduction.html">R</a></li><li class="breadcrumb-item"><a href="./R04_dataframes.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">R04: Dataframes</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../exercise/E01-variablen.html">Exercises</a></li><li class="breadcrumb-item"><a href="../exercise/E05-kritischer-sauerstoff.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">E05: Daten aufräumen</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -142,7 +123,7 @@ div.csl-indent {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Analysis of Ecological Data</a> 
+      <a href="../">Analysis of Ecological Data</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -154,7 +135,7 @@ div.csl-indent {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Analysis of Ecological Data with R</span></a>
+  <a href="../index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Analysis of Ecological Data with R</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -168,17 +149,17 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./D01_data_examples.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">D01: Ecological data</span></a>
+  <a href="../D01_data_examples.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">D01: Ecological data</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./D02_aasee.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">D02: The Aasee Dataset</span></a>
+  <a href="../D02_aasee.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">D02: The Aasee Dataset</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./D03_project_setup.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">D03: Project Setup</span></a>
+  <a href="../D03_project_setup.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">D03: Project Setup</span></a>
   </div>
 </li>
       </ul>
@@ -194,32 +175,32 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R01_introduction.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R01: What is R?</span></a>
+  <a href="../R01_introduction.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R01: What is R?</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R02_basics.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R02: The very basics</span></a>
+  <a href="../R02_basics.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R02: The very basics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R03_vectors.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R03: Vectors</span></a>
+  <a href="../R03_vectors.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R03: Vectors</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R04_dataframes.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">R04: Dataframes</span></a>
+  <a href="../R04_dataframes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R04: Dataframes</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R05_tidyverse.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R05: Tidyverse functions</span></a>
+  <a href="../R05_tidyverse.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R05: Tidyverse functions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R06_strings.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R06: String handling</span></a>
+  <a href="../R06_strings.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R06: String handling</span></a>
   </div>
 </li>
       </ul>
@@ -235,32 +216,32 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./exercise/E01-variablen.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E01: Variablen, Funktionen</span></a>
+  <a href="../exercise/E01-variablen.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E01: Variablen, Funktionen</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./exercise/E02-vectors-dataframes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E02: Vektoren, Dataframes</span></a>
+  <a href="../exercise/E02-vectors-dataframes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E02: Vektoren, Dataframes</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./exercise/E03-more-dataframes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E03: Mehr Dataframes</span></a>
+  <a href="../exercise/E03-more-dataframes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E03: Mehr Dataframes</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./exercise/E04-tidyverse.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E04: Tidyverse, strings</span></a>
+  <a href="../exercise/E04-tidyverse.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E04: Tidyverse, strings</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./exercise/E05-kritischer-sauerstoff.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E05: Daten aufräumen</span></a>
+  <a href="../exercise/E05-kritischer-sauerstoff.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">E05: Daten aufräumen</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./exercise/E06-feldfruechte-arthropoden.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E06 - Feldfruechte und Arthropoden</span></a>
+  <a href="../exercise/E06-feldfruechte-arthropoden.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E06 - Feldfruechte und Arthropoden</span></a>
   </div>
 </li>
       </ul>
@@ -276,13 +257,13 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./98-additional_resources.html" class="sidebar-item-text sidebar-link">
+  <a href="../98-additional_resources.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Additional Ressources</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">
+  <a href="../references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
 </li>
@@ -298,7 +279,7 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#csv-files" id="toc-csv-files" class="nav-link active" data-scroll-target="#csv-files">CSV Files</a></li>
+  <li><a href="#fallstudie-kritischer-sauerstoffgehalt-im-aasee" id="toc-fallstudie-kritischer-sauerstoffgehalt-im-aasee" class="nav-link active" data-scroll-target="#fallstudie-kritischer-sauerstoffgehalt-im-aasee">Fallstudie: Kritischer Sauerstoffgehalt im Aasee</a></li>
   </ul>
 </nav>
     </div>
@@ -307,7 +288,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">R04: Dataframes</span></h1>
+<h1 class="title"><span class="chapter-title">E05: Daten aufräumen</span></h1>
 </div>
 
 
@@ -322,106 +303,52 @@ div.csl-indent {
 
 </header>
 
+<p>Falls noch nicht geschehn, lade den Aasee Datensatz hier herunter: https://github.com/od-ms/aasee-monitoring (Code - Download ZIP). Entpacken nicht vergessen.</p>
+<p>Mit der folgenden Funktion kann der gesamte Aasee Datensatz als eine Tabelle geladen werden. Die Funktion heißt <code>read_aasee()</code> uns als Argument benötigt sie den Orderpfad zu den csv Dateien (also z.b. <code>Daten/aasee-monitoring/data</code>)</p>
+<ul>
+<li>Wende die Funktion an, also lade alle csv Dateien auf einmal in R.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># folder: string, orderpfad zu den csv Dateien</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>read_aasee <span class="ot">=</span> <span class="cf">function</span>(folder){</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    aasee_files <span class="ot">=</span> <span class="fu">list.files</span>(folder, <span class="at">full.names =</span> <span class="cn">TRUE</span>, <span class="at">pattern =</span> <span class="st">".csv$"</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    aasee <span class="ot">=</span> <span class="fu">lapply</span>(aasee_files, read.csv)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    aasee <span class="ot">=</span> <span class="fu">do.call</span>(rbind, aasee)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(aasee)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>aasee <span class="ot">=</span> <span class="fu">read_aasee</span>(<span class="st">"~/data/muenster/aasee-monitoring/data"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Erstelle einen Boxplot der Wassertemperatur. Was fällt auf?</li>
+</ul>
+<ul>
+<li>Überlege: Wie könnte das Problem behoben werden?</li>
+<li>Behebe das Problem, indem du die Reihe mit dem Messfehler aus dem Datensatz löschst (oder nur den Rest behältst).</li>
+</ul>
+<section id="fallstudie-kritischer-sauerstoffgehalt-im-aasee" class="level2">
+<h2 class="anchored" data-anchor-id="fallstudie-kritischer-sauerstoffgehalt-im-aasee">Fallstudie: Kritischer Sauerstoffgehalt im Aasee</h2>
+<p>2018, starben mehr als 20 Tonnen Fisch im Aasee wegen zu geringem Sauerstoffgehalt: <a href="https://www.uni-muenster.de/news/view.php?cmdid=9768">https://www.uni-muenster.de/news/view.php?cmdid=9768</a>.</p>
+<p>Basierend auf diesem Ereignis kann man die Frage stellen:</p>
 <blockquote class="blockquote">
-<p>From a data science perspective, the most important class of objects is the data frame - <span class="citation" data-cites="Chambers2020">Chambers (<a href="references.html#ref-Chambers2020" role="doc-biblioref">2020</a>)</span></p>
+<p>An wie vielen Tagen im Jahr 2022 war der Sauerstoffgehalt im Aasee zu niedrig (4 mg/l)?</p>
 </blockquote>
+<p>Die folgenden Aufgaben sollen Schritt für Schritt eine mögliche herangehensweise darstellen:</p>
+<hr>
 <ul>
-<li>Dataframes combine multiple vector in a structured format</li>
-<li>Intuitive - most people have seen a spreadsheet before</li>
-<li>Each column is regarded as a vector</li>
-<li>Each vector can have a different data type</li>
+<li>Die Tabelle enthält die Spalte <code>Datum</code> mit Texten (strings) in folgendem Format: “2021-05-31 23:57”. Erstelle 3 neue Spalten mit den Namen <code>Jahr</code>, <code>Monat</code> und <code>Tag</code> die dann jeweils nur die entsprechende Information beinhalten.</li>
 </ul>
-<div class="cell">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="assets/r_dataframe.svg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">data.frames are a named list of vectors</figcaption>
-</figure>
-</div>
-</div>
-</div>
 <ul>
-<li>Create one with <code>data.frame</code></li>
-<li>The functions need the column name followed by the vector of values</li>
+<li>Erstelle eine neue Tabelle, die nur die Messwerte aus dem Jahr 2022 enthält.</li>
 </ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">plotID =</span> <span class="fu">seq</span>(<span class="dv">3</span>),</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">soil_ph =</span> <span class="fu">c</span>(<span class="fl">5.5</span>, <span class="fl">5.4</span>, <span class="fl">6.1</span>),</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">soil_temperature =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>),</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">forest_type =</span> <span class="fu">c</span>(<span class="st">"coniferous"</span>, <span class="st">"coniferous"</span>, <span class="st">"deciduous"</span>))</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  plotID soil_ph soil_temperature forest_type
-1      1     5.5               10  coniferous
-2      2     5.4               11  coniferous
-3      3     6.1               12   deciduous</code></pre>
-</div>
-</div>
-<section id="csv-files" class="level2">
-<h2 class="anchored" data-anchor-id="csv-files">CSV Files</h2>
-<p>Dataframes can be loaded from and saved to <code>.csv</code> files.</p>
 <ul>
-<li>Comma Separated Values</li>
-<li>Caution: In Germany “,” is used as the decimal point. You often find “;” as the delimiter in csvs.</li>
-<li>Caution: If you open csv files in Excel, things can get messy</li>
+<li>Die Ausgangsfrage sollte jetzt leicht zu beantworten sein: An wie vielen Tagen im Jahr 2022 war der Sauerstoffgehalt im Aasee zu niedrig (4 mg/l)?</li>
 </ul>
-<pre><code>Datum,Wassertemperatur,pH-Wert,Sauerstoffgehalt
-2021-05-31 23:57,17.98,8.05,10.53
-2021-06-01 00:09,17.66,8.04,9.64
-2021-06-01 00:19,18.03,8.12,11.30
-2021-06-01 00:27,18.08,8.14,11.32
-2021-06-01 00:39,18.06,8.12,11.06
-2021-06-01 00:49,18.01,8.10,10.91</code></pre>
-<ul>
-<li>use the <code>read.csv</code> function</li>
-<li>make sure the <code>dec</code> and <code>sep</code> parameters of the function are properly set</li>
-<li>when in doubt look at the help page <code>?read.csv</code></li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">"data/2021-06_aasee.csv"</span>, <span class="at">dec =</span> <span class="st">"."</span>, <span class="at">sep =</span> <span class="st">","</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># show the first few rows of the df</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>             Datum Wassertemperatur pH.Wert Sauerstoffgehalt
-1 2021-05-31 23:57            17.98    8.05            10.53
-2 2021-06-01 00:09            17.66    8.04             9.64
-3 2021-06-01 00:19            18.03    8.12            11.30
-4 2021-06-01 00:27            18.08    8.14            11.32
-5 2021-06-01 00:39            18.06    8.12            11.06
-6 2021-06-01 00:49            18.01    8.10            10.91</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># show the last few rows of the df</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>                Datum Wassertemperatur pH.Wert Sauerstoffgehalt
-4220 2021-06-30 22:57            23.73    8.78            17.80
-4221 2021-06-30 23:09            23.70    8.72            17.66
-4222 2021-06-30 23:18            23.68    8.73            17.72
-4223 2021-06-30 23:29            23.64    8.81            18.38
-4224 2021-06-30 23:39            23.62    8.76            17.93
-4225 2021-06-30 23:49            23.63    8.77            17.82</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get a short summary of the structure</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>'data.frame':   4225 obs. of  4 variables:
- $ Datum           : chr  "2021-05-31 23:57" "2021-06-01 00:09" "2021-06-01 00:19" "2021-06-01 00:27" ...
- $ Wassertemperatur: num  18 17.7 18 18.1 18.1 ...
- $ pH.Wert         : num  8.05 8.04 8.12 8.14 8.12 8.1 8.1 8.1 8.1 8.1 ...
- $ Sauerstoffgehalt: num  10.53 9.64 11.3 11.32 11.06 ...</code></pre>
-</div>
-</div>
+<p>Bonus: Überlege dir eine geeignete Visualisierung um den Sachverhalt Markus Lewe zu erklären.</p>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
-<div id="ref-Chambers2020" class="csl-entry" role="listitem">
-Chambers, John, M. 2020. <span>“S, <span>R</span>, and <span>Data Science</span>.”</span> <em>The R Journal</em> 12 (1): 462. <a href="https://doi.org/10.32614/RJ-2020-028">https://doi.org/10.32614/RJ-2020-028</a>.
-</div>
-</div>
 </section>
 
 </main> <!-- /main -->
@@ -660,13 +587,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./R03_vectors.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">R03: Vectors</span></span>
+      <a href="../exercise/E04-tidyverse.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">E04: Tidyverse, strings</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./R05_tidyverse.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-title">R05: Tidyverse functions</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../exercise/E06-feldfruechte-arthropoden.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-title">E06 - Feldfruechte und Arthropoden</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

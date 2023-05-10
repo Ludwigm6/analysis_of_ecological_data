@@ -200,6 +200,16 @@ ul.task-list li input[type="checkbox"] {
   <a href="./exercise/E04-tidyverse.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E04: Tidyverse, strings</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./exercise/E05-kritischer-sauerstoff.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E05: Daten aufräumen</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./exercise/E06-feldfruechte-arthropoden.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E06 - Feldfruechte und Arthropoden</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -231,7 +241,15 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#case-study-level-1-basic-comparisons" id="toc-case-study-level-1-basic-comparisons" class="nav-link active" data-scroll-target="#case-study-level-1-basic-comparisons">Case Study Level 1: Basic Comparisons</a></li>
+  <li><a href="#case-study-level-2-aasee-critical-oxygen-concentrations" id="toc-case-study-level-2-aasee-critical-oxygen-concentrations" class="nav-link" data-scroll-target="#case-study-level-2-aasee-critical-oxygen-concentrations">Case Study Level 2: Aasee Critical Oxygen Concentrations</a></li>
+  <li><a href="#case-study-level-3-temperature-and-oxygen" id="toc-case-study-level-3-temperature-and-oxygen" class="nav-link" data-scroll-target="#case-study-level-3-temperature-and-oxygen">Case Study Level 3: Temperature and Oxygen</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -332,17 +350,51 @@ ul.task-list li input[type="checkbox"] {
 </table>
 </div>
 </div>
+<section id="case-study-level-1-basic-comparisons" class="level2">
+<h2 class="anchored" data-anchor-id="case-study-level-1-basic-comparisons">Case Study Level 1: Basic Comparisons</h2>
 <p>As a first intermediate goal we want to deal with the following task. We will learn all the necessary skills in R and a bit of statistics in the next lessons, but it is valuable to think about the task / question beforehand!</p>
 <blockquote class="blockquote">
 <p>Compare the water temperature of 2022 April and 2022 May.</p>
 </blockquote>
 <ul>
-<li>What does this task actually mean?</li>
-<li>Reformulate it as a question</li>
+<li>What does this task actually mean? What possibilities do we have?</li>
 <li>Outline steps to answer the question</li>
+</ul>
+</section>
+<section id="case-study-level-2-aasee-critical-oxygen-concentrations" class="level2">
+<h2 class="anchored" data-anchor-id="case-study-level-2-aasee-critical-oxygen-concentrations">Case Study Level 2: Aasee Critical Oxygen Concentrations</h2>
+<p>In 2018, more than twenty tons of fish died in the Aasee due to low oxygen concentrations: <a href="https://www.uni-muenster.de/news/view.php?cmdid=9768">https://www.uni-muenster.de/news/view.php?cmdid=9768</a>.</p>
+<p>Based on this event, a reasonable question might be:</p>
+<blockquote class="blockquote">
+<p>On how many days of 2022 does the Aasee reach critical oxygen concentrations (4 mg/l)?</p>
+</blockquote>
+<ul>
+<li>Define the necessary steps!</li>
+<li>Work in your project environment!</li>
+<li>How could a good visualization of this look like?</li>
+</ul>
+</section>
+<section id="case-study-level-3-temperature-and-oxygen" class="level2">
+<h2 class="anchored" data-anchor-id="case-study-level-3-temperature-and-oxygen">Case Study Level 3: Temperature and Oxygen</h2>
+<p>The oxygen concentration in water is partly based on the water temperature. An idealized relation between Oxygen and Temperature might look like this:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://www.garnelenhaus.de/media/image/2f/30/57/Ricardo-Castellanos-Sauerstoff-Grafik.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">https://www.garnelenhaus.de/media/image/2f/30/57/Ricardo-Castellanos-Sauerstoff-Grafik.jpg</figcaption>
+</figure>
+</div>
+<p>We want to find out if this holds true for the Aasee.</p>
+<blockquote class="blockquote">
+<p>Formulate a hypothesis.</p>
+</blockquote>
+<ul>
+<li>Aggregate temperature and oxygen to daily means.</li>
+<li>Visualize the relation between temperature and oxygen in the Aasee.</li>
+<li>Interpret this visualization!</li>
 </ul>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

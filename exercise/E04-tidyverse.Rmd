@@ -1,3 +1,9 @@
+---
+code-fold: false
+code-summary: "Solution"
+eval: false
+---
+
 # E04: Tidyverse, strings
 
 
@@ -7,34 +13,67 @@ Im Learnweb finden sich die Dateien `muenster_districts.csv` und `muenster_trees
 - Bearbeite die unten stehenden Aufgaben mit `dplyr` Funktionen und pipes `|>` bzw. `%>%` !
 
 ```{r}
-
+districts = read.csv("data/muenster_districts.csv")
+trees = read.csv("data/muenster_trees.csv")
 ```
 
 
 ## Münsters Bezirke
 
-- Wie groß ist die Bezirksgruppe "Altstadt"?
+- Wie groß ist die Bezirksgruppe "Altstadt" (Fläche)?
 
 ```{r}
+library(tidyverse)
 
+districts[districts$district_group == "Altstadt",]$area
+
+
+select(districts, "area")
+
+filter(districts, districts$district_group == "Altstadt")
+
+
+# |> pipe operator, auch %>%, einfügen mit strg + shift + m
+districts |> 
+    filter(districts$district_group == "Altstadt") |>
+    select("area")
+
+districts |> 
+    filter(district_group == "Altstadt") |>
+    select(area) |> 
+    sum()
+
+#
 ```
 
 - Zu welcher Bezirksgruppe gehört der Bezirk "Schloss"?
 
 ```{r}
-
+districts |> 
+    filter(district == "Schloss") |> 
+    select(district_group)
 ```
 
 - Aus welchen Bezirken besteht die Bezirksgruppe "Münster-West"?
 
 ```{r}
-
+districts |> 
+    filter(district_group == "Münster-West") |> 
+    select(district)
+# typische pipe schreibweise, zeilen + spalten auswählen
+districts |> 
+    filter(district_group == "Münster-West") |> 
+    select(district)
 ```
 
 - Erstelle eine Tabelle die für jede Bezirksgruppe den Mittelwert und die Standardabweichung der Fläche der jeweiligen Bezirke berechnet. Nutze dafür die Funktionen `dplyr::group_by()` und `dplyr::summarise()`
 
 ```{r}
-
+# typische gruppierung und zusammenfassung
+districts |> 
+    group_by(district_group) |> 
+    summarise(area_m = mean( area ),
+              area_sd = sd( area ))
 ```
 
 
@@ -44,19 +83,34 @@ Im Learnweb finden sich die Dateien `muenster_districts.csv` und `muenster_trees
 - Wie viele Baumarten gibt es in Münster?
 
 ```{r}
+v = trees$species
+length(unique(v))
 
+trees |> 
+    select(species) |> 
+    unique() |> 
+    count()
 ```
 
 - Wie viele Buchen (species: Fagus) gibt es in Münster?
 
 ```{r}
-
+trees |> 
+    filter(species == "Fagus") |> 
+    pull(species) |> 
+    length()
+# oder:
+trees |> 
+    filter(species == "Fagus") |>
+    nrow()
 ```
 
 - Erstelle eine Tabelle die für jeden Bezirk die Anzahl unterschiedlicher Baumarten angibt. Nutze dafür die Funktionen `dplyr::group_by()` und `dplyr::summarise()`
 
 ```{r}
-
+ntrees = trees |> 
+    group_by(district) |> 
+    summarise(n = length(unique(species)))
 ```
 
 
@@ -68,12 +122,15 @@ Nutze für die folgenden Aufgaben Funktionen des `stringr` Pakets.
 - Wie viele Bezirke beginnen mit "H"?
 
 ```{r}
+districts |> pull(district) |> str_starts("H") |> sum()
 
+sum(str_starts(districts$district, "H"))
 ```
 
 - Gib alle Bezirke aus die das Wort "Ost" enthalten.
 
 ```{r}
+
 
 ```
 

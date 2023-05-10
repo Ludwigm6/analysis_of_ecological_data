@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Analysis of Ecological Data - R04: Dataframes</title>
+<title>Analysis of Ecological Data - E06 - Feldfruechte und Arthropoden</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 /* CSS for citations */
 div.csl-bib-body { }
@@ -76,25 +42,25 @@ div.csl-indent {
 }</style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./R05_tidyverse.html" rel="next">
-<link href="./R03_vectors.html" rel="prev">
-<link href=".//home/marvin/images/pictogramms/ecoR.svg" rel="icon" type="image/svg+xml">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../98-additional_resources.html" rel="next">
+<link href="../exercise/E05-kritischer-sauerstoff.html" rel="prev">
+<link href="..//home/marvin/images/pictogramms/ecoR.svg" rel="icon" type="image/svg+xml">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -127,7 +93,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./R01_introduction.html">R</a></li><li class="breadcrumb-item"><a href="./R04_dataframes.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">R04: Dataframes</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../exercise/E01-variablen.html">Exercises</a></li><li class="breadcrumb-item"><a href="../exercise/E06-feldfruechte-arthropoden.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">E06 - Feldfruechte und Arthropoden</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -142,7 +108,7 @@ div.csl-indent {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Analysis of Ecological Data</a> 
+      <a href="../">Analysis of Ecological Data</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -154,7 +120,7 @@ div.csl-indent {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Analysis of Ecological Data with R</span></a>
+  <a href="../index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Analysis of Ecological Data with R</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -168,17 +134,17 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./D01_data_examples.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">D01: Ecological data</span></a>
+  <a href="../D01_data_examples.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">D01: Ecological data</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./D02_aasee.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">D02: The Aasee Dataset</span></a>
+  <a href="../D02_aasee.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">D02: The Aasee Dataset</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./D03_project_setup.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">D03: Project Setup</span></a>
+  <a href="../D03_project_setup.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">D03: Project Setup</span></a>
   </div>
 </li>
       </ul>
@@ -194,32 +160,32 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R01_introduction.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R01: What is R?</span></a>
+  <a href="../R01_introduction.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R01: What is R?</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R02_basics.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R02: The very basics</span></a>
+  <a href="../R02_basics.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R02: The very basics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R03_vectors.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R03: Vectors</span></a>
+  <a href="../R03_vectors.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R03: Vectors</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R04_dataframes.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">R04: Dataframes</span></a>
+  <a href="../R04_dataframes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R04: Dataframes</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R05_tidyverse.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R05: Tidyverse functions</span></a>
+  <a href="../R05_tidyverse.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R05: Tidyverse functions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R06_strings.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R06: String handling</span></a>
+  <a href="../R06_strings.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R06: String handling</span></a>
   </div>
 </li>
       </ul>
@@ -235,32 +201,32 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./exercise/E01-variablen.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E01: Variablen, Funktionen</span></a>
+  <a href="../exercise/E01-variablen.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E01: Variablen, Funktionen</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./exercise/E02-vectors-dataframes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E02: Vektoren, Dataframes</span></a>
+  <a href="../exercise/E02-vectors-dataframes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E02: Vektoren, Dataframes</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./exercise/E03-more-dataframes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E03: Mehr Dataframes</span></a>
+  <a href="../exercise/E03-more-dataframes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E03: Mehr Dataframes</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./exercise/E04-tidyverse.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E04: Tidyverse, strings</span></a>
+  <a href="../exercise/E04-tidyverse.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E04: Tidyverse, strings</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./exercise/E05-kritischer-sauerstoff.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E05: Daten aufräumen</span></a>
+  <a href="../exercise/E05-kritischer-sauerstoff.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E05: Daten aufräumen</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./exercise/E06-feldfruechte-arthropoden.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E06 - Feldfruechte und Arthropoden</span></a>
+  <a href="../exercise/E06-feldfruechte-arthropoden.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">E06 - Feldfruechte und Arthropoden</span></a>
   </div>
 </li>
       </ul>
@@ -276,13 +242,13 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./98-additional_resources.html" class="sidebar-item-text sidebar-link">
+  <a href="../98-additional_resources.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Additional Ressources</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">
+  <a href="../references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
 </li>
@@ -298,7 +264,7 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#csv-files" id="toc-csv-files" class="nav-link active" data-scroll-target="#csv-files">CSV Files</a></li>
+  <li><a href="#task-crops-vs.-species" id="toc-task-crops-vs.-species" class="nav-link active" data-scroll-target="#task-crops-vs.-species">TASK: Crops vs.&nbsp;Species</a></li>
   </ul>
 </nav>
     </div>
@@ -307,7 +273,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">R04: Dataframes</span></h1>
+<h1 class="title"><span class="chapter-title">E06 - Feldfruechte und Arthropoden</span></h1>
 </div>
 
 
@@ -322,104 +288,194 @@ div.csl-indent {
 
 </header>
 
-<blockquote class="blockquote">
-<p>From a data science perspective, the most important class of objects is the data frame - <span class="citation" data-cites="Chambers2020">Chambers (<a href="references.html#ref-Chambers2020" role="doc-biblioref">2020</a>)</span></p>
-</blockquote>
-<ul>
-<li>Dataframes combine multiple vector in a structured format</li>
-<li>Intuitive - most people have seen a spreadsheet before</li>
-<li>Each column is regarded as a vector</li>
-<li>Each vector can have a different data type</li>
-</ul>
+<p>Many studies in landscape ecology deal with species data. Usually, these studies follow a plot based design to compare different environments and ecosystems in terms of abundances or species diversity. To practice everything we’ve learned so far and to go on further we want to have a look at another real world dataset. The species data below was collected by Michael Meyer. To find out more about the original goal of why this data was collected you can have a look at <span class="citation" data-cites="MeyerM2019">Meyer et al. (<a href="../references.html#ref-MeyerM2019" role="doc-biblioref">2019</a>)</span>. While the statistical analysis of this paper is more advanced and not suited for this beginner course, the structure of the data is very easy and also allows the practice of more simple methods.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="assets/r_dataframe.svg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">data.frames are a named list of vectors</figcaption>
-</figure>
+<table class="table table-sm table-striped small">
+<caption>First entries of species data by Meyer et al.&nbsp;2019</caption>
+<colgroup>
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 7%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 9%">
+<col style="width: 10%">
+<col style="width: 11%">
+<col style="width: 10%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">plotcode</th>
+<th style="text-align: left;">Croptype</th>
+<th style="text-align: right;">AraInd</th>
+<th style="text-align: right;">AraSpec</th>
+<th style="text-align: right;">CaraInd</th>
+<th style="text-align: right;">CaraSpec</th>
+<th style="text-align: right;">IsoMyrInd</th>
+<th style="text-align: right;">IsoMyrSpec</th>
+<th style="text-align: right;">IsoDipInd</th>
+<th style="text-align: right;">IsoDipSpec</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">WW</td>
+<td style="text-align: right;">111</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">191</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">SM</td>
+<td style="text-align: right;">102</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">149</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">52</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">52</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">WW</td>
+<td style="text-align: right;">154</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">96</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">10</td>
+<td style="text-align: left;">SM</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">80</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">12</td>
+<td style="text-align: left;">ZR</td>
+<td style="text-align: right;">125</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">108</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">13</td>
+<td style="text-align: left;">WW</td>
+<td style="text-align: right;">107</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">178</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">23</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">23</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">16</td>
+<td style="text-align: left;">WW</td>
+<td style="text-align: right;">81</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">97</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">23</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">23</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">20</td>
+<td style="text-align: left;">WR</td>
+<td style="text-align: right;">132</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">327</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">24</td>
+<td style="text-align: left;">KE</td>
+<td style="text-align: right;">66</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">141</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">26</td>
+<td style="text-align: left;">WW</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">136</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
-</div>
+<p>The column names and crop types appear very cryptic at first sight. Here are some explanations:</p>
 <ul>
-<li>Create one with <code>data.frame</code></li>
-<li>The functions need the column name followed by the vector of values</li>
+<li><p>GP = Grain Pea</p></li>
+<li><p>SB = Sugar Beet</p></li>
+<li><p>SM = Silage Maize</p></li>
+<li><p>WR = Winter oilseed Rape</p></li>
+<li><p>WW = Winter Wheat</p></li>
+<li><p>Ara = Araneae</p></li>
+<li><p>Cara = Carabidae</p></li>
+<li><p>IsoDip = Isopoda and Diplopoda</p></li>
+<li><p>IsoMyr = Isopoda and Myriapoda</p></li>
+<li><p>Ind = Number of individual animals</p></li>
+<li><p>Spec = Number of species</p></li>
 </ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">plotID =</span> <span class="fu">seq</span>(<span class="dv">3</span>),</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">soil_ph =</span> <span class="fu">c</span>(<span class="fl">5.5</span>, <span class="fl">5.4</span>, <span class="fl">6.1</span>),</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">soil_temperature =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>),</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">forest_type =</span> <span class="fu">c</span>(<span class="st">"coniferous"</span>, <span class="st">"coniferous"</span>, <span class="st">"deciduous"</span>))</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  plotID soil_ph soil_temperature forest_type
-1      1     5.5               10  coniferous
-2      2     5.4               11  coniferous
-3      3     6.1               12   deciduous</code></pre>
-</div>
-</div>
-<section id="csv-files" class="level2">
-<h2 class="anchored" data-anchor-id="csv-files">CSV Files</h2>
-<p>Dataframes can be loaded from and saved to <code>.csv</code> files.</p>
+<section id="task-crops-vs.-species" class="level2">
+<h2 class="anchored" data-anchor-id="task-crops-vs.-species">TASK: Crops vs.&nbsp;Species</h2>
 <ul>
-<li>Comma Separated Values</li>
-<li>Caution: In Germany “,” is used as the decimal point. You often find “;” as the delimiter in csvs.</li>
-<li>Caution: If you open csv files in Excel, things can get messy</li>
+<li><p>How many different crop types where analysed in the study?</p></li>
+<li><p>How many plots are there for each crop type?</p></li>
+<li><p>Which plot had the most individual animals? (regardless of species)</p></li>
+<li><p>Which plot was the most diverse?</p></li>
+<li><p>What is the average number of Carabidaes on all the plots containing winter wheat?</p></li>
+<li><p>What is the minimum number of individuals and species per crop type?</p></li>
+<li><p>Visualize the number of Carabidaes per crop type.</p></li>
+<li><p>Plot the number of Araneae species in relation to the number of individual Araneae.</p></li>
+<li><p>If there are more individual Araneae on a plot, are there also more Araneae species?</p></li>
 </ul>
-<pre><code>Datum,Wassertemperatur,pH-Wert,Sauerstoffgehalt
-2021-05-31 23:57,17.98,8.05,10.53
-2021-06-01 00:09,17.66,8.04,9.64
-2021-06-01 00:19,18.03,8.12,11.30
-2021-06-01 00:27,18.08,8.14,11.32
-2021-06-01 00:39,18.06,8.12,11.06
-2021-06-01 00:49,18.01,8.10,10.91</code></pre>
-<ul>
-<li>use the <code>read.csv</code> function</li>
-<li>make sure the <code>dec</code> and <code>sep</code> parameters of the function are properly set</li>
-<li>when in doubt look at the help page <code>?read.csv</code></li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">"data/2021-06_aasee.csv"</span>, <span class="at">dec =</span> <span class="st">"."</span>, <span class="at">sep =</span> <span class="st">","</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># show the first few rows of the df</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>             Datum Wassertemperatur pH.Wert Sauerstoffgehalt
-1 2021-05-31 23:57            17.98    8.05            10.53
-2 2021-06-01 00:09            17.66    8.04             9.64
-3 2021-06-01 00:19            18.03    8.12            11.30
-4 2021-06-01 00:27            18.08    8.14            11.32
-5 2021-06-01 00:39            18.06    8.12            11.06
-6 2021-06-01 00:49            18.01    8.10            10.91</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># show the last few rows of the df</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>                Datum Wassertemperatur pH.Wert Sauerstoffgehalt
-4220 2021-06-30 22:57            23.73    8.78            17.80
-4221 2021-06-30 23:09            23.70    8.72            17.66
-4222 2021-06-30 23:18            23.68    8.73            17.72
-4223 2021-06-30 23:29            23.64    8.81            18.38
-4224 2021-06-30 23:39            23.62    8.76            17.93
-4225 2021-06-30 23:49            23.63    8.77            17.82</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get a short summary of the structure</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>'data.frame':   4225 obs. of  4 variables:
- $ Datum           : chr  "2021-05-31 23:57" "2021-06-01 00:09" "2021-06-01 00:19" "2021-06-01 00:27" ...
- $ Wassertemperatur: num  18 17.7 18 18.1 18.1 ...
- $ pH.Wert         : num  8.05 8.04 8.12 8.14 8.12 8.1 8.1 8.1 8.1 8.1 ...
- $ Sauerstoffgehalt: num  10.53 9.64 11.3 11.32 11.06 ...</code></pre>
-</div>
-</div>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
-<div id="ref-Chambers2020" class="csl-entry" role="listitem">
-Chambers, John, M. 2020. <span>“S, <span>R</span>, and <span>Data Science</span>.”</span> <em>The R Journal</em> 12 (1): 462. <a href="https://doi.org/10.32614/RJ-2020-028">https://doi.org/10.32614/RJ-2020-028</a>.
+<div id="ref-MeyerM2019" class="csl-entry" role="listitem">
+Meyer, Michael, David Ott, Philipp Götze, Heinz-Josef Koch, and Christoph Scherber. 2019. <span>“Crop Identity and Memory Effects on Aboveground Arthropods in a Long-Term Crop Rotation Experiment.”</span> <em>Ecology and Evolution</em> 9 (12): 7307–23. <a href="https://doi.org/10.1002/ece3.5302">https://doi.org/10.1002/ece3.5302</a>.
 </div>
 </div>
 </section>
@@ -660,13 +716,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./R03_vectors.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">R03: Vectors</span></span>
+      <a href="../exercise/E05-kritischer-sauerstoff.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">E05: Daten aufräumen</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./R05_tidyverse.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-title">R05: Tidyverse functions</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../98-additional_resources.html" class="pagination-link">
+        <span class="nav-page-text">Additional Ressources</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

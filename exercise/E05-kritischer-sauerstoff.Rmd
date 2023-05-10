@@ -1,0 +1,90 @@
+# E05: Daten aufräumen
+
+Falls noch nicht geschehn, lade den Aasee Datensatz hier herunter: https://github.com/od-ms/aasee-monitoring (Code - Download ZIP). Entpacken nicht vergessen.
+
+Mit der folgenden Funktion kann der gesamte Aasee Datensatz als eine Tabelle geladen werden.
+Die Funktion heißt `read_aasee()` uns als Argument benötigt sie den Orderpfad zu den csv Dateien (also z.b. `Daten/aasee-monitoring/data`)
+
+- Wende die Funktion an, also lade alle csv Dateien auf einmal in R.
+
+```{r}
+
+# folder: string, orderpfad zu den csv Dateien
+
+read_aasee = function(folder){
+    aasee_files = list.files(folder, full.names = TRUE, pattern = ".csv$")
+    aasee = lapply(aasee_files, read.csv)
+    aasee = do.call(rbind, aasee)
+    return(aasee)
+}
+
+
+aasee = read_aasee("~/data/muenster/aasee-monitoring/data")
+
+```
+
+
+- Erstelle einen Boxplot der Wassertemperatur. Was fällt auf?
+
+```{r}
+
+
+
+```
+
+
+- Überlege: Wie könnte das Problem behoben werden?
+- Behebe das Problem, indem du die Reihe mit dem Messfehler aus dem Datensatz löschst (oder nur den Rest behältst).
+
+```{r}
+
+
+
+```
+
+
+
+## Fallstudie: Kritischer Sauerstoffgehalt im Aasee
+
+2018, starben mehr als 20 Tonnen Fisch im Aasee wegen zu geringem Sauerstoffgehalt: [https://www.uni-muenster.de/news/view.php?cmdid=9768](https://www.uni-muenster.de/news/view.php?cmdid=9768).
+
+Basierend auf diesem Ereignis kann man die Frage stellen:
+
+> An wie vielen Tagen im Jahr 2022 war der Sauerstoffgehalt im Aasee zu niedrig (4 mg/l)?
+
+Die folgenden Aufgaben sollen Schritt für Schritt eine mögliche herangehensweise darstellen:
+
+
+***
+
+
+- Die Tabelle enthält die Spalte `Datum` mit Texten (strings) in folgendem Format: "2021-05-31 23:57". Erstelle 3 neue Spalten mit den Namen `Jahr`, `Monat` und `Tag` die dann jeweils nur die entsprechende Information beinhalten.
+
+```{r}
+
+```
+
+- Erstelle eine neue Tabelle, die nur die Messwerte aus dem Jahr 2022 enthält.
+
+```{r}
+
+
+```
+
+
+- Die Ausgangsfrage sollte jetzt leicht zu beantworten sein: An wie vielen Tagen im Jahr 2022 war der Sauerstoffgehalt im Aasee zu niedrig (4 mg/l)?
+
+```{r}
+
+
+```
+
+
+
+Bonus: Überlege dir eine geeignete Visualisierung um den Sachverhalt Markus Lewe zu erklären.
+
+```{r}
+
+```
+
+
