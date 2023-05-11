@@ -21,6 +21,8 @@ book:
       - "R04_dataframes.qmd"
       - "R05_tidyverse.qmd"
       - "R06_strings.qmd"
+      - "R07_lists.qmd"
+      - "R08_formula.qmd"
     - part: "Exercises"
       chapters:
       - "exercise/E01-variablen.Rmd"

@@ -1,4 +1,4 @@
-# Lists
+# R07: Lists
 
 - stores arbitrary content (string, numeric, vectors...)
 - created with `list()`, entries separated by `,`
@@ -7,7 +7,7 @@
 ```{r}
 
 number = 6
-l = list(5, number, "Hi Mom", c(1,5))
+l = list(5, number, "Psilocybe", c(1,5))
 l
 ```
 

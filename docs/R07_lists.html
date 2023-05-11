@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Analysis of Ecological Data - R05: Tidyverse functions</title>
+<title>Analysis of Ecological Data - R07: Lists</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,8 +64,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./R06_strings.html" rel="next">
-<link href="./R04_dataframes.html" rel="prev">
+<link href="./R08_formula.html" rel="next">
+<link href="./R06_strings.html" rel="prev">
 <link href=".//home/marvin/images/pictogramms/ecoR.svg" rel="icon" type="image/svg+xml">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -108,7 +108,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./R01_introduction.html">R</a></li><li class="breadcrumb-item"><a href="./R05_tidyverse.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">R05: Tidyverse functions</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./R01_introduction.html">R</a></li><li class="breadcrumb-item"><a href="./R07_lists.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">R07: Lists</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -195,7 +195,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R05_tidyverse.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">R05: Tidyverse functions</span></a>
+  <a href="./R05_tidyverse.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R05: Tidyverse functions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -205,7 +205,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R07_lists.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R07: Lists</span></a>
+  <a href="./R07_lists.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">R07: Lists</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -289,7 +289,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#dplyr" id="toc-dplyr" class="nav-link active" data-scroll-target="#dplyr">dplyr</a></li>
+  <li><a href="#some-generic-functions-with-lists" id="toc-some-generic-functions-with-lists" class="nav-link active" data-scroll-target="#some-generic-functions-with-lists">Some generic functions with lists</a></li>
+  <li><a href="#subsetting-lists" id="toc-subsetting-lists" class="nav-link" data-scroll-target="#subsetting-lists">Subsetting Lists</a></li>
+  <li><a href="#named-entries" id="toc-named-entries" class="nav-link" data-scroll-target="#named-entries">Named entries</a></li>
   </ul>
 </nav>
     </div>
@@ -298,7 +300,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">R05: Tidyverse functions</span></h1>
+<h1 class="title"><span class="chapter-title">R07: Lists</span></h1>
 </div>
 
 
@@ -314,129 +316,130 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 <ul>
-<li>collection of packages</li>
-<li><code>library(tidyverse)</code> loads multiple packages</li>
-<li>consistent syntax and workflows</li>
-<li>makes code more readable</li>
-<li>pipe operator <code>%&gt;%</code> / <code>|&gt;</code> can chain functions together</li>
-<li><strong>tidy data approach</strong>
-<ul>
-<li>rows are observations</li>
-<li>columns are variables / features</li>
-</ul></li>
+<li>stores arbitrary content (string, numeric, vectors…)</li>
+<li>created with <code>list()</code>, entries separated by <code>,</code></li>
 </ul>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://ajsmit.github.io/Intro_R_Official/figures/tidy_workflow.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">https://ajsmit.github.io/Intro_R_Official/figures/tidy_workflow.png</figcaption>
-</figure>
-</div>
-<section id="dplyr" class="level2">
-<h2 class="anchored" data-anchor-id="dplyr">dplyr</h2>
-<ul>
-<li>provides functions for dataframe manipulation</li>
-<li>can complement or replace base R functions</li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://biostat2.uni.lu/lectures/img/06/vaudor_dplyr_schema.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">https://biostat2.uni.lu/lectures/img/06/vaudor_dplyr_schema.png</figcaption>
-</figure>
-</div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>aasee <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">"data/2021-06_aasee.csv"</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># slice - gives back a slice of data - i.e. the specified rows</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>aasee <span class="ot">=</span> <span class="fu">slice</span>(aasee, <span class="fu">seq</span>(<span class="dv">8</span>))</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># select - selects columns</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(aasee, Wassertemperatur)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>number <span class="ot">=</span> <span class="dv">6</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>l <span class="ot">=</span> <span class="fu">list</span>(<span class="dv">5</span>, number, <span class="st">"Psilocybe"</span>, <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">5</span>))</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>l</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  Wassertemperatur
-1            17.98
-2            17.66
-3            18.03
-4            18.08
-5            18.06
-6            18.01
-7            18.02
-8            18.06</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># filter - filters rows based on logical operators</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(aasee, Wassertemperatur <span class="sc">&lt;</span> <span class="dv">18</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>             Datum Wassertemperatur pH.Wert Sauerstoffgehalt
-1 2021-05-31 23:57            17.98    8.05            10.53
-2 2021-06-01 00:09            17.66    8.04             9.64</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># mutate - mutates the data.frame by adding columns</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(aasee, <span class="at">t_kelvin =</span> Wassertemperatur <span class="sc">+</span> <span class="fl">273.15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>             Datum Wassertemperatur pH.Wert Sauerstoffgehalt t_kelvin
-1 2021-05-31 23:57            17.98    8.05            10.53   291.13
-2 2021-06-01 00:09            17.66    8.04             9.64   290.81
-3 2021-06-01 00:19            18.03    8.12            11.30   291.18
-4 2021-06-01 00:27            18.08    8.14            11.32   291.23
-5 2021-06-01 00:39            18.06    8.12            11.06   291.21
-6 2021-06-01 00:49            18.01    8.10            10.91   291.16
-7 2021-06-01 00:59            18.02    8.10            10.96   291.17
-8 2021-06-01 01:08            18.06    8.10            10.83   291.21</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># summarise - summarises data</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise</span>(aasee, <span class="at">minimum_t =</span> <span class="fu">min</span>(Wassertemperatur))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  minimum_t
-1     17.66</code></pre>
+<pre><code>[[1]]
+[1] 5
+
+[[2]]
+[1] 6
+
+[[3]]
+[1] "Psilocybe"
+
+[[4]]
+[1] 1 5</code></pre>
 </div>
 </div>
-<p>The functions itself could all be realized with base R functions:</p>
+<section id="some-generic-functions-with-lists" class="level2">
+<h2 class="anchored" data-anchor-id="some-generic-functions-with-lists">Some generic functions with lists</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the same in base R</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># select</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>aasee<span class="sc">$</span>Wassertemperatur</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(l)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 17.98 17.66 18.03 18.08 18.06 18.01 18.02 18.06</code></pre>
+<pre><code>[1] 4</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># filter</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>aasee[,aasee<span class="sc">$</span>Wassertemperatur <span class="sc">&lt;</span> <span class="dv">18</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(l)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>             Datum Wassertemperatur
-1 2021-05-31 23:57            17.98
-2 2021-06-01 00:09            17.66
-3 2021-06-01 00:19            18.03
-4 2021-06-01 00:27            18.08
-5 2021-06-01 00:39            18.06
-6 2021-06-01 00:49            18.01
-7 2021-06-01 00:59            18.02
-8 2021-06-01 01:08            18.06</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># mutate</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>aasee<span class="sc">$</span>t_kelvin <span class="ot">=</span> aasee<span class="sc">$</span>Wassertemperatur <span class="sc">+</span> <span class="fl">273.15</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># summarise</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(aasee<span class="sc">$</span>Wassertemperatur)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 17.66</code></pre>
+<pre><code>     Length Class  Mode     
+[1,] 1      -none- numeric  
+[2,] 1      -none- numeric  
+[3,] 1      -none- character
+[4,] 2      -none- numeric  </code></pre>
 </div>
 </div>
-<p>The strength of dplyr is the possibility to chain functions with <code>%&gt;%</code> or <code>|&gt;</code>.</p>
+</section>
+<section id="subsetting-lists" class="level2">
+<h2 class="anchored" data-anchor-id="subsetting-lists">Subsetting Lists</h2>
+<p>There are multiple ways to subset a list (i.e.&nbsp;get a specific or multiple entries).</p>
+<p>Subsetting with <code>[ ]</code> returns a list.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>aasee<span class="sc">|&gt;</span> </span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(Wassertemperatur <span class="sc">&lt;</span> <span class="dv">18</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(pH.Wert) <span class="sc">|&gt;</span>  </span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">max</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>l[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 8.05</code></pre>
+<pre><code>[[1]]
+[1] 5</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(l[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "list"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We can select multiple entries by using a vector</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>l[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1]]
+[1] 5
+
+[[2]]
+[1] "Psilocybe"</code></pre>
 </div>
 </div>
-<p>With base R functions this looks messy, because we have to use functions inside functions.</p>
+<p>More commonly you don’t want a list, but the content that is stored in the list. For this you use double square brackets <code>[[ ]]</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(aasee<span class="sc">$</span>pH.Wert[aasee<span class="sc">$</span>Wassertemperatur <span class="sc">&lt;</span> <span class="dv">18</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>l[[<span class="dv">2</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 8.05</code></pre>
+<pre><code>[1] 6</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(l[[<span class="dv">2</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "numeric"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Selecting multiple entries like this is not possible</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>l[[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in l[[c(1, 2)]]: subscript out of bounds</code></pre>
+</div>
+</div>
+</section>
+<section id="named-entries" class="level2">
+<h2 class="anchored" data-anchor-id="named-entries">Named entries</h2>
+<p>Lists become even more useful when we start to name list entries. Our created list does not have names (we declared no names in the list creation).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(l)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>NULL</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(l) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>, <span class="st">"d"</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>l</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$a
+[1] 5
+
+$b
+[1] 6
+
+$c
+[1] "Psilocybe"
+
+$d
+[1] 1 5</code></pre>
+</div>
+</div>
+<p>Calling the list now also shows the entry names (after the <code>$</code>). We can use the names now to select specific entries.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># single brackets: return list</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>l[<span class="fu">c</span>(<span class="st">"c"</span>, <span class="st">"a"</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$c
+[1] "Psilocybe"
+
+$a
+[1] 5</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># double brackets: return value</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>l[[<span class="st">"b"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># or use the dollar sign $</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>l<span class="sc">$</span>b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6</code></pre>
 </div>
 </div>
 
@@ -679,13 +682,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./R04_dataframes.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">R04: Dataframes</span></span>
+      <a href="./R06_strings.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">R06: String handling</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./R06_strings.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-title">R06: String handling</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./R08_formula.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-title">R08: Formula notation</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
