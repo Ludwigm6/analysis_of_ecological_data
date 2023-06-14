@@ -1,4 +1,4 @@
-# Linear Models
+# R09: Linear Models
 
 Linear models describe the relation between two variables. 
 In a non-technical description we can think about linear model like:
@@ -6,7 +6,11 @@ In a non-technical description we can think about linear model like:
 > Find a line that is as close as possible to all the points of a scatterplot.
 
 
-```{r, echo = FALSE}
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
 library(dplyr)
 library(ggplot2)
 
@@ -28,13 +32,17 @@ Think about the `~` like _as a function of_. So `lm(Species ~ Abundance)` means:
 
 
 ```{r}
+#| echo: true
+#| message: false
+#| warning: false
+
 library(dplyr)
 bd = read.csv("data/crop_species.csv")
 
-bd = bd %>% mutate(TotalInd = AraInd + CaraInd + IsoMyrInd,
-              TotalSpec = AraSpec, CaraSpec, IsoMyrSpec)
+bd = bd %>% mutate(Abundance = AraInd + CaraInd + IsoMyrInd,
+              Species = AraSpec, CaraSpec, IsoMyrSpec)
 
-lmod = lm(bd$TotalSpec ~ bd$TotalInd)
+lmod = lm(Species ~ Abundance, bd)
 lmod
 ```
 
@@ -45,6 +53,7 @@ In the following we will go over the output of the `summary` function on linear 
 The explanations are mostly taken from this blog entry: [https://feliperego.github.io/blog/2015/10/23/Interpreting-Model-Output-In-R](https://feliperego.github.io/blog/2015/10/23/Interpreting-Model-Output-In-R)
 
 ```{r}
+#| echo: true
 summary(lmod)
 ```
 
@@ -58,16 +67,20 @@ summary(lmod)
 * "How far away are the real values from the model?"
 * should follow a normal distribution (e.g. by plotting a histogram)
 
-```{r, echo = FALSE}
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
 library(ggplot2)
 library(ggpubr)
 
 bd$pred = predict(lmod, bd)
 
-ggplot(bd, aes(TotalInd, TotalSpec))+
+ggplot(bd, aes(Abundance, Species))+
     geom_point()+
     geom_smooth(method = "lm", se = FALSE)+
-    geom_segment(aes(yend = pred, xend = TotalInd), col = "red")+
+    geom_segment(aes(yend = pred, xend = Abundance), col = "red")+
     stat_regline_equation()+
     theme_bw()
 
@@ -87,6 +100,41 @@ hist(lmod$residuals)
 * again the slope and intercept
 * we can expect to observed at least 10.7 different species on a plot (if we collect 103 animals)
 * for each additional animal observed, the species count increases by 0.017
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+
+
+ggplot(bd, aes(Abundance, Species))+
+    geom_point()+
+    geom_abline(slope = lmod$coefficients[2],
+                intercept = lmod$coefficients[1],
+                linetype = "dashed", color = "blue")+
+    geom_smooth(method = "lm", se = FALSE)+
+    scale_x_continuous(limits = c(0, 650))+
+    annotate("point", x = 0, y = lmod$coefficients[1], color = "orange", size = 3)+
+    annotate("text", x = 12, y = lmod$coefficients[1],
+             label = paste0("Intercept = ", round(lmod$coefficients[1], 1)), hjust = 0)+
+    annotate("segment", x = 400, xend = 500,
+             y = predict(lmod, newdata = data.frame(Abundance = 400)),
+             yend = predict(lmod, newdata = data.frame(Abundance = 400)),
+             color = "orange")+
+    annotate("segment", x = 500, xend = 500,
+             y = predict(lmod, newdata = data.frame(Abundance = 400)),
+             yend = predict(lmod, newdata = data.frame(Abundance = 500)),
+             color = "orange")+
+    annotate("text", x = 450, y = 17.2, label = "100")+
+    annotate("text", x = 510, y = 18.5,
+             label = paste0("100 * ",
+                            round(lmod$coefficients[2], 3), " (estimate) \n",
+                            "= ", 100 * round(lmod$coefficients[2], 3)),
+             hjust = 0)+
+    theme_bw()
+```
+
 
 #### Std. Error
 
@@ -112,8 +160,10 @@ hist(lmod$residuals)
 
 #### Residuals standard error
 
+* standard deviation of the residuals
 * the average deviation of the real values from the model value
 * degree of freedom: on how many observations is this value based on?
+
 
 #### Multiple R-squared
 
@@ -132,7 +182,7 @@ hist(lmod$residuals)
 
 ## Linear Model Plot
 
-Plotting the linear model gives you 4 different figures that indicate if the model is statisically valid in the first place, i.e. if the residuals follow a normal distribution and if they are homoscedatic.
+Plotting the linear model gives you 4 different figures that indicate if the model is statistically valid in the first place, i.e. if the residuals follow a normal distribution and if they are homoscedatic.
 
 
 ### Residuals vs. Fitted

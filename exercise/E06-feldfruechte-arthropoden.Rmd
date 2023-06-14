@@ -1,4 +1,4 @@
-# E06 - Feldfruechte und Arthropoden
+# E06: Feldfruechte und Arthropoden
 
 Many studies in landscape ecology deal with species data. Usually, these studies follow a plot based design to compare different environments and ecosystems in terms of abundances or species diversity. To practice everything we've learned so far and to go on further we want to have a look at another real world dataset.
 The species data below was collected by Michael Meyer. To find out more about the original goal of why this data was collected you can have a look at @MeyerM2019.

@@ -23,6 +23,7 @@ book:
       - "R06_strings.qmd"
       - "R07_lists.qmd"
       - "R08_formula.qmd"
+      - "R09_linearmodels.qmd"
     - part: "Exercises"
       chapters:
       - "exercise/E01-variablen.Rmd"
@@ -31,6 +32,7 @@ book:
       - "exercise/E04-tidyverse.Rmd"
       - "exercise/E05-kritischer-sauerstoff.Rmd"
       - "exercise/E06-feldfruechte-arthropoden.Rmd"
+      - "exercise/E07-lm.Rmd"
   appendices:
   - "98-additional_resources.Rmd"
   - "references.qmd"

@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.340">
+<meta name="generator" content="quarto-1.3.361">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Analysis of Ecological Data - E06 - Feldfruechte und Arthropoden</title>
+<title>Analysis of Ecological Data - E06: Feldfruechte und Arthropoden</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -49,7 +49,7 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../98-additional_resources.html" rel="next">
+<link href="../exercise/E07-lm.html" rel="next">
 <link href="../exercise/E05-kritischer-sauerstoff.html" rel="prev">
 <link href="..//home/marvin/images/pictogramms/ecoR.svg" rel="icon" type="image/svg+xml">
 <script src="../site_libs/quarto-html/quarto.js"></script>
@@ -77,7 +77,8 @@ div.csl-indent {
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -93,10 +94,10 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../exercise/E01-variablen.html">Exercises</a></li><li class="breadcrumb-item"><a href="../exercise/E06-feldfruechte-arthropoden.html"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">E06 - Feldfruechte und Arthropoden</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../exercise/E01-variablen.html">Exercises</a></li><li class="breadcrumb-item"><a href="../exercise/E06-feldfruechte-arthropoden.html"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">E06: Feldfruechte und Arthropoden</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -198,6 +199,11 @@ div.csl-indent {
   <a href="../R08_formula.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R08: Formula notation</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../R09_linearmodels.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R09: Linear Models</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -236,7 +242,12 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../exercise/E06-feldfruechte-arthropoden.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">E06 - Feldfruechte und Arthropoden</span></a>
+  <a href="../exercise/E06-feldfruechte-arthropoden.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">E06: Feldfruechte und Arthropoden</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercise/E07-lm.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E07: lm</span></a>
   </div>
 </li>
       </ul>
@@ -283,7 +294,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">E06 - Feldfruechte und Arthropoden</span></h1>
+<h1 class="title"><span class="chapter-title">E06: Feldfruechte und Arthropoden</span></h1>
 </div>
 
 
@@ -304,16 +315,14 @@ div.csl-indent {
 <table class="table table-sm table-striped small">
 <caption>First entries of species data by Meyer et al.&nbsp;2019</caption>
 <colgroup>
+<col style="width: 12%">
+<col style="width: 12%">
 <col style="width: 9%">
-<col style="width: 9%">
-<col style="width: 7%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 9%">
-<col style="width: 10%">
 <col style="width: 11%">
-<col style="width: 10%">
 <col style="width: 11%">
+<col style="width: 12%">
+<col style="width: 14%">
+<col style="width: 15%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -325,8 +334,6 @@ div.csl-indent {
 <th style="text-align: right;">CaraSpec</th>
 <th style="text-align: right;">IsoMyrInd</th>
 <th style="text-align: right;">IsoMyrSpec</th>
-<th style="text-align: right;">IsoDipInd</th>
-<th style="text-align: right;">IsoDipSpec</th>
 </tr>
 </thead>
 <tbody>
@@ -339,8 +346,6 @@ div.csl-indent {
 <td style="text-align: right;">15</td>
 <td style="text-align: right;">6</td>
 <td style="text-align: right;">2</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">2</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">4</td>
@@ -349,8 +354,6 @@ div.csl-indent {
 <td style="text-align: right;">20</td>
 <td style="text-align: right;">149</td>
 <td style="text-align: right;">14</td>
-<td style="text-align: right;">52</td>
-<td style="text-align: right;">2</td>
 <td style="text-align: right;">52</td>
 <td style="text-align: right;">2</td>
 </tr>
@@ -363,8 +366,6 @@ div.csl-indent {
 <td style="text-align: right;">11</td>
 <td style="text-align: right;">16</td>
 <td style="text-align: right;">4</td>
-<td style="text-align: right;">15</td>
-<td style="text-align: right;">3</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">10</td>
@@ -373,8 +374,6 @@ div.csl-indent {
 <td style="text-align: right;">8</td>
 <td style="text-align: right;">80</td>
 <td style="text-align: right;">12</td>
-<td style="text-align: right;">10</td>
-<td style="text-align: right;">1</td>
 <td style="text-align: right;">10</td>
 <td style="text-align: right;">1</td>
 </tr>
@@ -387,8 +386,6 @@ div.csl-indent {
 <td style="text-align: right;">18</td>
 <td style="text-align: right;">14</td>
 <td style="text-align: right;">4</td>
-<td style="text-align: right;">13</td>
-<td style="text-align: right;">3</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">13</td>
@@ -397,8 +394,6 @@ div.csl-indent {
 <td style="text-align: right;">15</td>
 <td style="text-align: right;">178</td>
 <td style="text-align: right;">18</td>
-<td style="text-align: right;">23</td>
-<td style="text-align: right;">3</td>
 <td style="text-align: right;">23</td>
 <td style="text-align: right;">3</td>
 </tr>
@@ -411,8 +406,6 @@ div.csl-indent {
 <td style="text-align: right;">12</td>
 <td style="text-align: right;">23</td>
 <td style="text-align: right;">3</td>
-<td style="text-align: right;">23</td>
-<td style="text-align: right;">3</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">20</td>
@@ -423,8 +416,6 @@ div.csl-indent {
 <td style="text-align: right;">12</td>
 <td style="text-align: right;">8</td>
 <td style="text-align: right;">3</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">2</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">24</td>
@@ -435,8 +426,6 @@ div.csl-indent {
 <td style="text-align: right;">13</td>
 <td style="text-align: right;">9</td>
 <td style="text-align: right;">2</td>
-<td style="text-align: right;">9</td>
-<td style="text-align: right;">2</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">26</td>
@@ -445,8 +434,6 @@ div.csl-indent {
 <td style="text-align: right;">17</td>
 <td style="text-align: right;">136</td>
 <td style="text-align: right;">17</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">2</td>
 <td style="text-align: right;">4</td>
 <td style="text-align: right;">2</td>
 </tr>
@@ -731,8 +718,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../98-additional_resources.html" class="pagination-link">
-        <span class="nav-page-text">Additional Ressources</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../exercise/E07-lm.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-title">E07: lm</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

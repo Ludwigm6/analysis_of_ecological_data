@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Analysis of Ecological Data - D01: Ecological data</title>
+<title>Analysis of Ecological Data - R09: Linear Models</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,26 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
 }
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -49,8 +64,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./D02_aasee.html" rel="next">
-<link href="./index.html" rel="prev">
+<link href="./exercise/E01-variablen.html" rel="next">
+<link href="./R08_formula.html" rel="prev">
 <link href=".//home/marvin/images/pictogramms/ecoR.svg" rel="icon" type="image/svg+xml">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -81,23 +96,6 @@ div.csl-indent {
     "search-label": "Search"
   }
 }</script>
-<script src="site_libs/htmlwidgets-1.6.0/htmlwidgets.js"></script>
-<script src="site_libs/jquery-1.12.4/jquery.min.js"></script>
-<link href="site_libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
-<script src="site_libs/leaflet-1.3.1/leaflet.js"></script>
-<link href="site_libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
-<script src="site_libs/proj4-2.6.2/proj4.min.js"></script>
-<script src="site_libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
-<link href="site_libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
-<script src="site_libs/leaflet-binding-2.1.2/leaflet.js"></script>
-<script src="site_libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
-<script src="site_libs/leaflet-providers-plugin-2.1.2/leaflet-providers-plugin.js"></script>
-<link href="site_libs/HomeButton-0.0.1/home-button.css" rel="stylesheet">
-<script src="site_libs/HomeButton-0.0.1/home-button.js"></script>
-<script src="site_libs/HomeButton-0.0.1/easy-button-src.min.js"></script>
-<script src="site_libs/clipboard-0.0.1/setClipboardText.js"></script>
-<link href="site_libs/mapviewCSS-0.0.1/mapview-popup.css" rel="stylesheet">
-<link href="site_libs/mapviewCSS-0.0.1/mapview.css" rel="stylesheet">
 
 
 </head>
@@ -111,7 +109,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./D01_data_examples.html">Data</a></li><li class="breadcrumb-item"><a href="./D01_data_examples.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">D01: Ecological data</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./R01_introduction.html">R</a></li><li class="breadcrumb-item"><a href="./R09_linearmodels.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">R09: Linear Models</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -152,7 +150,7 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./D01_data_examples.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">D01: Ecological data</span></a>
+  <a href="./D01_data_examples.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">D01: Ecological data</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -218,7 +216,7 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R09_linearmodels.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R09: Linear Models</span></a>
+  <a href="./R09_linearmodels.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">R09: Linear Models</span></a>
   </div>
 </li>
       </ul>
@@ -302,11 +300,19 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#plot-surveys" id="toc-plot-surveys" class="nav-link active" data-scroll-target="#plot-surveys">Plot surveys</a></li>
-  <li><a href="#time-series" id="toc-time-series" class="nav-link" data-scroll-target="#time-series">Time Series</a></li>
-  <li><a href="#species-lists" id="toc-species-lists" class="nav-link" data-scroll-target="#species-lists">Species Lists</a></li>
-  <li><a href="#geospatial-data" id="toc-geospatial-data" class="nav-link" data-scroll-target="#geospatial-data">Geospatial Data</a></li>
-  <li><a href="#want-more" id="toc-want-more" class="nav-link" data-scroll-target="#want-more">Want more?</a></li>
+  <li><a href="#linear-model-summary" id="toc-linear-model-summary" class="nav-link active" data-scroll-target="#linear-model-summary">Linear Model Summary</a>
+  <ul class="collapse">
+  <li><a href="#call" id="toc-call" class="nav-link" data-scroll-target="#call">Call</a></li>
+  <li><a href="#residuals" id="toc-residuals" class="nav-link" data-scroll-target="#residuals">Residuals</a></li>
+  <li><a href="#coefficients" id="toc-coefficients" class="nav-link" data-scroll-target="#coefficients">Coefficients</a></li>
+  </ul></li>
+  <li><a href="#linear-model-plot" id="toc-linear-model-plot" class="nav-link" data-scroll-target="#linear-model-plot">Linear Model Plot</a>
+  <ul class="collapse">
+  <li><a href="#residuals-vs.-fitted" id="toc-residuals-vs.-fitted" class="nav-link" data-scroll-target="#residuals-vs.-fitted">Residuals vs.&nbsp;Fitted</a></li>
+  <li><a href="#normal-q-q" id="toc-normal-q-q" class="nav-link" data-scroll-target="#normal-q-q">Normal Q-Q</a></li>
+  <li><a href="#scale-location" id="toc-scale-location" class="nav-link" data-scroll-target="#scale-location">Scale location</a></li>
+  <li><a href="#residuals-vs.-levarage" id="toc-residuals-vs.-levarage" class="nav-link" data-scroll-target="#residuals-vs.-levarage">Residuals vs.&nbsp;Levarage</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -315,7 +321,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">D01: Ecological data</span></h1>
+<h1 class="title"><span class="chapter-title">R09: Linear Models</span></h1>
 </div>
 
 
@@ -330,275 +336,208 @@ div.csl-indent {
 
 </header>
 
-<p>Take a few minutes to think about</p>
-<ul>
-<li>what kind of data you know or have used before?</li>
-<li>what kind of data would be interesting for you?</li>
-</ul>
-<div class="cell">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="D01_data_examples_files/figure-html/mofrgb-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Marburg Open Forest, 2019-05-13 Planetscope RGB</figcaption>
-</figure>
-</div>
-</div>
-</div>
+<p>Linear models describe the relation between two variables. In a non-technical description we can think about linear model like:</p>
 <blockquote class="blockquote">
-<p>Ask yourself how you could describe and quantify a landscape like the one in Fig. @ref(fig:mofrgb).</p>
+<p>Find a line that is as close as possible to all the points of a scatterplot.</p>
 </blockquote>
-<section id="plot-surveys" class="level2">
-<h2 class="anchored" data-anchor-id="plot-surveys">Plot surveys</h2>
-<ul>
-<li>plots with ID and surveyed environmental information</li>
-<li>bread and butter of ecology</li>
-</ul>
 <div class="cell">
 <div class="cell-output-display">
-<table class="table table-sm table-striped small">
-<caption>Field survery data on a plot level</caption>
-<thead>
-<tr class="header">
-<th style="text-align: left;">plotID</th>
-<th style="text-align: right;">soil_ph</th>
-<th style="text-align: right;">soil_temperature</th>
-<th style="text-align: left;">forest_type</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">P1</td>
-<td style="text-align: right;">5.5</td>
-<td style="text-align: right;">10</td>
-<td style="text-align: left;">coniferous</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">P2</td>
-<td style="text-align: right;">5.4</td>
-<td style="text-align: right;">11</td>
-<td style="text-align: left;">coniferous</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">P3</td>
-<td style="text-align: right;">6.1</td>
-<td style="text-align: right;">12</td>
-<td style="text-align: left;">deciduous</td>
-</tr>
-</tbody>
-</table>
+<p><img src="R09_linearmodels_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-</section>
-<section id="time-series" class="level2">
-<h2 class="anchored" data-anchor-id="time-series">Time Series</h2>
+<p>For example, we can use a linear model to depict the relation between the amount of samples animals and the number of different species found in a given area. To create a linear model, we need two vectors (here as two columns of a data.frame) with the matching data pairs (Abundance and Species Number). The <code>lm</code> function then need a formula with the vector/column names separated by <code>~</code>. Think about the <code>~</code> like <em>as a function of</em>. So <code>lm(Species ~ Abundance)</code> means: Give me the number of species as a function of species abundance.</p>
 <div class="cell">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="D01_data_examples_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Visualization of time series data</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<ul>
-<li>continuous measurements</li>
-<li>measurement interval flexible</li>
-<li>mainly climate, soil, remote sensing</li>
-</ul>
-<div class="cell">
-<div class="cell-output-display">
-<table class="table table-sm table-striped small">
-<caption>Time series data: Aasee sensor measurements</caption>
-<thead>
-<tr class="header">
-<th style="text-align: left;">date</th>
-<th style="text-align: right;">temperature</th>
-<th style="text-align: right;">ph</th>
-<th style="text-align: right;">o2</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">2021-06-01</td>
-<td style="text-align: right;">18.06</td>
-<td style="text-align: right;">8.12</td>
-<td style="text-align: right;">11.06</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">2021-06-01</td>
-<td style="text-align: right;">18.08</td>
-<td style="text-align: right;">8.10</td>
-<td style="text-align: right;">10.62</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">2021-06-01</td>
-<td style="text-align: right;">17.93</td>
-<td style="text-align: right;">8.15</td>
-<td style="text-align: right;">11.20</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">2021-06-01</td>
-<td style="text-align: right;">17.78</td>
-<td style="text-align: right;">8.19</td>
-<td style="text-align: right;">11.92</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">2021-06-01</td>
-<td style="text-align: right;">17.79</td>
-<td style="text-align: right;">8.13</td>
-<td style="text-align: right;">11.39</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</section>
-<section id="species-lists" class="level2">
-<h2 class="anchored" data-anchor-id="species-lists">Species Lists</h2>
-<ul>
-<li>mostly plot based</li>
-<li>monitoring of conservation sites</li>
-<li>biodiversity assessment</li>
-</ul>
-<div class="cell">
-<div class="cell-output-display">
-<table class="table table-sm table-striped small">
-<caption>Species Lists: Occurence on a plot</caption>
-<thead>
-<tr class="header">
-<th style="text-align: left;">species</th>
-<th style="text-align: left;">n</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Digitalis purpurea</td>
-<td style="text-align: left;">4</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Galium odoratum</td>
-<td style="text-align: left;">25</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Fagus Sylvatica</td>
-<td style="text-align: left;">20</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">…</td>
-<td style="text-align: left;">…</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<blockquote class="blockquote">
-<p>What are the differences between the plot based survey example and the species list example?</p>
-</blockquote>
-</section>
-<section id="geospatial-data" class="level2">
-<h2 class="anchored" data-anchor-id="geospatial-data">Geospatial Data</h2>
-<ul>
-<li>defined by explicit location on the earth surface</li>
-<li>information attached to coordinates</li>
-</ul>
-<div class="cell">
-<div class="cell-output-display">
-<table class="table table-sm table-striped small">
-<caption>Geospatial Data: Tree locations</caption>
-<colgroup>
-<col style="width: 11%">
-<col style="width: 13%">
-<col style="width: 13%">
-<col style="width: 18%">
-<col style="width: 7%">
-<col style="width: 36%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">tree_id</th>
-<th style="text-align: right;">easting</th>
-<th style="text-align: right;">northing</th>
-<th style="text-align: left;">species_code</th>
-<th style="text-align: right;">dbh</th>
-<th style="text-align: left;">geom</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">r00430</td>
-<td style="text-align: right;">477422.4</td>
-<td style="text-align: right;">5631970</td>
-<td style="text-align: left;">BUR</td>
-<td style="text-align: right;">0.12</td>
-<td style="text-align: left;">POINT (477422.4 5631970)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">r01106</td>
-<td style="text-align: right;">477411.7</td>
-<td style="text-align: right;">5631946</td>
-<td style="text-align: left;">BUR</td>
-<td style="text-align: right;">0.68</td>
-<td style="text-align: left;">POINT (477411.7 5631946)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">b00818</td>
-<td style="text-align: right;">477796.0</td>
-<td style="text-align: right;">5632316</td>
-<td style="text-align: left;">BUR</td>
-<td style="text-align: right;">0.23</td>
-<td style="text-align: left;">POINT (477796 5632316)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">r00170</td>
-<td style="text-align: right;">477816.9</td>
-<td style="text-align: right;">5632201</td>
-<td style="text-align: left;">EIT</td>
-<td style="text-align: right;">0.59</td>
-<td style="text-align: left;">POINT (477816.9 5632201)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">r00334</td>
-<td style="text-align: right;">477737.2</td>
-<td style="text-align: right;">5632250</td>
-<td style="text-align: left;">ERS</td>
-<td style="text-align: right;">0.68</td>
-<td style="text-align: left;">POINT (477737.2 5632250)</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="cell-output-display">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>bd <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">"data/crop_species.csv"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>bd <span class="ot">=</span> bd <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">Abundance =</span> AraInd <span class="sc">+</span> CaraInd <span class="sc">+</span> IsoMyrInd,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">Species =</span> AraSpec, CaraSpec, IsoMyrSpec)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>lmod <span class="ot">=</span> <span class="fu">lm</span>(Species <span class="sc">~</span> Abundance, bd)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>lmod</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = Species ~ Abundance, data = bd)
 
-<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-b647b5a6fed2570e8ea9" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-b647b5a6fed2570e8ea9">{"x":{"options":{"minZoom":1,"maxZoom":52,"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}},"preferCanvas":false,"bounceAtZoomLimits":false,"maxBounds":[[[-90,-370]],[[90,370]]]},"calls":[{"method":"addProviderTiles","args":["CartoDB.Positron","CartoDB.Positron","CartoDB.Positron",{"errorTileUrl":"","noWrap":false,"detectRetina":false,"pane":"tilePane"}]},{"method":"addProviderTiles","args":["CartoDB.DarkMatter","CartoDB.DarkMatter","CartoDB.DarkMatter",{"errorTileUrl":"","noWrap":false,"detectRetina":false,"pane":"tilePane"}]},{"method":"addProviderTiles","args":["OpenStreetMap","OpenStreetMap","OpenStreetMap",{"errorTileUrl":"","noWrap":false,"detectRetina":false,"pane":"tilePane"}]},{"method":"addProviderTiles","args":["Esri.WorldImagery","Esri.WorldImagery","Esri.WorldImagery",{"errorTileUrl":"","noWrap":false,"detectRetina":false,"pane":"tilePane"}]},{"method":"addProviderTiles","args":["OpenTopoMap","OpenTopoMap","OpenTopoMap",{"errorTileUrl":"","noWrap":false,"detectRetina":false,"pane":"tilePane"}]},{"method":"createMapPane","args":["point",440]},{"method":"addCircleMarkers","args":[[50.8389945179439,50.8387788330963,50.8421230794737,50.8410890125186,50.8415276653513],[8.67935114332917,8.67919987815566,8.68463537699085,8.68493946921124,8.68380354969004],6,null,"mof_trees - dbh",{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}},"pane":"point","stroke":true,"color":"#333333","weight":1,"opacity":[0.9,0.9,0.9,0.9,0.9],"fill":true,"fillColor":["#4B0055","#FDE333","#4B0055","#FDE333","#FDE333"],"fillOpacity":[0.6,0.6,0.6,0.6,0.6]},null,null,["<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>1&emsp;<\/td><\/tr><tr><td>1<\/td><th>tree_id&emsp;<\/th><td>r00430&emsp;<\/td><\/tr><tr><td>2<\/td><th>easting&emsp;<\/th><td>477422.4&emsp;<\/td><\/tr><tr><td>3<\/td><th>northing&emsp;<\/th><td>5631970&emsp;<\/td><\/tr><tr><td>4<\/td><th>species_code&emsp;<\/th><td>BUR&emsp;<\/td><\/tr><tr><td>5<\/td><th>dbh&emsp;<\/th><td>0.12&emsp;<\/td><\/tr><tr><td>6<\/td><th>geom&emsp;<\/th><td>sfc_POINT&emsp;<\/td><\/tr><\/table><\/div>","<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>2&emsp;<\/td><\/tr><tr><td>1<\/td><th>tree_id&emsp;<\/th><td>r01106&emsp;<\/td><\/tr><tr><td>2<\/td><th>easting&emsp;<\/th><td>477411.7&emsp;<\/td><\/tr><tr><td>3<\/td><th>northing&emsp;<\/th><td>5631946&emsp;<\/td><\/tr><tr><td>4<\/td><th>species_code&emsp;<\/th><td>BUR&emsp;<\/td><\/tr><tr><td>5<\/td><th>dbh&emsp;<\/th><td>0.68&emsp;<\/td><\/tr><tr><td>6<\/td><th>geom&emsp;<\/th><td>sfc_POINT&emsp;<\/td><\/tr><\/table><\/div>","<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>3&emsp;<\/td><\/tr><tr><td>1<\/td><th>tree_id&emsp;<\/th><td>b00818&emsp;<\/td><\/tr><tr><td>2<\/td><th>easting&emsp;<\/th><td>477796.0&emsp;<\/td><\/tr><tr><td>3<\/td><th>northing&emsp;<\/th><td>5632316&emsp;<\/td><\/tr><tr><td>4<\/td><th>species_code&emsp;<\/th><td>BUR&emsp;<\/td><\/tr><tr><td>5<\/td><th>dbh&emsp;<\/th><td>0.23&emsp;<\/td><\/tr><tr><td>6<\/td><th>geom&emsp;<\/th><td>sfc_POINT&emsp;<\/td><\/tr><\/table><\/div>","<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>4&emsp;<\/td><\/tr><tr><td>1<\/td><th>tree_id&emsp;<\/th><td>r00170&emsp;<\/td><\/tr><tr><td>2<\/td><th>easting&emsp;<\/th><td>477816.9&emsp;<\/td><\/tr><tr><td>3<\/td><th>northing&emsp;<\/th><td>5632201&emsp;<\/td><\/tr><tr><td>4<\/td><th>species_code&emsp;<\/th><td>EIT&emsp;<\/td><\/tr><tr><td>5<\/td><th>dbh&emsp;<\/th><td>0.59&emsp;<\/td><\/tr><tr><td>6<\/td><th>geom&emsp;<\/th><td>sfc_POINT&emsp;<\/td><\/tr><\/table><\/div>","<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>5&emsp;<\/td><\/tr><tr><td>1<\/td><th>tree_id&emsp;<\/th><td>r00334&emsp;<\/td><\/tr><tr><td>2<\/td><th>easting&emsp;<\/th><td>477737.2&emsp;<\/td><\/tr><tr><td>3<\/td><th>northing&emsp;<\/th><td>5632250&emsp;<\/td><\/tr><tr><td>4<\/td><th>species_code&emsp;<\/th><td>ERS&emsp;<\/td><\/tr><tr><td>5<\/td><th>dbh&emsp;<\/th><td>0.68&emsp;<\/td><\/tr><tr><td>6<\/td><th>geom&emsp;<\/th><td>sfc_POINT&emsp;<\/td><\/tr><\/table><\/div>"],{"maxWidth":800,"minWidth":50,"autoPan":true,"keepInView":false,"closeButton":true,"closeOnClick":true,"className":""},["0.12","0.68","0.23","0.59","0.68"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addScaleBar","args":[{"maxWidth":100,"metric":true,"imperial":true,"updateWhenIdle":true,"position":"bottomleft"}]},{"method":"addHomeButton","args":[8.67919987815566,50.8387788330963,8.68493946921124,50.8421230794737,true,"mof_trees - dbh","Zoom to mof_trees - dbh","<strong> mof_trees - dbh <\/strong>","bottomright"]},{"method":"addLayersControl","args":[["CartoDB.Positron","CartoDB.DarkMatter","OpenStreetMap","Esri.WorldImagery","OpenTopoMap"],"mof_trees - dbh",{"collapsed":true,"autoZIndex":true,"position":"topleft"}]},{"method":"addLegend","args":[{"colors":["#4B0055 , #453A6F 14.2857142857143%, #116D92 32.1428571428572%, #1C968A 50%, #29BF7B 67.8571428571429%, #B5D45A 85.7142857142857%, #FDE333 "],"labels":["0.2","0.3","0.4","0.5","0.6"],"na_color":null,"na_label":"NA","opacity":1,"position":"topright","type":"numeric","title":"mof_trees - dbh","extra":{"p_1":0.142857142857143,"p_n":0.857142857142857},"layerId":null,"className":"info legend","group":"mof_trees - dbh"}]}],"limits":{"lat":[50.8387788330963,50.8421230794737],"lng":[8.67919987815566,8.68493946921124]},"fitBounds":[50.8387788330963,8.67919987815566,50.8421230794737,8.68493946921124,[]]},"evals":[],"jsHooks":{"render":[{"code":"function(el, x, data) {\n  return (\n      function(el, x, data) {\n      // get the leaflet map\n      var map = this; //HTMLWidgets.find('#' + el.id);\n      // we need a new div element because we have to handle\n      // the mouseover output separately\n      // debugger;\n      function addElement () {\n      // generate new div Element\n      var newDiv = $(document.createElement('div'));\n      // append at end of leaflet htmlwidget container\n      $(el).append(newDiv);\n      //provide ID and style\n      newDiv.addClass('lnlt');\n      newDiv.css({\n      'position': 'relative',\n      'bottomleft':  '0px',\n      'background-color': 'rgba(255, 255, 255, 0.7)',\n      'box-shadow': '0 0 2px #bbb',\n      'background-clip': 'padding-box',\n      'margin': '0',\n      'padding-left': '5px',\n      'color': '#333',\n      'font': '9px/1.5 \"Helvetica Neue\", Arial, Helvetica, sans-serif',\n      'z-index': '700',\n      });\n      return newDiv;\n      }\n\n\n      // check for already existing lnlt class to not duplicate\n      var lnlt = $(el).find('.lnlt');\n\n      if(!lnlt.length) {\n      lnlt = addElement();\n\n      // grab the special div we generated in the beginning\n      // and put the mousmove output there\n\n      map.on('mousemove', function (e) {\n      if (e.originalEvent.ctrlKey) {\n      if (document.querySelector('.lnlt') === null) lnlt = addElement();\n      lnlt.text(\n                           ' lon: ' + (e.latlng.lng).toFixed(5) +\n                           ' | lat: ' + (e.latlng.lat).toFixed(5) +\n                           ' | zoom: ' + map.getZoom() +\n                           ' | x: ' + L.CRS.EPSG3857.project(e.latlng).x.toFixed(0) +\n                           ' | y: ' + L.CRS.EPSG3857.project(e.latlng).y.toFixed(0) +\n                           ' | epsg: 3857 ' +\n                           ' | proj4: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +no_defs ');\n      } else {\n      if (document.querySelector('.lnlt') === null) lnlt = addElement();\n      lnlt.text(\n                      ' lon: ' + (e.latlng.lng).toFixed(5) +\n                      ' | lat: ' + (e.latlng.lat).toFixed(5) +\n                      ' | zoom: ' + map.getZoom() + ' ');\n      }\n      });\n\n      // remove the lnlt div when mouse leaves map\n      map.on('mouseout', function (e) {\n      var strip = document.querySelector('.lnlt');\n      if( strip !==null) strip.remove();\n      });\n\n      };\n\n      //$(el).keypress(67, function(e) {\n      map.on('preclick', function(e) {\n      if (e.originalEvent.ctrlKey) {\n      if (document.querySelector('.lnlt') === null) lnlt = addElement();\n      lnlt.text(\n                      ' lon: ' + (e.latlng.lng).toFixed(5) +\n                      ' | lat: ' + (e.latlng.lat).toFixed(5) +\n                      ' | zoom: ' + map.getZoom() + ' ');\n      var txt = document.querySelector('.lnlt').textContent;\n      console.log(txt);\n      //txt.innerText.focus();\n      //txt.select();\n      setClipboardText('\"' + txt + '\"');\n      }\n      });\n\n      }\n      ).call(this.getMap(), el, x, data);\n}","data":null},{"code":"function(el, x, data) {\n  return (function(el,x,data){\n           var map = this;\n\n           map.on('keypress', function(e) {\n               console.log(e.originalEvent.code);\n               var key = e.originalEvent.code;\n               if (key === 'KeyE') {\n                   var bb = this.getBounds();\n                   var txt = JSON.stringify(bb);\n                   console.log(txt);\n\n                   setClipboardText('\\'' + txt + '\\'');\n               }\n           })\n        }).call(this.getMap(), el, x, data);\n}","data":null}]}}</script>
+Coefficients:
+(Intercept)    Abundance  
+   10.71651      0.01749  </code></pre>
+</div>
+</div>
+<section id="linear-model-summary" class="level2">
+<h2 class="anchored" data-anchor-id="linear-model-summary">Linear Model Summary</h2>
+<p>Calling the model returns the intercept and slope. To get a more useful output use the <code>summary</code> function. In the following we will go over the output of the <code>summary</code> function on linear models. The explanations are mostly taken from this blog entry: <a href="https://feliperego.github.io/blog/2015/10/23/Interpreting-Model-Output-In-R">https://feliperego.github.io/blog/2015/10/23/Interpreting-Model-Output-In-R</a></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lmod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = Species ~ Abundance, data = bd)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-6.3136 -1.2481 -0.2235  1.1245  5.3046 
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 10.716507   0.991039  10.813 1.58e-15 ***
+Abundance    0.017491   0.003656   4.784 1.22e-05 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 2.416 on 58 degrees of freedom
+Multiple R-squared:  0.2829,    Adjusted R-squared:  0.2706 
+F-statistic: 22.89 on 1 and 58 DF,  p-value: 1.221e-05</code></pre>
+</div>
+</div>
+<section id="call" class="level3">
+<h3 class="anchored" data-anchor-id="call">Call</h3>
+<ul>
+<li>the function that was used to create the model</li>
+</ul>
+</section>
+<section id="residuals" class="level3">
+<h3 class="anchored" data-anchor-id="residuals">Residuals</h3>
+<ul>
+<li>summary statistic of the model error</li>
+<li>“How far away are the real values from the model?”</li>
+<li>should follow a normal distribution (e.g.&nbsp;by plotting a histogram)</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="R09_linearmodels_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(lmod<span class="sc">$</span>residuals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="R09_linearmodels_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
-<section id="want-more" class="level2">
-<h2 class="anchored" data-anchor-id="want-more">Want more?</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://www.science.org/cms/10.1126/science.1256014/asset/1e767e07-e785-4851-9ea0-6604203398a1/assets/graphic/346_301_f1.jpeg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption"><span class="citation" data-cites="Turner2014">Turner (<a href="references.html#ref-Turner2014" role="doc-biblioref">2014</a>)</span> : Sensing Biodiversity</figcaption>
-</figure>
-</div>
+<section id="coefficients" class="level3">
+<h3 class="anchored" data-anchor-id="coefficients">Coefficients</h3>
+<section id="estimate" class="level4">
+<h4 class="anchored" data-anchor-id="estimate">Estimate</h4>
 <ul>
-<li>Animal movement data</li>
-<li>Lab / Field experiments</li>
-<li>Individuum based information (e.g.&nbsp;traits)</li>
-<li>Camera Traps</li>
-<li>Socio-Economic data (also useful for landscape ecology)</li>
-<li>…</li>
+<li>again the slope and intercept</li>
+<li>we can expect to observed at least 10.7 different species on a plot (if we collect 103 animals)</li>
+<li>for each additional animal observed, the species count increases by 0.017</li>
 </ul>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="R09_linearmodels_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="std.-error" class="level4">
+<h4 class="anchored" data-anchor-id="std.-error">Std. Error</h4>
+<ul>
+<li>the expected error of the coefficients</li>
+<li>for each additional animal observed, the species number increases by 0.017 +- 0.0037</li>
+</ul>
+</section>
+<section id="t-value" class="level4">
+<h4 class="anchored" data-anchor-id="t-value">t value</h4>
+<ul>
+<li>how many standard deviation is the std. error away from zero?</li>
+<li>far away from zero is better. Reduces the probability that the result is due to chance</li>
+<li>usually not interpreted</li>
+</ul>
+</section>
+<section id="prt" class="level4">
+<h4 class="anchored" data-anchor-id="prt">Pr(&gt;|t|)</h4>
+<ul>
+<li>probability that the observed value is larger than t</li>
+<li>small value means that there is a high chance that the relation is not based on chance</li>
+<li><strong>p values &lt; than 0.05</strong> is the convention that we can neglect the H0 hypothesis (the model actually depicts a relation)</li>
+</ul>
+</section>
+<section id="signif.-codes" class="level4">
+<h4 class="anchored" data-anchor-id="signif.-codes">Signif. codes</h4>
+<ul>
+<li>a legend for the significance level of the p-value</li>
+</ul>
+</section>
+<section id="residuals-standard-error" class="level4">
+<h4 class="anchored" data-anchor-id="residuals-standard-error">Residuals standard error</h4>
+<ul>
+<li>standard deviation of the residuals</li>
+<li>the average deviation of the real values from the model value</li>
+<li>degree of freedom: on how many observations is this value based on?</li>
+</ul>
+</section>
+<section id="multiple-r-squared" class="level4">
+<h4 class="anchored" data-anchor-id="multiple-r-squared">Multiple R-squared</h4>
+<ul>
+<li>How much of the variance is explained by the model?</li>
+<li>Values between 0 and 1</li>
+<li>0 means no explanation, 1 means perfect fit</li>
+<li>Depends on the specific example!</li>
+</ul>
+</section>
+<section id="f-statistics" class="level4">
+<h4 class="anchored" data-anchor-id="f-statistics">F-statistics</h4>
+<ul>
+<li>Is there a relation between the predictor and the response?</li>
+<li>Is my model better than if all the coefficients are zero?</li>
+<li>Away from 1 is good!</li>
+<li>Depend on number of data points.</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="linear-model-plot" class="level2">
+<h2 class="anchored" data-anchor-id="linear-model-plot">Linear Model Plot</h2>
+<p>Plotting the linear model gives you 4 different figures that indicate if the model is statistically valid in the first place, i.e.&nbsp;if the residuals follow a normal distribution and if they are homoscedatic.</p>
+<section id="residuals-vs.-fitted" class="level3">
+<h3 class="anchored" data-anchor-id="residuals-vs.-fitted">Residuals vs.&nbsp;Fitted</h3>
+<ul>
+<li>Is it actually a linear relation?</li>
+<li>Points randomly scattered around a horizontal line indicates this</li>
+</ul>
+</section>
+<section id="normal-q-q" class="level3">
+<h3 class="anchored" data-anchor-id="normal-q-q">Normal Q-Q</h3>
+<ul>
+<li>Are the residuals normally distributed?</li>
+<li>Points on the 1-1 line indicates this</li>
+<li>Depicted are the actual residuals vs.&nbsp;a theoretical normal distribution</li>
+</ul>
+</section>
+<section id="scale-location" class="level3">
+<h3 class="anchored" data-anchor-id="scale-location">Scale location</h3>
+<ul>
+<li>Are the residuals <em>homoscedatic</em>?</li>
+<li>This means that the range of the residuals are more or less equal for the whole data range</li>
+<li>Equally spread points around the line indicates this</li>
+</ul>
+</section>
+<section id="residuals-vs.-levarage" class="level3">
+<h3 class="anchored" data-anchor-id="residuals-vs.-levarage">Residuals vs.&nbsp;Levarage</h3>
+<ul>
+<li>Are there outliers in the data that have influence on the model?</li>
+<li>In this example, if we would leave out point #12, the model outcome would change.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lmod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="R09_linearmodels_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="R09_linearmodels_files/figure-html/unnamed-chunk-7-2.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="R09_linearmodels_files/figure-html/unnamed-chunk-7-3.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="R09_linearmodels_files/figure-html/unnamed-chunk-7-4.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
-<div id="ref-Turner2014" class="csl-entry" role="listitem">
-Turner, W. 2014. <span>“Sensing Biodiversity.”</span> <em>Science</em> 346 (6207): 301–2. <a href="https://doi.org/10.1126/science.1256014">https://doi.org/10.1126/science.1256014</a>.
-</div>
-</div>
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -837,13 +776,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Analysis of Ecological Data with R</span></span>
+      <a href="./R08_formula.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">R08: Formula notation</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./D02_aasee.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-title">D02: The Aasee Dataset</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./exercise/E01-variablen.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-title">E01: Variablen, Funktionen</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
