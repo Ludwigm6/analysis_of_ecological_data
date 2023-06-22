@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,7 +64,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../98-additional_resources.html" rel="next">
+<link href="../exercise/E08-biodiversity.html" rel="next">
 <link href="../exercise/E06-feldfruechte-arthropoden.html" rel="prev">
 <link href="..//home/marvin/images/pictogramms/ecoR.svg" rel="icon" type="image/svg+xml">
 <script src="../site_libs/quarto-html/quarto.js"></script>
@@ -231,6 +265,11 @@ ul.task-list li input[type="checkbox"] {
   <a href="../exercise/E07-lm.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">E07: lm</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercise/E08-biodiversity.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E08: Biodiversity</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -289,18 +328,148 @@ ul.task-list li input[type="checkbox"] {
 <li>Nutze <code>dplyr::group_by</code> und <code>dplyr::summarise</code> um die Anzahl der Bäume pro Bezirk zu berechnen.</li>
 <li>Mit einem <code>join</code> Befehl (z.B. <code>dplyr::left_join</code>) oder <code>merge</code> können mehrere Tabellen zusammengefügt werden. Erstelle damit eine Tabelle die mindestens folgende Informationen enthält: Bezirksname, Bezirksgröße, Anzahl der Bäume im Bezirk.</li>
 </ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>trees <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">"../data/muenster_trees.csv"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>districts <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">"../data/muenster_districts.csv"</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>trees <span class="sc">|&gt;</span> <span class="fu">group_by</span>(district) <span class="sc">|&gt;</span> <span class="fu">count</span>(district)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 45 × 2
+# Groups:   district [45]
+   district       n
+   &lt;chr&gt;      &lt;int&gt;
+ 1 Aaseestadt  1718
+ 2 Aegidii      267
+ 3 Albachten   1349
+ 4 Amelsbüren  1314
+ 5 Angelmodde   517
+ 6 Bahnhof      478
+ 7 Berg Fidel   495
+ 8 Buddenturm   280
+ 9 Coerde       332
+10 Dom          567
+# ℹ 35 more rows</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>tree_summary <span class="ot">=</span> trees <span class="sc">|&gt;</span> <span class="fu">group_by</span>(district) <span class="sc">|&gt;</span>   </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">AnzahlBaum =</span> <span class="fu">length</span>((species)))</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>bez <span class="ot">=</span> <span class="fu">merge</span>(<span class="at">x =</span> districts, <span class="at">y =</span> tree_summary, <span class="at">by =</span> <span class="st">"district"</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># oder z.B.:</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>bez <span class="ot">=</span> dplyr<span class="sc">::</span><span class="fu">left_join</span>(<span class="at">x =</span> districts, <span class="at">y =</span> tree_summary, <span class="at">by =</span> <span class="st">"district"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <ul>
 <li>Erstelle einen Scatterplot aus Bezirksgröße und Anzahl der Bäume im Bezirk.</li>
 <li>Erstelle ein lineares Model um den Zusammenhang zwischen Bezirksgröße und Anzahl der Bäume im Bezirk zu berechnen.</li>
 <li>Erstelle ein Histogramm der Residuen des Models.</li>
 </ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(AnzahlBaum <span class="sc">~</span> area, <span class="at">data =</span> bez)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="E07-lm_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>lmod <span class="ot">=</span> <span class="fu">lm</span>(AnzahlBaum <span class="sc">~</span> area, <span class="at">data =</span> bez)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lmod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = AnzahlBaum ~ area, data = bez)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+-730.5 -392.3 -170.3  253.1 1244.4 
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 7.275e+02  9.716e+01   7.488 2.55e-09 ***
+area        2.241e-05  8.411e-06   2.665   0.0108 *  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 529.5 on 43 degrees of freedom
+Multiple R-squared:  0.1417,    Adjusted R-squared:  0.1218 
+F-statistic:   7.1 on 1 and 43 DF,  p-value: 0.01081</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(lmod<span class="sc">$</span>residuals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="E07-lm_files/figure-html/unnamed-chunk-2-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 <ul>
 <li>Logarithmiere Bezirksgröße und Anzahl der Bäume im Bezirk (<code>log10()</code>). Erstelle dann den Scatterplot erneut mit den logarithmierten Werten.</li>
 </ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>bez <span class="ot">=</span> bez <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">area_log10 =</span> <span class="fu">log10</span>(area),</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">AnzahlBaum_log10 =</span> <span class="fu">log10</span>(AnzahlBaum))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <ul>
 <li>Erstelle ein lineares Model um den Zusammenhang zwischen logarithmierten Bezirksgröße und Anzahl der Bäume im Bezirk zu berechnen.</li>
 <li>Sind die Residuen des Models normalverteilt?</li>
 </ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(AnzahlBaum_log10 <span class="sc">~</span> area_log10, <span class="at">data =</span> bez)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>lmod_log10 <span class="ot">=</span> <span class="fu">lm</span>(AnzahlBaum_log10 <span class="sc">~</span> area_log10, <span class="at">data =</span> bez)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(lmod_log10)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="E07-lm_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lmod_log10)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = AnzahlBaum_log10 ~ area_log10, data = bez)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.66218 -0.12225  0.03491  0.14988  0.51405 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  1.10059    0.36426   3.021  0.00423 ** 
+area_log10   0.27302    0.05655   4.828 1.77e-05 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.2491 on 43 degrees of freedom
+Multiple R-squared:  0.3515,    Adjusted R-squared:  0.3364 
+F-statistic: 23.31 on 1 and 43 DF,  p-value: 1.775e-05</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Tests und Plots auf Normalverteilung</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(lmod_log10<span class="sc">$</span>residuals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="E07-lm_files/figure-html/unnamed-chunk-4-2.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(lmod_log10<span class="sc">$</span>residuals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="E07-lm_files/figure-html/unnamed-chunk-4-3.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(lmod_log10<span class="sc">$</span>residuals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  lmod_log10$residuals
+W = 0.98679, p-value = 0.8818</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ks.test</span>(lmod_log10<span class="sc">$</span>residuals, <span class="at">y =</span> <span class="st">"pnorm"</span>,</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">mean=</span><span class="fu">mean</span>(lmod_log10<span class="sc">$</span>residuals),</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">sd =</span> <span class="fu">sd</span>(lmod_log10<span class="sc">$</span>residuals))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Exact one-sample Kolmogorov-Smirnov test
+
+data:  lmod_log10$residuals
+D = 0.088961, p-value = 0.8376
+alternative hypothesis: two-sided</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># In beiden Fällen ist die Nullhypothese: Daten sind Normalverteilt</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co"># p &lt; 0.05: Nullhypothese wird Verworfen</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co"># --&gt; p &gt; 0.05: Daten sind Normalverteilt</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <ul>
 <li>Bonus: Wie viele Bäume stehen Erwartungsgemäß in einem Bezirk der 10000000 qm groß ist?</li>
 </ul>
@@ -548,8 +717,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../98-additional_resources.html" class="pagination-link">
-        <span class="nav-page-text">Additional Ressources</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../exercise/E08-biodiversity.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-title">E08: Biodiversity</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

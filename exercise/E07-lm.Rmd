@@ -8,7 +8,19 @@ Nutze die Dateien `muenster_districts.csv` und `muenster_trees.csv` aus dem Lear
 * Mit einem `join` Befehl (z.B. `dplyr::left_join`) oder `merge` können mehrere Tabellen zusammengefügt werden. Erstelle damit eine Tabelle die mindestens folgende Informationen enthält: Bezirksname, Bezirksgröße, Anzahl der Bäume im Bezirk.
 
 ```{r}
+library(tidyverse)
+trees = read.csv("../data/muenster_trees.csv")
+districts = read.csv("../data/muenster_districts.csv")
 
+
+trees |> group_by(district) |> count(district)
+tree_summary = trees |> group_by(district) |>   
+    summarise(AnzahlBaum = length((species)))
+
+
+bez = merge(x = districts, y = tree_summary, by = "district")
+# oder z.B.:
+bez = dplyr::left_join(x = districts, y = tree_summary, by = "district")
 ```
 
 * Erstelle einen Scatterplot aus Bezirksgröße und Anzahl der Bäume im Bezirk.
@@ -17,14 +29,20 @@ Nutze die Dateien `muenster_districts.csv` und `muenster_trees.csv` aus dem Lear
 
 
 ```{r}
+plot(AnzahlBaum ~ area, data = bez)
+lmod = lm(AnzahlBaum ~ area, data = bez)
 
+summary(lmod)
 
+hist(lmod$residuals)
 ```
 
 * Logarithmiere Bezirksgröße und Anzahl der Bäume im Bezirk (`log10()`). Erstelle dann den Scatterplot erneut mit den logarithmierten Werten.
 
 ```{r}
 
+bez = bez |> mutate(area_log10 = log10(area),
+                    AnzahlBaum_log10 = log10(AnzahlBaum))
 ```
 
 
@@ -33,7 +51,25 @@ Nutze die Dateien `muenster_districts.csv` und `muenster_trees.csv` aus dem Lear
 
 
 ```{r}
+plot(AnzahlBaum_log10 ~ area_log10, data = bez)
+lmod_log10 = lm(AnzahlBaum_log10 ~ area_log10, data = bez)
+abline(lmod_log10)
 
+summary(lmod_log10)
+
+# Tests und Plots auf Normalverteilung
+
+hist(lmod_log10$residuals)
+qqnorm(lmod_log10$residuals)
+
+shapiro.test(lmod_log10$residuals)
+ks.test(lmod_log10$residuals, y = "pnorm",
+        mean=mean(lmod_log10$residuals),
+        sd = sd(lmod_log10$residuals))
+
+# In beiden Fällen ist die Nullhypothese: Daten sind Normalverteilt
+# p < 0.05: Nullhypothese wird Verworfen
+# --> p > 0.05: Daten sind Normalverteilt
 
 ```
 
@@ -42,6 +78,8 @@ Nutze die Dateien `muenster_districts.csv` und `muenster_trees.csv` aus dem Lear
 
 
 ```{r}
+
+
 
 ```
 

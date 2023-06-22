@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 /* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
@@ -250,6 +284,11 @@ div.csl-indent {
   <a href="../exercise/E07-lm.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E07: lm</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercise/E08-biodiversity.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E08: Biodiversity</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -457,17 +496,182 @@ div.csl-indent {
 </ul>
 <section id="task-crops-vs.-species" class="level2">
 <h2 class="anchored" data-anchor-id="task-crops-vs.-species">TASK: Crops vs.&nbsp;Species</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>bd <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">"../data/crop_species.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <ul>
-<li><p>How many different crop types where analysed in the study?</p></li>
-<li><p>How many plots are there for each crop type?</p></li>
-<li><p>Which plot had the most individual animals? (regardless of species)</p></li>
-<li><p>Which plot was the most diverse?</p></li>
-<li><p>What is the average number of Carabidaes on all the plots containing winter wheat?</p></li>
-<li><p>What is the minimum number of individuals and species per crop type?</p></li>
-<li><p>Visualize the number of Carabidaes per crop type.</p></li>
-<li><p>Plot the number of Araneae species in relation to the number of individual Araneae.</p></li>
-<li><p>If there are more individual Araneae on a plot, are there also more Araneae species?</p></li>
+<li>How many different crop types where analysed in the study?</li>
 </ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(bd<span class="sc">$</span>Croptype))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5</code></pre>
+</div>
+</div>
+<ul>
+<li>How many plots are there for each crop type?</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(bd<span class="sc">$</span>Croptype)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+KE SM WR WW ZR 
+ 3  9  6 33  9 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># or with dplyr</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>bd <span class="sc">|&gt;</span>  <span class="fu">count</span>(Croptype)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Croptype  n
+1       KE  3
+2       SM  9
+3       WR  6
+4       WW 33
+5       ZR  9</code></pre>
+</div>
+</div>
+<ul>
+<li>Which plot had the most individual animals? (regardless of species)</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate the total individuals for each plot</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>bd<span class="sc">$</span>TotalInd <span class="ot">=</span> bd<span class="sc">$</span>AraInd <span class="sc">+</span> bd<span class="sc">$</span>CaraInd <span class="sc">+</span> bd<span class="sc">$</span>IsoMyrInd</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># find out on which plotcode the total number is the maximum total number</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>bd<span class="sc">$</span>plotcode[bd<span class="sc">$</span>TotalInd <span class="sc">==</span> <span class="fu">max</span>(bd<span class="sc">$</span>TotalInd)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 30</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dplyr pipeline</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>bd <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">TotalInd =</span> AraInd <span class="sc">+</span> CaraInd <span class="sc">+</span> IsoMyrInd) <span class="sc">%&gt;%</span> </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(TotalInd <span class="sc">==</span> <span class="fu">max</span>(TotalInd)) <span class="sc">%&gt;%</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(plotcode)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  plotcode
+1       30</code></pre>
+</div>
+</div>
+<ul>
+<li>Which plot was the most diverse?</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>bd<span class="sc">$</span>TotalSpec <span class="ot">=</span> bd<span class="sc">$</span>AraSpec <span class="sc">+</span> bd<span class="sc">$</span>CaraSpec <span class="sc">+</span> bd<span class="sc">$</span>IsoMyrSpec</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>bd<span class="sc">$</span>plotcode[bd<span class="sc">$</span>TotalSpec <span class="sc">==</span> <span class="fu">max</span>(bd<span class="sc">$</span>TotalSpec)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 98</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>bd <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">TotalSpec =</span> AraSpec <span class="sc">+</span> CaraSpec <span class="sc">+</span> IsoMyrSpec) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(TotalSpec <span class="sc">==</span> <span class="fu">max</span>(TotalSpec)) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(plotcode, TotalSpec)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  plotcode TotalSpec
+1       98        41</code></pre>
+</div>
+</div>
+<ul>
+<li>What is the average number of Carabidaes on all the plots containing winter wheat?</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(bd<span class="sc">$</span>CaraInd[bd<span class="sc">$</span>Croptype <span class="sc">==</span> <span class="st">"WW"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 119.697</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>bd <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Croptype <span class="sc">==</span> <span class="st">"WW"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">MeanCara =</span> <span class="fu">mean</span>(CaraInd))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  MeanCara
+1  119.697</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>bd <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Croptype <span class="sc">==</span> <span class="st">"WW"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pull</span>(CaraInd) <span class="sc">%&gt;%</span> </span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mean</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 119.697</code></pre>
+</div>
+</div>
+<ul>
+<li>What is the minimum number of individuals and species per crop type?</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># for one crop type and species only</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(bd<span class="sc">$</span>TotalSpec[bd<span class="sc">$</span>Croptype <span class="sc">==</span> <span class="st">"WW"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 26</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># for everything at once</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>bd <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(Croptype) <span class="sc">%&gt;%</span> </span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">MinInd =</span> <span class="fu">min</span>(TotalInd),</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">MaxInd =</span> <span class="fu">max</span>(TotalInd),</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">MinSpec =</span> <span class="fu">min</span>(TotalSpec),</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">MaxSpec =</span> <span class="fu">max</span>(TotalSpec))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 5
+  Croptype MinInd MaxInd MinSpec MaxSpec
+  &lt;chr&gt;     &lt;int&gt;  &lt;int&gt;   &lt;int&gt;   &lt;int&gt;
+1 KE          216    342      27      30
+2 SM          103    399      21      41
+3 WR          271    597      24      40
+4 WW          149    317      26      36
+5 ZR          163    350      23      36</code></pre>
+</div>
+</div>
+<ul>
+<li>Visualize the number of Carabidaes per crop type.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(bd<span class="sc">$</span>CaraInd <span class="sc">~</span> bd<span class="sc">$</span>Croptype)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="E06-feldfruechte-arthropoden_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<ul>
+<li>Plot the number of Araneae species in relation to the number of individual Araneae.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(bd<span class="sc">$</span>AraInd, bd<span class="sc">$</span>AraSpec)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="E06-feldfruechte-arthropoden_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<ul>
+<li>If there are more individual Araneae on a plot, are there also more Araneae species?</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># build a linear model</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>ara_model <span class="ot">=</span> <span class="fu">lm</span>(bd<span class="sc">$</span>AraSpec <span class="sc">~</span> bd<span class="sc">$</span>AraInd)</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(ara_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = bd$AraSpec ~ bd$AraInd)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-4.6170 -1.4779 -0.2867  1.3864  7.2698 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  9.95648    1.18793   8.381 1.41e-11 ***
+bd$AraInd    0.04977    0.01084   4.593 2.40e-05 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 2.443 on 58 degrees of freedom
+Multiple R-squared:  0.2667,    Adjusted R-squared:  0.2541 
+F-statistic: 21.09 on 1 and 58 DF,  p-value: 2.401e-05</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(AraSpec <span class="sc">~</span> AraInd, <span class="at">data =</span> bd)</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(ara_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="E06-feldfruechte-arthropoden_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(AraSpec <span class="sc">~</span> AraInd, <span class="at">data =</span> bd, <span class="at">asp =</span> <span class="dv">1</span>)</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(ara_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="E06-feldfruechte-arthropoden_files/figure-html/unnamed-chunk-11-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">

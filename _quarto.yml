@@ -33,6 +33,7 @@ book:
       - "exercise/E05-kritischer-sauerstoff.Rmd"
       - "exercise/E06-feldfruechte-arthropoden.Rmd"
       - "exercise/E07-lm.Rmd"
+      - "exercise/E08-biodiversity.Rmd"
   appendices:
   - "98-additional_resources.Rmd"
   - "references.qmd"

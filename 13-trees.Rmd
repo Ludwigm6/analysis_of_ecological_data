@@ -227,6 +227,12 @@ library(vegan)
 ## Columns: species
 cont = table(trees$district, trees$species)
 vegan::diversity(cont)
+cont
+
+
+dist = vegan::vegdist(cont, method = "bray")
+
+
 
 ```
 

@@ -34,16 +34,118 @@ The column names and crop types appear very cryptic at first sight. Here are som
 
 ## TASK: Crops vs. Species
 
+
+```{r}
+library(dplyr)
+bd = read.csv("../data/crop_species.csv")
+```
+
+
 * How many different crop types where analysed in the study?
+
+```{r}
+length(unique(bd$Croptype))
+
+
+```
+
+
 * How many plots are there for each crop type?
+
+```{r}
+table(bd$Croptype)
+
+# or with dplyr
+bd |>  count(Croptype)
+```
+
+
 * Which plot had the most individual animals? (regardless of species)
+```{r}
+# calculate the total individuals for each plot
+bd$TotalInd = bd$AraInd + bd$CaraInd + bd$IsoMyrInd
+
+# find out on which plotcode the total number is the maximum total number
+bd$plotcode[bd$TotalInd == max(bd$TotalInd)]
+
+# dplyr pipeline
+bd %>% mutate(TotalInd = AraInd + CaraInd + IsoMyrInd) %>% 
+    filter(TotalInd == max(TotalInd)) %>%
+    select(plotcode)
+
+```
+
 * Which plot was the most diverse?
 
+```{r}
+bd$TotalSpec = bd$AraSpec + bd$CaraSpec + bd$IsoMyrSpec
+bd$plotcode[bd$TotalSpec == max(bd$TotalSpec)]
+
+
+bd %>% mutate(TotalSpec = AraSpec + CaraSpec + IsoMyrSpec) %>% 
+    filter(TotalSpec == max(TotalSpec)) %>% 
+    select(plotcode, TotalSpec)
+```
+
+
+
 * What is the average number of Carabidaes on all the plots containing winter wheat?
+
+```{r}
+mean(bd$CaraInd[bd$Croptype == "WW"])
+
+bd %>% filter(Croptype == "WW") %>% 
+    summarise(MeanCara = mean(CaraInd))
+
+bd %>% filter(Croptype == "WW") %>% 
+    pull(CaraInd) %>% 
+    mean()
+```
+
+
 * What is the minimum number of individuals and species per crop type?
+
+```{r}
+# for one crop type and species only
+min(bd$TotalSpec[bd$Croptype == "WW"])
+
+
+# for everything at once
+bd %>% group_by(Croptype) %>% 
+    summarise(MinInd = min(TotalInd),
+              MaxInd = max(TotalInd),
+              MinSpec = min(TotalSpec),
+              MaxSpec = max(TotalSpec))
+```
+
+
 * Visualize the number of Carabidaes per crop type.
 
+```{r}
+boxplot(bd$CaraInd ~ bd$Croptype)
+```
+
 * Plot the number of Araneae species in relation to the number of individual Araneae.
+
+```{r}
+plot(bd$AraInd, bd$AraSpec)
+```
+
+
 * If there are more individual Araneae on a plot, are there also more Araneae species?
 
+```{r}
+# build a linear model
+ara_model = lm(bd$AraSpec ~ bd$AraInd)
 
+summary(ara_model)
+
+plot(AraSpec ~ AraInd, data = bd)
+abline(ara_model)
+
+plot(AraSpec ~ AraInd, data = bd, asp = 1)
+abline(ara_model)
+
+
+
+```

@@ -1,4 +1,10 @@
-# E05: Daten aufräumen
+---
+code-fold: false
+code-summary: "Solution"
+eval: false
+---
+
+# E05: Kritischer Sauerstoff
 
 Falls noch nicht geschehn, lade den Aasee Datensatz hier herunter: https://github.com/od-ms/aasee-monitoring (Code - Download ZIP). Entpacken nicht vergessen.
 
@@ -11,6 +17,7 @@ Die Funktion heißt `read_aasee()` uns als Argument benötigt sie den Orderpfad 
 
 # folder: string, orderpfad zu den csv Dateien
 
+folder = "~/data/muenster/aasee-monitoring/data"
 read_aasee = function(folder){
     aasee_files = list.files(folder, full.names = TRUE, pattern = ".csv$")
     aasee = lapply(aasee_files, read.csv)
@@ -19,7 +26,25 @@ read_aasee = function(folder){
 }
 
 
-aasee = read_aasee("~/data/muenster/aasee-monitoring/data")
+aasee = read_aasee(folder = "~/data/muenster/aasee-monitoring/data")
+
+
+
+
+
+
+aasee$Wassertemperatur
+
+aasee[[2]]
+
+#
+
+
+
+
+
+
+
 
 ```
 
@@ -27,9 +52,7 @@ aasee = read_aasee("~/data/muenster/aasee-monitoring/data")
 - Erstelle einen Boxplot der Wassertemperatur. Was fällt auf?
 
 ```{r}
-
-
-
+boxplot(aasee$Wassertemperatur)
 ```
 
 
@@ -37,8 +60,16 @@ aasee = read_aasee("~/data/muenster/aasee-monitoring/data")
 - Behebe das Problem, indem du die Reihe mit dem Messfehler aus dem Datensatz löschst (oder nur den Rest behältst).
 
 ```{r}
+aasee_correct = aasee |> filter(Wassertemperatur > -100)
+aasee = aasee[aasee$Wassertemperatur > -100,]
 
 
+boxplot(aasee$Wassertemperatur, outline = FALSE)
+
+NA
+
+aasee[aasee$Wassertemperatur < -100,]$Wassertemperatur = NA
+boxplot(aasee$Wassertemperatur)
 
 ```
 
@@ -62,13 +93,59 @@ Die folgenden Aufgaben sollen Schritt für Schritt eine mögliche herangehenswei
 
 ```{r}
 
+aasee_correct = mutate(aasee_correct, Jahr = str_sub(aasee_correct$Datum,
+                                     start = 1, end = 4))
+
+aasee_correct = mutate(aasee_correct, Monat = str_sub(aasee_correct$Datum,
+                                     start = 6, end = 7))
+
+aasee_correct = mutate(aasee_correct, Tag = str_sub(aasee_correct$Datum,
+                                     start = 9, end = 10))
+
+
+
+# Reformat Date Column
+aasee = aasee |>
+    rename(Zeit = Datum) |> 
+    mutate(Jahr = str_sub(Zeit, 1, 4),
+           Monat = str_sub(Zeit, 6, 7),
+           Tag = str_sub(Zeit, 9, 10),
+           Monat_Tag = str_sub(Zeit, 6, 10))
+
+
+
+
+
+
+library(lubridate)
+
+aasee_correct = aasee_correct %>%
+    mutate(Date = as.Date(Datum),
+           Jahr = year(Datum),
+           Monat = month(Datum),
+           Tag = day(Datum))
+
+#
+
+
+
+
+new_time= as.POSIXct(data_new$Datum,format="%Y-%m-%d %H:%M")
+data_new$Jahr=format(new_time, format="%Y")
+data_new$Monat=format(new_time, format="%m")
+data_new$Tag=format(new_time, format="%d")
+
+
 ```
 
 - Erstelle eine neue Tabelle, die nur die Messwerte aus dem Jahr 2022 enthält.
 
 ```{r}
+aasee22 = aasee |> filter(Jahr == 2022)
 
 
+# Richtig aber unguenstig:
+aasee2022=aasee2[20675:35994,]
 ```
 
 
@@ -76,6 +153,31 @@ Die folgenden Aufgaben sollen Schritt für Schritt eine mögliche herangehenswei
 
 ```{r}
 
+aasee_critical = aasee22 |> filter(Sauerstoffgehalt < 4)
+
+length(unique(aasee_critical$Monat_Tag))
+
+
+
+
+
+length(unique(aasee[aasee$Sauerstoffgehalt< 4, c("Monat", "Tag")]))
+length(unique(aasee_critical$Tag))
+
+
+
+zu_niedrig=nur_2022[which(nur_2022$Sauerstoffgehalt<=4),]
+unique(zu_niedrig$Tag)
+length(unique(zu_niedrig$Tag))
+#31
+
+
+
+length(aasee2022[aasee2022$Sauerstoffgehalt <= 4,]) ## anzahl spalten !!!
+aasee_crit = aasee22 |> filter(Sauerstoffgehalt < 4)
+
+length(unique(aasee_crit$Datum))
+length(unique(aasee$Tag))
 
 ```
 
@@ -85,6 +187,34 @@ Bonus: Überlege dir eine geeignete Visualisierung um den Sachverhalt Markus Lew
 
 ```{r}
 
+
+plot(aasee_correct$Date, aasee_correct$Sauerstoffgehalt, type = "l")
+
+abline(a = 4, b = 0, col = "red")
+
+
+class(aasee$Sauerstoffgehalt ~ aasee$Monat)
+
+boxplot(aasee$Sauerstoffgehalt ~ aasee$Monat)
+abline(a = 4, b = 0)
 ```
+
+
+
+
+
+
+
+```{r}
+## Galerie: Variablennamen
+
+## aasee_MuhTanten
+## daten_aasee -> daten_aasee_richtig -> daten_aasee_noch_richtiger -> daten_aasee_2022
+## aassee
+```
+
+
+
+
 
 
