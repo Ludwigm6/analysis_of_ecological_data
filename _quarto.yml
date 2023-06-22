@@ -24,6 +24,7 @@ book:
       - "R07_lists.qmd"
       - "R08_formula.qmd"
       - "R09_linearmodels.qmd"
+      - "R10_ggplot.qmd"
     - part: "Exercises"
       chapters:
       - "exercise/E01-variablen.Rmd"

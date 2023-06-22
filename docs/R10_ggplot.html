@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Analysis of Ecological Data - R09: Linear Models</title>
+<title>Analysis of Ecological Data - R10: ggplot2</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,8 +64,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./R10_ggplot.html" rel="next">
-<link href="./R08_formula.html" rel="prev">
+<link href="./exercise/E01-variablen.html" rel="next">
+<link href="./R09_linearmodels.html" rel="prev">
 <link href=".//home/marvin/images/pictogramms/ecoR.svg" rel="icon" type="image/svg+xml">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -109,7 +109,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./R01_introduction.html">R</a></li><li class="breadcrumb-item"><a href="./R09_linearmodels.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">R09: Linear Models</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./R01_introduction.html">R</a></li><li class="breadcrumb-item"><a href="./R10_ggplot.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">R10: ggplot2</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -216,12 +216,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R09_linearmodels.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">R09: Linear Models</span></a>
+  <a href="./R09_linearmodels.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R09: Linear Models</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R10_ggplot.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R10: ggplot2</span></a>
+  <a href="./R10_ggplot.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">R10: ggplot2</span></a>
   </div>
 </li>
       </ul>
@@ -310,18 +310,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#linear-model-summary" id="toc-linear-model-summary" class="nav-link active" data-scroll-target="#linear-model-summary">Linear Model Summary</a>
+  <li><a href="#the-grammar-of-graphics" id="toc-the-grammar-of-graphics" class="nav-link active" data-scroll-target="#the-grammar-of-graphics">The grammar of graphics</a>
   <ul class="collapse">
-  <li><a href="#call" id="toc-call" class="nav-link" data-scroll-target="#call">Call</a></li>
-  <li><a href="#residuals" id="toc-residuals" class="nav-link" data-scroll-target="#residuals">Residuals</a></li>
-  <li><a href="#coefficients" id="toc-coefficients" class="nav-link" data-scroll-target="#coefficients">Coefficients</a></li>
-  </ul></li>
-  <li><a href="#linear-model-plot" id="toc-linear-model-plot" class="nav-link" data-scroll-target="#linear-model-plot">Linear Model Plot</a>
-  <ul class="collapse">
-  <li><a href="#residuals-vs.-fitted" id="toc-residuals-vs.-fitted" class="nav-link" data-scroll-target="#residuals-vs.-fitted">Residuals vs.&nbsp;Fitted</a></li>
-  <li><a href="#normal-q-q" id="toc-normal-q-q" class="nav-link" data-scroll-target="#normal-q-q">Normal Q-Q</a></li>
-  <li><a href="#scale-location" id="toc-scale-location" class="nav-link" data-scroll-target="#scale-location">Scale location</a></li>
-  <li><a href="#residuals-vs.-levarage" id="toc-residuals-vs.-levarage" class="nav-link" data-scroll-target="#residuals-vs.-levarage">Residuals vs.&nbsp;Levarage</a></li>
+  <li><a href="#initialze-the-plot" id="toc-initialze-the-plot" class="nav-link" data-scroll-target="#initialze-the-plot">Initialze the plot</a></li>
+  <li><a href="#geometry-types" id="toc-geometry-types" class="nav-link" data-scroll-target="#geometry-types">Geometry types</a></li>
+  <li><a href="#axis-formats" id="toc-axis-formats" class="nav-link" data-scroll-target="#axis-formats">Axis Formats</a></li>
+  <li><a href="#color-scales" id="toc-color-scales" class="nav-link" data-scroll-target="#color-scales">Color Scales</a></li>
+  <li><a href="#themes" id="toc-themes" class="nav-link" data-scroll-target="#themes">Themes</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -331,7 +326,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">R09: Linear Models</span></h1>
+<h1 class="title"><span class="chapter-title">R10: ggplot2</span></h1>
 </div>
 
 
@@ -346,203 +341,176 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p>Linear models describe the relation between two variables. In a non-technical description we can think about linear model like:</p>
 <blockquote class="blockquote">
-<p>Find a line that is as close as possible to all the points of a scatterplot.</p>
+<p>Es gibt nur eine Breitbandleitung ins Hirn und das sind die Augen. <a href="https://www.youtube.com/watch?v=QqVFEP3_BtY">David Krisel</a></p>
 </blockquote>
-<div class="cell">
-<div class="cell-output-display">
-<p><img src="R09_linearmodels_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<p>For example, we can use a linear model to depict the relation between the amount of samples animals and the number of different species found in a given area. To create a linear model, we need two vectors (here as two columns of a data.frame) with the matching data pairs (Abundance and Species Number). The <code>lm</code> function then need a formula with the vector/column names separated by <code>~</code>. Think about the <code>~</code> like <em>as a function of</em>. So <code>lm(Species ~ Abundance)</code> means: Give me the number of species as a function of species abundance.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>bd <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">"data/crop_species.csv"</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>bd <span class="ot">=</span> bd <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">Abundance =</span> AraInd <span class="sc">+</span> CaraInd <span class="sc">+</span> IsoMyrInd,</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">Species =</span> AraSpec, CaraSpec, IsoMyrSpec)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>lmod <span class="ot">=</span> <span class="fu">lm</span>(Species <span class="sc">~</span> Abundance, bd)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>lmod</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Call:
-lm(formula = Species ~ Abundance, data = bd)
-
-Coefficients:
-(Intercept)    Abundance  
-   10.71651      0.01749  </code></pre>
-</div>
-</div>
-<section id="linear-model-summary" class="level2">
-<h2 class="anchored" data-anchor-id="linear-model-summary">Linear Model Summary</h2>
-<p>Calling the model returns the intercept and slope. To get a more useful output use the <code>summary</code> function. In the following we will go over the output of the <code>summary</code> function on linear models. The explanations are mostly taken from this blog entry: <a href="https://feliperego.github.io/blog/2015/10/23/Interpreting-Model-Output-In-R">https://feliperego.github.io/blog/2015/10/23/Interpreting-Model-Output-In-R</a></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lmod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Call:
-lm(formula = Species ~ Abundance, data = bd)
-
-Residuals:
-    Min      1Q  Median      3Q     Max 
--6.3136 -1.2481 -0.2235  1.1245  5.3046 
-
-Coefficients:
-             Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept) 10.716507   0.991039  10.813 1.58e-15 ***
-Abundance    0.017491   0.003656   4.784 1.22e-05 ***
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 2.416 on 58 degrees of freedom
-Multiple R-squared:  0.2829,    Adjusted R-squared:  0.2706 
-F-statistic: 22.89 on 1 and 58 DF,  p-value: 1.221e-05</code></pre>
-</div>
-</div>
-<section id="call" class="level3">
-<h3 class="anchored" data-anchor-id="call">Call</h3>
+<p>In the course, we used three datasets. All of them have different features and difficulties that we need to keep in mind when we want to visualize parts of the data to point out some interesting facts!</p>
+<p>The <strong>Aasee Water Monitoring</strong> data has a temporal component and “continuous” measurements. The <strong>arthoropode species on crop fields</strong> follow the classic plot based design and allows for comparisons between different groups. The <strong>trees and districts of Muenster</strong> potentially have a spatial component to it but also allow for comparisons of the different species and districts.</p>
+<section id="the-grammar-of-graphics" class="level2">
+<h2 class="anchored" data-anchor-id="the-grammar-of-graphics">The grammar of graphics</h2>
+<p>Scientific figures and advanced visualization in R are usually done with the <code>ggplot2</code> package.</p>
 <ul>
-<li>the function that was used to create the model</li>
+<li><a href="https://ggplot2.tidyverse.org/">https://ggplot2.tidyverse.org/</a></li>
+<li>tidyverse package: synergies and integration with e.g.&nbsp;dplyr</li>
+<li>layer based language that are combined with <code>+</code></li>
+<li>differentiated by “static” and “dynamic” parameters</li>
+<li>many extensions: <a href="https://exts.ggplot2.tidyverse.org/gallery/">https://exts.ggplot2.tidyverse.org/gallery/</a></li>
+<li>Gallery for inspiration: <a href="https://r-graph-gallery.com/index.html">https://r-graph-gallery.com/index.html</a></li>
 </ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(viridis)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># data overview</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>species <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">"data/crop_species.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="initialze-the-plot" class="level3">
+<h3 class="anchored" data-anchor-id="initialze-the-plot">Initialze the plot</h3>
+<p>Tell ggplot which <code>data.frame</code> is the basis for the plot.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="R10_ggplot_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>The <code>mapping</code> argument of the <code>ggplot()</code> function handles which columns of the data should be used for which purpose. To specify this, we use the <code>aes()</code> function (aesthetics). Common things that we specify:</p>
+<ul>
+<li>x</li>
+<li>y</li>
+<li>group</li>
+<li>color</li>
+<li>fill</li>
+</ul>
+<p>Here we specify that on the x-axis in our plot represent the <code>AraInd</code> column. As a result we get the proper y-axis, but still no data is shown. For this, we have to specify in which form the data should be depicted.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> species, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> AraInd))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="R10_ggplot_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 </section>
-<section id="residuals" class="level3">
-<h3 class="anchored" data-anchor-id="residuals">Residuals</h3>
+<section id="geometry-types" class="level3">
+<h3 class="anchored" data-anchor-id="geometry-types">Geometry types</h3>
+<p>There are many different geometry types build into <code>ggplot2</code> and even more from additional packages. The functions to create the geometry layers usually start with <code>geom_</code>. The geom functions also have their own arguments you can specify.</p>
 <ul>
-<li>summary statistic of the model error</li>
-<li>“How far away are the real values from the model?”</li>
-<li>should follow a normal distribution (e.g.&nbsp;by plotting a histogram)</li>
+<li>geom_point</li>
+<li>geom_line</li>
+<li>geom_boxplot</li>
+<li>geom_histogram</li>
+<li>…</li>
 </ul>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(species, <span class="fu">aes</span>(<span class="at">x =</span> AraInd))<span class="sc">+</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_histogram</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="R09_linearmodels_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+<p><img src="R10_ggplot_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(lmod<span class="sc">$</span>residuals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(species, <span class="fu">aes</span>(<span class="at">x =</span> AraInd))<span class="sc">+</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">10</span>, <span class="at">fill =</span> <span class="st">"darkgreen"</span>, <span class="at">color =</span> <span class="st">"black"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="R09_linearmodels_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+<p><img src="R10_ggplot_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Different geometry types require more than one aesthetic. E.g. <code>geom_point</code> needs the x and y aesthetics.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(species, <span class="fu">aes</span>(<span class="at">x =</span> Croptype, <span class="at">y =</span> AraInd))<span class="sc">+</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="R10_ggplot_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
-<section id="coefficients" class="level3">
-<h3 class="anchored" data-anchor-id="coefficients">Coefficients</h3>
-<section id="estimate" class="level4">
-<h4 class="anchored" data-anchor-id="estimate">Estimate</h4>
+<section id="axis-formats" class="level3">
+<h3 class="anchored" data-anchor-id="axis-formats">Axis Formats</h3>
+<p>The Axis format depends on the type of variable you want to plot. We have to be aware of what scale type we have.</p>
 <ul>
-<li>again the slope and intercept</li>
-<li>we can expect to observed at least 10.7 different species on a plot (if we collect 103 animals)</li>
-<li>for each additional animal observed, the species count increases by 0.017</li>
+<li>discrete scale for categorical data</li>
+<li>continuous scale for numeric data</li>
+<li>limits, ticks, labels …</li>
 </ul>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(species, <span class="fu">aes</span>(<span class="at">x =</span> Croptype, <span class="at">y =</span> AraInd))<span class="sc">+</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">4</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">shape =</span> <span class="dv">18</span>)<span class="sc">+</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_discrete</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"KE"</span> <span class="ot">=</span> <span class="st">"Grain Pea"</span>,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"SM"</span> <span class="ot">=</span> <span class="st">"Silage Maize"</span>,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"WR"</span> <span class="ot">=</span> <span class="st">"Winter Oilseed Rape"</span>,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"WW"</span> <span class="ot">=</span> <span class="st">"Winter Wheat"</span>,</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"ZR"</span> <span class="ot">=</span> <span class="st">"Sugar Beet"</span>))<span class="sc">+</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">name =</span> <span class="st">"Aranae [n]"</span>, <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">200</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="R09_linearmodels_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+<p><img src="R10_ggplot_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-</section>
-<section id="std.-error" class="level4">
-<h4 class="anchored" data-anchor-id="std.-error">Std. Error</h4>
-<ul>
-<li>the expected error of the coefficients</li>
-<li>for each additional animal observed, the species number increases by 0.017 +- 0.0037</li>
-</ul>
-</section>
-<section id="t-value" class="level4">
-<h4 class="anchored" data-anchor-id="t-value">t value</h4>
-<ul>
-<li>how many standard deviation is the std. error away from zero?</li>
-<li>far away from zero is better. Reduces the probability that the result is due to chance</li>
-<li>usually not interpreted</li>
-</ul>
-</section>
-<section id="prt" class="level4">
-<h4 class="anchored" data-anchor-id="prt">Pr(&gt;|t|)</h4>
-<ul>
-<li>probability that the observed value is larger than t</li>
-<li>small value means that there is a high chance that the relation is not based on chance</li>
-<li><strong>p values &lt; than 0.05</strong> is the convention that we can neglect the H0 hypothesis (the model actually depicts a relation)</li>
-</ul>
-</section>
-<section id="signif.-codes" class="level4">
-<h4 class="anchored" data-anchor-id="signif.-codes">Signif. codes</h4>
-<ul>
-<li>a legend for the significance level of the p-value</li>
-</ul>
-</section>
-<section id="residuals-standard-error" class="level4">
-<h4 class="anchored" data-anchor-id="residuals-standard-error">Residuals standard error</h4>
-<ul>
-<li>standard deviation of the residuals</li>
-<li>the average deviation of the real values from the model value</li>
-<li>degree of freedom: on how many observations is this value based on?</li>
-</ul>
-</section>
-<section id="multiple-r-squared" class="level4">
-<h4 class="anchored" data-anchor-id="multiple-r-squared">Multiple R-squared</h4>
-<ul>
-<li>How much of the variance is explained by the model?</li>
-<li>Values between 0 and 1</li>
-<li>0 means no explanation, 1 means perfect fit</li>
-<li>Depends on the specific example!</li>
-</ul>
-</section>
-<section id="f-statistics" class="level4">
-<h4 class="anchored" data-anchor-id="f-statistics">F-statistics</h4>
-<ul>
-<li>Is there a relation between the predictor and the response?</li>
-<li>Is my model better than if all the coefficients are zero?</li>
-<li>Away from 1 is good!</li>
-<li>Depend on number of data points.</li>
-</ul>
-</section>
-</section>
-</section>
-<section id="linear-model-plot" class="level2">
-<h2 class="anchored" data-anchor-id="linear-model-plot">Linear Model Plot</h2>
-<p>Plotting the linear model gives you 4 different figures that indicate if the model is statistically valid in the first place, i.e.&nbsp;if the residuals follow a normal distribution and if they are homoscedatic.</p>
-<section id="residuals-vs.-fitted" class="level3">
-<h3 class="anchored" data-anchor-id="residuals-vs.-fitted">Residuals vs.&nbsp;Fitted</h3>
-<ul>
-<li>Is it actually a linear relation?</li>
-<li>Points randomly scattered around a horizontal line indicates this</li>
-</ul>
-</section>
-<section id="normal-q-q" class="level3">
-<h3 class="anchored" data-anchor-id="normal-q-q">Normal Q-Q</h3>
-<ul>
-<li>Are the residuals normally distributed?</li>
-<li>Points on the 1-1 line indicates this</li>
-<li>Depicted are the actual residuals vs.&nbsp;a theoretical normal distribution</li>
-</ul>
-</section>
-<section id="scale-location" class="level3">
-<h3 class="anchored" data-anchor-id="scale-location">Scale location</h3>
-<ul>
-<li>Are the residuals <em>homoscedatic</em>?</li>
-<li>This means that the range of the residuals are more or less equal for the whole data range</li>
-<li>Equally spread points around the line indicates this</li>
-</ul>
-</section>
-<section id="residuals-vs.-levarage" class="level3">
-<h3 class="anchored" data-anchor-id="residuals-vs.-levarage">Residuals vs.&nbsp;Levarage</h3>
-<ul>
-<li>Are there outliers in the data that have influence on the model?</li>
-<li>In this example, if we would leave out point #12, the model outcome would change.</li>
-</ul>
+<p>We can also save the plot to a object to reuse and modify it later.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lmod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>araind_plot <span class="ot">=</span> <span class="fu">ggplot</span>(species, <span class="fu">aes</span>(<span class="at">x =</span> Croptype, <span class="at">y =</span> AraInd))<span class="sc">+</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">4</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">shape =</span> <span class="dv">18</span>)<span class="sc">+</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_discrete</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"KE"</span> <span class="ot">=</span> <span class="st">"Grain Pea"</span>,</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"SM"</span> <span class="ot">=</span> <span class="st">"Silage Maize"</span>,</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"WR"</span> <span class="ot">=</span> <span class="st">"Winter Oilseed Rape"</span>,</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"WW"</span> <span class="ot">=</span> <span class="st">"Winter Wheat"</span>,</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"ZR"</span> <span class="ot">=</span> <span class="st">"Sugar Beet"</span>))<span class="sc">+</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">name =</span> <span class="st">"Aranae [n]"</span>, <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">200</span>))</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>araind_plot <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"Aranae [n] per crop type"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="R09_linearmodels_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+<p><img src="R10_ggplot_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
 </div>
-<div class="cell-output-display">
-<p><img src="R09_linearmodels_files/figure-html/unnamed-chunk-7-2.png" class="img-fluid" width="672"></p>
 </div>
+</section>
+<section id="color-scales" class="level3">
+<h3 class="anchored" data-anchor-id="color-scales">Color Scales</h3>
+<p>With the <code>color</code> and <code>fill</code> arguments in <code>aes()</code> we specify which columns of the data.frame should be represented as a color scale in the plot.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(species, <span class="fu">aes</span>(<span class="at">x =</span> Croptype, <span class="at">y =</span> AraInd, <span class="at">color =</span> AraSpec))<span class="sc">+</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">4</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">shape =</span> <span class="dv">18</span>)<span class="sc">+</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_discrete</span>(<span class="at">name =</span> <span class="st">"Crop Type"</span>)<span class="sc">+</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">name =</span> <span class="st">"Aranae [n]"</span>, <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">200</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="R09_linearmodels_files/figure-html/unnamed-chunk-7-3.png" class="img-fluid" width="672"></p>
+<p><img src="R10_ggplot_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
 </div>
+</div>
+<p>We can specify the colors by adding a <code>scale_color_</code> layer. Just like with the axis, there are discrete and continuous color scales available!</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(species, <span class="fu">aes</span>(<span class="at">x =</span> Croptype, <span class="at">y =</span> AraInd, <span class="at">color =</span> AraSpec))<span class="sc">+</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">4</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">shape =</span> <span class="dv">18</span>)<span class="sc">+</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_gradient</span>(<span class="at">name =</span> <span class="st">"Aranae</span><span class="sc">\n</span><span class="st">Species [n]"</span>, <span class="at">low =</span> <span class="st">"yellow"</span>, <span class="at">high =</span> <span class="st">"red"</span>)<span class="sc">+</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_discrete</span>(<span class="at">name =</span> <span class="st">"Crop Type"</span>)<span class="sc">+</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">name =</span> <span class="st">"Aranae [n]"</span>, <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">200</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="R09_linearmodels_files/figure-html/unnamed-chunk-7-4.png" class="img-fluid" width="672"></p>
+<p><img src="R10_ggplot_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="themes" class="level3">
+<h3 class="anchored" data-anchor-id="themes">Themes</h3>
+<p>There are many prebuild themes…</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(species, <span class="fu">aes</span>(<span class="at">x =</span> Croptype, <span class="at">y =</span> AraInd, <span class="at">color =</span> AraSpec))<span class="sc">+</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">4</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">shape =</span> <span class="dv">18</span>)<span class="sc">+</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_gradientn</span>(<span class="at">name =</span> <span class="st">"Aranae</span><span class="sc">\n</span><span class="st">Species [n]"</span>,<span class="at">colors =</span> <span class="fu">mako</span>(<span class="dv">50</span>))<span class="sc">+</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_discrete</span>(<span class="at">name =</span> <span class="st">"Crop Type"</span>)<span class="sc">+</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">name =</span> <span class="st">"Aranae [n]"</span>, <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">200</span>))<span class="sc">+</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="R10_ggplot_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>… or you can specify your own:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(species, <span class="fu">aes</span>(<span class="at">x =</span> Croptype, <span class="at">y =</span> AraInd, <span class="at">color =</span> AraSpec))<span class="sc">+</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">4</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">shape =</span> <span class="dv">18</span>)<span class="sc">+</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_gradientn</span>(<span class="at">name =</span> <span class="st">"Aranae</span><span class="sc">\n</span><span class="st">Species [n]"</span>,<span class="at">colors =</span> <span class="fu">mako</span>(<span class="dv">50</span>))<span class="sc">+</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_discrete</span>(<span class="at">name =</span> <span class="st">"Crop Type"</span>)<span class="sc">+</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">name =</span> <span class="st">"Aranae [n]"</span>, <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">200</span>), <span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>))<span class="sc">+</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">panel.background =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">panel.grid.major.y =</span> <span class="fu">element_line</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">linetype =</span> <span class="st">"dotted"</span>),</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.line =</span> <span class="fu">element_line</span>(<span class="at">color =</span> <span class="st">"black"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="R10_ggplot_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 
@@ -786,13 +754,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./R08_formula.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">R08: Formula notation</span></span>
+      <a href="./R09_linearmodels.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">R09: Linear Models</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./R10_ggplot.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-title">R10: ggplot2</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./exercise/E01-variablen.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-title">E01: Variablen, Funktionen</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

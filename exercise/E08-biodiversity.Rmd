@@ -10,8 +10,13 @@ Hinweis: Für die meisten Funktionen in `vegan` wird eine sogenannte community m
 
 
 ```{r}
+trees = read.csv("../data/muenster_trees.csv")
 
+library(vegan)
 
+# Kontingenztabelle
+cont = table(trees$district, trees$species)
+cont_df = as.data.frame.array(cont)
 ```
 
 
