@@ -2,13 +2,47 @@
 
 Erstelle folgende Grafiken mit `ggplot2`:
 
-1. Boxplots der Aranae Species pro Feldfruchttyp.
-2. Scatterplot der Carabidae Individuen und Carabidae Species. Die Punkte sollen je nach Feldfrucht unterschiedlich gefärbt sein.
-3. Erstelle eine Karte der Bäume Münsters (nur mit ggplot!).
-4. Erstelle eine "heatmap" der Bäume in Münster (`geom_bin_2d` or `geom_hex`)
-5. Plotte die Zeitreihe des Sauerstoffgehaltes des Aasee mit:
-    5.1 einer x-Achse in einem Zeitformat. Nutze `lubridate::ymd_hm()` um das Datum vernünftig zu formatieren.
-    5.2 einer horizontalen Linie die den Kritischen Sauerstoffgehalt von 4 mg/l anzeigt.
-    5.3 Färbe die Zeitreihe nach der Temperatur ein. Nutze eine geeignete Farbskala.
+* Boxplots der Aranae Species pro Feldfruchttyp.
 
+```{r}
+
+
+```
+
+
+* Scatterplot der Carabidae Individuen und Carabidae Species. Die Punkte sollen je nach Feldfrucht unterschiedlich gefärbt sein.
+
+```{r}
+
+
+
+```
+
+
+* Erstelle eine Karte der Bäume Münsters (nur mit ggplot!).
+
+```{r}
+
+
+
+```
+
+
+* Erstelle eine "heatmap" der Bäume in Münster (`geom_bin_2d` or `geom_hex`)
+
+```{r}
+
+
+```
+
+
+* Plotte die Zeitreihe des Sauerstoffgehaltes des Aasee mit:
+    * einer x-Achse in einem Zeitformat. Nutze `lubridate::ymd_hm()` um das Datum vernünftig zu formatieren.
+    * einer horizontalen Linie die den Kritischen Sauerstoffgehalt von 4 mg/l anzeigt.
+    * Färbe die Zeitreihe nach der Temperatur ein. Nutze eine geeignete Farbskala.
+
+```{r}
+
+
+```
 

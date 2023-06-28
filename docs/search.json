@@ -350,6 +350,13 @@
     "text": "Bearbeite die folgenden Fragen mit der Datei muenster_trees.csv.\nFür die Aufgaben nutze das vegan Paket. R Pakete kommen oft mit sogenannten Vignetten - Anleitungen und Erklärungen zu Funktionen. Nutze die Vignette diversity-vegan um die folgenden Aufgaben zu meistern. Weitere Erklärungen und Grafiken auf https://www.rpubs.com/roalle/mres_2019.\nHinweis: Für die meisten Funktionen in vegan wird eine sogenannte community matrix benötigt. Jede Reihe ist ein Bezirk, jede Spalte eine Art. In den Zellen dann entsprechend die Abundanzen. Siehe data(BCI) für eine Formatvorlage.\n\ntrees = read.csv(\"../data/muenster_trees.csv\")\n\nlibrary(vegan)\n\n# Kontingenztabelle\ncont = table(trees$district, trees$species)\ncont_df = as.data.frame.array(cont)\n\n\nWelcher Bezirk hat die diverseste Baumflora? Berechne dazu für alle Bezirke die Alpha Diversität in Form von:\n\nSpecies Richness\nShannon Index.\nPielou’s Evenness.\n\n\n\nBerechne die Beta Diversität der Bäume Münsters. (Sørensen index of dissimilarity)\n\n\nBerechne die Gamma Diversität der Bäume Münsters.\n\n\nIn welchen Bezirken Münsters stehen endemische Baumarten? (vegan nicht nötig)"
   },
   {
+    "objectID": "exercise/E09-ggplot.html",
+    "href": "exercise/E09-ggplot.html",
+    "title": "E09: Visualisierung für Fortgeschrittene",
+    "section": "",
+    "text": "Erstelle folgende Grafiken mit ggplot2:\n\nBoxplots der Aranae Species pro Feldfruchttyp.\nScatterplot der Carabidae Individuen und Carabidae Species. Die Punkte sollen je nach Feldfrucht unterschiedlich gefärbt sein.\nErstelle eine Karte der Bäume Münsters (nur mit ggplot!).\nErstelle eine “heatmap” der Bäume in Münster (geom_bin_2d or geom_hex)\nPlotte die Zeitreihe des Sauerstoffgehaltes des Aasee mit: 5.1 einer x-Achse in einem Zeitformat. Nutze lubridate::ymd_hm() um das Datum vernünftig zu formatieren. 5.2 einer horizontalen Linie die den Kritischen Sauerstoffgehalt von 4 mg/l anzeigt. 5.3 Färbe die Zeitreihe nach der Temperatur ein. Nutze eine geeignete Farbskala."
+  },
+  {
     "objectID": "98-additional_resources.html#r-cheat-sheets",
     "href": "98-additional_resources.html#r-cheat-sheets",
     "title": "Additional Ressources",
