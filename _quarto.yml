@@ -25,6 +25,7 @@ book:
       - "R08_formula.qmd"
       - "R09_linearmodels.qmd"
       - "R10_ggplot.qmd"
+      - "R11_markdown.qmd"
     - part: "Exercises"
       chapters:
       - "exercise/E01-variablen.Rmd"
@@ -36,6 +37,7 @@ book:
       - "exercise/E07-lm.Rmd"
       - "exercise/E08-biodiversity.Rmd"
       - "exercise/E09-ggplot.Rmd"
+      - "exercise/E10-markdown.Rmd"
   appendices:
   - "98-additional_resources.Rmd"
   - "references.qmd"

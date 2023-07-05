@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Analysis of Ecological Data - E04: Tidyverse, strings</title>
+<title>Analysis of Ecological Data - E10: Markdown</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -64,8 +30,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../exercise/E05-kritischer-sauerstoff.html" rel="next">
-<link href="../exercise/E03-more-dataframes.html" rel="prev">
+<link href="../98-additional_resources.html" rel="next">
+<link href="../exercise/E09-ggplot.html" rel="prev">
 <link href="..//home/marvin/images/pictogramms/ecoR.svg" rel="icon" type="image/svg+xml">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -109,7 +75,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../exercise/E01-variablen.html">Exercises</a></li><li class="breadcrumb-item"><a href="../exercise/E04-tidyverse.html"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">E04: Tidyverse, strings</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../exercise/E01-variablen.html">Exercises</a></li><li class="breadcrumb-item"><a href="../exercise/E10-markdown.html"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">E10: Markdown</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -257,7 +223,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../exercise/E04-tidyverse.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">E04: Tidyverse, strings</span></a>
+  <a href="../exercise/E04-tidyverse.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E04: Tidyverse, strings</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -287,7 +253,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../exercise/E10-markdown.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E10: Markdown</span></a>
+  <a href="../exercise/E10-markdown.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">E10: Markdown</span></a>
   </div>
 </li>
       </ul>
@@ -321,22 +287,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#münsters-bezirke" id="toc-münsters-bezirke" class="nav-link active" data-scroll-target="#münsters-bezirke">Münsters Bezirke</a></li>
-  <li><a href="#münsters-bäume" id="toc-münsters-bäume" class="nav-link" data-scroll-target="#münsters-bäume">Münsters Bäume</a></li>
-  <li><a href="#strings" id="toc-strings" class="nav-link" data-scroll-target="#strings">Strings</a></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">E04: Tidyverse, strings</span></h1>
+<h1 class="title"><span class="chapter-title">E10: Markdown</span></h1>
 </div>
 
 
@@ -351,130 +309,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p>Im Learnweb finden sich die Dateien <code>muenster_districts.csv</code> und <code>muenster_trees.csv</code>. Sie beinhalten Informationen zu den Stadtbezirken und Bäumen in Münster.</p>
+<p>Zeige was du im Kurs gelernt hast. Analysiere und Visualisiere einen beliebigen (ökologischen) Datensatz und dokumentiere den Code und die Ergebnisse.</p>
 <ul>
-<li>Lade beide Dateien in R.</li>
-<li>Bearbeite die unten stehenden Aufgaben mit <code>dplyr</code> Funktionen und pipes <code>|&gt;</code> bzw. <code>%&gt;%</code> !</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>districts <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">"data/muenster_districts.csv"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>trees <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">"data/muenster_trees.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<section id="münsters-bezirke" class="level2">
-<h2 class="anchored" data-anchor-id="münsters-bezirke">Münsters Bezirke</h2>
-<ul>
-<li>Wie groß ist die Bezirksgruppe “Altstadt” (Fläche)?</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>districts[districts<span class="sc">$</span>district_group <span class="sc">==</span> <span class="st">"Altstadt"</span>,]<span class="sc">$</span>area</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(districts, <span class="st">"area"</span>)</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(districts, districts<span class="sc">$</span>district_group <span class="sc">==</span> <span class="st">"Altstadt"</span>)</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># |&gt; pipe operator, auch %&gt;%, einfügen mit strg + shift + m</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>districts <span class="sc">|&gt;</span> </span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(districts<span class="sc">$</span>district_group <span class="sc">==</span> <span class="st">"Altstadt"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="st">"area"</span>)</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>districts <span class="sc">|&gt;</span> </span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(district_group <span class="sc">==</span> <span class="st">"Altstadt"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(area) <span class="sc">|&gt;</span> </span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sum</span>()</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ul>
-<li>Zu welcher Bezirksgruppe gehört der Bezirk “Schloss”?</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>districts <span class="sc">|&gt;</span> </span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(district <span class="sc">==</span> <span class="st">"Schloss"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(district_group)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ul>
-<li>Aus welchen Bezirken besteht die Bezirksgruppe “Münster-West”?</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>districts <span class="sc">|&gt;</span> </span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(district_group <span class="sc">==</span> <span class="st">"Münster-West"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(district)</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># typische pipe schreibweise, zeilen + spalten auswählen</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>districts <span class="sc">|&gt;</span> </span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(district_group <span class="sc">==</span> <span class="st">"Münster-West"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(district)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ul>
-<li>Erstelle eine Tabelle die für jede Bezirksgruppe den Mittelwert und die Standardabweichung der Fläche der jeweiligen Bezirke berechnet. Nutze dafür die Funktionen <code>dplyr::group_by()</code> und <code>dplyr::summarise()</code></li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># typische gruppierung und zusammenfassung</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>districts <span class="sc">|&gt;</span> </span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(district_group) <span class="sc">|&gt;</span> </span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">area_m =</span> <span class="fu">mean</span>( area ),</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">area_sd =</span> <span class="fu">sd</span>( area ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="münsters-bäume" class="level2">
-<h2 class="anchored" data-anchor-id="münsters-bäume">Münsters Bäume</h2>
-<ul>
-<li>Wie viele Baumarten gibt es in Münster?</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>v <span class="ot">=</span> trees<span class="sc">$</span>species</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(v))</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>trees <span class="sc">|&gt;</span> </span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(species) <span class="sc">|&gt;</span> </span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">unique</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ul>
-<li>Wie viele Buchen (species: Fagus) gibt es in Münster?</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>trees <span class="sc">|&gt;</span> </span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(species <span class="sc">==</span> <span class="st">"Fagus"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pull</span>(species) <span class="sc">|&gt;</span> </span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">length</span>()</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># oder:</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>trees <span class="sc">|&gt;</span> </span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(species <span class="sc">==</span> <span class="st">"Fagus"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">nrow</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ul>
-<li>Erstelle eine Tabelle die für jeden Bezirk die Anzahl unterschiedlicher Baumarten angibt. Nutze dafür die Funktionen <code>dplyr::group_by()</code> und <code>dplyr::summarise()</code></li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>ntrees <span class="ot">=</span> trees <span class="sc">|&gt;</span> </span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(district) <span class="sc">|&gt;</span> </span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">length</span>(<span class="fu">unique</span>(species)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="strings" class="level2">
-<h2 class="anchored" data-anchor-id="strings">Strings</h2>
-<p>Nutze für die folgenden Aufgaben Funktionen des <code>stringr</code> Pakets.</p>
-<ul>
-<li>Wie viele Bezirke beginnen mit “H”?</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>districts <span class="sc">|&gt;</span> <span class="fu">pull</span>(district) <span class="sc">|&gt;</span> <span class="fu">str_starts</span>(<span class="st">"H"</span>) <span class="sc">|&gt;</span> <span class="fu">sum</span>()</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">str_starts</span>(districts<span class="sc">$</span>district, <span class="st">"H"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ul>
-<li>Gib alle Bezirke aus die das Wort “Ost” enthalten.</li>
-</ul>
-<ul>
-<li>In der Baumtabelle gibt es in der Spalte <code>species</code> sowohl Einträge mit “Metasequoia” als auch mit “Metasequoia glyptostroboides”. Ändere alle “Metasequoia glyptostroboides” zu “Metasequoia”.</li>
+<li>Erstelle dazu ein rmd oder qmd Dokument mit R Markdown oder quarto.</li>
+<li>Nutze mindestens einen Datensatz.</li>
+<li>Erstelle mindestens 4 Code Blöcke.</li>
+<li>Erstelle mindestens einen Plot.</li>
+<li>Rendere dein Dokument als pdf oder html.</li>
 </ul>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -712,13 +556,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../exercise/E03-more-dataframes.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">E03: Mehr Dataframes</span></span>
+      <a href="../exercise/E09-ggplot.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">E09: Visualisierung für Fortgeschrittene</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../exercise/E05-kritischer-sauerstoff.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-title">E05: Kritischer Sauerstoff</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../98-additional_resources.html" class="pagination-link">
+        <span class="nav-page-text">Additional Ressources</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

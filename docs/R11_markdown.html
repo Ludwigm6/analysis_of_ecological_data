@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Analysis of Ecological Data - D02: The Aasee Dataset</title>
+<title>Analysis of Ecological Data - R11: markdown</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./D03_project_setup.html" rel="next">
-<link href="./D01_data_examples.html" rel="prev">
+<link href="./exercise/E01-variablen.html" rel="next">
+<link href="./R10_ggplot.html" rel="prev">
 <link href=".//home/marvin/images/pictogramms/ecoR.svg" rel="icon" type="image/svg+xml">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -75,7 +75,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./D01_data_examples.html">Data</a></li><li class="breadcrumb-item"><a href="./D02_aasee.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">D02: The Aasee Dataset</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./R01_introduction.html">R</a></li><li class="breadcrumb-item"><a href="./R11_markdown.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">R11: markdown</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -121,7 +121,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./D02_aasee.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">D02: The Aasee Dataset</span></a>
+  <a href="./D02_aasee.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">D02: The Aasee Dataset</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -192,7 +192,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R11_markdown.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R11: markdown</span></a>
+  <a href="./R11_markdown.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">R11: markdown</span></a>
   </div>
 </li>
       </ul>
@@ -291,9 +291,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#case-study-level-1-basic-comparisons" id="toc-case-study-level-1-basic-comparisons" class="nav-link active" data-scroll-target="#case-study-level-1-basic-comparisons">Case Study Level 1: Basic Comparisons</a></li>
-  <li><a href="#case-study-level-2-aasee-critical-oxygen-concentrations" id="toc-case-study-level-2-aasee-critical-oxygen-concentrations" class="nav-link" data-scroll-target="#case-study-level-2-aasee-critical-oxygen-concentrations">Case Study Level 2: Aasee Critical Oxygen Concentrations</a></li>
-  <li><a href="#case-study-level-3-temperature-and-oxygen" id="toc-case-study-level-3-temperature-and-oxygen" class="nav-link" data-scroll-target="#case-study-level-3-temperature-and-oxygen">Case Study Level 3: Temperature and Oxygen</a></li>
+  <li><a href="#what-is-markdown" id="toc-what-is-markdown" class="nav-link active" data-scroll-target="#what-is-markdown">What is markdown?</a></li>
+  <li><a href="#using-markdown-in-rstudio" id="toc-using-markdown-in-rstudio" class="nav-link" data-scroll-target="#using-markdown-in-rstudio">Using markdown in Rstudio</a></li>
   </ul>
 </nav>
     </div>
@@ -302,7 +301,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">D02: The Aasee Dataset</span></h1>
+<h1 class="title"><span class="chapter-title">R11: markdown</span></h1>
 </div>
 
 
@@ -317,127 +316,20 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>To learn the basics about data types, data handling and the fundamentals of R, we will work with a dataset from the Aasee in Muenster: Inform yourself real quick <a href="https://opendata.stadt-muenster.de/dataset/aasee-m%C3%BCnster-tagesaktuelle-sensordaten">here</a> about the origin of the dataset. You can download it here: <a href="https://github.com/od-ms/aasee-monitoring">https://github.com/od-ms/aasee-monitoring</a></p>
-<p>Here is an excerpt of the data:</p>
-<div class="cell">
-<div class="cell-output-display">
-<table class="table table-sm table-striped small">
-<caption>First entries of the Aasee monitoring dataset</caption>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Datum</th>
-<th style="text-align: right;">Wassertemperatur</th>
-<th style="text-align: right;">pH.Wert</th>
-<th style="text-align: right;">Sauerstoffgehalt</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">2021-05-31 23:57</td>
-<td style="text-align: right;">17.98</td>
-<td style="text-align: right;">8.05</td>
-<td style="text-align: right;">10.53</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">2021-06-01 00:09</td>
-<td style="text-align: right;">17.66</td>
-<td style="text-align: right;">8.04</td>
-<td style="text-align: right;">9.64</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">2021-06-01 00:19</td>
-<td style="text-align: right;">18.03</td>
-<td style="text-align: right;">8.12</td>
-<td style="text-align: right;">11.30</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">2021-06-01 00:27</td>
-<td style="text-align: right;">18.08</td>
-<td style="text-align: right;">8.14</td>
-<td style="text-align: right;">11.32</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">2021-06-01 00:39</td>
-<td style="text-align: right;">18.06</td>
-<td style="text-align: right;">8.12</td>
-<td style="text-align: right;">11.06</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">2021-06-01 00:49</td>
-<td style="text-align: right;">18.01</td>
-<td style="text-align: right;">8.10</td>
-<td style="text-align: right;">10.91</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">2021-06-01 00:59</td>
-<td style="text-align: right;">18.02</td>
-<td style="text-align: right;">8.10</td>
-<td style="text-align: right;">10.96</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">2021-06-01 01:08</td>
-<td style="text-align: right;">18.06</td>
-<td style="text-align: right;">8.10</td>
-<td style="text-align: right;">10.83</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">2021-06-01 01:19</td>
-<td style="text-align: right;">18.08</td>
-<td style="text-align: right;">8.10</td>
-<td style="text-align: right;">10.82</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">2021-06-01 01:29</td>
-<td style="text-align: right;">18.08</td>
-<td style="text-align: right;">8.10</td>
-<td style="text-align: right;">10.62</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<section id="case-study-level-1-basic-comparisons" class="level2">
-<h2 class="anchored" data-anchor-id="case-study-level-1-basic-comparisons">Case Study Level 1: Basic Comparisons</h2>
-<p>As a first intermediate goal we want to deal with the following task. We will learn all the necessary skills in R and a bit of statistics in the next lessons, but it is valuable to think about the task / question beforehand!</p>
-<blockquote class="blockquote">
-<p>Compare the water temperature of 2022 April and 2022 May.</p>
-</blockquote>
-<ul>
-<li>What does this task actually mean? What possibilities do we have?</li>
-<li>Outline steps to answer the question</li>
-</ul>
+<p>R studio is much more than a code editor for R. It supports a variety of programming languages, documentation formats and data types. One if its most used and most powerful features is the creation of markdown documents with integrated R code. In fact, this entire course page is written in markdown within Rstudio and then <a href="https://quarto.org/docs/websites/">rendered as a website</a>. Depending on the Rstudio Version you are using the markdown system is a little bit different:</p>
+<ol type="1">
+<li>The latest version of Rstudio used <code>quarto</code>. “An open-source scientific and technical publishing system” <a href="https://quarto.org/">https://quarto.org/</a></li>
+<li>Older versions use <code>rmarkdown</code>. <a href="https://rmarkdown.rstudio.com/">https://rmarkdown.rstudio.com/</a></li>
+</ol>
+<p>Depending on the system you are using, the typical file ending for the markdown files are either <code>.qmd</code> or <code>.rmd</code>.</p>
+<section id="what-is-markdown" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-markdown">What is markdown?</h2>
+<p>Markdown is a “language” to format text. There are dedicated symbols for different purposes. For example, text between two * appear <strong>bold</strong>.</p>
+<p>You can find a basic introduction here: <a href="https://quarto.org/docs/authoring/markdown-basics.html">https://quarto.org/docs/authoring/markdown-basics.html</a></p>
 </section>
-<section id="case-study-level-2-aasee-critical-oxygen-concentrations" class="level2">
-<h2 class="anchored" data-anchor-id="case-study-level-2-aasee-critical-oxygen-concentrations">Case Study Level 2: Aasee Critical Oxygen Concentrations</h2>
-<p>In 2018, more than twenty tons of fish died in the Aasee due to low oxygen concentrations: <a href="https://www.uni-muenster.de/news/view.php?cmdid=9768">https://www.uni-muenster.de/news/view.php?cmdid=9768</a>.</p>
-<p>Based on this event, a reasonable question might be:</p>
-<blockquote class="blockquote">
-<p>On how many days of 2022 does the Aasee reach critical oxygen concentrations (4 mg/l)?</p>
-</blockquote>
-<ul>
-<li>Define the necessary steps!</li>
-<li>Work in your project environment!</li>
-<li>How could a good visualization of this look like?</li>
-</ul>
-</section>
-<section id="case-study-level-3-temperature-and-oxygen" class="level2">
-<h2 class="anchored" data-anchor-id="case-study-level-3-temperature-and-oxygen">Case Study Level 3: Temperature and Oxygen</h2>
-<p>The oxygen concentration in water is partly based on the water temperature. An idealized relation between Oxygen and Temperature might look like this:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://www.garnelenhaus.de/media/image/2f/30/57/Ricardo-Castellanos-Sauerstoff-Grafik.jpg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">https://www.garnelenhaus.de/media/image/2f/30/57/Ricardo-Castellanos-Sauerstoff-Grafik.jpg</figcaption>
-</figure>
-</div>
-<p>We want to find out if this holds true for the Aasee.</p>
-<blockquote class="blockquote">
-<p>Formulate a hypothesis.</p>
-</blockquote>
-<ul>
-<li>Aggregate temperature and oxygen to daily means.</li>
-<li>Visualize the relation between temperature and oxygen in the Aasee.</li>
-<li>Interpret this visualization!</li>
-</ul>
+<section id="using-markdown-in-rstudio" class="level2">
+<h2 class="anchored" data-anchor-id="using-markdown-in-rstudio">Using markdown in Rstudio</h2>
+<p>Simply go to <code>File - New File - Quarto Document...</code> or <code>File - New File - R Markdown...</code> to create a markdown file with some example code and work your way from there. Or if you want to jump right into markdown projects go to <code>New Project... - New Directory</code> and choose an appropriate Template (e.g.&nbsp;Quarto Homepage)</p>
 
 
 </section>
@@ -678,13 +570,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./D01_data_examples.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">D01: Ecological data</span></span>
+      <a href="./R10_ggplot.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">R10: ggplot2</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./D03_project_setup.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-title">D03: Project Setup</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./exercise/E01-variablen.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-title">E01: Variablen, Funktionen</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -30,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../98-additional_resources.html" rel="next">
+<link href="../exercise/E10-markdown.html" rel="next">
 <link href="../exercise/E08-biodiversity.html" rel="prev">
 <link href="..//home/marvin/images/pictogramms/ecoR.svg" rel="icon" type="image/svg+xml">
 <script src="../site_libs/quarto-html/quarto.js"></script>
@@ -75,7 +75,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../exercise/E01-variablen.html">Exercises</a></li><li class="breadcrumb-item"><a href="../exercise/E09-ggplot.html"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">E09: Visualisierung für Fortgeschrittene</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../exercise/E01-variablen.html">Exercises</a></li><li class="breadcrumb-item"><a href="../exercise/E09-ggplot.html"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">E09: Visualisierung für Fortgeschrittene</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -190,6 +190,11 @@ ul.task-list li input[type="checkbox"] {
   <a href="../R10_ggplot.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R10: ggplot2</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../R11_markdown.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R11: markdown</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -246,6 +251,11 @@ ul.task-list li input[type="checkbox"] {
   <a href="../exercise/E09-ggplot.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">E09: Visualisierung für Fortgeschrittene</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercise/E10-markdown.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E10: Markdown</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -300,13 +310,26 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 <p>Erstelle folgende Grafiken mit <code>ggplot2</code>:</p>
-<ol type="1">
+<ul>
 <li>Boxplots der Aranae Species pro Feldfruchttyp.</li>
+</ul>
+<ul>
 <li>Scatterplot der Carabidae Individuen und Carabidae Species. Die Punkte sollen je nach Feldfrucht unterschiedlich gefärbt sein.</li>
+</ul>
+<ul>
 <li>Erstelle eine Karte der Bäume Münsters (nur mit ggplot!).</li>
+</ul>
+<ul>
 <li>Erstelle eine “heatmap” der Bäume in Münster (<code>geom_bin_2d</code> or <code>geom_hex</code>)</li>
-<li>Plotte die Zeitreihe des Sauerstoffgehaltes des Aasee mit: 5.1 einer x-Achse in einem Zeitformat. Nutze <code>lubridate::ymd_hm()</code> um das Datum vernünftig zu formatieren. 5.2 einer horizontalen Linie die den Kritischen Sauerstoffgehalt von 4 mg/l anzeigt. 5.3 Färbe die Zeitreihe nach der Temperatur ein. Nutze eine geeignete Farbskala.</li>
-</ol>
+</ul>
+<ul>
+<li>Plotte die Zeitreihe des Sauerstoffgehaltes des Aasee mit:
+<ul>
+<li>einer x-Achse in einem Zeitformat. Nutze <code>lubridate::ymd_hm()</code> um das Datum vernünftig zu formatieren.</li>
+<li>einer horizontalen Linie die den Kritischen Sauerstoffgehalt von 4 mg/l anzeigt.</li>
+<li>Färbe die Zeitreihe nach der Temperatur ein. Nutze eine geeignete Farbskala.</li>
+</ul></li>
+</ul>
 
 
 
@@ -551,8 +574,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../98-additional_resources.html" class="pagination-link">
-        <span class="nav-page-text">Additional Ressources</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../exercise/E10-markdown.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-title">E10: Markdown</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

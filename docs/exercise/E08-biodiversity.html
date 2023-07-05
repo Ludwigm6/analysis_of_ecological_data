@@ -109,7 +109,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../exercise/E01-variablen.html">Exercises</a></li><li class="breadcrumb-item"><a href="../exercise/E08-biodiversity.html"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">E08: Biodiversity</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../exercise/E01-variablen.html">Exercises</a></li><li class="breadcrumb-item"><a href="../exercise/E08-biodiversity.html"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">E08: Biodiversity</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -224,6 +224,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <a href="../R10_ggplot.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R10: ggplot2</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../R11_markdown.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R11: markdown</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -278,6 +283,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../exercise/E09-ggplot.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E09: Visualisierung für Fortgeschrittene</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercise/E10-markdown.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E10: Markdown</span></a>
   </div>
 </li>
       </ul>
@@ -340,10 +350,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>trees <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">"../data/muenster_trees.csv"</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vegan)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Kontingenztabelle</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>cont <span class="ot">=</span> <span class="fu">table</span>(trees<span class="sc">$</span>district, trees<span class="sc">$</span>species)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>cont_df <span class="ot">=</span> <span class="fu">as.data.frame.array</span>(cont)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Kontingenztabelle</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>cont <span class="ot">=</span> <span class="fu">table</span>(trees<span class="sc">$</span>district, trees<span class="sc">$</span>species)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>cont_df <span class="ot">=</span> <span class="fu">as.data.frame.array</span>(cont)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>Welcher Bezirk hat die diverseste Baumflora? Berechne dazu für alle Bezirke die Alpha Diversität in Form von:
@@ -353,15 +364,285 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Pielou’s Evenness.</li>
 </ul></li>
 </ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>species_richness <span class="ot">=</span> vegan<span class="sc">::</span><span class="fu">specnumber</span>(cont_df)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(species_richness, <span class="at">decreasing =</span> <span class="cn">TRUE</span>)[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Aaseestadt 
+        45 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">which.max</span>(species_richness)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Aaseestadt 
+         1 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Shannon index</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>shannon <span class="ot">=</span> vegan<span class="sc">::</span><span class="fu">diversity</span>(cont_df, <span class="at">index =</span> <span class="st">"shannon"</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(shannon, <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     Pluggendorf       Aaseestadt      Schlachthof      Schützenhof 
+        2.717101         2.673228         2.568181         2.516116 
+     Mauritz-Ost            Kreuz     Mauritz-West       Überwasser 
+        2.492068         2.465932         2.458942         2.422434 
+      Hansaplatz          Schloss            Josef      Hiltrup-Ost 
+        2.402432         2.361773         2.333364         2.327677 
+   Hiltrup-Mitte         Düesberg      Mecklenbeck          Sentrup 
+        2.320083         2.266915         2.253076         2.244315 
+       Herz-Jesu            Geist    Mauritz-Mitte          Bahnhof 
+        2.235766         2.225178         2.201645         2.198826 
+       Uppenberg  Kinderhaus-West          Handorf        Rumphorst 
+        2.178721         2.173103         2.170564         2.156080 
+       Nienberge  Gremmendorf-Ost       Gievenbeck       Angelmodde 
+        2.132541         2.126013         2.125744         2.103345 
+  Kinderhaus-Ost          Sprakel           Neutor           Coerde 
+        2.077545         1.942009         1.900092         1.898854 
+         Aegidii       Berg Fidel            Hafen Gremmendorf-West 
+        1.882616         1.842371         1.780047         1.702529 
+         Martini  Gelmer-Dyckburg            Roxel        Albachten 
+        1.635990         1.554180         1.522840         1.521810 
+         Wolbeck     Hiltrup-West       Buddenturm       Amelsbüren 
+        1.520262         1.474951         1.433875         1.319029 
+             Dom 
+        1.310277 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Low Shannon: Dom</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>trees <span class="sc">|&gt;</span> <span class="fu">filter</span>(district <span class="sc">==</span> <span class="st">"Dom"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(species)<span class="sc">|&gt;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">table</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sort</span>(<span class="at">decreasing =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">barplot</span>(<span class="at">horiz =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="E08-biodiversity_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Medium Shannon: Gievenbeck</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>trees <span class="sc">|&gt;</span> <span class="fu">filter</span>(district <span class="sc">==</span> <span class="st">"Gievenbeck"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(species)<span class="sc">|&gt;</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">table</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sort</span>(<span class="at">decreasing =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">barplot</span>(<span class="at">horiz =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="E08-biodiversity_files/figure-html/unnamed-chunk-2-2.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># High Shannon: Pluggendorf</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>trees <span class="sc">|&gt;</span> <span class="fu">filter</span>(district <span class="sc">==</span> <span class="st">"Pluggendorf"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(species)<span class="sc">|&gt;</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">table</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sort</span>(<span class="at">decreasing =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">barplot</span>(<span class="at">horiz =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="E08-biodiversity_files/figure-html/unnamed-chunk-2-3.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Pilous Evenness</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>evenness <span class="ot">=</span> vegan<span class="sc">::</span><span class="fu">diversity</span>(cont_df, <span class="at">index =</span> <span class="st">"shannon"</span>) <span class="sc">/</span> <span class="fu">log</span>(<span class="fu">specnumber</span>(cont_df))</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(evenness, <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           Hafen       Überwasser      Pluggendorf      Mauritz-Ost 
+       0.8560219        0.8550128        0.8069089        0.8062225 
+      Hansaplatz      Schützenhof          Handorf         Düesberg 
+       0.7890997        0.7722657        0.7661139        0.7445881 
+    Mauritz-West  Gremmendorf-Ost    Hiltrup-Mitte            Josef 
+       0.7379325        0.7355499        0.7300325        0.7249003 
+       Herz-Jesu      Hiltrup-Ost            Geist      Schlachthof 
+       0.7233048        0.7231336        0.7198793        0.7166646 
+       Uppenberg       Angelmodde      Mecklenbeck   Kinderhaus-Ost 
+       0.7156200        0.7143447        0.7089482        0.7055827 
+      Aaseestadt    Mauritz-Mitte        Rumphorst        Nienberge 
+       0.7022499        0.7021684        0.6975253        0.6899100 
+         Sprakel           Neutor           Coerde  Kinderhaus-West 
+       0.6854441        0.6853134        0.6848667        0.6837843 
+      Berg Fidel            Kreuz          Sentrup          Bahnhof 
+       0.6803312        0.6684772        0.6598601        0.6288635 
+         Schloss       Gievenbeck          Aegidii  Gelmer-Dyckburg 
+       0.6279307        0.6190307        0.6004209        0.5739112 
+Gremmendorf-West          Martini     Hiltrup-West        Albachten 
+       0.5683181        0.5373551        0.5319761        0.5168422 
+         Wolbeck       Buddenturm            Roxel       Amelsbüren 
+       0.4993435        0.4960866        0.4730967        0.4403027 
+             Dom 
+       0.4070603 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>trees <span class="sc">|&gt;</span> <span class="fu">filter</span>(district <span class="sc">==</span> <span class="st">"Hafen"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(species)<span class="sc">|&gt;</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">table</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sort</span>(<span class="at">decreasing =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">barplot</span>(<span class="at">horiz =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="E08-biodiversity_files/figure-html/unnamed-chunk-2-4.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 <ul>
 <li>Berechne die Beta Diversität der Bäume Münsters. (Sørensen index of dissimilarity)</li>
 </ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>beta <span class="ot">=</span> <span class="fu">vegdist</span>(cont_df, <span class="at">binary =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(beta)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3226524</code></pre>
+</div>
+</div>
 <ul>
 <li>Berechne die Gamma Diversität der Bäume Münsters.</li>
 </ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(cont_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 67</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(trees<span class="sc">$</span>species))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 67</code></pre>
+</div>
+</div>
 <ul>
 <li>In welchen Bezirken Münsters stehen endemische Baumarten? (<code>vegan</code> nicht nötig)</li>
 </ul>
+<p>Was ist ein Endemit/ eine endemische Art? Endemiten sind Arten, die lediglich in einem eng umgrenzten Gebiet oder in einer bestimmten Region vorkommen. <a href="https://www.stmuv.bayern.de/service/faq/anzeige_x.php?id=399">Quelle</a></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Noetige Schritte: Welche Baumarten kommen in lediglich einem Bezirk vor?</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Wenn diese Info da ist, welche Bezirke sind das.</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Anzahl interessiert nicht, lediglich "kommt vor" / "kommt nicht vor"</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>endemic <span class="ot">=</span> cont_df <span class="sc">&gt;</span> <span class="dv">0</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="co"># in wie vielen bezirken kommt die art vor?</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(endemic) <span class="sc">==</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                       Abies                         Acer 
+                        TRUE                        FALSE 
+                    Aesculus                    Ailanthus 
+                       FALSE                        FALSE 
+                       Alnus                  Amelanchier 
+                       FALSE                        FALSE 
+                      Betula                     Carpinus 
+                       FALSE                        FALSE 
+                    Castanea                      Catalpa 
+                       FALSE                        FALSE 
+                    Catalpha                       Cedrus 
+                        TRUE                        FALSE 
+                      Celtis               Cercidiphyllum 
+                       FALSE                        FALSE 
+               Chamaecyparis                  Cladrastris 
+                       FALSE                         TRUE 
+                      Cornus                      Corylus 
+                       FALSE                        FALSE 
+                   Crataegus                  Cryptomeria 
+                       FALSE                         TRUE 
+                     Davidia                    Decaisnea 
+                        TRUE                         TRUE 
+                    Euonymus                        Fagus 
+                       FALSE                        FALSE 
+                    Fraxinus                       Ginkgo 
+                       FALSE                        FALSE 
+                   Gleditsia                         Ilex 
+                       FALSE                        FALSE 
+                     Juglans                    Juniperus 
+                       FALSE                        FALSE 
+                Koelreuteria                     Laburnum 
+                       FALSE                        FALSE 
+                       Larix                  Liquidambar 
+                       FALSE                        FALSE 
+                Liriodendron                     Magnolia 
+                       FALSE                        FALSE 
+                       Malus                Malus-Hybride 
+                       FALSE                        FALSE 
+                    Mespilus                  Metasequoia 
+                        TRUE                        FALSE 
+Metasequoia glyptostroboides                        Nyssa 
+                       FALSE                        FALSE 
+                    Parrotia                    Paulownia 
+                       FALSE                        FALSE 
+                       Picea                        Pinus 
+                       FALSE                        FALSE 
+                    Platanus                      Populus 
+                       FALSE                        FALSE 
+                      Prunus                  Pseudotsuga 
+                       FALSE                         TRUE 
+                  Pterocarya                        Pyrus 
+                       FALSE                        FALSE 
+                     Quercus                      Robinia 
+                       FALSE                        FALSE 
+                       Salix                     Sambucus 
+                       FALSE                         TRUE 
+              Sequoiadendron                      Sophora 
+                        TRUE                        FALSE 
+                      Sorbus                     Taxodium 
+                       FALSE                        FALSE 
+                       Taxus                        Thuja 
+                       FALSE                        FALSE 
+                       Tilia                        Tsuga 
+                       FALSE                        FALSE 
+                       Ulmus                     Viburnum 
+                       FALSE                         TRUE 
+                     Zelkova 
+                       FALSE </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>endemic <span class="ot">=</span> endemic[ ,<span class="fu">colSums</span>(endemic) <span class="sc">==</span> <span class="dv">1</span>]</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Nur die districts behalten bei denen mindestens ein TRUE in der Zeile steht</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rowSums</span>(endemic)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      Aaseestadt          Aegidii        Albachten       Amelsbüren 
+               2                0                0                0 
+      Angelmodde          Bahnhof       Berg Fidel       Buddenturm 
+               0                1                0                0 
+          Coerde              Dom         Düesberg            Geist 
+               0                0                0                1 
+ Gelmer-Dyckburg       Gievenbeck  Gremmendorf-Ost Gremmendorf-West 
+               0                1                0                0 
+           Hafen          Handorf       Hansaplatz        Herz-Jesu 
+               0                0                0                0 
+   Hiltrup-Mitte      Hiltrup-Ost     Hiltrup-West            Josef 
+               0                0                0                0 
+  Kinderhaus-Ost  Kinderhaus-West            Kreuz          Martini 
+               0                0                2                0 
+   Mauritz-Mitte      Mauritz-Ost     Mauritz-West      Mecklenbeck 
+               0                0                1                1 
+          Neutor        Nienberge      Pluggendorf            Roxel 
+               0                0                0                0 
+       Rumphorst      Schlachthof          Schloss      Schützenhof 
+               0                0                2                0 
+         Sentrup          Sprakel       Überwasser        Uppenberg 
+               0                0                0                0 
+         Wolbeck 
+               0 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>endemic_districts <span class="ot">=</span> endemic[<span class="fu">rowSums</span>(endemic) <span class="sc">&gt;</span> <span class="dv">0</span>,]</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Auf der Ursprungstabelle:</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>Gruppe <span class="ot">=</span> trees <span class="sc">%&gt;%</span> </span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(district, species) <span class="sc">%&gt;%</span> </span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">count =</span> <span class="fu">n</span>())</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>arten_einzelner_bezirk <span class="ot">=</span> Gruppe <span class="sc">%&gt;%</span> </span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(species) <span class="sc">%&gt;%</span> </span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">n</span>() <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(species, district)</span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Weitere Moeglichkeit</span></span>
+<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a><span class="do">## Count the unique districts per tree species,</span></span>
+<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a><span class="do">## Where is this == 1?</span></span>
+<span id="cb24-23"><a href="#cb24-23" aria-hidden="true" tabindex="-1"></a>endemic_species <span class="ot">=</span> trees <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(species) <span class="sc">%&gt;%</span> </span>
+<span id="cb24-24"><a href="#cb24-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">ndistricts =</span> <span class="fu">length</span>(<span class="fu">unique</span>(district))) <span class="sc">%&gt;%</span> </span>
+<span id="cb24-25"><a href="#cb24-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(ndistricts <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb24-26"><a href="#cb24-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-27"><a href="#cb24-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-28"><a href="#cb24-28" aria-hidden="true" tabindex="-1"></a>trees <span class="sc">%&gt;%</span> <span class="fu">filter</span>(species <span class="sc">%in%</span> endemic_species<span class="sc">$</span>species) <span class="sc">%&gt;%</span> </span>
+<span id="cb24-29"><a href="#cb24-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pull</span>(district) <span class="sc">%&gt;%</span> <span class="fu">unique</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Geist"        "Mecklenbeck"  "Gievenbeck"   "Kreuz"        "Bahnhof"     
+[6] "Mauritz-West" "Schloss"      "Aaseestadt"  </code></pre>
+</div>
+</div>
 
 
 

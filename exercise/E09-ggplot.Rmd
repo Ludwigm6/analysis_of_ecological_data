@@ -7,14 +7,15 @@ Erstelle folgende Grafiken mit `ggplot2`:
 ```{r}
 
 
+
+
+
 ```
 
 
 * Scatterplot der Carabidae Individuen und Carabidae Species. Die Punkte sollen je nach Feldfrucht unterschiedlich gefärbt sein.
 
 ```{r}
-
-
 
 ```
 
