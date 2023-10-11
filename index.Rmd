@@ -82,7 +82,7 @@ $$
 
 ```{r nice-tab, tidy=FALSE, echo = FALSE}
 
-df = read.csv("assets/course_dates.csv")
+df = read.csv("assets/course_dates.csv")[1:3,]
 
 knitr::kable(
   df, caption = 'Course Outline',

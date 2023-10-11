@@ -7,3 +7,133 @@ Zeige was du im Kurs gelernt hast. Analysiere und Visualisiere einen beliebigen 
 * Erstelle mindestens 4 Code Blöcke.
 * Erstelle mindestens einen Plot.
 * Rendere dein Dokument als pdf oder html.
+
+
+
+## Übersicht der Funktionen und Datenstrukturen
+
+### Vektoren
+
+
+
+```{r}
+a = c(1,2,800,50)
+b = seq(10,40,10)
+c = c("A", "B", "C", "D")
+
+a
+b
+a + b
+a > b
+
+a > 100
+```
+
+
+### data.frames
+
+```{r}
+df = data.frame(ID = c,
+                Messwert1 = b,
+                Messwert2 = a)
+```
+
+
+
+### Subsets
+
+
+```{r}
+
+a[1]
+b[2]
+
+df[1,2]
+
+df[,1]
+
+
+df[df$ID == "A",]
+```
+
+
+
+
+
+### tidyverse
+
+
+```{r}
+library(tidyverse)
+
+
+df |> filter(ID == "B") |> select(Messwert1)
+
+
+df |> pull(Messwert2) |> mean()
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+
+read.csv("~/testexcel.csv")
+
+library(readxl)
+library(googledrive)
+
+
+excel_df = read_excel("~/testexcel")
+```
+
+
+
+
+
+
+
+
+```{r}
+
+"0" + "5"
+
+
+
+
+
+
+```
+
+
+
+
+
+
+
+
+

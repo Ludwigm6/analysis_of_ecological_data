@@ -1,0 +1,14 @@
+{
+  "hash": "5c1bfe3ee7bfa6d30c9cee3c97390014",
+  "result": {
+    "markdown": "# E09: Visualisierung für Fortgeschrittene\n\nErstelle folgende Grafiken mit `ggplot2`:\n\n* Boxplots der Aranae Species pro Feldfruchttyp.\n\n\n::: {.cell}\n\n:::\n\n\n\n* Scatterplot der Carabidae Individuen und Carabidae Species. Die Punkte sollen je nach Feldfrucht unterschiedlich gefärbt sein.\n\n\n::: {.cell}\n\n:::\n\n\n\n* Erstelle eine Karte der Bäume Münsters (nur mit ggplot!).\n\n\n::: {.cell}\n\n:::\n\n\n\n* Erstelle eine \"heatmap\" der Bäume in Münster (`geom_bin_2d` or `geom_hex`)\n\n\n::: {.cell}\n\n:::\n\n\n\n* Plotte die Zeitreihe des Sauerstoffgehaltes des Aasee mit:\n    * einer x-Achse in einem Zeitformat. Nutze `lubridate::ymd_hm()` um das Datum vernünftig zu formatieren.\n    * einer horizontalen Linie die den Kritischen Sauerstoffgehalt von 4 mg/l anzeigt.\n    * Färbe die Zeitreihe nach der Temperatur ein. Nutze eine geeignete Farbskala.\n\n\n::: {.cell}\n\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

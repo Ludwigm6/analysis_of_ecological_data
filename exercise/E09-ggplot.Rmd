@@ -5,6 +5,22 @@ Erstelle folgende Grafiken mit `ggplot2`:
 * Boxplots der Aranae Species pro Feldfruchttyp.
 
 ```{r}
+library(ggplot2)
+cropspecies = read.csv("data/crop_species.csv")
+
+
+
+ggplot(cropspecies, mapping = aes(y = AraSpec, x = Croptype))+
+    geom_boxplot(aes(fill = Croptype))+
+    theme_bw()
+
+
+ggplot()+
+    geom_boxplot(data = cropspecies, 
+               mapping = aes(y = AraSpec, x = Croptype))+
+    geom_point()+
+    coord_flip()
+
 
 
 
@@ -16,6 +32,8 @@ Erstelle folgende Grafiken mit `ggplot2`:
 * Scatterplot der Carabidae Individuen und Carabidae Species. Die Punkte sollen je nach Feldfrucht unterschiedlich gefärbt sein.
 
 ```{r}
+ggplot(cropspecies, aes(x = CaraInd, y = CaraSpec, color = Croptype))+
+    geom_point()
 
 ```
 
@@ -23,7 +41,39 @@ Erstelle folgende Grafiken mit `ggplot2`:
 * Erstelle eine Karte der Bäume Münsters (nur mit ggplot!).
 
 ```{r}
+trees = read.csv("data/muenster_trees.csv")
 
+ggplot(trees, aes(x = X, y = Y))+
+    geom_point(size = 0.1)+
+    labs(title = "Muenster Trees",
+         x = "Longitude",
+         y = "Latitude")+
+    coord_equal()+
+    theme(legend.position = "none")
+
+ggplot(trees, aes(x = X, y = Y))+
+    geom_point(size = 0.1)+
+    labs(title = "Muenster Trees",
+         x = "Longitude",
+         y = "Latitude")+
+    coord_flip()+
+    theme(legend.position = "none")
+
+
+
+library(sf)
+library(mapview)
+library(tmap)
+
+trees_spatial = st_as_sf(trees, coords = c("X", "Y"), crs = 25832)
+plot(trees_spatial)
+
+mapview(trees_spatial)
+
+tm_shape(trees_spatial)+
+    tm_dots()
+
+#
 
 
 ```
@@ -32,8 +82,22 @@ Erstelle folgende Grafiken mit `ggplot2`:
 * Erstelle eine "heatmap" der Bäume in Münster (`geom_bin_2d` or `geom_hex`)
 
 ```{r}
+library(viridis)
+
+viridis(n = 10)
+
+ggplot(trees, aes(x = X, y = Y))+
+    geom_bin_2d()+
+    scale_fill_gradient(low = "cyan1", high = "#990100")
 
 
+ggplot(trees, aes(x = X, y = Y))+
+    geom_bin_2d()+
+    scale_fill_gradientn(colors = viridis(n = 10))
+
+ggplot(trees, aes(x = X, y = Y))+
+    geom_bin_2d()+
+    scale_fill_gradientn(colors = rainbow(n = 10))
 ```
 
 
@@ -43,6 +107,35 @@ Erstelle folgende Grafiken mit `ggplot2`:
     * Färbe die Zeitreihe nach der Temperatur ein. Nutze eine geeignete Farbskala.
 
 ```{r}
+
+library(lubridate)
+aasee = read.csv("data/2021-07_aasee.csv")
+
+aasee$Datum <- lubridate::ymd_hm(aasee$Datum)
+aasee$critical = aasee$Sauerstoffgehalt < 4
+
+ggplot(aasee, aes(x = Datum,
+                  y = Sauerstoffgehalt,
+                  color = critical))+
+    geom_point()+
+    scale_color_manual(values = c("FALSE" = "green",
+                                  "TRUE" = "red"))+
+    geom_hline(yintercept = 4, color = "red")
+
+
+ggplot(aasee, aes(x = Datum,
+                  y = Sauerstoffgehalt))+
+    geom_point()+
+    scale_x_datetime(name = "Aasee Datum",
+                     breaks = lubridate::ymd_hm(c("2021-07-05 15:00", "2021-07-20 15:00")))+
+    scale_y_continuous(breaks = c(0,3,7,8,9,15), 
+                       labels = c("A", "B", "C", "D", "E", "f"),
+                       limits = c(0,20))+
+    theme_bw()
+
+
+
+
 
 
 ```

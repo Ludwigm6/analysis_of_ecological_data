@@ -16,7 +16,14 @@ eval: false
 - Berechne den Mittelwert deiner erstellten Variablen.
 
 ```{r}
+a = 1650
+b = 140
+c <- 5
 
+a*b*c
+
+hilfsvektor = c(a,b,c)
+mean(hilfsvektor)
 
 ```
 
@@ -26,7 +33,10 @@ eval: false
 
 
 ```{r}
+vorname = "Marvin"
+nachname = "Ludwig"
 
+paste(vorname, nachname)
 ```
 
 ## Funktionen
@@ -35,7 +45,9 @@ eval: false
 - Vektoren in R sind Folgen von Werten, enthalten also z.B. mehrere Zahlen. Sie werden mit der Funktion `c()` erstellt:
 
 ```{r}
-
+#| code-fold: false
+numbers = c(4, 3, 8, 90, 16)
+numbers
 ```
 
 
@@ -45,7 +57,11 @@ eval: false
 
 
 ```{r}
-
+length(numbers)
+sum(numbers)
+sqrt(numbers) # Squareroot, Quadratwurzel (vektorisiert, d.h. fuer jedes Element)
+max(numbers) # maximaler Wert im Vektor
+which.max(numbers) # Position (Index) des maximalen Wertes im Vektor
 ```
 
 
@@ -53,7 +69,8 @@ eval: false
 
 
 ```{r}
-
+hunderter = seq(0, 10000, by = 100)
+hunderter
 ```
 
 

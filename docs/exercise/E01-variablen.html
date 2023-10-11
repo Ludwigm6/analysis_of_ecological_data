@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -64,8 +30,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../exercise/E02-vectors-dataframes.html" rel="next">
-<link href="../R11_markdown.html" rel="prev">
+<link href="../98-additional_resources.html" rel="next">
+<link href="../R04_dataframes.html" rel="prev">
 <link href="..//home/marvin/images/pictogramms/ecoR.svg" rel="icon" type="image/svg+xml">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -109,7 +75,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../exercise/E01-variablen.html">Exercises</a></li><li class="breadcrumb-item"><a href="../exercise/E01-variablen.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">E01: Variablen, Funktionen</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../exercise/E01-variablen.html">Exercises</a></li><li class="breadcrumb-item"><a href="../exercise/E01-variablen.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">E01: Variablen, Funktionen</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -153,16 +119,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <a href="../D01_data_examples.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">D01: Ecological data</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../D02_aasee.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">D02: The Aasee Dataset</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../D03_project_setup.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">D03: Project Setup</span></a>
-  </div>
-</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -194,41 +150,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <a href="../R04_dataframes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R04: Dataframes</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../R05_tidyverse.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R05: Tidyverse functions</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../R06_strings.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R06: String handling</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../R07_lists.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R07: Lists</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../R08_formula.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R08: Formula notation</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../R09_linearmodels.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R09: Linear Models</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../R10_ggplot.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R10: ggplot2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../R11_markdown.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R11: markdown</span></a>
-  </div>
-</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -243,51 +164,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../exercise/E01-variablen.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">E01: Variablen, Funktionen</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../exercise/E02-vectors-dataframes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E02: Vektoren, Dataframes</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../exercise/E03-more-dataframes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E03: Mehr Dataframes</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../exercise/E04-tidyverse.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E04: Tidyverse, strings</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../exercise/E05-kritischer-sauerstoff.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E05: Kritischer Sauerstoff</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../exercise/E06-feldfruechte-arthropoden.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E06: Feldfruechte und Arthropoden</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../exercise/E07-lm.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E07: lm</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../exercise/E08-biodiversity.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E08: Biodiversity</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../exercise/E09-ggplot.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E09: Visualisierung für Fortgeschrittene</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../exercise/E10-markdown.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E10: Markdown</span></a>
   </div>
 </li>
       </ul>
@@ -359,68 +235,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Berechne das Produkt deiner erstellten Variablen.</li>
 <li>Berechne den Mittelwert deiner erstellten Variablen.</li>
 </ul>
-<div class="cell">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="dv">1650</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">=</span> <span class="dv">140</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>c <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>a<span class="sc">*</span>b<span class="sc">*</span>c</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>hilfsvektor <span class="ot">=</span> <span class="fu">c</span>(a,b,c)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(hilfsvektor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
 <ul>
 <li>Erstelle eine Variable die deinen Vornamen enthält.</li>
 <li>Erstelle eine Variable die deinen Nachnamen enthält.</li>
 <li>Die <code>paste</code> Funktion kann Texte zusammenfügen. Probiere die Funktion mit den Variablen die deine Namen enthalten aus.</li>
 </ul>
-<div class="cell">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>vorname <span class="ot">=</span> <span class="st">"Marvin"</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>nachname <span class="ot">=</span> <span class="st">"Ludwig"</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(vorname, nachname)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
 </section>
 <section id="funktionen" class="level2">
 <h2 class="anchored" data-anchor-id="funktionen">Funktionen</h2>
 <ul>
 <li>Vektoren in R sind Folgen von Werten, enthalten also z.B. mehrere Zahlen. Sie werden mit der Funktion <code>c()</code> erstellt:</li>
 </ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>numbers <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">8</span>, <span class="dv">90</span>, <span class="dv">16</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>numbers</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 <ul>
 <li>Teste die Funktionen <code>length()</code>, <code>sum()</code>, <code>sqrt()</code>, und <code>min()</code> mit dem Vektor.</li>
 <li>Was macht die <code>sqrt()</code> Funktion?</li>
 <li>Was ist der Unterschied zwischen der <code>max()</code> Funktion und der <code>which.max()</code> Funktion?</li>
 </ul>
-<div class="cell">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(numbers)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(numbers)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(numbers) <span class="co"># Squareroot, Quadratwurzel (vektorisiert, d.h. fuer jedes Element)</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(numbers) <span class="co"># maximaler Wert im Vektor</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">which.max</span>(numbers) <span class="co"># Position (Index) des maximalen Wertes im Vektor</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
 <ul>
 <li>Die <code>seq()</code> Funktion erzeugt einen Vektor der Zahlenfolgenfolgen enthält. Sieh dir die Hilfeseite von <code>seq()</code> an und erstelle einen Vektor der alle 100er Zahlen von 0 bis 10000 enthält (also 0, 100, 200, … ,9900, 10000).</li>
 </ul>
-<div class="cell">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>hunderter <span class="ot">=</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">10000</span>, <span class="at">by =</span> <span class="dv">100</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>hunderter</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
 
 
 </section>
@@ -661,13 +494,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../R11_markdown.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">R11: markdown</span></span>
+      <a href="../R04_dataframes.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">R04: Dataframes</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../exercise/E02-vectors-dataframes.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-title">E02: Vektoren, Dataframes</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../98-additional_resources.html" class="pagination-link">
+        <span class="nav-page-text">Additional Ressources</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
