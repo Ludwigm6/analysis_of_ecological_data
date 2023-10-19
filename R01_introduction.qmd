@@ -1,8 +1,8 @@
-# R01: What is R?
+# R01: Welcome to R
 
-* Script Language
-* Version 1.0 from 2000 (concept dates back to the 1974)
-* Aim: Statistical Analysis
+* R is a script Language
+* Version 1.0 from 2000 (concept dates back to 1974)
+* Original Aim: Statistical Analysis
 * Designed for data analysis and "interactive" use
 * Download: [r-project.org](https://www.r-project.org/)
 
@@ -70,7 +70,7 @@ sort(data)
 
 ## TASK: R and Rstudio
 
-1. Open R studio and get familiar with the interface.
+1. Open Rstudio and get familiar with the interface.
 2. Create a new, empty R script.
 3. What is the difference between the script editor and the console?
 4. Copy the code below into the R script and run it line by line. Try to understand what each line does.

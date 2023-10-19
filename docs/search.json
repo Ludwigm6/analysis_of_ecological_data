@@ -32,7 +32,7 @@
     "href": "index.html#course-outline",
     "title": "Analysis of Ecological Data",
     "section": "Course Outline",
-    "text": "Course Outline\n\nSummary and Exercises from last week\nNew Input\nExercises\nStudienleistung: 10 assignments - Passed with 6 assignments &gt; 50%\n\n\n\n\nCourse Outline\n\n\n\n\n\n\nDate\nContent\n\n\n\n\n12.10.\nOrganization - Topic Overview - What is R? - What is ecological data?\n\n\n19.10.\nR foundations I - functions - vectors - data.frames\n\n\n26.10.\nR foundations II - R Projects - data.frames"
+    "text": "Course Outline\n\nSummary and Exercises from last week\nNew Input\nExercises\nStudienleistung: 10 assignments - Passed with 6 assignments &gt; 50%\n\n\n\n\nCourse Outline\n\n\n\n\n\n\nDate\nContent\n\n\n\n\n19.10.\nOrganization - Topic Overview - What is R? - What is ecological data?\n\n\n26.10.\nR foundations I - functions - vectors - logical operators\n\n\n02.11.\nR foundations II - R Projects - data.frames\n\n\n09.11.\nData analysis: Crop types and arthropodes"
   },
   {
     "objectID": "D01_data_examples.html#plot-surveys",
@@ -72,49 +72,49 @@
   {
     "objectID": "R01_introduction.html#r-code",
     "href": "R01_introduction.html#r-code",
-    "title": "R01: What is R?",
+    "title": "R01: Welcome to R",
     "section": "R Code",
     "text": "R Code\nHow R code looks like:\n\ndata &lt;- c(12, 45, 65, 1, 3, 87)\nmean(data)\n\ndata &lt;- data + 5\nsort(data)\n\nHow R code looks like with output:\n\ndata &lt;- c(12, 45, 65, 1, 3, 87)\nmean(data)\n\n[1] 35.5\n\ndata &lt;- data + 5\nsort(data)\n\n[1]  6  8 17 50 70 92"
   },
   {
     "objectID": "R01_introduction.html#why-r",
     "href": "R01_introduction.html#why-r",
-    "title": "R01: What is R?",
+    "title": "R01: Welcome to R",
     "section": "Why R?",
     "text": "Why R?\n\nEasy to get into (although it might not feel that way at first)\nDesigned for solving scientific problems\nBig community - Getting help is really easy.\nOpen-source, active development\n\n\nThe R package structure has been the key addition to the software - J. Chambers M. (2020)\n\n\nExpandable with packages provided by other R users\n\nSpecialized analysis for specific fields\nMachine Learning\nMedicine\nWriting Books\n…\n\nUsed in science, industry, healthcare, NGOs, …\n\n\n\n\nSlater et al. (2019) : Workflow with R packages"
   },
   {
     "objectID": "R01_introduction.html#rstudio",
     "href": "R01_introduction.html#rstudio",
-    "title": "R01: What is R?",
+    "title": "R01: Welcome to R",
     "section": "Rstudio",
     "text": "Rstudio\n\nIntegrated Development Environment (IDE)\nMakes R “convenient” to use\nText Editor + R Console\nProject Environments, Package Management, Help Pages, Plot Viewer, File Browser …"
   },
   {
     "objectID": "R01_introduction.html#task-r-and-rstudio",
     "href": "R01_introduction.html#task-r-and-rstudio",
-    "title": "R01: What is R?",
+    "title": "R01: Welcome to R",
     "section": "TASK: R and Rstudio",
-    "text": "TASK: R and Rstudio\n\nOpen R studio and get familiar with the interface.\nCreate a new, empty R script.\nWhat is the difference between the script editor and the console?\nCopy the code below into the R script and run it line by line. Try to understand what each line does.\n\n\na &lt;- 5\nb &lt;- 10\n\na + b\n\np &lt;- a-b\n\nv &lt;- c(3,12,6,9,23)\nv\n\nv / b\n\nmean(v)\n# sum(v)\n\n\nQuestions you might have\n\nWhy does p &lt;- a*b not produce an output?\nWhat is c()?\nWhy does # sum(v) not work?\n\n\nEverything that exists in R is an object. Everything that happens in R is a function call. - J. M. Chambers (2016)\n\n\n\n\n\nChambers, John M. 2016. Extending R. The R Series. Boca Raton, Fla. London New York: CRC Press, Taylor & Francis Group.\n\n\nChambers, John, M. 2020. “S, R, and Data Science.” The R Journal 12 (1): 462. https://doi.org/10.32614/RJ-2020-028.\n\n\nSlater, Louise J., Guillaume Thirel, Shaun Harrigan, Olivier Delaigue, Alexander Hurley, Abdou Khouakhi, Ilaria Prosdocimi, Claudia Vitolo, and Katie Smith. 2019. “Using R in Hydrology: A Review of Recent Developments and Future Directions.” Hydrology and Earth System Sciences 23 (7): 2939–63. https://doi.org/10.5194/hess-23-2939-2019."
+    "text": "TASK: R and Rstudio\n\nOpen Rstudio and get familiar with the interface.\nCreate a new, empty R script.\nWhat is the difference between the script editor and the console?\nCopy the code below into the R script and run it line by line. Try to understand what each line does.\n\n\na &lt;- 5\nb &lt;- 10\n\na + b\n\np &lt;- a-b\n\nv &lt;- c(3,12,6,9,23)\nv\n\nv / b\n\nmean(v)\n# sum(v)\n\n\nQuestions you might have\n\nWhy does p &lt;- a*b not produce an output?\nWhat is c()?\nWhy does # sum(v) not work?\n\n\nEverything that exists in R is an object. Everything that happens in R is a function call. - J. M. Chambers (2016)\n\n\n\n\n\nChambers, John M. 2016. Extending R. The R Series. Boca Raton, Fla. London New York: CRC Press, Taylor & Francis Group.\n\n\nChambers, John, M. 2020. “S, R, and Data Science.” The R Journal 12 (1): 462. https://doi.org/10.32614/RJ-2020-028.\n\n\nSlater, Louise J., Guillaume Thirel, Shaun Harrigan, Olivier Delaigue, Alexander Hurley, Abdou Khouakhi, Ilaria Prosdocimi, Claudia Vitolo, and Katie Smith. 2019. “Using R in Hydrology: A Review of Recent Developments and Future Directions.” Hydrology and Earth System Sciences 23 (7): 2939–63. https://doi.org/10.5194/hess-23-2939-2019."
   },
   {
     "objectID": "R02_basics.html#variables",
     "href": "R02_basics.html#variables",
-    "title": "R02: The very basics",
+    "title": "R02: Variables, Values, Functions",
     "section": "Variables",
     "text": "Variables\n\nassign values to variables either with &lt;- or =\nvariable on the left, assigned value on the right\nYou decide how to name a variable.\n\nUse recognizable names!\nDon’t be lazy. Longer, descriptive names help immensely.\n\n\n\na &lt;- 5\nb = 10\n\na_big_number = 500000"
   },
   {
     "objectID": "R02_basics.html#values",
     "href": "R02_basics.html#values",
-    "title": "R02: The very basics",
+    "title": "R02: Variables, Values, Functions",
     "section": "Values",
     "text": "Values\n\nHow is data represented in R?\nTypes we need right now:\n\nnumeric\ncharacter (string / text)\nlogical\n“nothing”\n\n\n\n# numeric\n1\n68542\n4.5\n\n\n# character\n\"f\"\n\"Hi Mom!\"\n\n# logical\nTRUE\nF\n\n# nothing\nNA # there should be something, but it is missing\nNULL # truly nothing"
   },
   {
     "objectID": "R02_basics.html#functions",
     "href": "R02_basics.html#functions",
-    "title": "R02: The very basics",
+    "title": "R02: Variables, Values, Functions",
     "section": "Functions",
     "text": "Functions\n\nEverything you do in R is a function!\nEasily identified by function name followed by parenthesis (), e.g. print()\nfor common functions there are shortcuts\n\n\n# the class() function returns the type of the input\na &lt;- 5\nclass(a)\n\n[1] \"numeric\"\n\n# the nchar() function returns the number of characters in a string\nnchar(\"Hi Mom\")\n\n[1] 6\n\n# Really everything you do in R is a function!\n`&lt;-`(b, 10)\nprint(b)\n\n[1] 10\n\n\n\nmost functions need arguments\ninput, options, parameters to specify what the function should do\neach function has a help page where you can read about arguments\n\nFor example, the cos() function computes the cosine of a number. The help page specifies what the function expects as an input. You can access the help page with ?cos() or by searching for the function in the ‘Help’ tab in Rstudio (bottom right panel).\n\n# the cos function needs the argument x of type numeric\ncos(x = 0)\n\n[1] 1\n\n# it throws an error otherwise\ncos(x = \"3.14\")\n\nError in cos(x = \"3.14\"): non-numeric argument to mathematical function\n\n# argument names can be neglected\ncos(1)\n\n[1] 0.5403023"
   },

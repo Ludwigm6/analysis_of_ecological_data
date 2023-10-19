@@ -1,4 +1,4 @@
-# R02: The very basics
+# R02: Variables, Values, Functions
 
 ## Variables
 

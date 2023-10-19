@@ -9,18 +9,16 @@ Take a few minutes to think about
 ```{r mofrgb, echo = FALSE, fig.cap="Marburg Open Forest, 2019-05-13 Planetscope RGB"}
 library(sf)
 library(tmap)
-library(stars)
+library(terra)
 library(tidyverse)
 
 
 mof_water = st_read("data/mof/mof_supplementary.gpkg", layer =  "water", quiet = TRUE)
-mof_rgb = read_stars("data/mof/mof_basemaps.gpkg", sub = "planetscope_20190513", quiet = TRUE)
+mof_rgb = terra::rast("data/mof/mof_basemaps.gpkg", sub = "planetscope_20190513")
 
-tm_shape(mof_rgb)+
-    tm_rgb(saturation = 0.4)+
-    tm_shape(mof_water)+
-    tm_lines(col = "skyblue", lwd = 2.5)+
-    tm_layout(frame = FALSE)
+terra::plotRGB(mof_rgb)
+terra::lines(mof_water, col = "skyblue", lwd = 4)
+
 ```
 
 
