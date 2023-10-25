@@ -1,0 +1,64 @@
+# R04: Logical Operators
+
+Logical Operators are essential to efficiently work with R. It is a good idea to spent some time with them and think about their possibilities and usage.
+
+But first: what are logical operators? They are used to compare values. The most intuitive ones are the `<` and `>` operators.
+
+```{r}
+4 < 5
+
+6 > 2
+```
+
+As you see, both statements return the value `TRUE` because, ...well... 4 is smaller than 5 and 6 is larger then 2. As you might guess, if there is `TRUE` there should also be `FALSE`.
+
+
+```{r}
+24 > 50
+```
+
+Logical operators will *always* return `TRUE` or `FALSE`, so the statements you make with them are always questions which you can answer as `TRUE` or `FALSE`. As a data type, this is called a `logical` (or sometimes `boolean value` after the British mathematician George Boole).
+
+
+```{r}
+bool <- 24 < 50
+class(bool)
+```
+
+
+To ask the question if two values are the same we use the operator `==`:
+
+```{r}
+1.9999999 == 2
+
+a = 5 # one '=' means assignment
+a == 5 # two '==' is the logical operator for "is equal"
+```
+
+
+
+## Logical operators and vectors
+
+Logical operators are vectorized. This means that when we ask the question "Is the vector larger than 10?", we get as many `TRUE` and `FALSE` answers as there are elements in the vector.
+
+```{r, fig.cap="R vector logical operation", echo = FALSE}
+knitr::include_graphics("assets/r_vector_bigger.svg")
+```
+
+
+```{r}
+vec = c(23, 1, 60, 21, 21, 5)
+vec > 10
+```
+
+If we safe these answers in the a new variable, we can use the result to subset the vector.
+So the questions "Is the vector larger than 10?" serves as an important step to do the operation "Give me all the numbers of this vector that are larger than 10!".
+
+```{r}
+large = vec > 10
+vec[large]
+
+# in short, we combine both steps to
+vec[vec > 10]
+```
+

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Analysis of Ecological Data - E01: Variablen, Funktionen</title>
+<title>Analysis of Ecological Data - E02: Vektoren und Logik</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,8 +64,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../exercise/E02-vectors-logic.html" rel="next">
-<link href="../R04_logic.html" rel="prev">
+<link href="../98-additional_resources.html" rel="next">
+<link href="../exercise/E01-variablen.html" rel="prev">
 <link href="..//home/marvin/images/pictogramms/ecoR.svg" rel="icon" type="image/svg+xml">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -75,7 +109,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../exercise/E01-variablen.html">Exercises</a></li><li class="breadcrumb-item"><a href="../exercise/E01-variablen.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">E01: Variablen, Funktionen</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../exercise/E01-variablen.html">Exercises</a></li><li class="breadcrumb-item"><a href="../exercise/E02-vectors-logic.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">E02: Vektoren und Logik</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -163,12 +197,12 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../exercise/E01-variablen.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">E01: Variablen, Funktionen</span></a>
+  <a href="../exercise/E01-variablen.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E01: Variablen, Funktionen</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../exercise/E02-vectors-logic.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E02: Vektoren und Logik</span></a>
+  <a href="../exercise/E02-vectors-logic.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">E02: Vektoren und Logik</span></a>
   </div>
 </li>
       </ul>
@@ -206,8 +240,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#variablen" id="toc-variablen" class="nav-link active" data-scroll-target="#variablen">Variablen</a></li>
-  <li><a href="#funktionen" id="toc-funktionen" class="nav-link" data-scroll-target="#funktionen">Funktionen</a></li>
+  <li><a href="#vektor-indexing" id="toc-vektor-indexing" class="nav-link active" data-scroll-target="#vektor-indexing">Vektor Indexing</a></li>
+  <li><a href="#logische-operatoren" id="toc-logische-operatoren" class="nav-link" data-scroll-target="#logische-operatoren">Logische Operatoren</a></li>
   </ul>
 </nav>
     </div>
@@ -216,7 +250,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">E01: Variablen, Funktionen</span></h1>
+<h1 class="title"><span class="chapter-title">E02: Vektoren und Logik</span></h1>
 </div>
 
 
@@ -231,33 +265,49 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="variablen" class="level2">
-<h2 class="anchored" data-anchor-id="variablen">Variablen</h2>
+<p>Der folgende Vektor enthält Temperaturdaten vom Aasee in Münster vom 2021-06-02.</p>
 <ul>
-<li>Erstelle eine Variable die die Zahl 1650 enthält.</li>
-<li>Erstelle eine Variable die die Zahl 140 enthält.</li>
-<li>Erstelle eine Variable die die Zahl 5 enthält.</li>
-<li>Berechne das Produkt deiner erstellten Variablen.</li>
-<li>Berechne den Mittelwert deiner erstellten Variablen.</li>
+<li>Wie viele Einträge hat der Vektor?</li>
+<li>Teste die Funktionen <code>range</code>, <code>summary</code> und <code>boxplot</code> mit dem Vektor.</li>
+<li>Konvertiere die Werte von Celsius nach Fahrenheit.</li>
+<li>Sowohl <code>sort</code> als auch <code>order</code> sortieren den Vektor. Was ist der Unterschied zwischen beiden Funktionen?</li>
 </ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>temperature <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">18.81</span>,<span class="fl">18.73</span>,<span class="fl">18.92</span>,<span class="fl">18.87</span>,<span class="fl">18.76</span>,<span class="fl">18.79</span>,<span class="fl">18.87</span>,<span class="fl">18.84</span>,<span class="fl">18.89</span>,<span class="fl">18.89</span>,</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>                 <span class="fl">18.93</span>,<span class="fl">18.95</span>,<span class="fl">18.92</span>,<span class="fl">18.97</span>,<span class="fl">19.00</span>,<span class="fl">18.99</span>,<span class="fl">19.00</span>,<span class="fl">19.00</span>,<span class="fl">18.99</span>,<span class="fl">19.00</span>,</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>                 <span class="fl">18.98</span>,<span class="fl">18.97</span>,<span class="fl">18.97</span>,<span class="fl">18.97</span>,<span class="fl">18.97</span>,<span class="fl">18.98</span>,<span class="fl">18.96</span>,<span class="fl">18.94</span>,<span class="fl">18.94</span>,<span class="fl">18.91</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>                 <span class="fl">18.90</span>,<span class="fl">18.89</span>,<span class="fl">18.87</span>,<span class="fl">18.85</span>,<span class="fl">18.85</span>,<span class="fl">18.84</span>,<span class="fl">18.83</span>,<span class="fl">18.81</span>,<span class="fl">18.81</span>,<span class="fl">18.81</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>                 <span class="fl">18.81</span>,<span class="fl">18.81</span>,<span class="fl">18.80</span>,<span class="fl">18.79</span>,<span class="fl">18.80</span>,<span class="fl">18.79</span>,<span class="fl">18.79</span>,<span class="fl">18.78</span>,<span class="fl">18.77</span>,<span class="fl">18.78</span>,</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>                 <span class="fl">18.79</span>,<span class="fl">18.79</span>,<span class="fl">18.79</span>,<span class="fl">18.79</span>,<span class="fl">18.79</span>,<span class="fl">18.79</span>,<span class="fl">18.80</span>,<span class="fl">18.79</span>,<span class="fl">18.81</span>,<span class="fl">18.80</span>,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>                 <span class="fl">18.81</span>,<span class="fl">18.81</span>,<span class="fl">18.82</span>,<span class="fl">18.84</span>,<span class="fl">18.87</span>,<span class="fl">18.89</span>,<span class="fl">18.89</span>,<span class="fl">18.91</span>,<span class="fl">18.96</span>,<span class="fl">19.02</span>,</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>                 <span class="fl">19.11</span>,<span class="fl">19.15</span>,<span class="fl">18.95</span>,<span class="fl">18.92</span>,<span class="fl">18.84</span>,<span class="fl">18.85</span>,<span class="fl">18.96</span>,<span class="fl">18.92</span>,<span class="fl">18.95</span>,<span class="fl">18.95</span>,</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>                 <span class="fl">18.91</span>,<span class="fl">19.00</span>,<span class="fl">19.02</span>,<span class="fl">19.06</span>,<span class="fl">19.05</span>,<span class="fl">19.47</span>,<span class="fl">19.32</span>,<span class="fl">19.05</span>,<span class="fl">19.66</span>,<span class="fl">19.57</span>,</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>                 <span class="fl">19.23</span>,<span class="fl">19.42</span>,<span class="fl">19.36</span>,<span class="fl">19.66</span>,<span class="fl">19.79</span>,<span class="fl">19.81</span>,<span class="fl">19.99</span>,<span class="fl">21.10</span>,<span class="fl">21.94</span>,<span class="fl">22.52</span>,</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>                 <span class="fl">22.81</span>,<span class="fl">22.43</span>,<span class="fl">22.16</span>,<span class="fl">21.55</span>,<span class="fl">21.80</span>,<span class="fl">21.02</span>,<span class="fl">21.85</span>,<span class="fl">21.45</span>,<span class="fl">22.48</span>,<span class="fl">22.73</span>,</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>                 <span class="fl">22.61</span>,<span class="fl">22.83</span>,<span class="fl">20.85</span>,<span class="fl">20.68</span>,<span class="fl">19.76</span>,<span class="fl">19.81</span>,<span class="fl">19.74</span>,<span class="fl">19.58</span>,<span class="fl">19.35</span>,<span class="fl">19.40</span>,</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>                 <span class="fl">19.75</span>,<span class="fl">19.76</span>,<span class="fl">19.85</span>,<span class="fl">19.82</span>,<span class="fl">19.86</span>,<span class="fl">20.08</span>,<span class="fl">20.06</span>,<span class="fl">19.85</span>,<span class="fl">20.04</span>,<span class="fl">19.90</span>,</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>                 <span class="fl">19.96</span>,<span class="fl">20.12</span>,<span class="fl">19.94</span>,<span class="fl">20.20</span>,<span class="fl">20.17</span>,<span class="fl">20.31</span>,<span class="fl">20.17</span>,<span class="fl">20.37</span>,<span class="fl">20.36</span>,<span class="fl">20.13</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="vektor-indexing" class="level2">
+<h2 class="anchored" data-anchor-id="vektor-indexing">Vektor Indexing</h2>
 <ul>
-<li>Erstelle eine Variable die deinen Vornamen enthält.</li>
-<li>Erstelle eine Variable die deinen Nachnamen enthält.</li>
-<li>Die <code>paste</code> Funktion kann Texte zusammenfügen. Probiere die Funktion mit den Variablen die deine Namen enthalten aus.</li>
+<li>Gib den 5ten Wert des Vektors aus.</li>
+<li>Gib nur den letzten Wert des Vektors aus.</li>
+<li>Speichere die ersten 20 Temperaturen in einer neuen Variablen.</li>
+<li>Speichere die 30 niedrigsten Temperaturen in einer neuen Variablen.</li>
 </ul>
 </section>
-<section id="funktionen" class="level2">
-<h2 class="anchored" data-anchor-id="funktionen">Funktionen</h2>
+<section id="logische-operatoren" class="level2">
+<h2 class="anchored" data-anchor-id="logische-operatoren">Logische Operatoren</h2>
 <ul>
-<li>Vektoren in R sind Folgen von Werten, enthalten also z.B. mehrere Zahlen. Sie werden mit der Funktion <code>c()</code> erstellt:</li>
+<li>Gib alle Temperaturen aus die 22°C überschreiten.</li>
+<li>Wie oft wurde genau 18.79°C gemessen?</li>
 </ul>
 <ul>
-<li>Teste die Funktionen <code>length()</code>, <code>sum()</code>, <code>sqrt()</code>, und <code>min()</code> mit dem Vektor.</li>
-<li>Was macht die <code>sqrt()</code> Funktion?</li>
-<li>Was ist der Unterschied zwischen der <code>max()</code> Funktion und der <code>which.max()</code> Funktion?</li>
+<li>Gib alle Temperaturen aus die zwischen 19 und 21°C liegen. Tipp: Dafür benötigt es zwei logische Abfragen die mit <code>&amp;</code> (sprich UND) verknüpft werden.</li>
 </ul>
 <ul>
-<li>Die <code>seq()</code> Funktion erzeugt einen Vektor der Zahlenfolgenfolgen enthält. Sieh dir die Hilfeseite von <code>seq()</code> an und erstelle einen Vektor der alle 100er Zahlen von 0 bis 10000 enthält (also 0, 100, 200, … ,9900, 10000).</li>
+<li>Gib alle Werte aus die mehr als 0.5 von der mittleren Temperatur abweichen. Tipp: Dafür benötigt es zwei logische Abfragen die mit <code>|</code> (sprich ODER) verknüpft werden.</li>
 </ul>
 
 
@@ -499,13 +549,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../R04_logic.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">R04: Logical Operators</span></span>
+      <a href="../exercise/E01-variablen.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">E01: Variablen, Funktionen</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../exercise/E02-vectors-logic.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-title">E02: Vektoren und Logik</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../98-additional_resources.html" class="pagination-link">
+        <span class="nav-page-text">Additional Ressources</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

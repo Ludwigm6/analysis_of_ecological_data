@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./R04_dataframes.html" rel="next">
+<link href="./R04_logic.html" rel="next">
 <link href="./R02_basics.html" rel="prev">
 <link href=".//home/marvin/images/pictogramms/ecoR.svg" rel="icon" type="image/svg+xml">
 <script src="site_libs/quarto-html/quarto.js"></script>
@@ -181,7 +181,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R04_dataframes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R04: Dataframes</span></a>
+  <a href="./R04_logic.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R04: Logical Operators</span></a>
   </div>
 </li>
       </ul>
@@ -198,6 +198,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./exercise/E01-variablen.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E01: Variablen, Funktionen</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./exercise/E02-vectors-logic.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E02: Vektoren und Logik</span></a>
   </div>
 </li>
       </ul>
@@ -237,11 +242,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#vector-maths" id="toc-vector-maths" class="nav-link active" data-scroll-target="#vector-maths">Vector Maths</a></li>
   <li><a href="#vectors-and-functions" id="toc-vectors-and-functions" class="nav-link" data-scroll-target="#vectors-and-functions">Vectors and functions</a></li>
-  <li><a href="#subsetting" id="toc-subsetting" class="nav-link" data-scroll-target="#subsetting">Subsetting</a>
-  <ul class="collapse">
   <li><a href="#indexing" id="toc-indexing" class="nav-link" data-scroll-target="#indexing">Indexing</a></li>
-  <li><a href="#logical-operators" id="toc-logical-operators" class="nav-link" data-scroll-target="#logical-operators">Logical Operators</a></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
@@ -370,11 +371,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>                 <span class="fl">19.96</span>,<span class="fl">20.12</span>,<span class="fl">19.94</span>,<span class="fl">20.20</span>,<span class="fl">20.17</span>,<span class="fl">20.31</span>,<span class="fl">20.17</span>,<span class="fl">20.37</span>,<span class="fl">20.36</span>,<span class="fl">20.13</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="subsetting" class="level2">
-<h2 class="anchored" data-anchor-id="subsetting">Subsetting</h2>
+<section id="indexing" class="level2">
+<h2 class="anchored" data-anchor-id="indexing">Indexing</h2>
 <p>For many questions it is often required to access only parts of the data. This is one of the most common things you have to deal with in R.</p>
-<section id="indexing" class="level3">
-<h3 class="anchored" data-anchor-id="indexing">Indexing</h3>
 <p>To access single values of a vector, use square brackets <code>[]</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get the third value of the vector</span></span>
@@ -393,66 +392,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <blockquote class="blockquote">
-<p>Using the functions above, what is an easy way to access the first 10 elements of the vector?</p>
+<p>What is an easy way to access the first 10 elements of the vector?</p>
 </blockquote>
-</section>
-<section id="logical-operators" class="level3">
-<h3 class="anchored" data-anchor-id="logical-operators">Logical Operators</h3>
-<div class="cell">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="assets/r_vector_bigger.svg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">R vector logical operation</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<p>A more powerful way to subset a vector is by using logical operators. These functions usually return a boolean object (<code>TRUE, FALSE</code>) which can then be used to access certain values.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">&gt;</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] FALSE</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">&lt;</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] TRUE</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">==</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] FALSE</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(temperature) <span class="sc">&gt;</span> <span class="dv">22</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] TRUE</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>temperature <span class="sc">&gt;</span> <span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
- [13] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
- [25] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
- [37] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
- [49] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
- [61] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
- [73] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
- [85] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
- [97] FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
-[109]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE
-[121] FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE  TRUE FALSE FALSE  TRUE
-[133] FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>hot <span class="ot">=</span> temperature <span class="sc">&gt;</span> <span class="dv">20</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>temperature[hot]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] 21.10 21.94 22.52 22.81 22.43 22.16 21.55 21.80 21.02 21.85 21.45 22.48
-[13] 22.73 22.61 22.83 20.85 20.68 20.08 20.06 20.04 20.12 20.20 20.17 20.31
-[25] 20.17 20.37 20.36 20.13</code></pre>
-</div>
-</div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -696,8 +639,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./R04_dataframes.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-title">R04: Dataframes</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./R04_logic.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-title">R04: Logical Operators</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

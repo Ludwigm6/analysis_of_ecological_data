@@ -87,13 +87,10 @@ temperature <- c(18.81,18.73,18.92,18.87,18.76,18.79,18.87,18.84,18.89,18.89,
 ```
 
 
-## Subsetting
+## Indexing
 
 For many questions it is often required to access only parts of the data.
 This is one of the most common things you have to deal with in R.
-
-
-### Indexing
 
 To access single values of a vector, use square brackets `[]`.
 
@@ -108,32 +105,5 @@ temperature[1,2]
 temperature[c(1,2)]
 ```
 
-> Using the functions above, what is an easy way to access the first 10 elements of the vector?
-
-
-### Logical Operators
-
-
-```{r, fig.cap="R vector logical operation", echo = FALSE}
-knitr::include_graphics("assets/r_vector_bigger.svg")
-```
-
-
-A more powerful way to subset a vector is by using logical operators. These functions usually return a boolean object (`TRUE, FALSE`) which can then be used to access certain values.
-
-```{r}
-1 > 2
-1 < 2
-
-1 == 2
-
-max(temperature) > 22
-
-temperature > 20
-hot = temperature > 20
-
-temperature[hot]
-
-```
-
+> What is an easy way to access the first 10 elements of the vector?
 

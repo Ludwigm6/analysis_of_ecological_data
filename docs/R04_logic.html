@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Analysis of Ecological Data - R04: Dataframes</title>
+<title>Analysis of Ecological Data - R04: Logical Operators</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -54,26 +54,7 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -128,7 +109,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./R01_introduction.html">R</a></li><li class="breadcrumb-item"><a href="./R04_dataframes.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">R04: Dataframes</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./R01_introduction.html">R</a></li><li class="breadcrumb-item"><a href="./R04_logic.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">R04: Logical Operators</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -200,7 +181,7 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R04_dataframes.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">R04: Dataframes</span></a>
+  <a href="./R04_logic.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">R04: Logical Operators</span></a>
   </div>
 </li>
       </ul>
@@ -217,6 +198,11 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./exercise/E01-variablen.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E01: Variablen, Funktionen</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./exercise/E02-vectors-logic.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E02: Vektoren und Logik</span></a>
   </div>
 </li>
       </ul>
@@ -254,7 +240,7 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#csv-files" id="toc-csv-files" class="nav-link active" data-scroll-target="#csv-files">CSV Files</a></li>
+  <li><a href="#logical-operators-and-vectors" id="toc-logical-operators-and-vectors" class="nav-link active" data-scroll-target="#logical-operators-and-vectors">Logical operators and vectors</a></li>
   </ul>
 </nav>
     </div>
@@ -263,7 +249,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">R04: Dataframes</span></h1>
+<h1 class="title"><span class="chapter-title">R04: Logical Operators</span></h1>
 </div>
 
 
@@ -278,106 +264,80 @@ div.csl-indent {
 
 </header>
 
-<blockquote class="blockquote">
-<p>From a data science perspective, the most important class of objects is the data frame - <span class="citation" data-cites="Chambers2020">Chambers (<a href="references.html#ref-Chambers2020" role="doc-biblioref">2020</a>)</span></p>
-</blockquote>
-<ul>
-<li>Dataframes combine multiple vector in a structured format</li>
-<li>Intuitive - most people have seen a spreadsheet before</li>
-<li>Each column is regarded as a vector</li>
-<li>Each vector can have a different data type</li>
-</ul>
+<p>Logical Operators are essential to efficiently work with R. It is a good idea to spent some time with them and think about their possibilities and usage.</p>
+<p>But first: what are logical operators? They are used to compare values. The most intuitive ones are the <code>&lt;</code> and <code>&gt;</code> operators.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span> <span class="sc">&lt;</span> <span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dv">6</span> <span class="sc">&gt;</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<p>As you see, both statements return the value <code>TRUE</code> because, …well… 4 is smaller than 5 and 6 is larger then 2. As you might guess, if there is <code>TRUE</code> there should also be <code>FALSE</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dv">24</span> <span class="sc">&gt;</span> <span class="dv">50</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+</div>
+<p>Logical operators will <em>always</em> return <code>TRUE</code> or <code>FALSE</code>, so the statements you make with them are always questions which you can answer as <code>TRUE</code> or <code>FALSE</code>. As a data type, this is called a <code>logical</code> (or sometimes <code>boolean value</code> after the British mathematician George Boole).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>bool <span class="ot">&lt;-</span> <span class="dv">24</span> <span class="sc">&lt;</span> <span class="dv">50</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(bool)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "logical"</code></pre>
+</div>
+</div>
+<p>To ask the question if two values are the same we use the operator <code>==</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fl">1.9999999</span> <span class="sc">==</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="dv">5</span> <span class="co"># one '=' means assignment</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>a <span class="sc">==</span> <span class="dv">5</span> <span class="co"># two '==' is the logical operator for "is equal"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<section id="logical-operators-and-vectors" class="level2">
+<h2 class="anchored" data-anchor-id="logical-operators-and-vectors">Logical operators and vectors</h2>
+<p>Logical operators are vectorized. This means that when we ask the question “Is the vector larger than 10?”, we get as many <code>TRUE</code> and <code>FALSE</code> answers as there are elements in the vector.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="assets/r_dataframe.svg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">data.frames are a named list of vectors</figcaption>
+<p><img src="assets/r_vector_bigger.svg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">R vector logical operation</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<ul>
-<li>Create one with <code>data.frame</code></li>
-<li>The functions need the column name followed by the vector of values</li>
-</ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">plotID =</span> <span class="fu">seq</span>(<span class="dv">3</span>),</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">soil_ph =</span> <span class="fu">c</span>(<span class="fl">5.5</span>, <span class="fl">5.4</span>, <span class="fl">6.1</span>),</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">soil_temperature =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>),</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">forest_type =</span> <span class="fu">c</span>(<span class="st">"coniferous"</span>, <span class="st">"coniferous"</span>, <span class="st">"deciduous"</span>))</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>vec <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">23</span>, <span class="dv">1</span>, <span class="dv">60</span>, <span class="dv">21</span>, <span class="dv">21</span>, <span class="dv">5</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>vec <span class="sc">&gt;</span> <span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  plotID soil_ph soil_temperature forest_type
-1      1     5.5               10  coniferous
-2      2     5.4               11  coniferous
-3      3     6.1               12   deciduous</code></pre>
+<pre><code>[1]  TRUE FALSE  TRUE  TRUE  TRUE FALSE</code></pre>
 </div>
 </div>
-<section id="csv-files" class="level2">
-<h2 class="anchored" data-anchor-id="csv-files">CSV Files</h2>
-<p>Dataframes can be loaded from and saved to <code>.csv</code> files.</p>
-<ul>
-<li>Comma Separated Values</li>
-<li>Caution: In Germany “,” is used as the decimal point. You often find “;” as the delimiter in csvs.</li>
-<li>Caution: If you open csv files in Excel, things can get messy</li>
-</ul>
-<pre><code>Datum,Wassertemperatur,pH-Wert,Sauerstoffgehalt
-2021-05-31 23:57,17.98,8.05,10.53
-2021-06-01 00:09,17.66,8.04,9.64
-2021-06-01 00:19,18.03,8.12,11.30
-2021-06-01 00:27,18.08,8.14,11.32
-2021-06-01 00:39,18.06,8.12,11.06
-2021-06-01 00:49,18.01,8.10,10.91</code></pre>
-<ul>
-<li>use the <code>read.csv</code> function</li>
-<li>make sure the <code>dec</code> and <code>sep</code> parameters of the function are properly set</li>
-<li>when in doubt look at the help page <code>?read.csv</code></li>
-</ul>
+<p>If we safe these answers in the a new variable, we can use the result to subset the vector. So the questions “Is the vector larger than 10?” serves as an important step to do the operation “Give me all the numbers of this vector that are larger than 10!”.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">"data/2021-06_aasee.csv"</span>, <span class="at">dec =</span> <span class="st">"."</span>, <span class="at">sep =</span> <span class="st">","</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># show the first few rows of the df</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>large <span class="ot">=</span> vec <span class="sc">&gt;</span> <span class="dv">10</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>vec[large]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>             Datum Wassertemperatur pH.Wert Sauerstoffgehalt
-1 2021-05-31 23:57            17.98    8.05            10.53
-2 2021-06-01 00:09            17.66    8.04             9.64
-3 2021-06-01 00:19            18.03    8.12            11.30
-4 2021-06-01 00:27            18.08    8.14            11.32
-5 2021-06-01 00:39            18.06    8.12            11.06
-6 2021-06-01 00:49            18.01    8.10            10.91</code></pre>
+<pre><code>[1] 23 60 21 21</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># show the last few rows of the df</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># in short, we combine both steps to</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>vec[vec <span class="sc">&gt;</span> <span class="dv">10</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>                Datum Wassertemperatur pH.Wert Sauerstoffgehalt
-4220 2021-06-30 22:57            23.73    8.78            17.80
-4221 2021-06-30 23:09            23.70    8.72            17.66
-4222 2021-06-30 23:18            23.68    8.73            17.72
-4223 2021-06-30 23:29            23.64    8.81            18.38
-4224 2021-06-30 23:39            23.62    8.76            17.93
-4225 2021-06-30 23:49            23.63    8.77            17.82</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get a short summary of the structure</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>'data.frame':   4225 obs. of  4 variables:
- $ Datum           : chr  "2021-05-31 23:57" "2021-06-01 00:09" "2021-06-01 00:19" "2021-06-01 00:27" ...
- $ Wassertemperatur: num  18 17.7 18 18.1 18.1 ...
- $ pH.Wert         : num  8.05 8.04 8.12 8.14 8.12 8.1 8.1 8.1 8.1 8.1 ...
- $ Sauerstoffgehalt: num  10.53 9.64 11.3 11.32 11.06 ...</code></pre>
+<pre><code>[1] 23 60 21 21</code></pre>
 </div>
 </div>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
-<div id="ref-Chambers2020" class="csl-entry" role="listitem">
-Chambers, John, M. 2020. <span>“S, <span>R</span>, and <span>Data Science</span>.”</span> <em>The R Journal</em> 12 (1): 462. <a href="https://doi.org/10.32614/RJ-2020-028">https://doi.org/10.32614/RJ-2020-028</a>.
-</div>
-</div>
 </section>
 
 </main> <!-- /main -->

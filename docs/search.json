@@ -133,18 +133,18 @@
     "text": "Vectors and functions\nThe vector below are the temperature values for the Aasee in Münster from the 2021-06-02.\n\ntemperature &lt;- c(18.81,18.73,18.92,18.87,18.76,18.79,18.87,18.84,18.89,18.89,\n                 18.93,18.95,18.92,18.97,19.00,18.99,19.00,19.00,18.99,19.00,\n                 18.98,18.97,18.97,18.97,18.97,18.98,18.96,18.94,18.94,18.91,\n                 18.90,18.89,18.87,18.85,18.85,18.84,18.83,18.81,18.81,18.81,\n                 18.81,18.81,18.80,18.79,18.80,18.79,18.79,18.78,18.77,18.78,\n                 18.79,18.79,18.79,18.79,18.79,18.79,18.80,18.79,18.81,18.80,\n                 18.81,18.81,18.82,18.84,18.87,18.89,18.89,18.91,18.96,19.02,\n                 19.11,19.15,18.95,18.92,18.84,18.85,18.96,18.92,18.95,18.95,\n                 18.91,19.00,19.02,19.06,19.05,19.47,19.32,19.05,19.66,19.57,\n                 19.23,19.42,19.36,19.66,19.79,19.81,19.99,21.10,21.94,22.52,\n                 22.81,22.43,22.16,21.55,21.80,21.02,21.85,21.45,22.48,22.73,\n                 22.61,22.83,20.85,20.68,19.76,19.81,19.74,19.58,19.35,19.40,\n                 19.75,19.76,19.85,19.82,19.86,20.08,20.06,19.85,20.04,19.90,\n                 19.96,20.12,19.94,20.20,20.17,20.31,20.17,20.37,20.36,20.13)"
   },
   {
-    "objectID": "R03_vectors.html#subsetting",
-    "href": "R03_vectors.html#subsetting",
+    "objectID": "R03_vectors.html#indexing",
+    "href": "R03_vectors.html#indexing",
     "title": "R03: Vectors",
-    "section": "Subsetting",
-    "text": "Subsetting\nFor many questions it is often required to access only parts of the data. This is one of the most common things you have to deal with in R.\n\nIndexing\nTo access single values of a vector, use square brackets [].\n\n# get the third value of the vector\ntemperature[3]\n\n[1] 18.92\n\n# accessing multiple elements at once\ntemperature[1,2]\n\nError in temperature[1, 2]: incorrect number of dimensions\n\ntemperature[c(1,2)]\n\n[1] 18.81 18.73\n\n\n\nUsing the functions above, what is an easy way to access the first 10 elements of the vector?\n\n\n\nLogical Operators\n\n\n\n\n\nR vector logical operation\n\n\n\n\nA more powerful way to subset a vector is by using logical operators. These functions usually return a boolean object (TRUE, FALSE) which can then be used to access certain values.\n\n1 &gt; 2\n\n[1] FALSE\n\n1 &lt; 2\n\n[1] TRUE\n\n1 == 2\n\n[1] FALSE\n\nmax(temperature) &gt; 22\n\n[1] TRUE\n\ntemperature &gt; 20\n\n  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [13] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [25] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [37] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [49] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [61] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [73] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [85] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [97] FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE\n[109]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE\n[121] FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE  TRUE FALSE FALSE  TRUE\n[133] FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE\n\nhot = temperature &gt; 20\n\ntemperature[hot]\n\n [1] 21.10 21.94 22.52 22.81 22.43 22.16 21.55 21.80 21.02 21.85 21.45 22.48\n[13] 22.73 22.61 22.83 20.85 20.68 20.08 20.06 20.04 20.12 20.20 20.17 20.31\n[25] 20.17 20.37 20.36 20.13"
+    "section": "Indexing",
+    "text": "Indexing\nFor many questions it is often required to access only parts of the data. This is one of the most common things you have to deal with in R.\nTo access single values of a vector, use square brackets [].\n\n# get the third value of the vector\ntemperature[3]\n\n[1] 18.92\n\n# accessing multiple elements at once\ntemperature[1,2]\n\nError in temperature[1, 2]: incorrect number of dimensions\n\ntemperature[c(1,2)]\n\n[1] 18.81 18.73\n\n\n\nWhat is an easy way to access the first 10 elements of the vector?"
   },
   {
-    "objectID": "R04_dataframes.html#csv-files",
-    "href": "R04_dataframes.html#csv-files",
-    "title": "R04: Dataframes",
-    "section": "CSV Files",
-    "text": "CSV Files\nDataframes can be loaded from and saved to .csv files.\n\nComma Separated Values\nCaution: In Germany “,” is used as the decimal point. You often find “;” as the delimiter in csvs.\nCaution: If you open csv files in Excel, things can get messy\n\nDatum,Wassertemperatur,pH-Wert,Sauerstoffgehalt\n2021-05-31 23:57,17.98,8.05,10.53\n2021-06-01 00:09,17.66,8.04,9.64\n2021-06-01 00:19,18.03,8.12,11.30\n2021-06-01 00:27,18.08,8.14,11.32\n2021-06-01 00:39,18.06,8.12,11.06\n2021-06-01 00:49,18.01,8.10,10.91\n\nuse the read.csv function\nmake sure the dec and sep parameters of the function are properly set\nwhen in doubt look at the help page ?read.csv\n\n\ndata = read.csv(file = \"data/2021-06_aasee.csv\", dec = \".\", sep = \",\")\n\n\n# show the first few rows of the df\nhead(data)\n\n             Datum Wassertemperatur pH.Wert Sauerstoffgehalt\n1 2021-05-31 23:57            17.98    8.05            10.53\n2 2021-06-01 00:09            17.66    8.04             9.64\n3 2021-06-01 00:19            18.03    8.12            11.30\n4 2021-06-01 00:27            18.08    8.14            11.32\n5 2021-06-01 00:39            18.06    8.12            11.06\n6 2021-06-01 00:49            18.01    8.10            10.91\n\n# show the last few rows of the df\ntail(data)\n\n                Datum Wassertemperatur pH.Wert Sauerstoffgehalt\n4220 2021-06-30 22:57            23.73    8.78            17.80\n4221 2021-06-30 23:09            23.70    8.72            17.66\n4222 2021-06-30 23:18            23.68    8.73            17.72\n4223 2021-06-30 23:29            23.64    8.81            18.38\n4224 2021-06-30 23:39            23.62    8.76            17.93\n4225 2021-06-30 23:49            23.63    8.77            17.82\n\n# get a short summary of the structure\nstr(data)\n\n'data.frame':   4225 obs. of  4 variables:\n $ Datum           : chr  \"2021-05-31 23:57\" \"2021-06-01 00:09\" \"2021-06-01 00:19\" \"2021-06-01 00:27\" ...\n $ Wassertemperatur: num  18 17.7 18 18.1 18.1 ...\n $ pH.Wert         : num  8.05 8.04 8.12 8.14 8.12 8.1 8.1 8.1 8.1 8.1 ...\n $ Sauerstoffgehalt: num  10.53 9.64 11.3 11.32 11.06 ...\n\n\n\n\n\n\nChambers, John, M. 2020. “S, R, and Data Science.” The R Journal 12 (1): 462. https://doi.org/10.32614/RJ-2020-028."
+    "objectID": "R04_logic.html#logical-operators-and-vectors",
+    "href": "R04_logic.html#logical-operators-and-vectors",
+    "title": "R04: Logical Operators",
+    "section": "Logical operators and vectors",
+    "text": "Logical operators and vectors\nLogical operators are vectorized. This means that when we ask the question “Is the vector larger than 10?”, we get as many TRUE and FALSE answers as there are elements in the vector.\n\n\n\n\n\nR vector logical operation\n\n\n\n\n\nvec = c(23, 1, 60, 21, 21, 5)\nvec &gt; 10\n\n[1]  TRUE FALSE  TRUE  TRUE  TRUE FALSE\n\n\nIf we safe these answers in the a new variable, we can use the result to subset the vector. So the questions “Is the vector larger than 10?” serves as an important step to do the operation “Give me all the numbers of this vector that are larger than 10!”.\n\nlarge = vec &gt; 10\nvec[large]\n\n[1] 23 60 21 21\n\n# in short, we combine both steps to\nvec[vec &gt; 10]\n\n[1] 23 60 21 21"
   },
   {
     "objectID": "exercise/E01-variablen.html#variablen",
@@ -159,6 +159,20 @@
     "title": "E01: Variablen, Funktionen",
     "section": "Funktionen",
     "text": "Funktionen\n\nVektoren in R sind Folgen von Werten, enthalten also z.B. mehrere Zahlen. Sie werden mit der Funktion c() erstellt:\n\n\nTeste die Funktionen length(), sum(), sqrt(), und min() mit dem Vektor.\nWas macht die sqrt() Funktion?\nWas ist der Unterschied zwischen der max() Funktion und der which.max() Funktion?\n\n\nDie seq() Funktion erzeugt einen Vektor der Zahlenfolgenfolgen enthält. Sieh dir die Hilfeseite von seq() an und erstelle einen Vektor der alle 100er Zahlen von 0 bis 10000 enthält (also 0, 100, 200, … ,9900, 10000)."
+  },
+  {
+    "objectID": "exercise/E02-vectors-logic.html#vektor-indexing",
+    "href": "exercise/E02-vectors-logic.html#vektor-indexing",
+    "title": "E02: Vektoren und Logik",
+    "section": "Vektor Indexing",
+    "text": "Vektor Indexing\n\nGib den 5ten Wert des Vektors aus.\nGib nur den letzten Wert des Vektors aus.\nSpeichere die ersten 20 Temperaturen in einer neuen Variablen.\nSpeichere die 30 niedrigsten Temperaturen in einer neuen Variablen."
+  },
+  {
+    "objectID": "exercise/E02-vectors-logic.html#logische-operatoren",
+    "href": "exercise/E02-vectors-logic.html#logische-operatoren",
+    "title": "E02: Vektoren und Logik",
+    "section": "Logische Operatoren",
+    "text": "Logische Operatoren\n\nGib alle Temperaturen aus die 22°C überschreiten.\nWie oft wurde genau 18.79°C gemessen?\n\n\nGib alle Temperaturen aus die zwischen 19 und 21°C liegen. Tipp: Dafür benötigt es zwei logische Abfragen die mit & (sprich UND) verknüpft werden.\n\n\nGib alle Werte aus die mehr als 0.5 von der mittleren Temperatur abweichen. Tipp: Dafür benötigt es zwei logische Abfragen die mit | (sprich ODER) verknüpft werden."
   },
   {
     "objectID": "98-additional_resources.html#r-cheat-sheets",

@@ -16,10 +16,11 @@ book:
       - "R01_introduction.qmd"
       - "R02_basics.qmd"
       - "R03_vectors.qmd"
-      - "R04_dataframes.qmd"
+      - "R04_logic.qmd"
     - part: "Exercises"
       chapters:
       - "exercise/E01-variablen.Rmd"
+      - "exercise/E02-vectors-logic.Rmd"
   appendices:
   - "98-additional_resources.Rmd"
   - "references.qmd"
