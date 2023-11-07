@@ -1,4 +1,4 @@
-# R03: Vectors
+# R02: Vectors
 
 * most important data structure in R
 * building block for more complicated structures

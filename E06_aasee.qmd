@@ -1,0 +1,114 @@
+# E05: Aasee water quality monitoring
+
+To learn the basics about data types, data handling and the fundamentals of R, we will work with a dataset from the Aasee in Muenster:
+Inform yourself real quick [here](https://opendata.stadt-muenster.de/dataset/aasee-m%C3%BCnster-tagesaktuelle-sensordaten) about the origin of the dataset. You can download it here: [https://github.com/od-ms/aasee-monitoring](https://github.com/od-ms/aasee-monitoring) (Code - Download ZIP). Don't forget to unzip.
+
+Here is an excerpt of the data:
+
+
+```{r, echo = FALSE}
+df <- read.csv(file = "data/2021-06_aasee.csv")
+knitr::kable(
+  df[1:10,], caption = 'First entries of the Aasee monitoring dataset',
+  booktabs = TRUE
+)
+```
+
+
+## Case Study Level 1: Basic Comparisons
+
+> Compare the water temperature of 2022 April and 2022 May.
+
+* What does this task actually mean? What possibilities do we have?
+* Outline steps to answer the question
+
+```{r}
+
+```
+
+
+## Case Study Level 2: Aasee Critical Oxygen Concentrations
+
+In 2018, more than twenty tons of fish died in the Aasee due to low oxygen concentrations: [https://www.uni-muenster.de/news/view.php?cmdid=9768](https://www.uni-muenster.de/news/view.php?cmdid=9768).
+
+Based on this event, a reasonable question might be:
+
+> On how many days of 2022 does the Aasee reach critical oxygen concentrations (4 mg/l)?
+
+* Define the necessary steps!
+* How could a good visualization of this look like?
+
+
+The following sub-tasks will guide you through a possible solution.
+
+
+### Data cleaning
+
+
+Mit der folgenden Funktion kann der gesamte Aasee Datensatz als eine Tabelle geladen werden.
+Die Funktion heißt `read_aasee()` uns als Argument benötigt sie den Orderpfad zu den csv Dateien (also z.b. `Daten/aasee-monitoring/data`)
+
+- Wende die Funktion an, also lade alle csv Dateien auf einmal in R.
+
+```{r}
+
+# folder: string, orderpfad zu den csv Dateien
+
+read_aasee = function(folder){
+    aasee_files = list.files(folder, full.names = TRUE, pattern = ".csv$")
+    aasee = lapply(aasee_files, read.csv)
+    aasee = do.call(rbind, aasee)
+    return(aasee)
+}
+
+
+```
+
+
+- Erstelle einen Boxplot der Wassertemperatur. Was fällt auf?
+
+```{r}
+
+```
+
+
+- Überlege: Wie könnte das Problem behoben werden?
+- Behebe das Problem, indem du die Reihe mit dem Messfehler aus dem Datensatz löschst (oder nur den Rest behältst).
+
+```{r}
+
+```
+
+
+### Data Analysis
+
+
+- Die Tabelle enthält die Spalte `Datum` mit Texten (strings) in folgendem Format: "2021-05-31 23:57". Erstelle 3 neue Spalten mit den Namen `Jahr`, `Monat` und `Tag` die dann jeweils nur die entsprechende Information beinhalten.
+
+```{r}
+
+```
+
+- Erstelle eine neue Tabelle, die nur die Messwerte aus dem Jahr 2022 enthält.
+
+```{r}
+
+```
+
+
+- Die Ausgangsfrage sollte jetzt leicht zu beantworten sein: An wie vielen Tagen im Jahr 2022 war der Sauerstoffgehalt im Aasee zu niedrig (4 mg/l)?
+
+```{r}
+
+
+```
+
+
+
+Bonus: Überlege dir eine geeignete Visualisierung um den Sachverhalt Markus Lewe zu erklären.
+
+```{r}
+
+```
+
+

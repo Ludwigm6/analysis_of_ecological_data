@@ -1,4 +1,4 @@
-# D01: Ecological data 
+# What is ecological data?
 
 Take a few minutes to think about
 
@@ -6,7 +6,7 @@ Take a few minutes to think about
 * what kind of data would be interesting for you?
 
 
-```{r mofrgb, echo = FALSE, fig.cap="Marburg Open Forest, 2019-05-13 Planetscope RGB"}
+```{r d01-mofrgb, echo = FALSE, fig.cap="Marburg Open Forest, 2019-05-13 Planetscope RGB"}
 library(sf)
 library(tmap)
 library(terra)
@@ -22,7 +22,7 @@ terra::lines(mof_water, col = "skyblue", lwd = 4)
 ```
 
 
-> Ask yourself how you could describe and quantify a landscape like the one in Fig. \@ref(fig:mofrgb).
+> Ask yourself how you could describe and quantify such a landscape.
 
 
 ## Plot surveys
@@ -30,7 +30,7 @@ terra::lines(mof_water, col = "skyblue", lwd = 4)
 * plots with ID and surveyed environmental information
 * bread and butter of ecology
 
-```{r, echo = FALSE}
+```{r d01-plotsurveys, echo = FALSE}
 df = data.frame(plotID = c("P1", "P2", "P3"),
            soil_ph = c(5.5, 5.4, 6.1),
            soil_temperature = c(10, 11, 12),
@@ -45,7 +45,7 @@ knitr::kable(
 
 ## Time Series
 
-```{r, echo = FALSE, fig.cap="Visualization of time series data"}
+```{r d01-timeseries, echo = FALSE, fig.cap="Visualization of time series data"}
 df <- read.csv(file = "data/2021-06_aasee.csv")
 colnames(df) = c("date", "temperature", "ph", "o2")
 df$date <- as.Date(df$date)
@@ -63,7 +63,7 @@ ggplot(dfmean, aes(date, temperature))+
 * mainly climate, soil, remote sensing
 
 
-```{r, echo = FALSE}
+```{r d01-timeseriesdata, echo = FALSE}
 knitr::kable(
   df[c(5,10,15,20,25),], caption = 'Time series data: Aasee sensor measurements',
   booktabs = TRUE, row.names = FALSE
@@ -78,7 +78,7 @@ knitr::kable(
 * biodiversity assessment
 
 
-```{r, echo = FALSE}
+```{r d01-specieslists, echo = FALSE}
 df = data.frame(species = c("Digitalis purpurea", "Galium odoratum", "Fagus Sylvatica","..."),
                 n = c("4", "25", "20", "..."))
 knitr::kable(
@@ -96,7 +96,7 @@ knitr::kable(
 * defined by explicit location on the earth surface
 * information attached to coordinates
 
-```{r, echo = FALSE}
+```{r d01-geospatial, echo = FALSE}
 set.seed(10)
 mof_trees = st_read("data/mof/mof_trees.gpkg", quiet = TRUE) %>% 
     na.omit() %>%

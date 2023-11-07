@@ -1,4 +1,4 @@
-# R05: Tidyverse functions
+# R05: Tidyverse
 
 * collection of packages
 * `library(tidyverse)` loads multiple packages

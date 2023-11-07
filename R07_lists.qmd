@@ -5,9 +5,8 @@
 
 
 ```{r}
-
 number = 6
-l = list(5, number, "Psilocybe", c(1,5))
+l = list(5, number, "Gardenia", c(1,5))
 l
 ```
 

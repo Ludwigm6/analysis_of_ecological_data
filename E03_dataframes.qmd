@@ -1,0 +1,105 @@
+# E03: Dataframes
+
+
+## Dataframes
+
+Zum Testen von Funktionen und zur Übung stellt R verschiedene Datensätze zur Verfügung. Der wohl bekannteste Datensatz davon ist `iris` er kann folgendermaßen geladen werden:
+
+
+```{r}
+data(iris)
+head(iris)
+```
+
+* Teste folgende Funktionen mit dem Iris Datensatz: `length()`, `nrow()`, `ncol()`, `summary()`, `colnames()`.
+* Speichere die Species Spalte in einer neuen Variablen. Um was für ein R Objekt handelt es sich nun?
+* Wie viele Species sind im Datensatz enthalten und wie oft kommt jede Species vor?
+
+
+```{r}
+
+
+
+```
+
+
+
+## Dataframe subsetting
+
+* Erstelle einen neuen dataframe der nur die Beobachtungen der Species "virginica" enthält.
+* Erstelle einen neuen dataframe der nur die Beobachtungen der Species "setosa" und "versicolor" enthält.
+* Erstelle einen neuen dataframe der extakt die erste Hälfte der Beobachtungen enthält.
+* Erstelle einen neuen dataframe der nur Beobachtungen enthält mit einer Sepal.Length zwischen 5.5 und 7.
+
+
+```{r}
+
+```
+
+
+## Dataframe additions
+
+* Füge dem iris dataframe eine neue Spalte names "Genus" hinzu die in allen Reihen das Wort "iris" enthält.
+* Füge dem iris dataframe eine neue Spalte names "ID" hinzu in der jede Reihe eine fortlaufende Zahl enthält.
+* Füge dem iris dataframe zwei neue Spalten hinzu die jeweils den Flächeninhalt der Sepal und Petal beinhaltet (also length x width).
+
+
+```{r}
+
+
+```
+
+
+
+
+
+
+## Ein bisschen Statistik
+
+* Was ist die durchschnittliche Sepal.Length von "virginica"?
+* Zeichne ein Histogramm der Sepal.Width.
+* Berechne die Varianz und Standardabweichung der Sepal.Width.
+* Zeichne einen Scatterplot mit der Sepal.Length auf der x-Achse und der Petal.Length auf der y-Achse.
+
+
+```{r}
+
+
+
+```
+
+
+
+
+***
+
+**Tipp 1:** Data.frames können als 2-Dimensionale Vektoren aufgefasst werden. Subsetting von data.frames benötigen deshalb 2 Werte, einen für die Reihe, einen für die Spalte. Das kann natürlich mit [Logischen Operatoren](https://ludwigm6.github.io/analysis_of_ecological_data/R04_logic.html) verbunden werden.
+
+
+```{r}
+# row 1, column 2
+iris[1,2]
+
+# the first row, empty means "everything"
+iris[1,]
+
+# the first 3 rows, column 3 and 4
+iris[seq(3), c(3,4)]
+```
+
+
+**Tipp 2:** Einzele Spalten können mit `$` angewählt werden. So können auch neue Spalten angelegt werden in dem nach dem `$` ein name vergeben wird, der noch nicht im dataframe existiert.
+
+```{r}
+iris$Sepal.Length
+
+iris$Family <- "Iridaceae"
+
+```
+
+
+**Tipp 3:** Googlen!
+
+
+
+

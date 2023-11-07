@@ -1,4 +1,4 @@
-# R04: Logical Operators
+# R03: Logical Operators
 
 Logical Operators are essential to efficiently work with R. It is a good idea to spent some time with them and think about their possibilities and usage.
 

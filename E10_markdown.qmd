@@ -1,0 +1,15 @@
+# E10: Learning Log
+
+Zeige was du im Kurs gelernt hast. Analysiere und Visualisiere einen beliebigen (ökologischen) Datensatz und dokumentiere den Code und die Ergebnisse. 
+
+* Erstelle dazu ein rmd oder qmd Dokument mit R Markdown oder quarto.
+* Nutze mindestens einen Datensatz.
+* Erstelle mindestens 4 Code Blöcke.
+* Erstelle mindestens einen Plot.
+* Rendere dein Dokument als pdf oder html.
+
+
+
+
+
+

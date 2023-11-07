@@ -1,0 +1,110 @@
+# E06: Crop vs. Species
+
+Many studies in landscape ecology deal with species data. Usually, these studies follow a plot based design to compare different environments and ecosystems in terms of abundances or species diversity. To practice everything we've learned so far and to go on further we want to have a look at another real world dataset.
+The species data below was collected by Michael Meyer. To find out more about the original goal of why this data was collected you can have a look at @MeyerM2019.
+While the statistical analysis of this paper is more advanced and not suited for this beginner course, the structure of the data is very easy and also allows the practice of more simple methods.
+
+
+```{r, echo = FALSE}
+df = read.csv("data/crop_species.csv")
+knitr::kable(
+  df[1:10,], caption = 'First entries of species data by Meyer et al. 2019',
+  booktabs = TRUE
+)
+```
+
+
+
+The column names and crop types appear very cryptic at first sight. Here are some explanations:
+
+* GP = Grain Pea
+* SB = Sugar Beet
+* SM = Silage Maize
+* WR = Winter oilseed Rape
+* WW = Winter Wheat
+
+* Ara = Araneae
+* Cara = Carabidae
+* IsoDip = Isopoda and Diplopoda
+* IsoMyr = Isopoda and Myriapoda
+
+* Ind = Number of individual animals
+* Spec = Number of species
+
+
+## TASK: Crops vs. Species
+
+
+```{r}
+library(dplyr)
+bd = read.csv("data/crop_species.csv")
+```
+
+
+* How many different crop types where analysed in the study?
+
+```{r}
+
+
+```
+
+
+* How many plots are there for each crop type?
+
+```{r}
+
+```
+
+
+* Which plot had the most individual animals? (regardless of species)
+```{r}
+
+
+```
+
+* Which plot had the most species?
+
+```{r}
+
+
+```
+
+
+
+* What is the average number of Carabidaes on all the plots containing winter wheat?
+
+```{r}
+
+
+```
+
+
+* What is the minimum number of individuals and species per crop type?
+
+```{r}
+
+
+```
+
+
+* Visualize the number of Carabidaes per crop type.
+
+```{r}
+
+
+```
+
+* Plot the number of Araneae species in relation to the number of individual Araneae.
+
+```{r}
+
+
+```
+
+
+* If there are more individual Araneae on a plot, are there also more Araneae species?
+
+```{r}
+
+
+```

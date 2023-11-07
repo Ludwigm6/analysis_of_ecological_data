@@ -1,0 +1,118 @@
+---
+code-fold: false
+eval: TRUE
+---
+
+# E04a: More Dataframes
+
+
+Im Learnweb finden sich die Dateien `muenster_districts.csv` und `muenster_trees.csv`. Sie beinhalten Informationen zu den Stadtbezirken und Bäumen in Münster.
+
+- Lade beide Dateien in R.
+
+```{r}
+
+
+```
+
+
+- Verschaffe dir einen Überblick über die beiden data.frames mit den Funktionen `head()`, `str()`.
+
+```{r}
+
+
+```
+
+
+- Um Informationen über einzelne Spalten zu erhalten sind die Funktionen `table()` und `unique()` sehr nützlich. Teste die Funktionen mit der `district_group` Spalte.
+
+
+```{r}
+
+
+```
+
+
+## Münsters Bezirke
+
+- Welcher Bezirk Münsters ist am größten?
+
+```{r}
+
+
+```
+
+- Wie groß ist die Bezirksgruppe "Altstadt"?
+
+```{r}
+
+
+```
+
+
+- Zu welcher Bezirksgruppe gehört der Bezirk "Schloss"?
+
+```{r}
+
+
+```
+
+- Aus welchen Bezirken besteht die Bezirksgruppe "Münster-West"?
+
+```{r}
+
+
+```
+
+
+
+## Münsters Bäume
+
+- Wie viele Baumarten gibt es in Münster?
+
+
+```{r}
+
+
+```
+
+- Wie viele Buchen (species: Fagus) gibt es in Münster?
+
+```{r}
+
+
+```
+
+
+- In welchem Bezirk stehen die meisten Bäume?
+
+```{r}
+
+
+```
+
+
+- In welchem Bezirk stehen die meisten Magnolien (species: Magnolia)?
+
+```{r}
+
+
+```
+
+
+## Und noch was zum Knobeln:
+
+- Erstelle eine Karte aller Bäume in den Bezirksgruppen "Altstadt" und "Innenstadtring".
+
+
+```{r}
+
+
+
+```
+
+
+
+
+
+

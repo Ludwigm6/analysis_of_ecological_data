@@ -1,0 +1,67 @@
+# Bonus Exercise: Biodiversity
+
+Bearbeite die folgenden Fragen mit der Datei `muenster_trees.csv`.
+
+Für die Aufgaben nutze das `vegan` Paket. R Pakete kommen oft mit sogenannten Vignetten - Anleitungen und Erklärungen zu Funktionen.
+Nutze die Vignette [diversity-vegan](https://cran.r-project.org/web/packages/vegan/vignettes/diversity-vegan.pdf) um die folgenden Aufgaben zu meistern. Weitere Erklärungen und Grafiken auf [https://www.rpubs.com/roalle/mres_2019](https://www.rpubs.com/roalle/mres_2019).
+
+
+Hinweis: Für die meisten Funktionen in `vegan` wird eine sogenannte community matrix benötigt. Jede Reihe ist ein Bezirk, jede Spalte eine Art. In den Zellen dann entsprechend die Abundanzen. Siehe `data(BCI)` für eine Formatvorlage.
+
+
+```{r, eval = FALSE}
+trees = read.csv("data/muenster_trees.csv")
+
+library(vegan)
+library(tidyverse)
+
+# Kontingenztabelle
+cont = table(trees$district, trees$species)
+cont_df = as.data.frame.array(cont)
+```
+
+
+
+* Welcher Bezirk hat die diverseste Baumflora? Berechne dazu für alle Bezirke die Alpha Diversität in Form von:
+    * Species Richness 
+    * Shannon Index.
+    * Pielou’s Evenness.
+
+
+```{r}
+
+
+```
+
+
+
+* Berechne die Beta Diversität der Bäume Münsters. (Sørensen index of dissimilarity)
+
+```{r}
+
+
+```
+
+
+
+* Berechne die Gamma Diversität der Bäume Münsters.
+
+```{r}
+
+
+```
+
+
+
+* In welchen Bezirken Münsters stehen endemische Baumarten? (`vegan` nicht nötig)
+
+Was ist ein Endemit/ eine endemische Art?
+Endemiten sind Arten, die lediglich in einem eng umgrenzten Gebiet oder in einer bestimmten Region vorkommen. [Quelle](https://www.stmuv.bayern.de/service/faq/anzeige_x.php?id=399)
+
+
+```{r}
+
+
+```
+
+

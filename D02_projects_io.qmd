@@ -1,0 +1,79 @@
+# R Projects and Data I/O
+
+Once you deal with external files (e.g. loading a .csv), saving outputs or reports, you have to deal with directory and file structure.
+This is often harder than the actual R code itself. To keep everything easy and consistent within R (at least for this course), I recommend using Rstudio Projects with a standardized directory setup.
+
+
+## R studio Projects
+
+Here is an example from a blog entry at [r-bloggers.com](https://www.r-bloggers.com/2020/01/rstudio-projects-and-working-directories-a-beginners-guide/)
+
+![A good starting point for project setup](https://i1.wp.com/raw.githubusercontent.com/martinctc/blog/master/images/RPROJECT_2000dpi.png?w=578&ssl=1)
+
+Inside a project, you can then use relative paths to files.
+
+
+
+```{r, eval = FALSE}
+
+# Example of absolute path
+
+## Linux
+"/home/marvin/projects/rcourse/session02/data/file.csv"
+
+## Windows
+"C:\Users\Marvin\Dokumente\rcourse\session02\data\file.csv"
+
+# If the R project is set up in the "session02" directory we can use relative paths:
+
+# relative path to project root
+data = read.csv("data/file.csv")
+
+
+
+```
+
+
+
+## CSV Files
+
+Dataframes can be loaded from and saved to `.csv` files.
+
+* Comma Separated Values
+* Caution: In Germany "," is used as the decimal point. You often find ";" as the delimiter in csvs.
+* Caution: If you open csv files in Excel, things can get messy
+
+
+```
+Datum,Wassertemperatur,pH-Wert,Sauerstoffgehalt
+2021-05-31 23:57,17.98,8.05,10.53
+2021-06-01 00:09,17.66,8.04,9.64
+2021-06-01 00:19,18.03,8.12,11.30
+2021-06-01 00:27,18.08,8.14,11.32
+2021-06-01 00:39,18.06,8.12,11.06
+2021-06-01 00:49,18.01,8.10,10.91
+```
+
+
+* use the `read.csv` function
+* make sure the `dec` and `sep` parameters of the function are properly set
+* when in doubt look at the help page `?read.csv`
+
+
+
+
+## Additional thoughts
+
+* always keep raw data
+* **backups!**
+* filepaths:
+    * no spaces
+    * no dots
+    * no weird characters
+* [How to name files](https://speakerdeck.com/jennybc/how-to-name-files)
+* Windows (sometimes) uses backslash `\`, R wants forward slash `/`
+* you can use the `dir.create` function to create a new empty directory
+
+
+
+

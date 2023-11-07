@@ -1,0 +1,52 @@
+# E07: Species vs. Area
+
+
+Nutze die Dateien `muenster_districts.csv` und `muenster_trees.csv` aus dem Learnweb für die folgenden Aufgaben.
+
+
+* Nutze `dplyr::group_by` und `dplyr::summarise` um die Anzahl der Bäume pro Bezirk zu berechnen.
+* Mit einem `join` Befehl (z.B. `dplyr::left_join`) oder `merge` können mehrere Tabellen zusammengefügt werden. Erstelle damit eine Tabelle die mindestens folgende Informationen enthält: Bezirksname, Bezirksgröße, Anzahl der Bäume im Bezirk.
+
+```{r}
+
+```
+
+* Erstelle einen Scatterplot aus Bezirksgröße und Anzahl der Bäume im Bezirk.
+* Erstelle ein lineares Model um den Zusammenhang zwischen Bezirksgröße und Anzahl der Bäume im Bezirk zu berechnen.
+* Erstelle ein Histogramm der Residuen des Models.
+
+
+```{r}
+
+
+```
+
+* Logarithmiere Bezirksgröße und Anzahl der Bäume im Bezirk (`log10()`). Erstelle dann den Scatterplot erneut mit den logarithmierten Werten.
+
+```{r}
+
+```
+
+
+* Erstelle ein lineares Model um den Zusammenhang zwischen logarithmierten Bezirksgröße und Anzahl der Bäume im Bezirk zu berechnen.
+* Sind die Residuen des Models normalverteilt?
+
+
+```{r}
+
+```
+
+
+* Bonus: Wie viele Bäume stehen Erwartungsgemäß in einem Bezirk der 10000000 qm groß ist?
+
+
+```{r}
+
+
+```
+
+
+
+
+
+

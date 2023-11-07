@@ -1,0 +1,50 @@
+# R04: Dataframes
+
+
+> From a data science perspective, the most important class of objects is the data frame - @Chambers2020
+
+
+* Dataframes combine multiple vector in a structured format
+* Intuitive - most people have seen a spreadsheet before
+* Each column is regarded as a vector
+* Each vector can have a different data type
+
+
+```{r, echo = FALSE, fig.cap = "data.frames are a named list of vectors"}
+knitr::include_graphics("assets/r_dataframe.svg")
+```
+
+
+* Create one with `data.frame`
+* The functions need the column name followed by the vector of values
+
+
+```{r}
+df = data.frame(plotID = seq(3),
+                soil_ph = c(5.5, 5.4, 6.1),
+                soil_temperature = c(10, 11, 12),
+                forest_type = c("coniferous", "coniferous", "deciduous"))
+
+df
+```
+
+
+
+
+
+
+```{r}
+data = read.csv(file = "data/2021-06_aasee.csv", dec = ".", sep = ",")
+
+
+# show the first few rows of the df
+head(data)
+
+# show the last few rows of the df
+tail(data)
+
+# get a short summary of the structure
+str(data)
+```
+
+

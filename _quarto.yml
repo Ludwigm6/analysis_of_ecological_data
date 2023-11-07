@@ -8,19 +8,39 @@ book:
   author: "Marvin Ludwig"
   chapters:
     - "index.Rmd"
-    - part: "Data"
+    - part: "Basics"
       chapters:
       - "D01_data_examples.Rmd"
-    - part: "R"
-      chapters:
       - "R01_introduction.qmd"
       - "R02_basics.qmd"
       - "R03_vectors.qmd"
       - "R04_logic.qmd"
-    - part: "Exercises"
+      - "E01_variablen.qmd"
+      - "E02_vectors_logic.qmd"
+    - part: "Dataframes"
       chapters:
-      - "exercise/E01-variablen.Rmd"
-      - "exercise/E02-vectors-logic.Rmd"
+      - "D02_projects_io.qmd"
+      - "R05_dataframes.qmd"
+      - "R05_tidyverse.qmd"
+      - "E03_dataframes.qmd"
+      - "E04_more_dataframes.qmd"
+      - "E05_tidyverse.qmd"
+    - part: "Advanced "
+      chapters: 
+      - "R06_strings.qmd"
+      - "R07_lists.qmd"
+      - "E06_aasee.qmd"
+      - "R08_formula.qmd"
+      - "R09_linearmodels.qmd"
+      - "E08_feldfruechte_arthropoden.qmd"
+      - "E07_lm.qmd"
+      - "E09_biodiversity.qmd"
+    - part: "Graphics"
+      chapters:
+      - "R10_ggplot.qmd"
+      - "R11_markdown.qmd"
+      - "E09_ggplot.qmd"
+      - "E10_markdown.qmd"
   appendices:
   - "98-additional_resources.Rmd"
   - "references.qmd"
@@ -30,8 +50,10 @@ bibliography: "../../literature/zotero/references.bib"
 number-depth: 0
 format:
   html:
-    theme: cosmo
+    theme: materia
     number-sections: false
+    grid:
+      sidebar-width: 350px
 execute: 
   warning: false
   message: false

@@ -1,7 +1,7 @@
 # R10: ggplot2
 
 
-> Es gibt nur eine Breitbandleitung ins Hirn und das sind die Augen. [David Krisel](https://www.youtube.com/watch?v=QqVFEP3_BtY)
+> Es gibt nur eine Breitbandleitung ins Hirn und das sind die Augen. [David Kriesel](https://www.youtube.com/watch?v=QqVFEP3_BtY)
 
 
 In the course, we used three datasets. All of them have different features and difficulties that we need to keep in mind when we want to visualize parts of the data to point out some interesting facts!
@@ -24,8 +24,8 @@ Scientific figures and advanced visualization in R are usually done with the `gg
 
 ```{r}
 library(ggplot2)
-library(viridis)
-# data overview
+library(viridis) # for better color scales
+
 species = read.csv("data/crop_species.csv")
 ```
 

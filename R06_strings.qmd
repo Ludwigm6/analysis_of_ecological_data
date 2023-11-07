@@ -1,4 +1,4 @@
-# R06: String handling
+# R06: Strings
 
 Modifying strings (i.e. text) is a very common task but can be a bit tricky if you start out.
 Here are some functions to try out:

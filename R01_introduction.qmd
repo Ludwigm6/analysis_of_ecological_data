@@ -1,4 +1,4 @@
-# R01: Welcome to R
+# What is R?
 
 * R is a script Language
 * Version 1.0 from 2000 (concept dates back to 1974)
