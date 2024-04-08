@@ -354,7 +354,7 @@
     "href": "D01_data_examples_slides.html#are-bats-in-forests-bigger",
     "title": "Analysis of Ecological Data",
     "section": "Are bats in forests bigger?",
-    "text": "Are bats in forests bigger?\n\nwhat kind of data you know or have used before?\nwhat data would be needed to find out why there are more bats in the east?"
+    "text": "Are bats in forests bigger?\nWhat do we need to answer this question?"
   },
   {
     "objectID": "D01_data_examples_slides.html#plot-surverys",
@@ -368,7 +368,7 @@
     "href": "D01_data_examples_slides.html#plot-surveys",
     "title": "Analysis of Ecological Data",
     "section": "Plot surveys",
-    "text": "Plot surveys\n\n\n\n\n\n\n\nField survery data on a plot level\n\n\nplotID\nland_cover\nbats\n\n\n\n\nF1\nforest\n7\n\n\nF2\nforest\n2\n\n\nA1\narable\n4"
+    "text": "Plot surveys\n\n\n\n\n\n\n\nField survery data on a plot\n\n\nplotID\nland_cover\nbats\n\n\n\n\nF1\nforest\n7\n\n\nF2\nforest\n2\n\n\nA1\narable\n4"
   },
   {
     "objectID": "D01_data_examples_slides.html#time-series",
@@ -382,7 +382,7 @@
     "href": "D01_data_examples_slides.html#time-series-1",
     "title": "Analysis of Ecological Data",
     "section": "Time Series",
-    "text": "Time Series\n\n\n\n\n\nquasi continuous measurements\nmeasurement interval\nmainly climate, soil, remote sensing\n\n\n\n\n\n\n\ntime\ntemperature\n\n\n\n\n12:00\n18.3\n\n\n12:15\n18.5\n\n\n12:30\n18.6"
+    "text": "Time Series\n\n\n\n\n\nquasi continuous measurements\nmeasurement interval\nclimate, soil, remote sensing\n\n\n\n\n\n\n\ntime\ntemperature\n\n\n\n\n12:00\n18.3\n\n\n12:15\n18.5\n\n\n12:30\n18.6"
   },
   {
     "objectID": "D01_data_examples_slides.html#time-series-2",
@@ -396,7 +396,7 @@
     "href": "D01_data_examples_slides.html#species-lists",
     "title": "Analysis of Ecological Data",
     "section": "Species Lists",
-    "text": "Species Lists\n\n\n\nmostly plot based\nmonitoring of conservation sites\nbiodiversity assessment\n\n\n\n\n\nVegetation of F1\n\n\nspecies\nn\n\n\n\n\nDigitalis purpurea\n4\n\n\nGalium odoratum\n25\n\n\nFagus Sylvatica\n20\n\n\n…\n…"
+    "text": "Species Lists\n\n\n\n\n\n\n\nVegetation of F1\n\n\nspecies\nn\n\n\n\n\nDigitalis purpurea\n4\n\n\nGalium odoratum\n25\n\n\nFagus Sylvatica\n20"
   },
   {
     "objectID": "D01_data_examples_slides.html#geospatial-data",
@@ -417,7 +417,7 @@
     "href": "D01_data_examples_slides.html#want-more",
     "title": "Analysis of Ecological Data",
     "section": "Want more?",
-    "text": "Want more?\n\nTurner (2014) : Sensing Biodiversity\nAnimal movement data\nLab / Field experiments\nIndividuum based information (e.g. traits)\nCamera Traps\nSocio-Economic data (also useful for landscape ecology)\n…"
+    "text": "Want more?\n{width = 50%}\n\nAnimal movement data\nLab / Field experiments\nIndividuum based information (e.g. traits)\nCamera Traps\nSocio-Economic data (also useful for landscape ecology)\n…"
   },
   {
     "objectID": "D01_data_examples_slides.html#section-1",
