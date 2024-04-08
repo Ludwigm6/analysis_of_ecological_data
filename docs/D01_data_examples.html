@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.553">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Analysis of Ecological Data - What is ecological data?</title>
+<title>Analysis of Ecological Data</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,26 +20,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -49,8 +30,6 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./R01_introduction.html" rel="next">
-<link href="./index.html" rel="prev">
 <link href=".//home/marvin/images/pictogramms/ecoR.svg" rel="icon" type="image/svg+xml">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -67,7 +46,13 @@ div.csl-indent {
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -76,44 +61,28 @@ div.csl-indent {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
 }</script>
-<script src="site_libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
-<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<link href="site_libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
-<script src="site_libs/leaflet-1.3.1/leaflet.js"></script>
-<link href="site_libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
-<script src="site_libs/proj4-2.6.2/proj4.min.js"></script>
-<script src="site_libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
-<link href="site_libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
-<script src="site_libs/leaflet-binding-2.2.0/leaflet.js"></script>
-<script src="site_libs/leaflet-providers-2.0.0/leaflet-providers_2.0.0.js"></script>
-<script src="site_libs/leaflet-providers-plugin-2.2.0/leaflet-providers-plugin.js"></script>
-<link href="site_libs/HomeButton-0.0.1/home-button.css" rel="stylesheet">
-<script src="site_libs/HomeButton-0.0.1/home-button.js"></script>
-<script src="site_libs/HomeButton-0.0.1/easy-button-src.min.js"></script>
-<script src="site_libs/clipboard-0.0.1/setClipboardText.js"></script>
-<link href="site_libs/mapviewCSS-0.0.1/mapview-popup.css" rel="stylesheet">
-<link href="site_libs/mapviewCSS-0.0.1/mapview.css" rel="stylesheet">
 
 
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar docked fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./D01_data_examples.html">Basics</a></li><li class="breadcrumb-item"><a href="./D01_data_examples.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">What is ecological data?</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./D01_data_examples.html">Basics</a></li><li class="breadcrumb-item"><a href="./D01_data_examples.html">What is ecological data?</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -123,7 +92,7 @@ div.csl-indent {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Analysis of Ecological Data</a> 
@@ -136,11 +105,6 @@ div.csl-indent {
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Analysis of Ecological Data with R</span></a>
-  </div>
-</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
@@ -152,37 +116,44 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./D01_data_examples.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">What is ecological data?</span></a>
+  <a href="./D01_data_examples.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">What is ecological data?</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R01_introduction.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">What is R?</span></a>
+  <a href="./R01_introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">What is R?</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R02_basics.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R01: Variables, Values, Functions</span></a>
+  <a href="./R02_basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Variables, Values, Functions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R03_vectors.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R02: Vectors</span></a>
+  <a href="./R03_vectors.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vectors</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R04_logic.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R03: Logical Operators</span></a>
+  <a href="./R04_logic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Logical Operators</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./E01_variablen.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E01: Variablen, Funktionen</span></a>
+  <a href="./E01_variablen.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ex01: First Steps</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./E02_vectors_logic.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E02: Vektoren, Logik</span></a>
+  <a href="./E02_vectors_logic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ex02: Second Steps</span></a>
   </div>
 </li>
       </ul>
@@ -198,32 +169,50 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./D02_projects_io.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R Projects and Data I/O</span></a>
+  <a href="./D02_projects_io.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R Projects and Data I/O</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R05_dataframes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R04: Dataframes</span></a>
+  <a href="./R05_dataframes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to data.frame</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R05_tidyverse.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R05: Tidyverse</span></a>
+  <a href="./R05_tidyverse.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to tidyverse</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./E03_dataframes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E03: Dataframes</span></a>
+  <a href="./R06_long_wide.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Long and Wide format</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./E04_more_dataframes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E04a: More Dataframes</span></a>
+  <a href="./E03_dataframes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ex03: iris</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./E05_tidyverse.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E04b: Tidyverse</span></a>
+  <a href="./E04_more_dataframes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ex04a: Trees, Districts and base R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./E05_tidyverse.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ex04b: Trees, Districts and the tidyverse</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./E06_german_climate.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ex06: Climate Change</span></a>
   </div>
 </li>
       </ul>
@@ -231,7 +220,7 @@ div.csl-indent {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
- <span class="menu-text">Advanced</span></a>
+ <span class="menu-text">Utility &amp; Applications</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -239,42 +228,44 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R06_strings.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R06: Strings</span></a>
+  <a href="./R06_strings.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Strings</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R07_lists.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R07: Lists</span></a>
+  <a href="./R07_lists.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lists</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./E06_aasee.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E05: Aasee water quality monitoring</span></a>
+  <a href="./R08_formula.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Formula notation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R08_formula.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R08: Formula notation</span></a>
+  <a href="./R09_linearmodels.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Linear Models</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R09_linearmodels.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R09: Linear Models</span></a>
+  <a href="./E08_feldfruechte_arthropoden.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ex06: Crop vs.&nbsp;Species</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./E08_feldfruechte_arthropoden.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E06: Crop vs.&nbsp;Species</span></a>
+  <a href="./E07_lm.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ex07: Species vs.&nbsp;Area</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./E07_lm.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E07: Species vs.&nbsp;Area</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./E09_biodiversity.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Bonus Exercise: Biodiversity</span></a>
+  <a href="./E09_biodiversity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bonus Exercise: Biodiversity</span></a>
   </div>
 </li>
       </ul>
@@ -290,22 +281,26 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R10_ggplot.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R10: ggplot2</span></a>
+  <a href="./R10_ggplot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ggplot2</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R11_markdown.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R11: markdown</span></a>
+  <a href="./R11_markdown.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">markdown and quarto</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./E09_ggplot.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E09: Visuals</span></a>
+  <a href="./E09_ggplot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ex09: ggplot Gallery</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./E10_markdown.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E10: Learning Log</span></a>
+  <a href="./E10_markdown.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ex10: Learning Log</span></a>
   </div>
 </li>
       </ul>
@@ -313,7 +308,7 @@ div.csl-indent {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
- <span class="menu-text">Appendices</span></a>
+ <span class="menu-text">Appendix</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -336,310 +331,23 @@ div.csl-indent {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#plot-surveys" id="toc-plot-surveys" class="nav-link active" data-scroll-target="#plot-surveys">Plot surveys</a></li>
-  <li><a href="#time-series" id="toc-time-series" class="nav-link" data-scroll-target="#time-series">Time Series</a></li>
-  <li><a href="#species-lists" id="toc-species-lists" class="nav-link" data-scroll-target="#species-lists">Species Lists</a></li>
-  <li><a href="#geospatial-data" id="toc-geospatial-data" class="nav-link" data-scroll-target="#geospatial-data">Geospatial Data</a></li>
-  <li><a href="#want-more" id="toc-want-more" class="nav-link" data-scroll-target="#want-more">Want more?</a></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title"><span class="chapter-title">What is ecological data?</span></h1>
-</div>
 
 
 
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-</header>
-
-<p>Take a few minutes to think about</p>
-<ul>
-<li>what kind of data you know or have used before?</li>
-<li>what kind of data would be interesting for you?</li>
-</ul>
+<section id="what-is-ecological-data" class="level1">
+<h1>What is ecological data?</h1>
 <div class="cell">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="D01_data_examples_files/figure-html/d01-mofrgb-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Marburg Open Forest, 2019-05-13 Planetscope RGB</figcaption>
-</figure>
+<iframe src="D01_data_examples_slides.html" width="672" height="400px" data-external="1">
+</iframe>
 </div>
-</div>
-</div>
-<blockquote class="blockquote">
-<p>Ask yourself how you could describe and quantify such a landscape.</p>
-</blockquote>
-<section id="plot-surveys" class="level2">
-<h2 class="anchored" data-anchor-id="plot-surveys">Plot surveys</h2>
-<ul>
-<li>plots with ID and surveyed environmental information</li>
-<li>bread and butter of ecology</li>
-</ul>
-<div class="cell">
-<div class="cell-output-display">
-<table class="table table-sm table-striped small">
-<caption>Field survery data on a plot level</caption>
-<thead>
-<tr class="header">
-<th style="text-align: left;">plotID</th>
-<th style="text-align: right;">soil_ph</th>
-<th style="text-align: right;">soil_temperature</th>
-<th style="text-align: left;">forest_type</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">P1</td>
-<td style="text-align: right;">5.5</td>
-<td style="text-align: right;">10</td>
-<td style="text-align: left;">coniferous</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">P2</td>
-<td style="text-align: right;">5.4</td>
-<td style="text-align: right;">11</td>
-<td style="text-align: left;">coniferous</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">P3</td>
-<td style="text-align: right;">6.1</td>
-<td style="text-align: right;">12</td>
-<td style="text-align: left;">deciduous</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</section>
-<section id="time-series" class="level2">
-<h2 class="anchored" data-anchor-id="time-series">Time Series</h2>
-<div class="cell">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="D01_data_examples_files/figure-html/d01-timeseries-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Visualization of time series data</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<ul>
-<li>continuous measurements</li>
-<li>measurement interval flexible</li>
-<li>mainly climate, soil, remote sensing</li>
-</ul>
-<div class="cell">
-<div class="cell-output-display">
-<table class="table table-sm table-striped small">
-<caption>Time series data: Aasee sensor measurements</caption>
-<thead>
-<tr class="header">
-<th style="text-align: left;">date</th>
-<th style="text-align: right;">temperature</th>
-<th style="text-align: right;">ph</th>
-<th style="text-align: right;">o2</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">2021-06-01</td>
-<td style="text-align: right;">18.06</td>
-<td style="text-align: right;">8.12</td>
-<td style="text-align: right;">11.06</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">2021-06-01</td>
-<td style="text-align: right;">18.08</td>
-<td style="text-align: right;">8.10</td>
-<td style="text-align: right;">10.62</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">2021-06-01</td>
-<td style="text-align: right;">17.93</td>
-<td style="text-align: right;">8.15</td>
-<td style="text-align: right;">11.20</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">2021-06-01</td>
-<td style="text-align: right;">17.78</td>
-<td style="text-align: right;">8.19</td>
-<td style="text-align: right;">11.92</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">2021-06-01</td>
-<td style="text-align: right;">17.79</td>
-<td style="text-align: right;">8.13</td>
-<td style="text-align: right;">11.39</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</section>
-<section id="species-lists" class="level2">
-<h2 class="anchored" data-anchor-id="species-lists">Species Lists</h2>
-<ul>
-<li>mostly plot based</li>
-<li>monitoring of conservation sites</li>
-<li>biodiversity assessment</li>
-</ul>
-<div class="cell">
-<div class="cell-output-display">
-<table class="table table-sm table-striped small">
-<caption>Species Lists: Occurence on a plot</caption>
-<thead>
-<tr class="header">
-<th style="text-align: left;">species</th>
-<th style="text-align: left;">n</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Digitalis purpurea</td>
-<td style="text-align: left;">4</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Galium odoratum</td>
-<td style="text-align: left;">25</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Fagus Sylvatica</td>
-<td style="text-align: left;">20</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">…</td>
-<td style="text-align: left;">…</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<blockquote class="blockquote">
-<p>What are the differences between the plot based survey example and the species list example?</p>
-</blockquote>
-</section>
-<section id="geospatial-data" class="level2">
-<h2 class="anchored" data-anchor-id="geospatial-data">Geospatial Data</h2>
-<ul>
-<li>defined by explicit location on the earth surface</li>
-<li>information attached to coordinates</li>
-</ul>
-<div class="cell">
-<div class="cell-output-display">
-<table class="table table-sm table-striped small">
-<caption>Geospatial Data: Tree locations</caption>
-<colgroup>
-<col style="width: 11%">
-<col style="width: 13%">
-<col style="width: 13%">
-<col style="width: 18%">
-<col style="width: 7%">
-<col style="width: 36%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">tree_id</th>
-<th style="text-align: right;">easting</th>
-<th style="text-align: right;">northing</th>
-<th style="text-align: left;">species_code</th>
-<th style="text-align: right;">dbh</th>
-<th style="text-align: left;">geom</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">r00430</td>
-<td style="text-align: right;">477422.4</td>
-<td style="text-align: right;">5631970</td>
-<td style="text-align: left;">BUR</td>
-<td style="text-align: right;">0.12</td>
-<td style="text-align: left;">POINT (477422.4 5631970)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">r01106</td>
-<td style="text-align: right;">477411.7</td>
-<td style="text-align: right;">5631946</td>
-<td style="text-align: left;">BUR</td>
-<td style="text-align: right;">0.68</td>
-<td style="text-align: left;">POINT (477411.7 5631946)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">b00818</td>
-<td style="text-align: right;">477796.0</td>
-<td style="text-align: right;">5632316</td>
-<td style="text-align: left;">BUR</td>
-<td style="text-align: right;">0.23</td>
-<td style="text-align: left;">POINT (477796 5632316)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">r00170</td>
-<td style="text-align: right;">477816.9</td>
-<td style="text-align: right;">5632201</td>
-<td style="text-align: left;">EIT</td>
-<td style="text-align: right;">0.59</td>
-<td style="text-align: left;">POINT (477816.9 5632201)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">r00334</td>
-<td style="text-align: right;">477737.2</td>
-<td style="text-align: right;">5632250</td>
-<td style="text-align: left;">ERS</td>
-<td style="text-align: right;">0.68</td>
-<td style="text-align: left;">POINT (477737.2 5632250)</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="cell-output-display">
-
-<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-b647b5a6fed2570e8ea9" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-b647b5a6fed2570e8ea9">{"x":{"options":{"minZoom":1,"maxZoom":52,"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}},"preferCanvas":false,"bounceAtZoomLimits":false,"maxBounds":[[[-90,-370]],[[90,370]]]},"calls":[{"method":"addProviderTiles","args":["CartoDB.Positron","CartoDB.Positron","CartoDB.Positron",{"errorTileUrl":"","noWrap":false,"detectRetina":false,"pane":"tilePane"}]},{"method":"addProviderTiles","args":["CartoDB.DarkMatter","CartoDB.DarkMatter","CartoDB.DarkMatter",{"errorTileUrl":"","noWrap":false,"detectRetina":false,"pane":"tilePane"}]},{"method":"addProviderTiles","args":["OpenStreetMap","OpenStreetMap","OpenStreetMap",{"errorTileUrl":"","noWrap":false,"detectRetina":false,"pane":"tilePane"}]},{"method":"addProviderTiles","args":["Esri.WorldImagery","Esri.WorldImagery","Esri.WorldImagery",{"errorTileUrl":"","noWrap":false,"detectRetina":false,"pane":"tilePane"}]},{"method":"addProviderTiles","args":["OpenTopoMap","OpenTopoMap","OpenTopoMap",{"errorTileUrl":"","noWrap":false,"detectRetina":false,"pane":"tilePane"}]},{"method":"createMapPane","args":["point",440]},{"method":"addCircleMarkers","args":[[50.8389945179439,50.83877883309633,50.84212307947368,50.84108901251861,50.84152766535129],[8.679351143329168,8.679199878155661,8.684635376990848,8.684939469211237,8.683803549690042],6,null,"mof_trees - dbh",{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}},"pane":"point","stroke":true,"color":"#333333","weight":1,"opacity":[0.9,0.9,0.9,0.9,0.9],"fill":true,"fillColor":["#4B0055","#FDE333","#4B0055","#FDE333","#FDE333"],"fillOpacity":[0.6,0.6,0.6,0.6,0.6]},null,null,["<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>1&emsp;<\/td><\/tr><tr><td>1<\/td><th>tree_id&emsp;<\/th><td>r00430&emsp;<\/td><\/tr><tr><td>2<\/td><th>easting&emsp;<\/th><td>477422.4&emsp;<\/td><\/tr><tr><td>3<\/td><th>northing&emsp;<\/th><td>5631970&emsp;<\/td><\/tr><tr><td>4<\/td><th>species_code&emsp;<\/th><td>BUR&emsp;<\/td><\/tr><tr><td>5<\/td><th>dbh&emsp;<\/th><td>0.12&emsp;<\/td><\/tr><tr><td>6<\/td><th>geom&emsp;<\/th><td>sfc_POINT&emsp;<\/td><\/tr><\/table><\/div>","<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>2&emsp;<\/td><\/tr><tr><td>1<\/td><th>tree_id&emsp;<\/th><td>r01106&emsp;<\/td><\/tr><tr><td>2<\/td><th>easting&emsp;<\/th><td>477411.7&emsp;<\/td><\/tr><tr><td>3<\/td><th>northing&emsp;<\/th><td>5631946&emsp;<\/td><\/tr><tr><td>4<\/td><th>species_code&emsp;<\/th><td>BUR&emsp;<\/td><\/tr><tr><td>5<\/td><th>dbh&emsp;<\/th><td>0.68&emsp;<\/td><\/tr><tr><td>6<\/td><th>geom&emsp;<\/th><td>sfc_POINT&emsp;<\/td><\/tr><\/table><\/div>","<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>3&emsp;<\/td><\/tr><tr><td>1<\/td><th>tree_id&emsp;<\/th><td>b00818&emsp;<\/td><\/tr><tr><td>2<\/td><th>easting&emsp;<\/th><td>477796.0&emsp;<\/td><\/tr><tr><td>3<\/td><th>northing&emsp;<\/th><td>5632316&emsp;<\/td><\/tr><tr><td>4<\/td><th>species_code&emsp;<\/th><td>BUR&emsp;<\/td><\/tr><tr><td>5<\/td><th>dbh&emsp;<\/th><td>0.23&emsp;<\/td><\/tr><tr><td>6<\/td><th>geom&emsp;<\/th><td>sfc_POINT&emsp;<\/td><\/tr><\/table><\/div>","<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>4&emsp;<\/td><\/tr><tr><td>1<\/td><th>tree_id&emsp;<\/th><td>r00170&emsp;<\/td><\/tr><tr><td>2<\/td><th>easting&emsp;<\/th><td>477816.9&emsp;<\/td><\/tr><tr><td>3<\/td><th>northing&emsp;<\/th><td>5632201&emsp;<\/td><\/tr><tr><td>4<\/td><th>species_code&emsp;<\/th><td>EIT&emsp;<\/td><\/tr><tr><td>5<\/td><th>dbh&emsp;<\/th><td>0.59&emsp;<\/td><\/tr><tr><td>6<\/td><th>geom&emsp;<\/th><td>sfc_POINT&emsp;<\/td><\/tr><\/table><\/div>","<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>5&emsp;<\/td><\/tr><tr><td>1<\/td><th>tree_id&emsp;<\/th><td>r00334&emsp;<\/td><\/tr><tr><td>2<\/td><th>easting&emsp;<\/th><td>477737.2&emsp;<\/td><\/tr><tr><td>3<\/td><th>northing&emsp;<\/th><td>5632250&emsp;<\/td><\/tr><tr><td>4<\/td><th>species_code&emsp;<\/th><td>ERS&emsp;<\/td><\/tr><tr><td>5<\/td><th>dbh&emsp;<\/th><td>0.68&emsp;<\/td><\/tr><tr><td>6<\/td><th>geom&emsp;<\/th><td>sfc_POINT&emsp;<\/td><\/tr><\/table><\/div>"],{"maxWidth":800,"minWidth":50,"autoPan":true,"keepInView":false,"closeButton":true,"closeOnClick":true,"className":""},["0.12","0.68","0.23","0.59","0.68"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addScaleBar","args":[{"maxWidth":100,"metric":true,"imperial":true,"updateWhenIdle":true,"position":"bottomleft"}]},{"method":"addHomeButton","args":[8.679199878155661,50.83877883309633,8.684939469211237,50.84212307947368,true,"mof_trees - dbh","Zoom to mof_trees - dbh","<strong> mof_trees - dbh <\/strong>","bottomright"]},{"method":"addLayersControl","args":[["CartoDB.Positron","CartoDB.DarkMatter","OpenStreetMap","Esri.WorldImagery","OpenTopoMap"],"mof_trees - dbh",{"collapsed":true,"autoZIndex":true,"position":"topleft"}]},{"method":"addLegend","args":[{"colors":["#4B0055 , #453A6F 14.2857142857143%, #116D92 32.1428571428572%, #1C968A 50%, #29BF7B 67.8571428571429%, #B5D45A 85.7142857142857%, #FDE333 "],"labels":["0.2","0.3","0.4","0.5","0.6"],"na_color":null,"na_label":"NA","opacity":1,"position":"topright","type":"numeric","title":"mof_trees - dbh","extra":{"p_1":0.1428571428571429,"p_n":0.8571428571428572},"layerId":null,"className":"info legend","group":"mof_trees - dbh"}]}],"limits":{"lat":[50.83877883309633,50.84212307947368],"lng":[8.679199878155661,8.684939469211237]},"fitBounds":[50.83877883309633,8.679199878155661,50.84212307947368,8.684939469211237,[]]},"evals":[],"jsHooks":{"render":[{"code":"function(el, x, data) {\n  return (\n      function(el, x, data) {\n      // get the leaflet map\n      var map = this; //HTMLWidgets.find('#' + el.id);\n      // we need a new div element because we have to handle\n      // the mouseover output separately\n      // debugger;\n      function addElement () {\n      // generate new div Element\n      var newDiv = $(document.createElement('div'));\n      // append at end of leaflet htmlwidget container\n      $(el).append(newDiv);\n      //provide ID and style\n      newDiv.addClass('lnlt');\n      newDiv.css({\n      'position': 'relative',\n      'bottomleft':  '0px',\n      'background-color': 'rgba(255, 255, 255, 0.7)',\n      'box-shadow': '0 0 2px #bbb',\n      'background-clip': 'padding-box',\n      'margin': '0',\n      'padding-left': '5px',\n      'color': '#333',\n      'font': '9px/1.5 \"Helvetica Neue\", Arial, Helvetica, sans-serif',\n      'z-index': '700',\n      });\n      return newDiv;\n      }\n\n\n      // check for already existing lnlt class to not duplicate\n      var lnlt = $(el).find('.lnlt');\n\n      if(!lnlt.length) {\n      lnlt = addElement();\n\n      // grab the special div we generated in the beginning\n      // and put the mousmove output there\n\n      map.on('mousemove', function (e) {\n      if (e.originalEvent.ctrlKey) {\n      if (document.querySelector('.lnlt') === null) lnlt = addElement();\n      lnlt.text(\n                           ' lon: ' + (e.latlng.lng).toFixed(5) +\n                           ' | lat: ' + (e.latlng.lat).toFixed(5) +\n                           ' | zoom: ' + map.getZoom() +\n                           ' | x: ' + L.CRS.EPSG3857.project(e.latlng).x.toFixed(0) +\n                           ' | y: ' + L.CRS.EPSG3857.project(e.latlng).y.toFixed(0) +\n                           ' | epsg: 3857 ' +\n                           ' | proj4: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +no_defs ');\n      } else {\n      if (document.querySelector('.lnlt') === null) lnlt = addElement();\n      lnlt.text(\n                      ' lon: ' + (e.latlng.lng).toFixed(5) +\n                      ' | lat: ' + (e.latlng.lat).toFixed(5) +\n                      ' | zoom: ' + map.getZoom() + ' ');\n      }\n      });\n\n      // remove the lnlt div when mouse leaves map\n      map.on('mouseout', function (e) {\n      var strip = document.querySelector('.lnlt');\n      if( strip !==null) strip.remove();\n      });\n\n      };\n\n      //$(el).keypress(67, function(e) {\n      map.on('preclick', function(e) {\n      if (e.originalEvent.ctrlKey) {\n      if (document.querySelector('.lnlt') === null) lnlt = addElement();\n      lnlt.text(\n                      ' lon: ' + (e.latlng.lng).toFixed(5) +\n                      ' | lat: ' + (e.latlng.lat).toFixed(5) +\n                      ' | zoom: ' + map.getZoom() + ' ');\n      var txt = document.querySelector('.lnlt').textContent;\n      console.log(txt);\n      //txt.innerText.focus();\n      //txt.select();\n      setClipboardText('\"' + txt + '\"');\n      }\n      });\n\n      }\n      ).call(this.getMap(), el, x, data);\n}","data":null},{"code":"function(el, x, data) {\n  return (function(el,x,data){\n           var map = this;\n\n           map.on('keypress', function(e) {\n               console.log(e.originalEvent.code);\n               var key = e.originalEvent.code;\n               if (key === 'KeyE') {\n                   var bb = this.getBounds();\n                   var txt = JSON.stringify(bb);\n                   console.log(txt);\n\n                   setClipboardText('\\'' + txt + '\\'');\n               }\n           })\n        }).call(this.getMap(), el, x, data);\n}","data":null}]}}</script>
-</div>
-</div>
-</section>
-<section id="want-more" class="level2">
-<h2 class="anchored" data-anchor-id="want-more">Want more?</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://www.science.org/cms/10.1126/science.1256014/asset/1e767e07-e785-4851-9ea0-6604203398a1/assets/graphic/346_301_f1.jpeg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption"><span class="citation" data-cites="Turner2014">Turner (<a href="references.html#ref-Turner2014" role="doc-biblioref">2014</a>)</span> : Sensing Biodiversity</figcaption>
-</figure>
-</div>
-<ul>
-<li>Animal movement data</li>
-<li>Lab / Field experiments</li>
-<li>Individuum based information (e.g.&nbsp;traits)</li>
-<li>Camera Traps</li>
-<li>Socio-Economic data (also useful for landscape ecology)</li>
-<li>…</li>
-</ul>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
-<div id="ref-Turner2014" class="csl-entry" role="listitem">
-Turner, W. 2014. <span>“Sensing Biodiversity.”</span> <em>Science</em> 346 (6207): 301–2. <a href="https://doi.org/10.1126/science.1256014">https://doi.org/10.1126/science.1256014</a>.
-</div>
-</div>
 </section>
 
 </main> <!-- /main -->
@@ -722,10 +430,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -735,8 +460,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -748,7 +482,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -792,6 +649,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -817,6 +675,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -876,19 +760,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Analysis of Ecological Data with R</span></span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="./R01_introduction.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-title">What is R?</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
+
 
 
 

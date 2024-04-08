@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.553">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Analysis of Ecological Data - E05: Aasee water quality monitoring</title>
+<title>Analysis of Ecological Data</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -64,8 +64,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./R08_formula.html" rel="next">
-<link href="./R07_lists.html" rel="prev">
 <link href=".//home/marvin/images/pictogramms/ecoR.svg" rel="icon" type="image/svg+xml">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -82,7 +80,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -91,6 +95,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -100,18 +105,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar docked fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./R06_strings.html">Advanced</a></li><li class="breadcrumb-item"><a href="./E06_aasee.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">E05: Aasee water quality monitoring</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./D02_projects_io.html">Dataframes</a></li><li class="breadcrumb-item"><a href="./E06_german_climate.html">Ex06: Climate Change</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -121,7 +126,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Analysis of Ecological Data</a> 
@@ -134,11 +139,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Analysis of Ecological Data with R</span></a>
-  </div>
-</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
@@ -150,37 +150,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./D01_data_examples.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">What is ecological data?</span></a>
+  <a href="./D01_data_examples.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">What is ecological data?</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R01_introduction.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">What is R?</span></a>
+  <a href="./R01_introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">What is R?</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R02_basics.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R01: Variables, Values, Functions</span></a>
+  <a href="./R02_basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Variables, Values, Functions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R03_vectors.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R02: Vectors</span></a>
+  <a href="./R03_vectors.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vectors</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R04_logic.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R03: Logical Operators</span></a>
+  <a href="./R04_logic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Logical Operators</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./E01_variablen.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E01: Variablen, Funktionen</span></a>
+  <a href="./E01_variablen.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ex01: First Steps</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./E02_vectors_logic.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E02: Vektoren, Logik</span></a>
+  <a href="./E02_vectors_logic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ex02: Second Steps</span></a>
   </div>
 </li>
       </ul>
@@ -196,32 +203,50 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./D02_projects_io.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R Projects and Data I/O</span></a>
+  <a href="./D02_projects_io.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R Projects and Data I/O</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R05_dataframes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R04: Dataframes</span></a>
+  <a href="./R05_dataframes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to data.frame</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R05_tidyverse.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R05: Tidyverse</span></a>
+  <a href="./R05_tidyverse.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to tidyverse</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./E03_dataframes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E03: Dataframes</span></a>
+  <a href="./R06_long_wide.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Long and Wide format</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./E04_more_dataframes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E04a: More Dataframes</span></a>
+  <a href="./E03_dataframes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ex03: iris</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./E05_tidyverse.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E04b: Tidyverse</span></a>
+  <a href="./E04_more_dataframes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ex04a: Trees, Districts and base R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./E05_tidyverse.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ex04b: Trees, Districts and the tidyverse</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./E06_german_climate.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Ex06: Climate Change</span></a>
   </div>
 </li>
       </ul>
@@ -229,7 +254,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
- <span class="menu-text">Advanced</span></a>
+ <span class="menu-text">Utility &amp; Applications</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -237,42 +262,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R06_strings.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R06: Strings</span></a>
+  <a href="./R06_strings.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Strings</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R07_lists.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R07: Lists</span></a>
+  <a href="./R07_lists.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lists</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./E06_aasee.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">E05: Aasee water quality monitoring</span></a>
+  <a href="./R08_formula.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Formula notation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R08_formula.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R08: Formula notation</span></a>
+  <a href="./R09_linearmodels.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Linear Models</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R09_linearmodels.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R09: Linear Models</span></a>
+  <a href="./E08_feldfruechte_arthropoden.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ex06: Crop vs.&nbsp;Species</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./E08_feldfruechte_arthropoden.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E06: Crop vs.&nbsp;Species</span></a>
+  <a href="./E07_lm.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ex07: Species vs.&nbsp;Area</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./E07_lm.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E07: Species vs.&nbsp;Area</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./E09_biodiversity.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Bonus Exercise: Biodiversity</span></a>
+  <a href="./E09_biodiversity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bonus Exercise: Biodiversity</span></a>
   </div>
 </li>
       </ul>
@@ -288,22 +315,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R10_ggplot.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R10: ggplot2</span></a>
+  <a href="./R10_ggplot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ggplot2</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R11_markdown.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R11: markdown</span></a>
+  <a href="./R11_markdown.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">markdown and quarto</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./E09_ggplot.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E09: Visuals</span></a>
+  <a href="./E09_ggplot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ex09: ggplot Gallery</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./E10_markdown.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E10: Learning Log</span></a>
+  <a href="./E10_markdown.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ex10: Learning Log</span></a>
   </div>
 </li>
       </ul>
@@ -311,7 +342,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
- <span class="menu-text">Appendices</span></a>
+ <span class="menu-text">Appendix</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -334,182 +365,81 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#case-study-level-1-basic-comparisons" id="toc-case-study-level-1-basic-comparisons" class="nav-link active" data-scroll-target="#case-study-level-1-basic-comparisons">Case Study Level 1: Basic Comparisons</a></li>
-  <li><a href="#case-study-level-2-aasee-critical-oxygen-concentrations" id="toc-case-study-level-2-aasee-critical-oxygen-concentrations" class="nav-link" data-scroll-target="#case-study-level-2-aasee-critical-oxygen-concentrations">Case Study Level 2: Aasee Critical Oxygen Concentrations</a>
-  <ul class="collapse">
-  <li><a href="#data-cleaning" id="toc-data-cleaning" class="nav-link" data-scroll-target="#data-cleaning">Data cleaning</a></li>
-  <li><a href="#data-analysis" id="toc-data-analysis" class="nav-link" data-scroll-target="#data-analysis">Data Analysis</a></li>
-  </ul></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title"><span class="chapter-title">E05: Aasee water quality monitoring</span></h1>
+
+
+
+<section id="ex06-climate-change" class="level2">
+<h2 class="anchored" data-anchor-id="ex06-climate-change">Ex06: Climate Change</h2>
+<p>The German Weather Service <a href="https://www.dwd.de/DE/Home/home_node.html">DWD</a> provides a variety of openly available climate, weather and phenology data in their <a href="https://opendata.dwd.de/climate_environment/CDC/">data portal</a>.</p>
+<ul>
+<li>Download the <a href="https://opendata.dwd.de/climate_environment/CDC/regional_averages_DE/seasonal/air_temperature_mean/regional_averages_tm_summer.txt">regional average summer temperature of germany</a>.</li>
+<li>The file is a simple <code>.txt</code> file. Open it with a text editor and have a conscious look at the structure and content.</li>
+<li>Load the file into R with the <code>read.table</code> or <code>read.csv</code> function.</li>
+<li>By default, <code>read.table</code> will throw an error at you and the output of <code>read.csv</code> is weird. Why?</li>
+<li>Look at the help page of <code>read.csv</code> / <code>read.table</code> and fix the issues.</li>
+</ul>
+<p>Hint: the correct data.frame should look something like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dwd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Jahr summer Brandenburg.Berlin Brandenburg Baden.Wuerttemberg Bayern Hessen
+1 1881 summer              17.13       17.11              17.03  16.39  16.62
+2 1882 summer              16.45       16.44              14.85  14.46  15.02
+3 1883 summer              17.52       17.51              15.87  15.50  16.15
+4 1884 summer              17.00       16.98              16.08  15.35  16.01
+5 1885 summer              17.18       17.17              16.63  16.05  15.84
+6 1886 summer              17.16       17.15              16.04  15.47  15.88
+  Mecklenburg.Vorpommern Niedersachsen Niedersachsen.Hamburg.Bremen
+1                  16.12         16.24                        16.24
+2                  16.19         15.71                        15.72
+3                  16.66         16.35                        16.36
+4                  16.32         16.20                        16.21
+5                  16.06         15.78                        15.78
+6                  16.05         15.89                        15.89
+  Nordrhein.Westfalen Rheinland.Pfalz Schleswig.Holstein Saarland Sachsen
+1               16.66           16.90              15.80    17.19   16.20
+2               15.48           15.16              16.10    15.33   15.05
+3               16.37           16.23              16.31    16.42   16.49
+4               16.45           16.52              16.19    16.83   15.92
+5               16.11           16.28              15.53    16.65   16.29
+6               16.17           16.17              15.52    16.42   16.09
+  Sachsen.Anhalt Thueringen.Sachsen.Anhalt Thueringen Deutschland  X
+1          16.88                     16.46      15.95       16.53 NA
+2          16.02                     15.41      14.64       15.33 NA
+3          17.14                     16.57      15.84       16.26 NA
+4          16.57                     16.02      15.33       16.10 NA
+5          16.63                     16.10      15.43       16.18 NA
+6          16.61                     16.05      15.35       16.00 NA</code></pre>
 </div>
-
-
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-</header>
-
-<p>To learn the basics about data types, data handling and the fundamentals of R, we will work with a dataset from the Aasee in Muenster: Inform yourself real quick <a href="https://opendata.stadt-muenster.de/dataset/aasee-m%C3%BCnster-tagesaktuelle-sensordaten">here</a> about the origin of the dataset. You can download it here: <a href="https://github.com/od-ms/aasee-monitoring">https://github.com/od-ms/aasee-monitoring</a> (Code - Download ZIP). Don’t forget to unzip.</p>
-<p>Here is an excerpt of the data:</p>
+</div>
+<ul>
+<li>Which year had the warmest summer in Bayern since the beginning of the recordings?</li>
+<li>What was the average summer temperature in Nordrhein-Westfalen since the year 2000.</li>
+<li>Which German state had the coldest summer in the year 2005.</li>
+</ul>
+<p>Now we want to have a look at the temperature anomaly over the years, i.e.&nbsp;the deviation of the temperature from a long term mean. For this we want to re-create a figure like this:</p>
 <div class="cell">
 <div class="cell-output-display">
-<table class="table table-sm table-striped small">
-<caption>First entries of the Aasee monitoring dataset</caption>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Datum</th>
-<th style="text-align: right;">Wassertemperatur</th>
-<th style="text-align: right;">pH.Wert</th>
-<th style="text-align: right;">Sauerstoffgehalt</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">2021-05-31 23:57</td>
-<td style="text-align: right;">17.98</td>
-<td style="text-align: right;">8.05</td>
-<td style="text-align: right;">10.53</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">2021-06-01 00:09</td>
-<td style="text-align: right;">17.66</td>
-<td style="text-align: right;">8.04</td>
-<td style="text-align: right;">9.64</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">2021-06-01 00:19</td>
-<td style="text-align: right;">18.03</td>
-<td style="text-align: right;">8.12</td>
-<td style="text-align: right;">11.30</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">2021-06-01 00:27</td>
-<td style="text-align: right;">18.08</td>
-<td style="text-align: right;">8.14</td>
-<td style="text-align: right;">11.32</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">2021-06-01 00:39</td>
-<td style="text-align: right;">18.06</td>
-<td style="text-align: right;">8.12</td>
-<td style="text-align: right;">11.06</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">2021-06-01 00:49</td>
-<td style="text-align: right;">18.01</td>
-<td style="text-align: right;">8.10</td>
-<td style="text-align: right;">10.91</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">2021-06-01 00:59</td>
-<td style="text-align: right;">18.02</td>
-<td style="text-align: right;">8.10</td>
-<td style="text-align: right;">10.96</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">2021-06-01 01:08</td>
-<td style="text-align: right;">18.06</td>
-<td style="text-align: right;">8.10</td>
-<td style="text-align: right;">10.83</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">2021-06-01 01:19</td>
-<td style="text-align: right;">18.08</td>
-<td style="text-align: right;">8.10</td>
-<td style="text-align: right;">10.82</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">2021-06-01 01:29</td>
-<td style="text-align: right;">18.08</td>
-<td style="text-align: right;">8.10</td>
-<td style="text-align: right;">10.62</td>
-</tr>
-</tbody>
-</table>
+<div>
+<figure class="figure">
+<p><a href="https://www.dwd.de/EN/ourservices/zeitreihen/zeitreihen.html"><img src="https://www.dwd.de/DWD/klima/national/gebietsmittel/en_brdras_ttt_01_de_6190_ano.png" class="img-fluid figure-img"></a></p>
+</figure>
 </div>
 </div>
-<section id="case-study-level-1-basic-comparisons" class="level2">
-<h2 class="anchored" data-anchor-id="case-study-level-1-basic-comparisons">Case Study Level 1: Basic Comparisons</h2>
-<blockquote class="blockquote">
-<p>Compare the water temperature of 2022 April and 2022 May.</p>
-</blockquote>
-<ul>
-<li>What does this task actually mean? What possibilities do we have?</li>
-<li>Outline steps to answer the question</li>
-</ul>
-</section>
-<section id="case-study-level-2-aasee-critical-oxygen-concentrations" class="level2">
-<h2 class="anchored" data-anchor-id="case-study-level-2-aasee-critical-oxygen-concentrations">Case Study Level 2: Aasee Critical Oxygen Concentrations</h2>
-<p>In 2018, more than twenty tons of fish died in the Aasee due to low oxygen concentrations: <a href="https://www.uni-muenster.de/news/view.php?cmdid=9768">https://www.uni-muenster.de/news/view.php?cmdid=9768</a>.</p>
-<p>Based on this event, a reasonable question might be:</p>
-<blockquote class="blockquote">
-<p>On how many days of 2022 does the Aasee reach critical oxygen concentrations (4 mg/l)?</p>
-</blockquote>
-<ul>
-<li>Define the necessary steps!</li>
-<li>How could a good visualization of this look like?</li>
-</ul>
-<p>The following sub-tasks will guide you through a possible solution.</p>
-<section id="data-cleaning" class="level3">
-<h3 class="anchored" data-anchor-id="data-cleaning">Data cleaning</h3>
-<p>Mit der folgenden Funktion kann der gesamte Aasee Datensatz als eine Tabelle geladen werden. Die Funktion heißt <code>read_aasee()</code> uns als Argument benötigt sie den Orderpfad zu den csv Dateien (also z.b. <code>Daten/aasee-monitoring/data</code>)</p>
-<ul>
-<li>Wende die Funktion an, also lade alle csv Dateien auf einmal in R.</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># folder: string, orderpfad zu den csv Dateien</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>read_aasee <span class="ot">=</span> <span class="cf">function</span>(folder){</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    aasee_files <span class="ot">=</span> <span class="fu">list.files</span>(folder, <span class="at">full.names =</span> <span class="cn">TRUE</span>, <span class="at">pattern =</span> <span class="st">".csv$"</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    aasee <span class="ot">=</span> <span class="fu">lapply</span>(aasee_files, read.csv)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    aasee <span class="ot">=</span> <span class="fu">do.call</span>(rbind, aasee)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(aasee)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
-<li>Erstelle einen Boxplot der Wassertemperatur. Was fällt auf?</li>
+<li>Calculate the average summer temperature of Germany between the years 1961 and 1990.</li>
+<li>Calculate the temperature anomaly for each year in Germany, i.e.&nbsp;the deviation of the yearly temperature to the calculated long term average.</li>
+<li>Create a plot of the anomaly. Hint: set the argument <code>type = "h"</code> in the <code>plot</code> function to get bars instead of points.</li>
 </ul>
-<ul>
-<li>Überlege: Wie könnte das Problem behoben werden?</li>
-<li>Behebe das Problem, indem du die Reihe mit dem Messfehler aus dem Datensatz löschst (oder nur den Rest behältst).</li>
-</ul>
-</section>
-<section id="data-analysis" class="level3">
-<h3 class="anchored" data-anchor-id="data-analysis">Data Analysis</h3>
-<ul>
-<li>Die Tabelle enthält die Spalte <code>Datum</code> mit Texten (strings) in folgendem Format: “2021-05-31 23:57”. Erstelle 3 neue Spalten mit den Namen <code>Jahr</code>, <code>Monat</code> und <code>Tag</code> die dann jeweils nur die entsprechende Information beinhalten.</li>
-</ul>
-<ul>
-<li>Erstelle eine neue Tabelle, die nur die Messwerte aus dem Jahr 2022 enthält.</li>
-</ul>
-<ul>
-<li>Die Ausgangsfrage sollte jetzt leicht zu beantworten sein: An wie vielen Tagen im Jahr 2022 war der Sauerstoffgehalt im Aasee zu niedrig (4 mg/l)?</li>
-</ul>
-<p>Bonus: Überlege dir eine geeignete Visualisierung um den Sachverhalt Markus Lewe zu erklären.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -592,10 +522,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -605,8 +552,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -618,7 +574,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -662,6 +741,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -687,6 +767,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -746,19 +852,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="./R07_lists.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">R07: Lists</span></span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="./R08_formula.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-title">R08: Formula notation</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
+
 
 
 

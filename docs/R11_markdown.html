@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.553">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Analysis of Ecological Data - R11: markdown</title>
+<title>Analysis of Ecological Data</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,8 +64,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./E09_ggplot.html" rel="next">
-<link href="./R10_ggplot.html" rel="prev">
 <link href=".//home/marvin/images/pictogramms/ecoR.svg" rel="icon" type="image/svg+xml">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -48,7 +80,13 @@ ul.task-list li input[type="checkbox"] {
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -57,6 +95,7 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -66,18 +105,18 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar docked fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./R10_ggplot.html">Graphics</a></li><li class="breadcrumb-item"><a href="./R11_markdown.html"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">R11: markdown</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./R10_ggplot.html">Graphics</a></li><li class="breadcrumb-item"><a href="./R11_markdown.html">markdown and quarto</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -87,7 +126,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Analysis of Ecological Data</a> 
@@ -100,11 +139,6 @@ ul.task-list li input[type="checkbox"] {
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Analysis of Ecological Data with R</span></a>
-  </div>
-</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
@@ -116,37 +150,44 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./D01_data_examples.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">What is ecological data?</span></a>
+  <a href="./D01_data_examples.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">What is ecological data?</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R01_introduction.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">What is R?</span></a>
+  <a href="./R01_introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">What is R?</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R02_basics.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R01: Variables, Values, Functions</span></a>
+  <a href="./R02_basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Variables, Values, Functions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R03_vectors.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R02: Vectors</span></a>
+  <a href="./R03_vectors.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vectors</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R04_logic.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R03: Logical Operators</span></a>
+  <a href="./R04_logic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Logical Operators</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./E01_variablen.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E01: Variablen, Funktionen</span></a>
+  <a href="./E01_variablen.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ex01: First Steps</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./E02_vectors_logic.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E02: Vektoren, Logik</span></a>
+  <a href="./E02_vectors_logic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ex02: Second Steps</span></a>
   </div>
 </li>
       </ul>
@@ -162,32 +203,50 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./D02_projects_io.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R Projects and Data I/O</span></a>
+  <a href="./D02_projects_io.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R Projects and Data I/O</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R05_dataframes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R04: Dataframes</span></a>
+  <a href="./R05_dataframes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to data.frame</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R05_tidyverse.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R05: Tidyverse</span></a>
+  <a href="./R05_tidyverse.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to tidyverse</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./E03_dataframes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E03: Dataframes</span></a>
+  <a href="./R06_long_wide.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Long and Wide format</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./E04_more_dataframes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E04a: More Dataframes</span></a>
+  <a href="./E03_dataframes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ex03: iris</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./E05_tidyverse.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E04b: Tidyverse</span></a>
+  <a href="./E04_more_dataframes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ex04a: Trees, Districts and base R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./E05_tidyverse.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ex04b: Trees, Districts and the tidyverse</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./E06_german_climate.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ex06: Climate Change</span></a>
   </div>
 </li>
       </ul>
@@ -195,7 +254,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
- <span class="menu-text">Advanced</span></a>
+ <span class="menu-text">Utility &amp; Applications</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -203,42 +262,44 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R06_strings.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R06: Strings</span></a>
+  <a href="./R06_strings.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Strings</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R07_lists.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R07: Lists</span></a>
+  <a href="./R07_lists.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lists</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./E06_aasee.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E05: Aasee water quality monitoring</span></a>
+  <a href="./R08_formula.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Formula notation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R08_formula.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R08: Formula notation</span></a>
+  <a href="./R09_linearmodels.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Linear Models</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R09_linearmodels.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R09: Linear Models</span></a>
+  <a href="./E08_feldfruechte_arthropoden.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ex06: Crop vs.&nbsp;Species</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./E08_feldfruechte_arthropoden.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E06: Crop vs.&nbsp;Species</span></a>
+  <a href="./E07_lm.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ex07: Species vs.&nbsp;Area</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./E07_lm.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E07: Species vs.&nbsp;Area</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./E09_biodiversity.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Bonus Exercise: Biodiversity</span></a>
+  <a href="./E09_biodiversity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bonus Exercise: Biodiversity</span></a>
   </div>
 </li>
       </ul>
@@ -254,22 +315,26 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R10_ggplot.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R10: ggplot2</span></a>
+  <a href="./R10_ggplot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ggplot2</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R11_markdown.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">R11: markdown</span></a>
+  <a href="./R11_markdown.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">markdown and quarto</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./E09_ggplot.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E09: Visuals</span></a>
+  <a href="./E09_ggplot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ex09: ggplot Gallery</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./E10_markdown.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E10: Learning Log</span></a>
+  <a href="./E10_markdown.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ex10: Learning Log</span></a>
   </div>
 </li>
       </ul>
@@ -277,7 +342,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
- <span class="menu-text">Appendices</span></a>
+ <span class="menu-text">Appendix</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -300,54 +365,56 @@ ul.task-list li input[type="checkbox"] {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#what-is-markdown" id="toc-what-is-markdown" class="nav-link active" data-scroll-target="#what-is-markdown">What is markdown?</a></li>
-  <li><a href="#using-markdown-in-rstudio" id="toc-using-markdown-in-rstudio" class="nav-link" data-scroll-target="#using-markdown-in-rstudio">Using markdown in Rstudio</a></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title"><span class="chapter-title">R11: markdown</span></h1>
-</div>
 
 
 
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-</header>
-
-<p>R studio is much more than a code editor for R. It supports a variety of programming languages, documentation formats and data types. One if its most used and most powerful features is the creation of markdown documents with integrated R code. In fact, this entire course page is written in markdown within Rstudio and then <a href="https://quarto.org/docs/websites/">rendered as a website</a>. Depending on the Rstudio Version you are using the markdown system is a little bit different:</p>
-<ol type="1">
-<li>The latest version of Rstudio used <code>quarto</code>. “An open-source scientific and technical publishing system” <a href="https://quarto.org/">https://quarto.org/</a></li>
-<li>Older versions use <code>rmarkdown</code>. <a href="https://rmarkdown.rstudio.com/">https://rmarkdown.rstudio.com/</a></li>
-</ol>
+<section id="markdown-and-quarto" class="level1">
+<h1>markdown and quarto</h1>
+<p>Rstudio is much more than a code editor for R. It supports a variety of programming languages, documentation formats and data types. One of Rstudio’s most used and most powerful features is the creation of markdown documents with integrated R code. In fact, this entire course page is written in markdown within Rstudio and then <a href="https://quarto.org/docs/websites/">rendered as a website</a>. As with Rstudio Version v2022.07, the markdown system of choice is <code>quarto</code> - “An open-source scientific and technical publishing system” <a href="https://quarto.org/" class="uri">https://quarto.org/</a>. Older versions use <code>rmarkdown</code>. <a href="https://rmarkdown.rstudio.com/" class="uri">https://rmarkdown.rstudio.com/</a>.</p>
 <p>Depending on the system you are using, the typical file ending for the markdown files are either <code>.qmd</code> or <code>.rmd</code>.</p>
 <section id="what-is-markdown" class="level2">
 <h2 class="anchored" data-anchor-id="what-is-markdown">What is markdown?</h2>
-<p>Markdown is a “language” to format text. There are dedicated symbols for different purposes. For example, text between two * appear <strong>bold</strong>.</p>
-<p>You can find a basic introduction here: <a href="https://quarto.org/docs/authoring/markdown-basics.html">https://quarto.org/docs/authoring/markdown-basics.html</a></p>
+<p>Markdown is a “language” to format text. There are dedicated symbols for different purposes:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Markdown Syntax</th>
+<th>Output</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>*italics*, **bold**, ***bold italics***</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></td>
+<td><em>italics</em>, <strong>bold</strong>, <strong><em>bold italics</em></strong></td>
+</tr>
+<tr class="even">
+<td><div class="sourceCode" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Header 1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></td>
+<td><h1 id="header-1" class="heading-output">Header 1</h1></td>
+</tr>
+<tr class="odd">
+<td><div class="sourceCode" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## Header 2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></td>
+<td><h2 id="header-2" class="heading-output anchored">Header 2</h2></td>
+</tr>
+<tr class="even">
+<td><div class="sourceCode" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Quarto</span><span class="co">](https://quarto.org)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></td>
+<td><a href="https://quarto.org">Quarto</a></td>
+</tr>
+</tbody>
+</table>
+<p>These examples are taken from <a href="https://quarto.org/docs/authoring/markdown-basics.html" class="uri">https://quarto.org/docs/authoring/markdown-basics.html</a> where you can find more more markdown syntax.</p>
 </section>
 <section id="using-markdown-in-rstudio" class="level2">
 <h2 class="anchored" data-anchor-id="using-markdown-in-rstudio">Using markdown in Rstudio</h2>
-<p>Simply go to <code>File - New File - Quarto Document...</code> or <code>File - New File - R Markdown...</code> to create a markdown file with some example code and work your way from there. Or if you want to jump right into markdown projects go to <code>New Project... - New Directory</code> and choose an appropriate Template (e.g.&nbsp;Quarto Homepage)</p>
+<p>Simply go to <code>File - New File - Quarto Document...</code> or <code>File - New File - R Markdown...</code> to create a markdown file with some example code and work your way from there. Or if you want to jump right into markdown projects go to <code>New Project... - New Directory</code> and choose an appropriate Template (e.g.&nbsp;Quarto Homepage).</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -430,10 +497,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -443,8 +527,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -456,7 +549,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -500,6 +716,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -525,6 +742,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -584,19 +827,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="./R10_ggplot.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">R10: ggplot2</span></span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="./E09_ggplot.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-title">E09: Visuals</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
+
 
 
 
