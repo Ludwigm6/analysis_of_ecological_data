@@ -1,6 +1,6 @@
 # Ex01: First Steps
 
-[DOWNLOAD](assignments/Ex01_first.R)
+[DOWNLOAD](analysis_of_ecological_data/assignments/Ex01_first.R)
 
 
 
