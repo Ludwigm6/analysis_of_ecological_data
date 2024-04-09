@@ -1,10 +1,7 @@
----
-code-fold: true
-code-summary: "Solution"
-eval: false
----
+# Ex01: First Steps
 
-# E01: Variablen, Funktionen
+[DOWNLOAD](assignments/Ex01_first.R)
+
 
 
 ## Variablen
@@ -16,6 +13,7 @@ eval: false
 - Berechne den Mittelwert deiner erstellten Variablen.
 
 ```{r}
+
 
 ```
 
@@ -40,7 +38,16 @@ numbers
 
 
 - Teste die Funktionen `length()`, `sum()`, `sqrt()`, und `min()` mit dem Vektor.
-- Was macht die `sqrt()` Funktion?
+- Kommentiere was die `sqrt()` Funktion macht.
+
+```{r}
+
+```
+
+
+
+
+
 - Was ist der Unterschied zwischen der `max()` Funktion und der `which.max()` Funktion?
 
 
