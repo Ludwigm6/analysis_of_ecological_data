@@ -1,0 +1,88 @@
+---
+format: revealjs
+output-dir: slides/
+---
+
+
+##
+
+![r-project.org](https://www.r-project.org/Rlogo.png)
+
+
+## R
+
+* R is a script language
+* Version 1.0 from 2000 (concept dates back to 1974)
+* Original Aim: Statistical Analysis
+* Designed for data analysis and "interactive" use
+* Download: [r-project.org](https://www.r-project.org/)
+
+
+
+## R
+
+
+
+![What you see when you start R](assets/R_window.png)
+
+
+## R Code
+
+```{r, eval = FALSE, echo = TRUE}
+data <- c(12, 45, 65, 1, 3, 87)
+mean(data)
+
+data <- data + 5
+sort(data)
+```
+
+
+## R Code
+
+```{r, eval = TRUE, echo = TRUE}
+data <- c(12, 45, 65, 1, 3, 87)
+mean(data)
+
+data <- data + 5
+sort(data)
+```
+
+
+
+## Why R?
+
+* Easy to get into (although it might not feel that way at first)
+* Designed for solving scientific problems
+* Big community - Getting help is really easy.
+* Open-source, active development
+* Used in science, industry, healthcare, NGOs, ... 
+
+## Why R?
+
+
+> The R package structure has been the key addition to the software - @Chambers2020
+
+
+* Expandable with `packages` provided by other R users
+    * Specialized analysis for specific fields
+    * Machine Learning
+    * Medicine
+    * Writing Books
+    * ...
+
+## Why R?
+
+![@Wickham2023 : R for datascience](https://r4ds.hadley.nz/diagrams/data-science/base.png)
+
+
+## Rstudio
+
+![](https://www.produnis.de/R/images/rstudiologo.png)
+
+* Integrated Development Environment (IDE)
+* Makes R "convenient" to use
+* Text Editor + R Console
+* Project Environments, Package Management, Help Pages, Plot Viewer, File Browser ...
+
+
+## References

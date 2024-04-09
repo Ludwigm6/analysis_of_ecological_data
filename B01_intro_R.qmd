@@ -1,0 +1,42 @@
+# What is R?
+
+```{r}
+#| echo: false
+knitr::include_url("B01_intro_R_slides.html")
+```
+
+
+
+## TASK: R and Rstudio
+
+1. Open Rstudio and get familiar with the interface.
+2. Create a new, empty R script.
+3. What is the difference between the script editor and the console?
+4. Copy the code below into the R script and run it line by line. Try to understand what each line does.
+
+
+```{r, eval = FALSE, echo = TRUE}
+a <- 5
+b <- 10
+
+a + b
+
+p <- a-b
+
+v <- c(3,12,6,9,23)
+v
+
+v / b
+
+mean(v)
+# sum(v)
+```
+
+
+## Questions:
+
+* Why does `p <- a-b` not produce an output?
+* What is `c()`?
+* Why does `# sum(v)` not work?
+
+
