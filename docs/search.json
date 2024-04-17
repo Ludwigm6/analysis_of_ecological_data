@@ -42,6 +42,74 @@
     "text": "References"
   },
   {
+    "objectID": "assignments/Ex03_iris.html",
+    "href": "assignments/Ex03_iris.html",
+    "title": "Ex03: iris",
+    "section": "",
+    "text": "Zum Testen von Funktionen und zur Übung stellt R verschiedene Datensätze zur Verfügung. Der wohl bekannteste Datensatz davon ist iris er kann folgendermaßen geladen werden:\n\ndata(iris)\nhead(iris)\n\n  Sepal.Length Sepal.Width Petal.Length Petal.Width Species\n1          5.1         3.5          1.4         0.2  setosa\n2          4.9         3.0          1.4         0.2  setosa\n3          4.7         3.2          1.3         0.2  setosa\n4          4.6         3.1          1.5         0.2  setosa\n5          5.0         3.6          1.4         0.2  setosa\n6          5.4         3.9          1.7         0.4  setosa\n\n\n\nTeste folgende Funktionen mit dem Iris Datensatz: length(), nrow(), ncol(), summary(), colnames().\nSpeichere die Species Spalte in einer neuen Variablen. Um was für ein R Objekt handelt es sich nun?\nWie viele Species sind im Datensatz enthalten und wie oft kommt jede Species vor?\n\n\n\n\n\nErstelle einen neuen data.frame der nur die Beobachtungen der Species “virginica” enthält.\nErstelle einen neuen data.frame der nur die Beobachtungen der Species “setosa” und “versicolor” enthält.\nErstelle einen neuen data.frame der extakt die erste Hälfte der Beobachtungen enthält.\nErstelle einen neuen data.frame der nur Beobachtungen enthält mit einer Sepal.Length zwischen 5.5 und 7.\n\n\n\n\n\nFüge dem iris data.frame eine neue Spalte names “Genus” hinzu die in allen Reihen das Wort “iris” enthält.\nFüge dem iris data.frame eine neue Spalte names “ID” hinzu in der jede Reihe eine fortlaufende Zahl enthält.\nFüge dem iris data.frame zwei neue Spalten hinzu die jeweils den Flächeninhalt der Sepal und Petal beinhaltet (also length x width).\n\n\n\n\n\nWas ist die durchschnittliche Sepal.Length von “virginica”?\nZeichne ein Histogramm der Sepal.Width.\nBerechne die Varianz und Standardabweichung der Sepal.Width.\nErstelle einen Scatterplot mit der Sepal.Length auf der x-Achse und der Petal.Length auf der y-Achse."
+  },
+  {
+    "objectID": "assignments/Ex03_iris.html#dataframes",
+    "href": "assignments/Ex03_iris.html#dataframes",
+    "title": "Ex03: iris",
+    "section": "",
+    "text": "Zum Testen von Funktionen und zur Übung stellt R verschiedene Datensätze zur Verfügung. Der wohl bekannteste Datensatz davon ist iris er kann folgendermaßen geladen werden:\n\ndata(iris)\nhead(iris)\n\n  Sepal.Length Sepal.Width Petal.Length Petal.Width Species\n1          5.1         3.5          1.4         0.2  setosa\n2          4.9         3.0          1.4         0.2  setosa\n3          4.7         3.2          1.3         0.2  setosa\n4          4.6         3.1          1.5         0.2  setosa\n5          5.0         3.6          1.4         0.2  setosa\n6          5.4         3.9          1.7         0.4  setosa\n\n\n\nTeste folgende Funktionen mit dem Iris Datensatz: length(), nrow(), ncol(), summary(), colnames().\nSpeichere die Species Spalte in einer neuen Variablen. Um was für ein R Objekt handelt es sich nun?\nWie viele Species sind im Datensatz enthalten und wie oft kommt jede Species vor?"
+  },
+  {
+    "objectID": "assignments/Ex03_iris.html#dataframe-subsetting",
+    "href": "assignments/Ex03_iris.html#dataframe-subsetting",
+    "title": "Ex03: iris",
+    "section": "",
+    "text": "Erstelle einen neuen data.frame der nur die Beobachtungen der Species “virginica” enthält.\nErstelle einen neuen data.frame der nur die Beobachtungen der Species “setosa” und “versicolor” enthält.\nErstelle einen neuen data.frame der extakt die erste Hälfte der Beobachtungen enthält.\nErstelle einen neuen data.frame der nur Beobachtungen enthält mit einer Sepal.Length zwischen 5.5 und 7."
+  },
+  {
+    "objectID": "assignments/Ex03_iris.html#dataframe-additions",
+    "href": "assignments/Ex03_iris.html#dataframe-additions",
+    "title": "Ex03: iris",
+    "section": "",
+    "text": "Füge dem iris data.frame eine neue Spalte names “Genus” hinzu die in allen Reihen das Wort “iris” enthält.\nFüge dem iris data.frame eine neue Spalte names “ID” hinzu in der jede Reihe eine fortlaufende Zahl enthält.\nFüge dem iris data.frame zwei neue Spalten hinzu die jeweils den Flächeninhalt der Sepal und Petal beinhaltet (also length x width)."
+  },
+  {
+    "objectID": "assignments/Ex03_iris.html#ein-bisschen-statistik",
+    "href": "assignments/Ex03_iris.html#ein-bisschen-statistik",
+    "title": "Ex03: iris",
+    "section": "",
+    "text": "Was ist die durchschnittliche Sepal.Length von “virginica”?\nZeichne ein Histogramm der Sepal.Width.\nBerechne die Varianz und Standardabweichung der Sepal.Width.\nErstelle einen Scatterplot mit der Sepal.Length auf der x-Achse und der Petal.Length auf der y-Achse."
+  },
+  {
+    "objectID": "assignments/Ex01_first.html",
+    "href": "assignments/Ex01_first.html",
+    "title": "Ex01: First Steps",
+    "section": "",
+    "text": "Erstelle eine Variable die die Zahl 1650 enthält.\nErstelle eine Variable die die Zahl 140 enthält.\nErstelle eine Variable die die Zahl 5 enthält.\nBerechne das Produkt deiner erstellten Variablen.\nBerechne den Mittelwert deiner erstellten Variablen.\n\n\nErstelle eine Variable die deinen Vornamen enthält.\nErstelle eine Variable die deinen Nachnamen enthält.\nDie paste Funktion kann Texte zusammenfügen. Probiere die Funktion mit den Variablen die deine Namen enthalten aus.\n\n\n\n\n\nVektoren in R sind Folgen von Werten, enthalten also z.B. mehrere Zahlen. Sie werden mit der Funktion c() erstellt:\n\n\nnumbers = c(4, 3, 8, 90, 16)\nnumbers\n\n[1]  4  3  8 90 16\n\n\n\nTeste die Funktionen length(), sum(), sqrt(), und min() mit dem Vektor.\nKommentiere was die sqrt() Funktion macht.\n\n\nWas ist der Unterschied zwischen der max() Funktion und der which.max() Funktion?\n\n\nDie seq() Funktion erzeugt einen Vektor der Zahlenfolgenfolgen enthält. Sieh dir die Hilfeseite von seq() an und erstelle einen Vektor der alle 100er Zahlen von 0 bis 10000 enthält (also 0, 100, 200, … ,9900, 10000).",
+    "crumbs": [
+      "Basics",
+      "Ex01: First Steps"
+    ]
+  },
+  {
+    "objectID": "assignments/Ex01_first.html#variablen",
+    "href": "assignments/Ex01_first.html#variablen",
+    "title": "Ex01: First Steps",
+    "section": "",
+    "text": "Erstelle eine Variable die die Zahl 1650 enthält.\nErstelle eine Variable die die Zahl 140 enthält.\nErstelle eine Variable die die Zahl 5 enthält.\nBerechne das Produkt deiner erstellten Variablen.\nBerechne den Mittelwert deiner erstellten Variablen.\n\n\nErstelle eine Variable die deinen Vornamen enthält.\nErstelle eine Variable die deinen Nachnamen enthält.\nDie paste Funktion kann Texte zusammenfügen. Probiere die Funktion mit den Variablen die deine Namen enthalten aus.",
+    "crumbs": [
+      "Basics",
+      "Ex01: First Steps"
+    ]
+  },
+  {
+    "objectID": "assignments/Ex01_first.html#funktionen",
+    "href": "assignments/Ex01_first.html#funktionen",
+    "title": "Ex01: First Steps",
+    "section": "",
+    "text": "Vektoren in R sind Folgen von Werten, enthalten also z.B. mehrere Zahlen. Sie werden mit der Funktion c() erstellt:\n\n\nnumbers = c(4, 3, 8, 90, 16)\nnumbers\n\n[1]  4  3  8 90 16\n\n\n\nTeste die Funktionen length(), sum(), sqrt(), und min() mit dem Vektor.\nKommentiere was die sqrt() Funktion macht.\n\n\nWas ist der Unterschied zwischen der max() Funktion und der which.max() Funktion?\n\n\nDie seq() Funktion erzeugt einen Vektor der Zahlenfolgenfolgen enthält. Sieh dir die Hilfeseite von seq() an und erstelle einen Vektor der alle 100er Zahlen von 0 bis 10000 enthält (also 0, 100, 200, … ,9900, 10000).",
+    "crumbs": [
+      "Basics",
+      "Ex01: First Steps"
+    ]
+  },
+  {
     "objectID": "R10_ggplot.html",
     "href": "R10_ggplot.html",
     "title": "ggplot2",
@@ -242,181 +310,6 @@
     "text": "Erstelle eine Karte aller Bäume in den Bezirksgruppen “Altstadt” und “Innenstadtring”."
   },
   {
-    "objectID": "E02_vectors_logic.html",
-    "href": "E02_vectors_logic.html",
-    "title": "Ex02: Second Steps",
-    "section": "",
-    "text": "Der folgende Vektor enthält Temperaturdaten vom Aasee in Münster vom 2021-06-02.\n\ntemperature &lt;- c(18.81,18.73,18.92,18.87,18.76,18.79,18.87,18.84,18.89,18.89,\n                 18.93,18.95,18.92,18.97,19.00,18.99,19.00,19.00,18.99,19.00,\n                 18.98,18.97,18.97,18.97,18.97,18.98,18.96,18.94,18.94,18.91,\n                 18.90,18.89,18.87,18.85,18.85,18.84,18.83,18.81,18.81,18.81,\n                 18.81,18.81,18.80,18.79,18.80,18.79,18.79,18.78,18.77,18.78,\n                 18.79,18.79,18.79,18.79,18.79,18.79,18.80,18.79,18.81,18.80,\n                 18.81,18.81,18.82,18.84,18.87,18.89,18.89,18.91,18.96,19.02,\n                 19.11,19.15,18.95,18.92,18.84,18.85,18.96,18.92,18.95,18.95,\n                 18.91,19.00,19.02,19.06,19.05,19.47,19.32,19.05,19.66,19.57,\n                 19.23,19.42,19.36,19.66,19.79,19.81,19.99,21.10,21.94,22.52,\n                 22.81,22.43,22.16,21.55,21.80,21.02,21.85,21.45,22.48,22.73,\n                 22.61,22.83,20.85,20.68,19.76,19.81,19.74,19.58,19.35,19.40,\n                 19.75,19.76,19.85,19.82,19.86,20.08,20.06,19.85,20.04,19.90,\n                 19.96,20.12,19.94,20.20,20.17,20.31,20.17,20.37,20.36,20.13)\n\n\nWie viele Einträge hat der Vektor?\nTeste die Funktionen range, summary und boxplot mit dem Vektor.\nKonvertiere die Werte von Celsius nach Fahrenheit.\nSowohl sort als auch order sortieren den Vektor. Was ist der Unterschied zwischen beiden Funktionen?\n\n\n\n\nGib den 5ten Wert des Vektors aus.\nGib nur den letzten Wert des Vektors aus.\nSpeichere die ersten 20 Temperaturen in einer neuen Variablen.\nSpeichere die 30 niedrigsten Temperaturen in einer neuen Variablen.\n\n\n\n\n\nGib alle Temperaturen aus die 22°C überschreiten.\nWie oft wurde genau 18.79°C gemessen?\n\n\nGib alle Temperaturen aus die zwischen 19 und 21°C liegen. Tipp: Dafür benötigt es zwei logische Abfragen die mit & (sprich UND) verknüpft werden.\n\n\nGib alle Werte aus die mehr als 0.5 von der mittleren Temperatur abweichen. Tipp: Dafür benötigt es zwei logische Abfragen die mit | (sprich ODER) verknüpft werden.",
-    "crumbs": [
-      "Basics",
-      "Ex02: Second Steps"
-    ]
-  },
-  {
-    "objectID": "E02_vectors_logic.html#vektor-indexing",
-    "href": "E02_vectors_logic.html#vektor-indexing",
-    "title": "Ex02: Second Steps",
-    "section": "",
-    "text": "Gib den 5ten Wert des Vektors aus.\nGib nur den letzten Wert des Vektors aus.\nSpeichere die ersten 20 Temperaturen in einer neuen Variablen.\nSpeichere die 30 niedrigsten Temperaturen in einer neuen Variablen.",
-    "crumbs": [
-      "Basics",
-      "Ex02: Second Steps"
-    ]
-  },
-  {
-    "objectID": "E02_vectors_logic.html#logische-operatoren",
-    "href": "E02_vectors_logic.html#logische-operatoren",
-    "title": "Ex02: Second Steps",
-    "section": "",
-    "text": "Gib alle Temperaturen aus die 22°C überschreiten.\nWie oft wurde genau 18.79°C gemessen?\n\n\nGib alle Temperaturen aus die zwischen 19 und 21°C liegen. Tipp: Dafür benötigt es zwei logische Abfragen die mit & (sprich UND) verknüpft werden.\n\n\nGib alle Werte aus die mehr als 0.5 von der mittleren Temperatur abweichen. Tipp: Dafür benötigt es zwei logische Abfragen die mit | (sprich ODER) verknüpft werden.",
-    "crumbs": [
-      "Basics",
-      "Ex02: Second Steps"
-    ]
-  },
-  {
-    "objectID": "D02_projects_io.html",
-    "href": "D02_projects_io.html",
-    "title": "R Projects and Data I/O",
-    "section": "",
-    "text": "Once you deal with external files (e.g. loading a .csv), saving outputs or reports, you have to deal with directory and file structure. This is often harder than the actual R code itself. To keep everything easy and consistent within R (at least for this course), I recommend using Rstudio Projects with a standardized directory setup.\n\n\nHere is an example from a blog entry at r-bloggers.com\n\n\n\nA good starting point for project setup\n\n\nInside a project, you can then use relative paths to files.\n\n# Example of absolute path\n\n## Linux\n\"/home/marvin/projects/rcourse/session02/data/file.csv\"\n\n## Windows\n\"C:\\Users\\Marvin\\Dokumente\\rcourse\\session02\\data\\file.csv\"\n\n# If the R project is set up in the \"session02\" directory we can use relative paths:\n\n# relative path to project root\ndata = read.csv(\"data/file.csv\")\n\n\n\n\nDataframes can be loaded from and saved to .csv files.\n\nComma Separated Values\nCaution: In Germany “,” is used as the decimal point. You often find “;” as the delimiter in csvs.\nCaution: If you open csv files in Excel, things can get messy\n\nDatum,Wassertemperatur,pH-Wert,Sauerstoffgehalt\n2021-05-31 23:57,17.98,8.05,10.53\n2021-06-01 00:09,17.66,8.04,9.64\n2021-06-01 00:19,18.03,8.12,11.30\n2021-06-01 00:27,18.08,8.14,11.32\n2021-06-01 00:39,18.06,8.12,11.06\n2021-06-01 00:49,18.01,8.10,10.91\n\nuse the read.csv function\nmake sure the dec and sep parameters of the function are properly set\nwhen in doubt look at the help page ?read.csv\n\n\n\n\n\nalways keep raw data\nbackups!\nfilepaths:\n\nno spaces\nno dots\nno weird characters\n\nHow to name files\nWindows (sometimes) uses backslash \\, R wants forward slash /\nyou can use the dir.create function to create a new empty directory"
-  },
-  {
-    "objectID": "D02_projects_io.html#r-studio-projects",
-    "href": "D02_projects_io.html#r-studio-projects",
-    "title": "R Projects and Data I/O",
-    "section": "",
-    "text": "Here is an example from a blog entry at r-bloggers.com\n\n\n\nA good starting point for project setup\n\n\nInside a project, you can then use relative paths to files.\n\n# Example of absolute path\n\n## Linux\n\"/home/marvin/projects/rcourse/session02/data/file.csv\"\n\n## Windows\n\"C:\\Users\\Marvin\\Dokumente\\rcourse\\session02\\data\\file.csv\"\n\n# If the R project is set up in the \"session02\" directory we can use relative paths:\n\n# relative path to project root\ndata = read.csv(\"data/file.csv\")"
-  },
-  {
-    "objectID": "D02_projects_io.html#csv-files",
-    "href": "D02_projects_io.html#csv-files",
-    "title": "R Projects and Data I/O",
-    "section": "",
-    "text": "Dataframes can be loaded from and saved to .csv files.\n\nComma Separated Values\nCaution: In Germany “,” is used as the decimal point. You often find “;” as the delimiter in csvs.\nCaution: If you open csv files in Excel, things can get messy\n\nDatum,Wassertemperatur,pH-Wert,Sauerstoffgehalt\n2021-05-31 23:57,17.98,8.05,10.53\n2021-06-01 00:09,17.66,8.04,9.64\n2021-06-01 00:19,18.03,8.12,11.30\n2021-06-01 00:27,18.08,8.14,11.32\n2021-06-01 00:39,18.06,8.12,11.06\n2021-06-01 00:49,18.01,8.10,10.91\n\nuse the read.csv function\nmake sure the dec and sep parameters of the function are properly set\nwhen in doubt look at the help page ?read.csv"
-  },
-  {
-    "objectID": "D02_projects_io.html#additional-thoughts",
-    "href": "D02_projects_io.html#additional-thoughts",
-    "title": "R Projects and Data I/O",
-    "section": "",
-    "text": "always keep raw data\nbackups!\nfilepaths:\n\nno spaces\nno dots\nno weird characters\n\nHow to name files\nWindows (sometimes) uses backslash \\, R wants forward slash /\nyou can use the dir.create function to create a new empty directory"
-  },
-  {
-    "objectID": "D01_data_examples.html",
-    "href": "D01_data_examples.html",
-    "title": "What is ecological data?",
-    "section": "",
-    "text": "What is ecological data?",
-    "crumbs": [
-      "Basics",
-      "What is ecological data?"
-    ]
-  },
-  {
-    "objectID": "B01_intro_R.html",
-    "href": "B01_intro_R.html",
-    "title": "What is R?",
-    "section": "",
-    "text": "Open Rstudio and get familiar with the interface.\nCreate a new, empty R script.\nWhat is the difference between the script editor and the console?\nCopy the code below into the R script and run it line by line. Try to understand what each line does.\n\n\na &lt;- 5\nb &lt;- 10\n\na + b\n\np &lt;- a-b\n\nv &lt;- c(3,12,6,9,23)\nv\n\nv / b\n\nmean(v)\n# sum(v)\n\n\n\n\n\nWhy does p &lt;- a-b not produce an output?\nWhat is c()?\nWhy does # sum(v) not work?",
-    "crumbs": [
-      "Basics",
-      "What is R?"
-    ]
-  },
-  {
-    "objectID": "B01_intro_R.html#task-r-and-rstudio",
-    "href": "B01_intro_R.html#task-r-and-rstudio",
-    "title": "What is R?",
-    "section": "",
-    "text": "Open Rstudio and get familiar with the interface.\nCreate a new, empty R script.\nWhat is the difference between the script editor and the console?\nCopy the code below into the R script and run it line by line. Try to understand what each line does.\n\n\na &lt;- 5\nb &lt;- 10\n\na + b\n\np &lt;- a-b\n\nv &lt;- c(3,12,6,9,23)\nv\n\nv / b\n\nmean(v)\n# sum(v)",
-    "crumbs": [
-      "Basics",
-      "What is R?"
-    ]
-  },
-  {
-    "objectID": "B01_intro_R.html#questions",
-    "href": "B01_intro_R.html#questions",
-    "title": "What is R?",
-    "section": "",
-    "text": "Why does p &lt;- a-b not produce an output?\nWhat is c()?\nWhy does # sum(v) not work?",
-    "crumbs": [
-      "Basics",
-      "What is R?"
-    ]
-  },
-  {
-    "objectID": "B01_intro_R_slides.html#section",
-    "href": "B01_intro_R_slides.html#section",
-    "title": "Analysis of Ecological Data",
-    "section": "",
-    "text": "r-project.org"
-  },
-  {
-    "objectID": "B01_intro_R_slides.html#r",
-    "href": "B01_intro_R_slides.html#r",
-    "title": "Analysis of Ecological Data",
-    "section": "R",
-    "text": "R\n\nR is a script language\nVersion 1.0 from 2000 (concept dates back to 1974)\nOriginal Aim: Statistical Analysis\nDesigned for data analysis and “interactive” use\nDownload: r-project.org"
-  },
-  {
-    "objectID": "B01_intro_R_slides.html#r-1",
-    "href": "B01_intro_R_slides.html#r-1",
-    "title": "Analysis of Ecological Data",
-    "section": "R",
-    "text": "R\n\nWhat you see when you start R"
-  },
-  {
-    "objectID": "B01_intro_R_slides.html#r-code",
-    "href": "B01_intro_R_slides.html#r-code",
-    "title": "Analysis of Ecological Data",
-    "section": "R Code",
-    "text": "R Code\n\ndata &lt;- c(12, 45, 65, 1, 3, 87)\nmean(data)\n\ndata &lt;- data + 5\nsort(data)"
-  },
-  {
-    "objectID": "B01_intro_R_slides.html#r-code-1",
-    "href": "B01_intro_R_slides.html#r-code-1",
-    "title": "Analysis of Ecological Data",
-    "section": "R Code",
-    "text": "R Code\n\ndata &lt;- c(12, 45, 65, 1, 3, 87)\nmean(data)\n\n[1] 35.5\n\ndata &lt;- data + 5\nsort(data)\n\n[1]  6  8 17 50 70 92"
-  },
-  {
-    "objectID": "B01_intro_R_slides.html#why-r",
-    "href": "B01_intro_R_slides.html#why-r",
-    "title": "Analysis of Ecological Data",
-    "section": "Why R?",
-    "text": "Why R?\n\nEasy to get into (although it might not feel that way at first)\nDesigned for solving scientific problems\nBig community - Getting help is really easy.\nOpen-source, active development\nUsed in science, industry, healthcare, NGOs, …"
-  },
-  {
-    "objectID": "B01_intro_R_slides.html#why-r-1",
-    "href": "B01_intro_R_slides.html#why-r-1",
-    "title": "Analysis of Ecological Data",
-    "section": "Why R?",
-    "text": "Why R?\n\nThe R package structure has been the key addition to the software - Chambers (2020)\n\n\nExpandable with packages provided by other R users\n\nSpecialized analysis for specific fields\nMachine Learning\nMedicine\nWriting Books\n…"
-  },
-  {
-    "objectID": "B01_intro_R_slides.html#why-r-2",
-    "href": "B01_intro_R_slides.html#why-r-2",
-    "title": "Analysis of Ecological Data",
-    "section": "Why R?",
-    "text": "Why R?\n\n(Wickham2023?) : R for datascience"
-  },
-  {
-    "objectID": "B01_intro_R_slides.html#rstudio",
-    "href": "B01_intro_R_slides.html#rstudio",
-    "title": "Analysis of Ecological Data",
-    "section": "Rstudio",
-    "text": "Rstudio\n\n\nIntegrated Development Environment (IDE)\nMakes R “convenient” to use\nText Editor + R Console\nProject Environments, Package Management, Help Pages, Plot Viewer, File Browser …"
-  },
-  {
-    "objectID": "B01_intro_R_slides.html#references",
-    "href": "B01_intro_R_slides.html#references",
-    "title": "Analysis of Ecological Data",
-    "section": "References",
-    "text": "References\n\n\n\n\n\n\n\n\nChambers, John, M. 2020. “S, R, and Data Science.” The R Journal 12 (1): 462. https://doi.org/10.32614/RJ-2020-028."
-  },
-  {
     "objectID": "D01_data_examples_slides.html#are-bats-in-forests-bigger",
     "href": "D01_data_examples_slides.html#are-bats-in-forests-bigger",
     "title": "Analysis of Ecological Data",
@@ -501,72 +394,139 @@
     "text": "References\n\n\n\n\n\n\n\n\nTurner, W. 2014. “Sensing Biodiversity.” Science 346 (6207): 301–2. https://doi.org/10.1126/science.1256014."
   },
   {
-    "objectID": "E01_variablen.html",
-    "href": "E01_variablen.html",
-    "title": "Ex01: First Steps",
+    "objectID": "B01_intro_R_slides.html#section",
+    "href": "B01_intro_R_slides.html#section",
+    "title": "Analysis of Ecological Data",
     "section": "",
-    "text": "Erstelle eine Variable die die Zahl 1650 enthält.\nErstelle eine Variable die die Zahl 140 enthält.\nErstelle eine Variable die die Zahl 5 enthält.\nBerechne das Produkt deiner erstellten Variablen.\nBerechne den Mittelwert deiner erstellten Variablen.\n\n\nErstelle eine Variable die deinen Vornamen enthält.\nErstelle eine Variable die deinen Nachnamen enthält.\nDie paste Funktion kann Texte zusammenfügen. Probiere die Funktion mit den Variablen die deine Namen enthalten aus.\n\n\n\n\n\nVektoren in R sind Folgen von Werten, enthalten also z.B. mehrere Zahlen. Sie werden mit der Funktion c() erstellt:\n\n\nnumbers = c(4, 3, 8, 90, 16)\nnumbers\n\n[1]  4  3  8 90 16\n\n\n\nTeste die Funktionen length(), sum(), sqrt(), und min() mit dem Vektor.\nKommentiere was die sqrt() Funktion macht.\n\n\nWas ist der Unterschied zwischen der max() Funktion und der which.max() Funktion?\n\n\nDie seq() Funktion erzeugt einen Vektor der Zahlenfolgenfolgen enthält. Sieh dir die Hilfeseite von seq() an und erstelle einen Vektor der alle 100er Zahlen von 0 bis 10000 enthält (also 0, 100, 200, … ,9900, 10000).",
+    "text": "r-project.org"
+  },
+  {
+    "objectID": "B01_intro_R_slides.html#r",
+    "href": "B01_intro_R_slides.html#r",
+    "title": "Analysis of Ecological Data",
+    "section": "R",
+    "text": "R\n\nR is a script language\nVersion 1.0 from 2000 (concept dates back to 1974)\nOriginal Aim: Statistical Analysis\nDesigned for data analysis and “interactive” use\nDownload: r-project.org"
+  },
+  {
+    "objectID": "B01_intro_R_slides.html#r-1",
+    "href": "B01_intro_R_slides.html#r-1",
+    "title": "Analysis of Ecological Data",
+    "section": "R",
+    "text": "R\n\nWhat you see when you start R"
+  },
+  {
+    "objectID": "B01_intro_R_slides.html#r-code",
+    "href": "B01_intro_R_slides.html#r-code",
+    "title": "Analysis of Ecological Data",
+    "section": "R Code",
+    "text": "R Code\n\ndata &lt;- c(12, 45, 65, 1, 3, 87)\nmean(data)\n\ndata &lt;- data + 5\nsort(data)"
+  },
+  {
+    "objectID": "B01_intro_R_slides.html#r-code-1",
+    "href": "B01_intro_R_slides.html#r-code-1",
+    "title": "Analysis of Ecological Data",
+    "section": "R Code",
+    "text": "R Code\n\ndata &lt;- c(12, 45, 65, 1, 3, 87)\nmean(data)\n\n[1] 35.5\n\ndata &lt;- data + 5\nsort(data)\n\n[1]  6  8 17 50 70 92"
+  },
+  {
+    "objectID": "B01_intro_R_slides.html#why-r",
+    "href": "B01_intro_R_slides.html#why-r",
+    "title": "Analysis of Ecological Data",
+    "section": "Why R?",
+    "text": "Why R?\n\nEasy to get into (although it might not feel that way at first)\nDesigned for solving scientific problems\nBig community - Getting help is really easy.\nOpen-source, active development\nUsed in science, industry, healthcare, NGOs, …"
+  },
+  {
+    "objectID": "B01_intro_R_slides.html#why-r-1",
+    "href": "B01_intro_R_slides.html#why-r-1",
+    "title": "Analysis of Ecological Data",
+    "section": "Why R?",
+    "text": "Why R?\n\nThe R package structure has been the key addition to the software - Chambers (2020)\n\n\nExpandable with packages provided by other R users\n\nSpecialized analysis for specific fields\nMachine Learning\nMedicine\nWriting Books\n…"
+  },
+  {
+    "objectID": "B01_intro_R_slides.html#why-r-2",
+    "href": "B01_intro_R_slides.html#why-r-2",
+    "title": "Analysis of Ecological Data",
+    "section": "Why R?",
+    "text": "Why R?\n\n(Wickham2023?) : R for datascience"
+  },
+  {
+    "objectID": "B01_intro_R_slides.html#rstudio",
+    "href": "B01_intro_R_slides.html#rstudio",
+    "title": "Analysis of Ecological Data",
+    "section": "Rstudio",
+    "text": "Rstudio\n\n\nIntegrated Development Environment (IDE)\nMakes R “convenient” to use\nText Editor + R Console\nProject Environments, Package Management, Help Pages, Plot Viewer, File Browser …"
+  },
+  {
+    "objectID": "B01_intro_R_slides.html#references",
+    "href": "B01_intro_R_slides.html#references",
+    "title": "Analysis of Ecological Data",
+    "section": "References",
+    "text": "References\n\n\n\n\n\n\n\n\nChambers, John, M. 2020. “S, R, and Data Science.” The R Journal 12 (1): 462. https://doi.org/10.32614/RJ-2020-028."
+  },
+  {
+    "objectID": "B01_intro_R.html",
+    "href": "B01_intro_R.html",
+    "title": "What is R?",
+    "section": "",
+    "text": "Open Rstudio and get familiar with the interface.\nCreate a new, empty R script.\nWhat is the difference between the script editor and the console?\nCopy the code below into the R script and run it line by line. Try to understand what each line does.\n\n\na &lt;- 5\nb &lt;- 10\n\na + b\n\np &lt;- a-b\n\nv &lt;- c(3,12,6,9,23)\nv\n\nv / b\n\nmean(v)\n# sum(v)\n\n\n\n\n\nWhy does p &lt;- a-b not produce an output?\nWhat is c()?\nWhy does # sum(v) not work?",
     "crumbs": [
       "Basics",
-      "Ex01: First Steps"
+      "What is R?"
     ]
   },
   {
-    "objectID": "E01_variablen.html#variablen",
-    "href": "E01_variablen.html#variablen",
-    "title": "Ex01: First Steps",
+    "objectID": "B01_intro_R.html#task-r-and-rstudio",
+    "href": "B01_intro_R.html#task-r-and-rstudio",
+    "title": "What is R?",
     "section": "",
-    "text": "Erstelle eine Variable die die Zahl 1650 enthält.\nErstelle eine Variable die die Zahl 140 enthält.\nErstelle eine Variable die die Zahl 5 enthält.\nBerechne das Produkt deiner erstellten Variablen.\nBerechne den Mittelwert deiner erstellten Variablen.\n\n\nErstelle eine Variable die deinen Vornamen enthält.\nErstelle eine Variable die deinen Nachnamen enthält.\nDie paste Funktion kann Texte zusammenfügen. Probiere die Funktion mit den Variablen die deine Namen enthalten aus.",
+    "text": "Open Rstudio and get familiar with the interface.\nCreate a new, empty R script.\nWhat is the difference between the script editor and the console?\nCopy the code below into the R script and run it line by line. Try to understand what each line does.\n\n\na &lt;- 5\nb &lt;- 10\n\na + b\n\np &lt;- a-b\n\nv &lt;- c(3,12,6,9,23)\nv\n\nv / b\n\nmean(v)\n# sum(v)",
     "crumbs": [
       "Basics",
-      "Ex01: First Steps"
+      "What is R?"
     ]
   },
   {
-    "objectID": "E01_variablen.html#funktionen",
-    "href": "E01_variablen.html#funktionen",
-    "title": "Ex01: First Steps",
+    "objectID": "B01_intro_R.html#questions",
+    "href": "B01_intro_R.html#questions",
+    "title": "What is R?",
     "section": "",
-    "text": "Vektoren in R sind Folgen von Werten, enthalten also z.B. mehrere Zahlen. Sie werden mit der Funktion c() erstellt:\n\n\nnumbers = c(4, 3, 8, 90, 16)\nnumbers\n\n[1]  4  3  8 90 16\n\n\n\nTeste die Funktionen length(), sum(), sqrt(), und min() mit dem Vektor.\nKommentiere was die sqrt() Funktion macht.\n\n\nWas ist der Unterschied zwischen der max() Funktion und der which.max() Funktion?\n\n\nDie seq() Funktion erzeugt einen Vektor der Zahlenfolgenfolgen enthält. Sieh dir die Hilfeseite von seq() an und erstelle einen Vektor der alle 100er Zahlen von 0 bis 10000 enthält (also 0, 100, 200, … ,9900, 10000).",
+    "text": "Why does p &lt;- a-b not produce an output?\nWhat is c()?\nWhy does # sum(v) not work?",
     "crumbs": [
       "Basics",
-      "Ex01: First Steps"
+      "What is R?"
     ]
   },
   {
-    "objectID": "E03_dataframes.html",
-    "href": "E03_dataframes.html",
-    "title": "Ex03: iris",
+    "objectID": "D01_data_examples.html",
+    "href": "D01_data_examples.html",
+    "title": "What is ecological data?",
     "section": "",
-    "text": "Zum Testen von Funktionen und zur Übung stellt R verschiedene Datensätze zur Verfügung. Der wohl bekannteste Datensatz davon ist iris er kann folgendermaßen geladen werden:\n\ndata(iris)\nhead(iris)\n\n  Sepal.Length Sepal.Width Petal.Length Petal.Width Species\n1          5.1         3.5          1.4         0.2  setosa\n2          4.9         3.0          1.4         0.2  setosa\n3          4.7         3.2          1.3         0.2  setosa\n4          4.6         3.1          1.5         0.2  setosa\n5          5.0         3.6          1.4         0.2  setosa\n6          5.4         3.9          1.7         0.4  setosa\n\n\n\nTeste folgende Funktionen mit dem Iris Datensatz: length(), nrow(), ncol(), summary(), colnames().\nSpeichere die Species Spalte in einer neuen Variablen. Um was für ein R Objekt handelt es sich nun?\nWie viele Species sind im Datensatz enthalten und wie oft kommt jede Species vor?\n\n\n\n\n\nErstelle einen neuen data.frame der nur die Beobachtungen der Species “virginica” enthält.\nErstelle einen neuen data.frame der nur die Beobachtungen der Species “setosa” und “versicolor” enthält.\nErstelle einen neuen data.frame der extakt die erste Hälfte der Beobachtungen enthält.\nErstelle einen neuen data.frame der nur Beobachtungen enthält mit einer Sepal.Length zwischen 5.5 und 7.\n\n\n\n\n\nFüge dem iris data.frame eine neue Spalte names “Genus” hinzu die in allen Reihen das Wort “iris” enthält.\nFüge dem iris data.frame eine neue Spalte names “ID” hinzu in der jede Reihe eine fortlaufende Zahl enthält.\nFüge dem iris data.frame zwei neue Spalten hinzu die jeweils den Flächeninhalt der Sepal und Petal beinhaltet (also length x width).\n\n\n\n\n\nWas ist die durchschnittliche Sepal.Length von “virginica”?\nZeichne ein Histogramm der Sepal.Width.\nBerechne die Varianz und Standardabweichung der Sepal.Width.\nZeichne einen Scatterplot mit der Sepal.Length auf der x-Achse und der Petal.Length auf der y-Achse.\n\n\nTipp 1: Data.frames können als 2-Dimensionale Vektoren aufgefasst werden. Subsetting von data.frames benötigen deshalb 2 Werte, einen für die Reihe, einen für die Spalte. Das kann natürlich mit Logischen Operatoren verbunden werden.\n\n# row 1, column 2\niris[1,2]\n\n[1] 3.5\n\n# the first row, empty means \"everything\"\niris[1,]\n\n  Sepal.Length Sepal.Width Petal.Length Petal.Width Species\n1          5.1         3.5          1.4         0.2  setosa\n\n# the first 3 rows, column 3 and 4\niris[seq(3), c(3,4)]\n\n  Petal.Length Petal.Width\n1          1.4         0.2\n2          1.4         0.2\n3          1.3         0.2\n\n\nTipp 2: Einzele Spalten können mit $ angewählt werden. So können auch neue Spalten angelegt werden in dem nach dem $ ein name vergeben wird, der noch nicht im dataframe existiert.\n\niris$Sepal.Length\n\n  [1] 5.1 4.9 4.7 4.6 5.0 5.4 4.6 5.0 4.4 4.9 5.4 4.8 4.8 4.3 5.8 5.7 5.4 5.1\n [19] 5.7 5.1 5.4 5.1 4.6 5.1 4.8 5.0 5.0 5.2 5.2 4.7 4.8 5.4 5.2 5.5 4.9 5.0\n [37] 5.5 4.9 4.4 5.1 5.0 4.5 4.4 5.0 5.1 4.8 5.1 4.6 5.3 5.0 7.0 6.4 6.9 5.5\n [55] 6.5 5.7 6.3 4.9 6.6 5.2 5.0 5.9 6.0 6.1 5.6 6.7 5.6 5.8 6.2 5.6 5.9 6.1\n [73] 6.3 6.1 6.4 6.6 6.8 6.7 6.0 5.7 5.5 5.5 5.8 6.0 5.4 6.0 6.7 6.3 5.6 5.5\n [91] 5.5 6.1 5.8 5.0 5.6 5.7 5.7 6.2 5.1 5.7 6.3 5.8 7.1 6.3 6.5 7.6 4.9 7.3\n[109] 6.7 7.2 6.5 6.4 6.8 5.7 5.8 6.4 6.5 7.7 7.7 6.0 6.9 5.6 7.7 6.3 6.7 7.2\n[127] 6.2 6.1 6.4 7.2 7.4 7.9 6.4 6.3 6.1 7.7 6.3 6.4 6.0 6.9 6.7 6.9 5.8 6.8\n[145] 6.7 6.7 6.3 6.5 6.2 5.9\n\niris$Family &lt;- \"Iridaceae\"\n\nTipp 3: Googlen!"
+    "text": "What is ecological data?",
+    "crumbs": [
+      "Basics",
+      "What is ecological data?"
+    ]
   },
   {
-    "objectID": "E03_dataframes.html#dataframes",
-    "href": "E03_dataframes.html#dataframes",
-    "title": "Ex03: iris",
+    "objectID": "D02_projects_io.html",
+    "href": "D02_projects_io.html",
+    "title": "Path management",
     "section": "",
-    "text": "Zum Testen von Funktionen und zur Übung stellt R verschiedene Datensätze zur Verfügung. Der wohl bekannteste Datensatz davon ist iris er kann folgendermaßen geladen werden:\n\ndata(iris)\nhead(iris)\n\n  Sepal.Length Sepal.Width Petal.Length Petal.Width Species\n1          5.1         3.5          1.4         0.2  setosa\n2          4.9         3.0          1.4         0.2  setosa\n3          4.7         3.2          1.3         0.2  setosa\n4          4.6         3.1          1.5         0.2  setosa\n5          5.0         3.6          1.4         0.2  setosa\n6          5.4         3.9          1.7         0.4  setosa\n\n\n\nTeste folgende Funktionen mit dem Iris Datensatz: length(), nrow(), ncol(), summary(), colnames().\nSpeichere die Species Spalte in einer neuen Variablen. Um was für ein R Objekt handelt es sich nun?\nWie viele Species sind im Datensatz enthalten und wie oft kommt jede Species vor?"
+    "text": "Once you deal with external files (e.g. loading a .csv), saving outputs or reports, you have to deal with directory and file structure. For beginners, this is often harder than the actual R code itself. To keep everything easy and consistent within R (at least for this course), I recommend using Rstudio Projects and relative paths to data.\n\n\nThe working directory in R is a valuable feature that can saves a lot of nerves and time which you would spend on finding files on your computer. You can check your current working directory with the getwd() function. In RStudio, you can also see your working directory as a path above the R console next to your R version number. The file browser of Rstudio also starts in your working directory by default.\n\ngetwd()\n\nsetwd(\"path/to/directory\")\n\nR and Rstudio know about the files in your working directory. You can think of it as the starting point of file paths.\n\n\n\nHere is an example from a blog entry at r-bloggers.com\n\n\n\nA good starting point for project setup\n\n\nInside a project, you can then use relative paths to files.\n\n# Example of absolute path\n\n## Linux\n\"/home/marvin/projects/rcourse/session02/data/file.csv\"\n\n## Windows\n\"C:\\Users\\Marvin\\Dokumente\\rcourse\\session02\\data\\file.csv\"\n\n# If the R project is set up in the \"session02\" directory we can use relative paths:\n\n# relative path to project root\ndata = read.csv(\"data/file.csv\")"
   },
   {
-    "objectID": "E03_dataframes.html#dataframe-subsetting",
-    "href": "E03_dataframes.html#dataframe-subsetting",
-    "title": "Ex03: iris",
+    "objectID": "D02_projects_io.html#working-directory",
+    "href": "D02_projects_io.html#working-directory",
+    "title": "Path management",
     "section": "",
-    "text": "Erstelle einen neuen data.frame der nur die Beobachtungen der Species “virginica” enthält.\nErstelle einen neuen data.frame der nur die Beobachtungen der Species “setosa” und “versicolor” enthält.\nErstelle einen neuen data.frame der extakt die erste Hälfte der Beobachtungen enthält.\nErstelle einen neuen data.frame der nur Beobachtungen enthält mit einer Sepal.Length zwischen 5.5 und 7."
+    "text": "The working directory in R is a valuable feature that can saves a lot of nerves and time which you would spend on finding files on your computer. You can check your current working directory with the getwd() function. In RStudio, you can also see your working directory as a path above the R console next to your R version number. The file browser of Rstudio also starts in your working directory by default.\n\ngetwd()\n\nsetwd(\"path/to/directory\")\n\nR and Rstudio know about the files in your working directory. You can think of it as the starting point of file paths."
   },
   {
-    "objectID": "E03_dataframes.html#dataframe-additions",
-    "href": "E03_dataframes.html#dataframe-additions",
-    "title": "Ex03: iris",
+    "objectID": "D02_projects_io.html#r-studio-projects",
+    "href": "D02_projects_io.html#r-studio-projects",
+    "title": "Path management",
     "section": "",
-    "text": "Füge dem iris data.frame eine neue Spalte names “Genus” hinzu die in allen Reihen das Wort “iris” enthält.\nFüge dem iris data.frame eine neue Spalte names “ID” hinzu in der jede Reihe eine fortlaufende Zahl enthält.\nFüge dem iris data.frame zwei neue Spalten hinzu die jeweils den Flächeninhalt der Sepal und Petal beinhaltet (also length x width)."
-  },
-  {
-    "objectID": "E03_dataframes.html#ein-bisschen-statistik",
-    "href": "E03_dataframes.html#ein-bisschen-statistik",
-    "title": "Ex03: iris",
-    "section": "",
-    "text": "Was ist die durchschnittliche Sepal.Length von “virginica”?\nZeichne ein Histogramm der Sepal.Width.\nBerechne die Varianz und Standardabweichung der Sepal.Width.\nZeichne einen Scatterplot mit der Sepal.Length auf der x-Achse und der Petal.Length auf der y-Achse.\n\n\nTipp 1: Data.frames können als 2-Dimensionale Vektoren aufgefasst werden. Subsetting von data.frames benötigen deshalb 2 Werte, einen für die Reihe, einen für die Spalte. Das kann natürlich mit Logischen Operatoren verbunden werden.\n\n# row 1, column 2\niris[1,2]\n\n[1] 3.5\n\n# the first row, empty means \"everything\"\niris[1,]\n\n  Sepal.Length Sepal.Width Petal.Length Petal.Width Species\n1          5.1         3.5          1.4         0.2  setosa\n\n# the first 3 rows, column 3 and 4\niris[seq(3), c(3,4)]\n\n  Petal.Length Petal.Width\n1          1.4         0.2\n2          1.4         0.2\n3          1.3         0.2\n\n\nTipp 2: Einzele Spalten können mit $ angewählt werden. So können auch neue Spalten angelegt werden in dem nach dem $ ein name vergeben wird, der noch nicht im dataframe existiert.\n\niris$Sepal.Length\n\n  [1] 5.1 4.9 4.7 4.6 5.0 5.4 4.6 5.0 4.4 4.9 5.4 4.8 4.8 4.3 5.8 5.7 5.4 5.1\n [19] 5.7 5.1 5.4 5.1 4.6 5.1 4.8 5.0 5.0 5.2 5.2 4.7 4.8 5.4 5.2 5.5 4.9 5.0\n [37] 5.5 4.9 4.4 5.1 5.0 4.5 4.4 5.0 5.1 4.8 5.1 4.6 5.3 5.0 7.0 6.4 6.9 5.5\n [55] 6.5 5.7 6.3 4.9 6.6 5.2 5.0 5.9 6.0 6.1 5.6 6.7 5.6 5.8 6.2 5.6 5.9 6.1\n [73] 6.3 6.1 6.4 6.6 6.8 6.7 6.0 5.7 5.5 5.5 5.8 6.0 5.4 6.0 6.7 6.3 5.6 5.5\n [91] 5.5 6.1 5.8 5.0 5.6 5.7 5.7 6.2 5.1 5.7 6.3 5.8 7.1 6.3 6.5 7.6 4.9 7.3\n[109] 6.7 7.2 6.5 6.4 6.8 5.7 5.8 6.4 6.5 7.7 7.7 6.0 6.9 5.6 7.7 6.3 6.7 7.2\n[127] 6.2 6.1 6.4 7.2 7.4 7.9 6.4 6.3 6.1 7.7 6.3 6.4 6.0 6.9 6.7 6.9 5.8 6.8\n[145] 6.7 6.7 6.3 6.5 6.2 5.9\n\niris$Family &lt;- \"Iridaceae\"\n\nTipp 3: Googlen!"
+    "text": "Here is an example from a blog entry at r-bloggers.com\n\n\n\nA good starting point for project setup\n\n\nInside a project, you can then use relative paths to files.\n\n# Example of absolute path\n\n## Linux\n\"/home/marvin/projects/rcourse/session02/data/file.csv\"\n\n## Windows\n\"C:\\Users\\Marvin\\Dokumente\\rcourse\\session02\\data\\file.csv\"\n\n# If the R project is set up in the \"session02\" directory we can use relative paths:\n\n# relative path to project root\ndata = read.csv(\"data/file.csv\")"
   },
   {
     "objectID": "E05_tidyverse.html",
@@ -659,7 +619,33 @@
     "href": "R05_dataframes.html",
     "title": "Introduction to data.frame",
     "section": "",
-    "text": "Introduction to data.frame\n\nFrom a data science perspective, the most important class of objects is the data frame - Chambers (2020)\n\n\nDataframes combine multiple vector in a structured format\nIntuitive - most people have seen a spreadsheet before\nEach column is regarded as a vector\nEach vector can have a different data type\n\n\n\n\n\n\ndata.frames are a named list of vectors\n\n\n\n\n\nCreate one with data.frame\nThe functions need the column name followed by the vector of values\n\n\ndf = data.frame(plotID = seq(3),\n                soil_ph = c(5.5, 5.4, 6.1),\n                soil_temperature = c(10, 11, 12),\n                forest_type = c(\"coniferous\", \"coniferous\", \"deciduous\"))\n\ndf\n\n  plotID soil_ph soil_temperature forest_type\n1      1     5.5               10  coniferous\n2      2     5.4               11  coniferous\n3      3     6.1               12   deciduous\n\n\n\ndata = read.csv(file = \"data/2021-06_aasee.csv\", dec = \".\", sep = \",\")\n\n\n# show the first few rows of the df\nhead(data)\n\n             Datum Wassertemperatur pH.Wert Sauerstoffgehalt\n1 2021-05-31 23:57            17.98    8.05            10.53\n2 2021-06-01 00:09            17.66    8.04             9.64\n3 2021-06-01 00:19            18.03    8.12            11.30\n4 2021-06-01 00:27            18.08    8.14            11.32\n5 2021-06-01 00:39            18.06    8.12            11.06\n6 2021-06-01 00:49            18.01    8.10            10.91\n\n# show the last few rows of the df\ntail(data)\n\n                Datum Wassertemperatur pH.Wert Sauerstoffgehalt\n4220 2021-06-30 22:57            23.73    8.78            17.80\n4221 2021-06-30 23:09            23.70    8.72            17.66\n4222 2021-06-30 23:18            23.68    8.73            17.72\n4223 2021-06-30 23:29            23.64    8.81            18.38\n4224 2021-06-30 23:39            23.62    8.76            17.93\n4225 2021-06-30 23:49            23.63    8.77            17.82\n\n# get a short summary of the structure\nstr(data)\n\n'data.frame':   4225 obs. of  4 variables:\n $ Datum           : chr  \"2021-05-31 23:57\" \"2021-06-01 00:09\" \"2021-06-01 00:19\" \"2021-06-01 00:27\" ...\n $ Wassertemperatur: num  18 17.7 18 18.1 18.1 ...\n $ pH.Wert         : num  8.05 8.04 8.12 8.14 8.12 8.1 8.1 8.1 8.1 8.1 ...\n $ Sauerstoffgehalt: num  10.53 9.64 11.3 11.32 11.06 ...\n\n\n\n\n\n\n\nReferences\n\nChambers, John, M. 2020. “S, R, and Data Science.” The R Journal 12 (1): 462. https://doi.org/10.32614/RJ-2020-028."
+    "text": "From a data science perspective, the most important class of objects is the data frame - Chambers (2020)\n\n\nData ordered in rows and columns - just like a spreadsheet\nTechnical implementation in R:\n\ndata.frame is a list of vectors\neach vector is one column\nvectors are atomic - each value in a column has the same data type\ndifferent columns can have different data types\n\n\n\n\n\n\n\ndata.frames are a named list of vectors\n\n\n\n\n\ndf = data.frame(plotID = seq(3),\n                soil_ph = c(5.5, 5.4, 6.1),\n                soil_temperature = c(10, 11, 12),\n                forest_type = c(\"coniferous\", \"coniferous\", \"deciduous\"))\n\ndf\n\n  plotID soil_ph soil_temperature forest_type\n1      1     5.5               10  coniferous\n2      2     5.4               11  coniferous\n3      3     6.1               12   deciduous\n\n\nOnce you deal with actual data you want to analyse, it is rare that you want to build a data.frame from scratch like the example above. Instead, you have some file prepared on your computer you want to get into R. Most likely, this data comes from a spreadsheet application like Excel or Google Sheets that have their own file formats, e.g. a .xlsx file. While it is possible to import .xlsx files into R with external packages, the more elegant way is to use a much simpler file format: comma separated values - .csv.\n\n\nAs the name suggests, a .csv file contains values separated by commas ,. The example above would look something like this:\nplotID, soil_ph, soil_temperature, forest_type\n1, 5.5, 10, coniferous\n2, 5.4, 11, coniferous\n3, 6.1, 12, deciduous\n\n\n\n\n\n\ncsv files in Germany\n\n\n\nIn Germany, , is used as the decimal point. You will often find csv files where the delimiter is a semicolon ;.\n\n\nTo get a .csv file into R, use the read.csv() function. Here you can also specify the dec and sep arguments to the correct symbols for decimal points and separators.\n\ndata = read.csv(file = \"data/2021-06_aasee.csv\", dec = \".\", sep = \",\")\n\n\n# show the first few rows of the df\nhead(data)\n\n             Datum Wassertemperatur pH.Wert Sauerstoffgehalt\n1 2021-05-31 23:57            17.98    8.05            10.53\n2 2021-06-01 00:09            17.66    8.04             9.64\n3 2021-06-01 00:19            18.03    8.12            11.30\n4 2021-06-01 00:27            18.08    8.14            11.32\n5 2021-06-01 00:39            18.06    8.12            11.06\n6 2021-06-01 00:49            18.01    8.10            10.91\n\n# show the last few rows of the df\ntail(data)\n\n                Datum Wassertemperatur pH.Wert Sauerstoffgehalt\n4220 2021-06-30 22:57            23.73    8.78            17.80\n4221 2021-06-30 23:09            23.70    8.72            17.66\n4222 2021-06-30 23:18            23.68    8.73            17.72\n4223 2021-06-30 23:29            23.64    8.81            18.38\n4224 2021-06-30 23:39            23.62    8.76            17.93\n4225 2021-06-30 23:49            23.63    8.77            17.82\n\n# get a short summary of the structure\nstr(data)\n\n'data.frame':   4225 obs. of  4 variables:\n $ Datum           : chr  \"2021-05-31 23:57\" \"2021-06-01 00:09\" \"2021-06-01 00:19\" \"2021-06-01 00:27\" ...\n $ Wassertemperatur: num  18 17.7 18 18.1 18.1 ...\n $ pH.Wert         : num  8.05 8.04 8.12 8.14 8.12 8.1 8.1 8.1 8.1 8.1 ...\n $ Sauerstoffgehalt: num  10.53 9.64 11.3 11.32 11.06 ...\n\n\n\n\n\nYou can think about data.frames as 2-d vectors. Subsetting of data.frames hence requires two values, one for the row subset, one for the column subset:\n\n# row 1, column 2\ndata[1,2]\n\n[1] 17.98\n\n# the first row, empty means \"everything\"\ndata[1,]\n\n             Datum Wassertemperatur pH.Wert Sauerstoffgehalt\n1 2021-05-31 23:57            17.98    8.05            10.53\n\n# the first 3 rows, column 3 and 4\ndata[seq(3), c(3,4)]\n\n  pH.Wert Sauerstoffgehalt\n1    8.05            10.53\n2    8.04             9.64\n3    8.12            11.30\n\n\nIf you want to extract a column of a data.frame you can use the $ operator. The resulting object is a vector, and hence only has one dimension. This is important to recognize, because a subset of a column by the $ operator again needs only one value (see example below).\n\ntemperature &lt;- data$Wassertemperatur\nsummary(temperature)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n  17.18   21.65   23.07   23.15   24.52   28.96 \n\n# subsetting a column accessed with $ only needs one value\ndata$pH.Wert[100]\n\n[1] 8.38\n\n# You can also define new columns with the $\ndata$location &lt;- \"Aasee\"\nhead(data)\n\n             Datum Wassertemperatur pH.Wert Sauerstoffgehalt location\n1 2021-05-31 23:57            17.98    8.05            10.53    Aasee\n2 2021-06-01 00:09            17.66    8.04             9.64    Aasee\n3 2021-06-01 00:19            18.03    8.12            11.30    Aasee\n4 2021-06-01 00:27            18.08    8.14            11.32    Aasee\n5 2021-06-01 00:39            18.06    8.12            11.06    Aasee\n6 2021-06-01 00:49            18.01    8.10            10.91    Aasee\n\n\nSubsetting a data.frame by column names also works:\n\n# read: from data, rows 1 to 5, and columns with the name Datum and pH.Wert\ndata[seq(5), c(\"Datum\", \"pH.Wert\")]\n\n             Datum pH.Wert\n1 2021-05-31 23:57    8.05\n2 2021-06-01 00:09    8.04\n3 2021-06-01 00:19    8.12\n4 2021-06-01 00:27    8.14\n5 2021-06-01 00:39    8.12\n\n\nOf course logical operators also work for data.frame subsetting:\n\n# read: from data, only the rows where ph is larger than 8.9, and all the columns\ndata[data$pH.Wert &gt; 8.9, ]\n\n                Datum Wassertemperatur pH.Wert Sauerstoffgehalt location\n4056 2021-06-29 19:20            25.37    8.92            21.21    Aasee\n4185 2021-06-30 17:07            24.14    8.91            20.58    Aasee\n4186 2021-06-30 17:18            24.14    8.91            20.26    Aasee\n4188 2021-06-30 17:38            24.17    8.92            20.50    Aasee\n4189 2021-06-30 17:49            24.15    8.93            20.56    Aasee\n4190 2021-06-30 17:59            24.14    8.92            20.15    Aasee\n4191 2021-06-30 18:07            24.13    8.91            19.97    Aasee\n4192 2021-06-30 18:19            24.14    8.91            19.71    Aasee\n4193 2021-06-30 18:29            24.12    8.91            19.70    Aasee\n4194 2021-06-30 18:39            24.12    8.92            19.43    Aasee\n\n# read: from data, only rows where temperature is smaller than 17.5, and only the column with the name Datum\ndata[data$Wassertemperatur &lt; 17.5, \"Datum\"]\n\n [1] \"2021-06-01 06:59\" \"2021-06-01 07:09\" \"2021-06-01 07:18\" \"2021-06-01 07:29\"\n [5] \"2021-06-01 07:39\" \"2021-06-01 07:50\" \"2021-06-01 08:09\" \"2021-06-01 08:17\"\n [9] \"2021-06-01 08:38\" \"2021-06-01 08:49\" \"2021-06-01 08:58\" \"2021-06-01 11:58\"\n[13] \"2021-06-01 12:19\" \"2021-06-01 12:59\" \"2021-06-01 13:04\" \"2021-06-01 13:13\"\n[17] \"2021-06-01 13:25\"",
+    "crumbs": [
+      "Dataframes",
+      "Introduction to data.frame"
+    ]
+  },
+  {
+    "objectID": "R05_dataframes.html#csv-files",
+    "href": "R05_dataframes.html#csv-files",
+    "title": "Introduction to data.frame",
+    "section": "",
+    "text": "As the name suggests, a .csv file contains values separated by commas ,. The example above would look something like this:\nplotID, soil_ph, soil_temperature, forest_type\n1, 5.5, 10, coniferous\n2, 5.4, 11, coniferous\n3, 6.1, 12, deciduous\n\n\n\n\n\n\ncsv files in Germany\n\n\n\nIn Germany, , is used as the decimal point. You will often find csv files where the delimiter is a semicolon ;.\n\n\nTo get a .csv file into R, use the read.csv() function. Here you can also specify the dec and sep arguments to the correct symbols for decimal points and separators.\n\ndata = read.csv(file = \"data/2021-06_aasee.csv\", dec = \".\", sep = \",\")\n\n\n# show the first few rows of the df\nhead(data)\n\n             Datum Wassertemperatur pH.Wert Sauerstoffgehalt\n1 2021-05-31 23:57            17.98    8.05            10.53\n2 2021-06-01 00:09            17.66    8.04             9.64\n3 2021-06-01 00:19            18.03    8.12            11.30\n4 2021-06-01 00:27            18.08    8.14            11.32\n5 2021-06-01 00:39            18.06    8.12            11.06\n6 2021-06-01 00:49            18.01    8.10            10.91\n\n# show the last few rows of the df\ntail(data)\n\n                Datum Wassertemperatur pH.Wert Sauerstoffgehalt\n4220 2021-06-30 22:57            23.73    8.78            17.80\n4221 2021-06-30 23:09            23.70    8.72            17.66\n4222 2021-06-30 23:18            23.68    8.73            17.72\n4223 2021-06-30 23:29            23.64    8.81            18.38\n4224 2021-06-30 23:39            23.62    8.76            17.93\n4225 2021-06-30 23:49            23.63    8.77            17.82\n\n# get a short summary of the structure\nstr(data)\n\n'data.frame':   4225 obs. of  4 variables:\n $ Datum           : chr  \"2021-05-31 23:57\" \"2021-06-01 00:09\" \"2021-06-01 00:19\" \"2021-06-01 00:27\" ...\n $ Wassertemperatur: num  18 17.7 18 18.1 18.1 ...\n $ pH.Wert         : num  8.05 8.04 8.12 8.14 8.12 8.1 8.1 8.1 8.1 8.1 ...\n $ Sauerstoffgehalt: num  10.53 9.64 11.3 11.32 11.06 ...",
+    "crumbs": [
+      "Dataframes",
+      "Introduction to data.frame"
+    ]
+  },
+  {
+    "objectID": "R05_dataframes.html#data.frame-subsetting",
+    "href": "R05_dataframes.html#data.frame-subsetting",
+    "title": "Introduction to data.frame",
+    "section": "",
+    "text": "You can think about data.frames as 2-d vectors. Subsetting of data.frames hence requires two values, one for the row subset, one for the column subset:\n\n# row 1, column 2\ndata[1,2]\n\n[1] 17.98\n\n# the first row, empty means \"everything\"\ndata[1,]\n\n             Datum Wassertemperatur pH.Wert Sauerstoffgehalt\n1 2021-05-31 23:57            17.98    8.05            10.53\n\n# the first 3 rows, column 3 and 4\ndata[seq(3), c(3,4)]\n\n  pH.Wert Sauerstoffgehalt\n1    8.05            10.53\n2    8.04             9.64\n3    8.12            11.30\n\n\nIf you want to extract a column of a data.frame you can use the $ operator. The resulting object is a vector, and hence only has one dimension. This is important to recognize, because a subset of a column by the $ operator again needs only one value (see example below).\n\ntemperature &lt;- data$Wassertemperatur\nsummary(temperature)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n  17.18   21.65   23.07   23.15   24.52   28.96 \n\n# subsetting a column accessed with $ only needs one value\ndata$pH.Wert[100]\n\n[1] 8.38\n\n# You can also define new columns with the $\ndata$location &lt;- \"Aasee\"\nhead(data)\n\n             Datum Wassertemperatur pH.Wert Sauerstoffgehalt location\n1 2021-05-31 23:57            17.98    8.05            10.53    Aasee\n2 2021-06-01 00:09            17.66    8.04             9.64    Aasee\n3 2021-06-01 00:19            18.03    8.12            11.30    Aasee\n4 2021-06-01 00:27            18.08    8.14            11.32    Aasee\n5 2021-06-01 00:39            18.06    8.12            11.06    Aasee\n6 2021-06-01 00:49            18.01    8.10            10.91    Aasee\n\n\nSubsetting a data.frame by column names also works:\n\n# read: from data, rows 1 to 5, and columns with the name Datum and pH.Wert\ndata[seq(5), c(\"Datum\", \"pH.Wert\")]\n\n             Datum pH.Wert\n1 2021-05-31 23:57    8.05\n2 2021-06-01 00:09    8.04\n3 2021-06-01 00:19    8.12\n4 2021-06-01 00:27    8.14\n5 2021-06-01 00:39    8.12\n\n\nOf course logical operators also work for data.frame subsetting:\n\n# read: from data, only the rows where ph is larger than 8.9, and all the columns\ndata[data$pH.Wert &gt; 8.9, ]\n\n                Datum Wassertemperatur pH.Wert Sauerstoffgehalt location\n4056 2021-06-29 19:20            25.37    8.92            21.21    Aasee\n4185 2021-06-30 17:07            24.14    8.91            20.58    Aasee\n4186 2021-06-30 17:18            24.14    8.91            20.26    Aasee\n4188 2021-06-30 17:38            24.17    8.92            20.50    Aasee\n4189 2021-06-30 17:49            24.15    8.93            20.56    Aasee\n4190 2021-06-30 17:59            24.14    8.92            20.15    Aasee\n4191 2021-06-30 18:07            24.13    8.91            19.97    Aasee\n4192 2021-06-30 18:19            24.14    8.91            19.71    Aasee\n4193 2021-06-30 18:29            24.12    8.91            19.70    Aasee\n4194 2021-06-30 18:39            24.12    8.92            19.43    Aasee\n\n# read: from data, only rows where temperature is smaller than 17.5, and only the column with the name Datum\ndata[data$Wassertemperatur &lt; 17.5, \"Datum\"]\n\n [1] \"2021-06-01 06:59\" \"2021-06-01 07:09\" \"2021-06-01 07:18\" \"2021-06-01 07:29\"\n [5] \"2021-06-01 07:39\" \"2021-06-01 07:50\" \"2021-06-01 08:09\" \"2021-06-01 08:17\"\n [9] \"2021-06-01 08:38\" \"2021-06-01 08:49\" \"2021-06-01 08:58\" \"2021-06-01 11:58\"\n[13] \"2021-06-01 12:19\" \"2021-06-01 12:59\" \"2021-06-01 13:04\" \"2021-06-01 13:13\"\n[17] \"2021-06-01 13:25\"",
+    "crumbs": [
+      "Dataframes",
+      "Introduction to data.frame"
+    ]
   },
   {
     "objectID": "R06_long_wide.html",
@@ -737,6 +723,46 @@
     "title": "markdown and quarto",
     "section": "",
     "text": "Simply go to File - New File - Quarto Document... or File - New File - R Markdown... to create a markdown file with some example code and work your way from there. Or if you want to jump right into markdown projects go to New Project... - New Directory and choose an appropriate Template (e.g. Quarto Homepage)."
+  },
+  {
+    "objectID": "assignments/Ex02_second.html",
+    "href": "assignments/Ex02_second.html",
+    "title": "Ex02: Second Steps",
+    "section": "",
+    "text": "Der folgende Vektor enthält Temperaturdaten vom Aasee in Münster vom 2021-06-02.\n\ntemperature &lt;- c(18.81,18.73,18.92,18.87,18.76,18.79,18.87,18.84,18.89,18.89,\n                 18.93,18.95,18.92,18.97,19.00,18.99,19.00,19.00,18.99,19.00,\n                 18.98,18.97,18.97,18.97,18.97,18.98,18.96,18.94,18.94,18.91,\n                 18.90,18.89,18.87,18.85,18.85,18.84,18.83,18.81,18.81,18.81,\n                 18.81,18.81,18.80,18.79,18.80,18.79,18.79,18.78,18.77,18.78,\n                 18.79,18.79,18.79,18.79,18.79,18.79,18.80,18.79,18.81,18.80,\n                 18.81,18.81,18.82,18.84,18.87,18.89,18.89,18.91,18.96,19.02,\n                 19.11,19.15,18.95,18.92,18.84,18.85,18.96,18.92,18.95,18.95,\n                 18.91,19.00,19.02,19.06,19.05,19.47,19.32,19.05,19.66,19.57,\n                 19.23,19.42,19.36,19.66,19.79,19.81,19.99,21.10,21.94,22.52,\n                 22.81,22.43,22.16,21.55,21.80,21.02,21.85,21.45,22.48,22.73,\n                 22.61,22.83,20.85,20.68,19.76,19.81,19.74,19.58,19.35,19.40,\n                 19.75,19.76,19.85,19.82,19.86,20.08,20.06,19.85,20.04,19.90,\n                 19.96,20.12,19.94,20.20,20.17,20.31,20.17,20.37,20.36,20.13)\n\n\nWie viele Einträge hat der Vektor?\nTeste die Funktionen range, summary und boxplot mit dem Vektor.\nKonvertiere die Werte von Celsius nach Fahrenheit.\nSowohl sort als auch order sortieren den Vektor. Was ist der Unterschied zwischen beiden Funktionen?\n\n\n\n\nGib den 5ten Wert des Vektors aus.\nGib nur den letzten Wert des Vektors aus.\nSpeichere die ersten 20 Temperaturen in einer neuen Variablen.\nSpeichere die 30 niedrigsten Temperaturen in einer neuen Variablen.\n\n\n\n\n\nGib alle Temperaturen aus die 22°C überschreiten.\n\n\nWie oft wurde genau 18.79°C gemessen?\n\n\nGib alle Temperaturen aus die zwischen 19 und 21°C liegen. Tipp: Dafür benötigt es zwei logische Abfragen die mit & (sprich UND) verknüpft werden.\n\n\nGib alle Werte aus die mehr als 0.5 von der mittleren Temperatur abweichen. Tipp: Dafür benötigt es zwei logische Abfragen die mit | (sprich ODER) verknüpft werden.",
+    "crumbs": [
+      "Basics",
+      "Ex02: Second Steps"
+    ]
+  },
+  {
+    "objectID": "assignments/Ex02_second.html#vektor-indexing",
+    "href": "assignments/Ex02_second.html#vektor-indexing",
+    "title": "Ex02: Second Steps",
+    "section": "",
+    "text": "Gib den 5ten Wert des Vektors aus.\nGib nur den letzten Wert des Vektors aus.\nSpeichere die ersten 20 Temperaturen in einer neuen Variablen.\nSpeichere die 30 niedrigsten Temperaturen in einer neuen Variablen.",
+    "crumbs": [
+      "Basics",
+      "Ex02: Second Steps"
+    ]
+  },
+  {
+    "objectID": "assignments/Ex02_second.html#logische-operatoren",
+    "href": "assignments/Ex02_second.html#logische-operatoren",
+    "title": "Ex02: Second Steps",
+    "section": "",
+    "text": "Gib alle Temperaturen aus die 22°C überschreiten.\n\n\nWie oft wurde genau 18.79°C gemessen?\n\n\nGib alle Temperaturen aus die zwischen 19 und 21°C liegen. Tipp: Dafür benötigt es zwei logische Abfragen die mit & (sprich UND) verknüpft werden.\n\n\nGib alle Werte aus die mehr als 0.5 von der mittleren Temperatur abweichen. Tipp: Dafür benötigt es zwei logische Abfragen die mit | (sprich ODER) verknüpft werden.",
+    "crumbs": [
+      "Basics",
+      "Ex02: Second Steps"
+    ]
+  },
+  {
+    "objectID": "df02_csv.html",
+    "href": "df02_csv.html",
+    "title": ".csv",
+    "section": "",
+    "text": ".csv"
   },
   {
     "objectID": "98-additional_resources.html",
