@@ -207,8 +207,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../R05_dataframes.html" class="sidebar-item-text sidebar-link">
+  <a href="../df01_introduction.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction to data.frame</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../df02_files.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Filepaths and data I/O</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -281,25 +287,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Speichere die ersten 20 Temperaturen in einer neuen Variablen.</li>
 <li>Speichere die 30 niedrigsten Temperaturen in einer neuen Variablen.</li>
 </ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>temperature[<span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 18.76</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>temperature[<span class="fu">length</span>(temperature)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 20.13</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>temperature[<span class="dv">140</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 20.13</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>temperature[<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] 18.81 18.73 18.92 18.87 18.76 18.79 18.87 18.84 18.89 18.89 18.93 18.95
-[13] 18.92 18.97 19.00 18.99 19.00 19.00 18.99 19.00</code></pre>
-</div>
-</div>
 </section>
 <section id="logische-operatoren" class="level2">
 <h2 class="anchored" data-anchor-id="logische-operatoren">Logische Operatoren</h2>

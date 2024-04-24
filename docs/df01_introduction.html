@@ -135,7 +135,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./R05_dataframes.html">Dataframes</a></li><li class="breadcrumb-item"><a href="./R05_dataframes.html">Introduction to data.frame</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./df01_introduction.html">Dataframes</a></li><li class="breadcrumb-item"><a href="./df01_introduction.html">Introduction to data.frame</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -227,8 +227,14 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R05_dataframes.html" class="sidebar-item-text sidebar-link active">
+  <a href="./df01_introduction.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Introduction to data.frame</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./df02_files.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Filepaths and data I/O</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -299,7 +305,11 @@ div.csl-indent {
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">soil_temperature =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>),</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">forest_type =</span> <span class="fu">c</span>(<span class="st">"coniferous"</span>, <span class="st">"coniferous"</span>, <span class="st">"deciduous"</span>))</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "data.frame"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  plotID soil_ph soil_temperature forest_type
 1      1     5.5               10  coniferous
@@ -307,34 +317,14 @@ div.csl-indent {
 3      3     6.1               12   deciduous</code></pre>
 </div>
 </div>
-<p>Once you deal with actual data you want to analyse, it is rare that you want to build a <code>data.frame</code> from scratch like the example above. Instead, you have some file prepared on your computer you want to get into R. Most likely, this data comes from a spreadsheet application like Excel or Google Sheets that have their own file formats, e.g.&nbsp;a <code>.xlsx</code> file. While it is possible to import <code>.xlsx</code> files into R with external packages, the more elegant way is to use a much simpler file format: comma separated values - <code>.csv</code>.</p>
-<section id="csv-files" class="level2">
-<h2 class="anchored" data-anchor-id="csv-files">csv files</h2>
-<p>As the name suggests, a <code>.csv</code> file contains values separated by commas <code>,</code>. The example above would look something like this:</p>
-<pre><code>plotID, soil_ph, soil_temperature, forest_type
-1, 5.5, 10, coniferous
-2, 5.4, 11, coniferous
-3, 6.1, 12, deciduous</code></pre>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-csv files in Germany
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>In Germany, <code>,</code> is used as the decimal point. You will often find csv files where the delimiter is a semicolon <code>;</code>.</p>
-</div>
-</div>
-<p>To get a <code>.csv</code> file into R, use the <code>read.csv()</code> function. Here you can also specify the <code>dec</code> and <code>sep</code> arguments to the correct symbols for <code>dec</code>imal points and <code>sep</code>arators.</p>
+<p>Once you deal with actual data you want to analyse, it is rare that you want to build a <code>data.frame</code> from scratch like the example above. Instead, you have some file prepared on your computer e.g.&nbsp;a <code>.csv</code> file you want to get into R. Learn more about <a href="D02_project_io.qmd">external data and how to get them into R</a> in the next lesson.</p>
+<p>For now, we simply want to have a larger <code>data.frame</code> to show and test some functions. Here, I use the temperature data from the Aasee that was also part of <a href="Exersice 02">assignments/Ex02_second.qmd</a>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">"data/2021-06_aasee.csv"</span>, <span class="at">dec =</span> <span class="st">"."</span>, <span class="at">sep =</span> <span class="st">","</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># show the first few rows of the df</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">"data/2021-06_aasee.csv"</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># show the first few rows of the df</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>             Datum Wassertemperatur pH.Wert Sauerstoffgehalt
 1 2021-05-31 23:57            17.98    8.05            10.53
@@ -344,8 +334,8 @@ csv files in Germany
 5 2021-06-01 00:39            18.06    8.12            11.06
 6 2021-06-01 00:49            18.01    8.10            10.91</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># show the last few rows of the df</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># show the last few rows of the df</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                Datum Wassertemperatur pH.Wert Sauerstoffgehalt
 4220 2021-06-30 22:57            23.73    8.78            17.80
@@ -355,8 +345,8 @@ csv files in Germany
 4224 2021-06-30 23:39            23.62    8.76            17.93
 4225 2021-06-30 23:49            23.63    8.77            17.82</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get a short summary of the structure</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get a short summary of the structure</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   4225 obs. of  4 variables:
  $ Datum           : chr  "2021-05-31 23:57" "2021-06-01 00:09" "2021-06-01 00:19" "2021-06-01 00:27" ...
@@ -365,24 +355,23 @@ csv files in Germany
  $ Sauerstoffgehalt: num  10.53 9.64 11.3 11.32 11.06 ...</code></pre>
 </div>
 </div>
-</section>
 <section id="data.frame-subsetting" class="level2">
 <h2 class="anchored" data-anchor-id="data.frame-subsetting">data.frame subsetting</h2>
 <p>You can think about <code>data.frames</code> as 2-d vectors. Subsetting of <code>data.frames</code> hence requires two values, one for the row subset, one for the column subset:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># row 1, column 2</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>data[<span class="dv">1</span>,<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># row 1, column 2</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>data[<span class="dv">1</span>,<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 17.98</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the first row, empty means "everything"</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>data[<span class="dv">1</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the first row, empty means "everything"</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>data[<span class="dv">1</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>             Datum Wassertemperatur pH.Wert Sauerstoffgehalt
 1 2021-05-31 23:57            17.98    8.05            10.53</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the first 3 rows, column 3 and 4</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>data[<span class="fu">seq</span>(<span class="dv">3</span>), <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">4</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the first 3 rows, column 3 and 4</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>data[<span class="fu">seq</span>(<span class="dv">3</span>), <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">4</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  pH.Wert Sauerstoffgehalt
 1    8.05            10.53
@@ -392,20 +381,20 @@ csv files in Germany
 </div>
 <p>If you want to extract a column of a <code>data.frame</code> you can use the <code>$</code> operator. The resulting object is a vector, and hence only has one dimension. This is important to recognize, because a subset of a column by the <code>$</code> operator again needs only one value (see example below).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>temperature <span class="ot">&lt;-</span> data<span class="sc">$</span>Wassertemperatur</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(temperature)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>temperature <span class="ot">&lt;-</span> data<span class="sc">$</span>Wassertemperatur</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(temperature)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
   17.18   21.65   23.07   23.15   24.52   28.96 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># subsetting a column accessed with $ only needs one value</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>pH.Wert[<span class="dv">100</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># subsetting a column accessed with $ only needs one value</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>pH.Wert[<span class="dv">100</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 8.38</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># You can also define new columns with the $</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>location <span class="ot">&lt;-</span> <span class="st">"Aasee"</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># You can also define new columns with the $</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>location <span class="ot">&lt;-</span> <span class="st">"Aasee"</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>             Datum Wassertemperatur pH.Wert Sauerstoffgehalt location
 1 2021-05-31 23:57            17.98    8.05            10.53    Aasee
@@ -418,8 +407,8 @@ csv files in Germany
 </div>
 <p>Subsetting a <code>data.frame</code> by column names also works:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read: from data, rows 1 to 5, and columns with the name Datum and pH.Wert</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>data[<span class="fu">seq</span>(<span class="dv">5</span>), <span class="fu">c</span>(<span class="st">"Datum"</span>, <span class="st">"pH.Wert"</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read: from data, rows 1 to 5, and columns with the name Datum and pH.Wert</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>data[<span class="fu">seq</span>(<span class="dv">5</span>), <span class="fu">c</span>(<span class="st">"Datum"</span>, <span class="st">"pH.Wert"</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>             Datum pH.Wert
 1 2021-05-31 23:57    8.05
@@ -431,8 +420,8 @@ csv files in Germany
 </div>
 <p>Of course <a href="https://ludwigm6.github.io/analysis_of_ecological_data/R04_logic.html">logical operators</a> also work for <code>data.frame</code> subsetting:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read: from data, only the rows where ph is larger than 8.9, and all the columns</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>data[data<span class="sc">$</span>pH.Wert <span class="sc">&gt;</span> <span class="fl">8.9</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read: from data, only the rows where ph is larger than 8.9, and all the columns</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>data[data<span class="sc">$</span>pH.Wert <span class="sc">&gt;</span> <span class="fl">8.9</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                Datum Wassertemperatur pH.Wert Sauerstoffgehalt location
 4056 2021-06-29 19:20            25.37    8.92            21.21    Aasee
@@ -446,8 +435,8 @@ csv files in Germany
 4193 2021-06-30 18:29            24.12    8.91            19.70    Aasee
 4194 2021-06-30 18:39            24.12    8.92            19.43    Aasee</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read: from data, only rows where temperature is smaller than 17.5, and only the column with the name Datum</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>data[data<span class="sc">$</span>Wassertemperatur <span class="sc">&lt;</span> <span class="fl">17.5</span>, <span class="st">"Datum"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read: from data, only rows where temperature is smaller than 17.5, and only the column with the name Datum</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>data[data<span class="sc">$</span>Wassertemperatur <span class="sc">&lt;</span> <span class="fl">17.5</span>, <span class="st">"Datum"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "2021-06-01 06:59" "2021-06-01 07:09" "2021-06-01 07:18" "2021-06-01 07:29"
  [5] "2021-06-01 07:39" "2021-06-01 07:50" "2021-06-01 08:09" "2021-06-01 08:17"

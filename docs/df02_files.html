@@ -115,9 +115,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-      Analysis of Ecological Data
-      </li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./df01_introduction.html">Dataframes</a></li><li class="breadcrumb-item"><a href="./df02_files.html">Filepaths and data I/O</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -209,8 +207,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R05_dataframes.html" class="sidebar-item-text sidebar-link">
+  <a href="./df01_introduction.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction to data.frame</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./df02_files.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Filepaths and data I/O</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -250,42 +254,83 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="path-management" class="level1">
-<h1>Path management</h1>
-<p>Once you deal with external files (e.g.&nbsp;loading a .csv), saving outputs or reports, you have to deal with directory and file structure. For beginners, this is often harder than the actual R code itself. To keep everything easy and consistent within R (at least for this course), I recommend using Rstudio Projects and relative paths to data.</p>
-<section id="working-directory" class="level2">
-<h2 class="anchored" data-anchor-id="working-directory">Working Directory</h2>
-<p>The working directory in R is a valuable feature that can saves a lot of nerves and time which you would spend on finding files on your computer. You can check your current working directory with the <code>getwd()</code> function. In RStudio, you can also see your working directory as a path above the R console next to your R version number. The file browser of Rstudio also starts in your working directory by default.</p>
+<section id="filepaths-and-data-io" class="level1">
+<h1>Filepaths and data I/O</h1>
+<p>Once you deal with external files (e.g.&nbsp;loading a .csv), saving outputs or reports, you have to deal with directory and file structure. For beginners, this is often harder than the actual R code itself. To keep everything easy and consistent within R (at least for this course), I recommend setting a <strong>working directory</strong> either manually or with a Rstudio project and <strong>relative file paths</strong> to data.</p>
+<section id="the-working-directory" class="level2">
+<h2 class="anchored" data-anchor-id="the-working-directory">The working directory</h2>
+<p>The working directory in R is a valuable feature that can saves a lot of nerves and time to navigate to files on your computer. You can check your current working directory with the <code>getwd()</code> function. In RStudio, you can also see your working directory as a path above the R console next to your R version number. The file browser of Rstudio also starts in your working directory by default. Use <code>setwd()</code> in order to change the working directory to some location (i.e.&nbsp;folder) on you computer. R and Rstudio know about the files in your working directory. You can think of it as the starting point of file paths.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"path/to/directory"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>R and Rstudio know about the files in your working directory. You can think of it as the starting point of file paths.</p>
+</section>
+<section id="relative-file-paths" class="level2">
+<h2 class="anchored" data-anchor-id="relative-file-paths">Relative file paths</h2>
+<p>To import data into R, you have to work with its file path. You could use the <strong>absolute</strong> file path, i.e.&nbsp;starting with the root of your file system:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Linux</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="st">"/home/marvin/projects/rcourse/session02/data/file.csv"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Windows</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="st">"C:\Users\Marvin\Dokumente</span><span class="sc">\r</span><span class="st">course\session02\data</span><span class="sc">\f</span><span class="st">ile.csv"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Way more convenient and less prone to errors is the use of relative paths by setting your working directory.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"/home/marvin/projects/rcourse/session02"</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># If the R project is set up in the "session02" directory we can use relative paths:</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># relative path to project root</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">"data/file.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+File path auto-completion
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Use the <code>TAB</code> Key in RStudio for navigation and auto-completion of file paths.</p>
+</div>
+</div>
+</section>
+<section id="csv" class="level2">
+<h2 class="anchored" data-anchor-id="csv">.csv</h2>
+<p>Once you deal with actual data you want to analyse, it is rare that you want to build a <code>data.frame</code> from scratch like the example above. Instead, you have some file prepared on your computer e.g.&nbsp;a <code>.csv</code> file you want to get into R. Most likely, this data comes from a spreadsheet application like Excel or Google Sheets that have their own file formats, e.g.&nbsp;a <code>.xlsx</code> file. While it is possible to import <code>.xlsx</code> files into R with external packages, the more elegant way is to use a much simpler file format: comma separated values - <code>.csv</code>.</p>
+<p>As the name suggests, a <code>.csv</code> file contains values separated by commas <code>,</code>:</p>
+<pre><code>plotID, soil_ph, soil_temperature, forest_type
+1, 5.5, 10, coniferous
+2, 5.4, 11, coniferous
+3, 6.1, 12, deciduous</code></pre>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+csv files in Germany
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In Germany, <code>,</code> is used as the decimal point. You will often find csv files where the delimiter is a semicolon <code>;</code>.</p>
+</div>
+</div>
+<p>To get a <code>.csv</code> file into R, use the <code>read.csv()</code> function. Here you can also specify the <code>dec</code> and <code>sep</code> arguments to the correct symbols for <code>dec</code>imal points and <code>sep</code>arators.</p>
 </section>
 <section id="r-studio-projects" class="level2">
 <h2 class="anchored" data-anchor-id="r-studio-projects">R studio Projects</h2>
-<p>Here is an example from a blog entry at <a href="https://www.r-bloggers.com/2020/01/rstudio-projects-and-working-directories-a-beginners-guide/">r-bloggers.com</a></p>
+<p>If you want to use RStudio Projects, there is a good <a href="https://www.r-bloggers.com/2020/01/rstudio-projects-and-working-directories-a-beginners-guide/">blog entry in r-bloggers.com</a>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://i1.wp.com/raw.githubusercontent.com/martinctc/blog/master/images/RPROJECT_2000dpi.png?w=578&amp;ssl=1" class="img-fluid figure-img"></p>
 <figcaption>A good starting point for project setup</figcaption>
 </figure>
-</div>
-<p>Inside a project, you can then use relative paths to files.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example of absolute path</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Linux</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="st">"/home/marvin/projects/rcourse/session02/data/file.csv"</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Windows</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="st">"C:\Users\Marvin\Dokumente</span><span class="sc">\r</span><span class="st">course\session02\data</span><span class="sc">\f</span><span class="st">ile.csv"</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># If the R project is set up in the "session02" directory we can use relative paths:</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># relative path to project root</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">"data/file.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
