@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.553">
+<meta name="generator" content="quarto-1.4.554">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -227,6 +227,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./df04_wide_long.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Wide vs.&nbsp;Long data.frames</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./assignments/Ex03_iris.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Ex03: iris</span></a>
   </div>
@@ -286,7 +292,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>Hint: the correct data.frame should look something like this:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dwd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Jahr summer Brandenburg.Berlin Brandenburg Baden.Wuerttemberg Bayern Hessen
 1 1881 summer              17.13       17.11              17.03  16.39  16.62
@@ -334,10 +339,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <ul>
-<li>Calculate the average summer temperature of Germany between the years 1961 and 1990.</li>
-<li>Calculate the temperature anomaly for each year in Germany, i.e.&nbsp;the deviation of the yearly temperature to the calculated long term average.</li>
-<li>Create a plot of the anomaly. Hint: set the argument <code>type = "h"</code> in the <code>plot</code> function to get bars instead of points.</li>
+<li><p>Calculate the average summer temperature of Germany between the years 1961 and 1990.</p></li>
+<li><p>Calculate the temperature anomaly for each year in Germany, i.e.&nbsp;the deviation of the yearly temperature to the calculated long term average.</p></li>
+<li><p>Create a plot of the anomaly. Hint: set the argument <code>type = "h"</code> in the <code>plot</code> function to get bars instead of points.</p></li>
+<li><p>Compare the temperature of Thueringen and Sachsen.Anhalt:</p></li>
+<li><p>Use a <code>boxplot</code> to visualize both state’s summer temperatures.</p></li>
+<li><p>Use a <code>t.test</code> to check if there are significant differences between the summer temperatures of both states?</p></li>
+<li><p>Hint: for these tasks you need a data.frame in long format (<code>tidyr::pivot_longer()</code>) and the formula notation <code>y ~ x</code>.</p></li>
 </ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>long <span class="ot">=</span> tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(dwd, <span class="at">cols =</span> <span class="fu">c</span>(<span class="st">"Sachsen.Anhalt"</span>, <span class="st">"Thueringen"</span>), <span class="at">names_to =</span> <span class="st">"state"</span>, <span class="at">values_to =</span> <span class="st">"summer_temperature"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(long<span class="sc">$</span>summer_temperature <span class="sc">~</span> long<span class="sc">$</span>state)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="E06_german_climate_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(long<span class="sc">$</span>summer_temperature <span class="sc">~</span> long<span class="sc">$</span>state)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Welch Two Sample t-test
+
+data:  long$summer_temperature by long$state
+t = 9.63, df = 283.59, p-value &lt; 2.2e-16
+alternative hypothesis: true difference in means between group Sachsen.Anhalt and group Thueringen is not equal to 0
+95 percent confidence interval:
+ 0.9463751 1.4326459
+sample estimates:
+mean in group Sachsen.Anhalt     mean in group Thueringen 
+                    17.25070                     16.06119 </code></pre>
+</div>
+</div>
 
 
 </section>
