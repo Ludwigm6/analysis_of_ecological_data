@@ -108,11 +108,25 @@
     ]
   },
   {
+    "objectID": "assignments/Ex06_cropspecies_solution.html",
+    "href": "assignments/Ex06_cropspecies_solution.html",
+    "title": "E06: Feldfruechte und Arthropoden",
+    "section": "",
+    "text": "Many studies in landscape ecology deal with species data. Usually, these studies follow a plot based design to compare different environments and ecosystems in terms of abundances or species diversity. To practice everything we’ve learned so far we want to have a look at another real world dataset. The species data below was collected by Michael Meyer. To find out more about the original goal of why this data was collected you can have a look at Meyer et al. (2019). While the statistical analysis of this paper is more advanced and not suited for this beginner course, the structure of the data is very easy and also allows the practice of more simple methods.\n\n\n\nFirst entries of species data by Meyer et al. 2019\n\n\n\n\n\n\n\n\n\n\n\n\nplotcode\nCroptype\nAraInd\nAraSpec\nCaraInd\nCaraSpec\nIsoMyrInd\nIsoMyrSpec\n\n\n\n\n1\nWW\n111\n17\n191\n15\n6\n2\n\n\n4\nSM\n102\n20\n149\n14\n52\n2\n\n\n5\nWW\n154\n19\n96\n11\n16\n4\n\n\n10\nSM\n13\n8\n80\n12\n10\n1\n\n\n12\nZR\n125\n14\n108\n18\n14\n4\n\n\n13\nWW\n107\n15\n178\n18\n23\n3\n\n\n16\nWW\n81\n19\n97\n12\n23\n3\n\n\n20\nWR\n132\n20\n327\n12\n8\n3\n\n\n24\nKE\n66\n12\n141\n13\n9\n2\n\n\n26\nWW\n100\n17\n136\n17\n4\n2\n\n\n\n\n\nThe column names and crop types appear very cryptic at first sight. Here are some explanations:\n\nGP = Grain Pea\nSB = Sugar Beet\nSM = Silage Maize\nWR = Winter oilseed Rape\nWW = Winter Wheat\nAra = Araneae\nCara = Carabidae\nIsoMyr = Isopoda and Myriapoda\nInd = Number of individual animals\nSpec = Number of species\n\n\n\n\nlibrary(dplyr)\ncrops = read.csv(\"../data/crop_species.csv\")\n\n\nHow many different crop types where analysed in the study?\n\n\nlength(unique(crops$Croptype))\n\n[1] 5\n\n# or with dplyr\ncrops |&gt; pull(Croptype) |&gt; unique() |&gt; length()\n\n[1] 5\n\n\n\nHow many plots are there for each crop type?\n\n\ntable(crops$Croptype)\n\n\nKE SM WR WW ZR \n 3  9  6 33  9 \n\n# or with dplyr\ncrops |&gt;  count(Croptype)\n\n  Croptype  n\n1       KE  3\n2       SM  9\n3       WR  6\n4       WW 33\n5       ZR  9\n\n\n\nWhich plot had the most individual animals? (regardless of species)\n\n\n# calculate the total individuals for each plot\ncrops$TotalInd = crops$AraInd + crops$CaraInd + crops$IsoMyrInd\n\n# find out on which plotcode the total number is the maximum total number\ncrops$plotcode[crops$TotalInd == max(crops$TotalInd)]\n\n[1] 30\n\n# with dplyr\ncrops %&gt;% mutate(TotalInd = AraInd + CaraInd + IsoMyrInd) %&gt;% \n    filter(TotalInd == max(TotalInd)) %&gt;%\n    select(plotcode, TotalInd)\n\n  plotcode TotalInd\n1       30      597\n\n\n\nWhich plot had the most species?\n\n\ncrops$TotalSpec = crops$AraSpec + crops$CaraSpec + crops$IsoMyrSpec\ncrops$plotcode[crops$TotalSpec == max(crops$TotalSpec)]\n\n[1] 98\n\n# with dplyr\ncrops %&gt;% mutate(TotalSpec = AraSpec + CaraSpec + IsoMyrSpec) %&gt;% \n    filter(TotalSpec == max(TotalSpec)) %&gt;% \n    select(plotcode, TotalSpec)\n\n  plotcode TotalSpec\n1       98        41\n\n\n\nWhat is the average number of Carabidaes on all the plots containing winter wheat?\n\n\nmean(crops$CaraInd[crops$Croptype == \"WW\"])\n\n[1] 119.697\n\n# dplyr variation 1\ncrops %&gt;% filter(Croptype == \"WW\") %&gt;% \n    summarise(MeanCara = mean(CaraInd))\n\n  MeanCara\n1  119.697\n\n# dplyr variation 2\ncrops %&gt;% filter(Croptype == \"WW\") %&gt;% \n    pull(CaraInd) %&gt;% \n    mean()\n\n[1] 119.697\n\n\n\nWhat is the minimum number of individuals and species per crop type? (Hint: dplyr::group_by, dplyr::summarise)\n\n\n# for one crop type and species only\nmin(crops$TotalSpec[crops$Croptype == \"WW\"])\n\n[1] 26\n\n# dplyr to do everything at once\ncrops %&gt;% group_by(Croptype) %&gt;% \n    summarise(MinInd = min(TotalInd),\n              MaxInd = max(TotalInd),\n              MinSpec = min(TotalSpec),\n              MaxSpec = max(TotalSpec))\n\n# A tibble: 5 × 5\n  Croptype MinInd MaxInd MinSpec MaxSpec\n  &lt;chr&gt;     &lt;int&gt;  &lt;int&gt;   &lt;int&gt;   &lt;int&gt;\n1 KE          216    342      27      30\n2 SM          103    399      21      41\n3 WR          271    597      24      40\n4 WW          149    317      26      36\n5 ZR          163    350      23      36\n\n\n\nVisualize the number of Carabidaes per crop type.\n\n\nboxplot(crops$CaraInd ~ crops$Croptype)\n\n\n\n\n\n\n\n\n\nCompare the number of species of Araneae, Carabidae and IsopodaMyriapoda with a boxplot. (Hint: tidyr::pivot_longer)\n\n\ncrops_pivot = tidyr::pivot_longer(crops,\n                                  cols = c(\"AraSpec\", \"CaraSpec\", \"IsoMyrSpec\"))\nboxplot(crops_pivot$value ~ crops_pivot$name)\n\n\n\n\n\n\n\n# with naming the columns:\ncrops_pivot = tidyr::pivot_longer(crops,\n                                  cols = c(\"AraSpec\", \"CaraSpec\", \"IsoMyrSpec\"),\n                                  names_to = \"Group\",\n                                  values_to = \"Species\")\nboxplot(Species ~ Group, data = crops_pivot)\n\n\n\n\n\n\n\n\n\nPlot the number of Araneae species in relation to the number of individual Araneae.\n\n\nplot(crops$AraInd, crops$AraSpec)\n\n\n\n\n\n\n\n\n\nIf there are more individual Araneae on a plot, are there also more Araneae species?\n\n\n# build a linear model\nara_model = lm(crops$AraSpec ~ crops$AraInd)\nsummary(ara_model)\n\n\nCall:\nlm(formula = crops$AraSpec ~ crops$AraInd)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-4.6170 -1.4779 -0.2867  1.3864  7.2698 \n\nCoefficients:\n             Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)   9.95648    1.18793   8.381 1.41e-11 ***\ncrops$AraInd  0.04977    0.01084   4.593 2.40e-05 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 2.443 on 58 degrees of freedom\nMultiple R-squared:  0.2667,    Adjusted R-squared:  0.2541 \nF-statistic: 21.09 on 1 and 58 DF,  p-value: 2.401e-05\n\nplot(AraSpec ~ AraInd, data = crops)\nabline(ara_model)\n\n\n\n\n\n\n\nplot(AraSpec ~ AraInd, data = crops, asp = 1)\nabline(ara_model)"
+  },
+  {
+    "objectID": "assignments/Ex06_cropspecies_solution.html#task-crops-vs.-species",
+    "href": "assignments/Ex06_cropspecies_solution.html#task-crops-vs.-species",
+    "title": "E06: Feldfruechte und Arthropoden",
+    "section": "",
+    "text": "library(dplyr)\ncrops = read.csv(\"../data/crop_species.csv\")\n\n\nHow many different crop types where analysed in the study?\n\n\nlength(unique(crops$Croptype))\n\n[1] 5\n\n# or with dplyr\ncrops |&gt; pull(Croptype) |&gt; unique() |&gt; length()\n\n[1] 5\n\n\n\nHow many plots are there for each crop type?\n\n\ntable(crops$Croptype)\n\n\nKE SM WR WW ZR \n 3  9  6 33  9 \n\n# or with dplyr\ncrops |&gt;  count(Croptype)\n\n  Croptype  n\n1       KE  3\n2       SM  9\n3       WR  6\n4       WW 33\n5       ZR  9\n\n\n\nWhich plot had the most individual animals? (regardless of species)\n\n\n# calculate the total individuals for each plot\ncrops$TotalInd = crops$AraInd + crops$CaraInd + crops$IsoMyrInd\n\n# find out on which plotcode the total number is the maximum total number\ncrops$plotcode[crops$TotalInd == max(crops$TotalInd)]\n\n[1] 30\n\n# with dplyr\ncrops %&gt;% mutate(TotalInd = AraInd + CaraInd + IsoMyrInd) %&gt;% \n    filter(TotalInd == max(TotalInd)) %&gt;%\n    select(plotcode, TotalInd)\n\n  plotcode TotalInd\n1       30      597\n\n\n\nWhich plot had the most species?\n\n\ncrops$TotalSpec = crops$AraSpec + crops$CaraSpec + crops$IsoMyrSpec\ncrops$plotcode[crops$TotalSpec == max(crops$TotalSpec)]\n\n[1] 98\n\n# with dplyr\ncrops %&gt;% mutate(TotalSpec = AraSpec + CaraSpec + IsoMyrSpec) %&gt;% \n    filter(TotalSpec == max(TotalSpec)) %&gt;% \n    select(plotcode, TotalSpec)\n\n  plotcode TotalSpec\n1       98        41\n\n\n\nWhat is the average number of Carabidaes on all the plots containing winter wheat?\n\n\nmean(crops$CaraInd[crops$Croptype == \"WW\"])\n\n[1] 119.697\n\n# dplyr variation 1\ncrops %&gt;% filter(Croptype == \"WW\") %&gt;% \n    summarise(MeanCara = mean(CaraInd))\n\n  MeanCara\n1  119.697\n\n# dplyr variation 2\ncrops %&gt;% filter(Croptype == \"WW\") %&gt;% \n    pull(CaraInd) %&gt;% \n    mean()\n\n[1] 119.697\n\n\n\nWhat is the minimum number of individuals and species per crop type? (Hint: dplyr::group_by, dplyr::summarise)\n\n\n# for one crop type and species only\nmin(crops$TotalSpec[crops$Croptype == \"WW\"])\n\n[1] 26\n\n# dplyr to do everything at once\ncrops %&gt;% group_by(Croptype) %&gt;% \n    summarise(MinInd = min(TotalInd),\n              MaxInd = max(TotalInd),\n              MinSpec = min(TotalSpec),\n              MaxSpec = max(TotalSpec))\n\n# A tibble: 5 × 5\n  Croptype MinInd MaxInd MinSpec MaxSpec\n  &lt;chr&gt;     &lt;int&gt;  &lt;int&gt;   &lt;int&gt;   &lt;int&gt;\n1 KE          216    342      27      30\n2 SM          103    399      21      41\n3 WR          271    597      24      40\n4 WW          149    317      26      36\n5 ZR          163    350      23      36\n\n\n\nVisualize the number of Carabidaes per crop type.\n\n\nboxplot(crops$CaraInd ~ crops$Croptype)\n\n\n\n\n\n\n\n\n\nCompare the number of species of Araneae, Carabidae and IsopodaMyriapoda with a boxplot. (Hint: tidyr::pivot_longer)\n\n\ncrops_pivot = tidyr::pivot_longer(crops,\n                                  cols = c(\"AraSpec\", \"CaraSpec\", \"IsoMyrSpec\"))\nboxplot(crops_pivot$value ~ crops_pivot$name)\n\n\n\n\n\n\n\n# with naming the columns:\ncrops_pivot = tidyr::pivot_longer(crops,\n                                  cols = c(\"AraSpec\", \"CaraSpec\", \"IsoMyrSpec\"),\n                                  names_to = \"Group\",\n                                  values_to = \"Species\")\nboxplot(Species ~ Group, data = crops_pivot)\n\n\n\n\n\n\n\n\n\nPlot the number of Araneae species in relation to the number of individual Araneae.\n\n\nplot(crops$AraInd, crops$AraSpec)\n\n\n\n\n\n\n\n\n\nIf there are more individual Araneae on a plot, are there also more Araneae species?\n\n\n# build a linear model\nara_model = lm(crops$AraSpec ~ crops$AraInd)\nsummary(ara_model)\n\n\nCall:\nlm(formula = crops$AraSpec ~ crops$AraInd)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-4.6170 -1.4779 -0.2867  1.3864  7.2698 \n\nCoefficients:\n             Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)   9.95648    1.18793   8.381 1.41e-11 ***\ncrops$AraInd  0.04977    0.01084   4.593 2.40e-05 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 2.443 on 58 degrees of freedom\nMultiple R-squared:  0.2667,    Adjusted R-squared:  0.2541 \nF-statistic: 21.09 on 1 and 58 DF,  p-value: 2.401e-05\n\nplot(AraSpec ~ AraInd, data = crops)\nabline(ara_model)\n\n\n\n\n\n\n\nplot(AraSpec ~ AraInd, data = crops, asp = 1)\nabline(ara_model)"
+  },
+  {
     "objectID": "assignments/Ex05_german_climate.html",
     "href": "assignments/Ex05_german_climate.html",
     "title": "Analysis of Ecological Data",
     "section": "",
-    "text": "The German Weather Service DWD provides a variety of openly available climate, weather and phenology data in their data portal.\n\nDownload the regional average summer temperature of germany.\nThe file is a simple .txt file. Open it with a text editor and have a conscious look at the structure and content.\nLoad the file into R with the read.table or read.csv function.\nBy default, read.table will throw an error at you and the output of read.csv is weird. Why?\nLook at the help page of read.csv / read.table and fix the issues.\n\nHint: the correct data.frame should have 143 observations of 20 variable that look something like this:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nJahr\nsummer\nBrandenburg.Berlin\nBrandenburg\nBaden.Wuerttemberg\nBayern\nHessen\nMecklenburg.Vorpommern\nNiedersachsen\nNiedersachsen.Hamburg.Bremen\nNordrhein.Westfalen\nRheinland.Pfalz\nSchleswig.Holstein\nSaarland\nSachsen\nSachsen.Anhalt\nThueringen.Sachsen.Anhalt\nThueringen\nDeutschland\nX\n\n\n\n\n1881\nsummer\n17.13\n17.11\n17.03\n16.39\n16.62\n16.12\n16.24\n16.24\n16.66\n16.90\n15.80\n17.19\n16.20\n16.88\n16.46\n15.95\n16.53\nNA\n\n\n1882\nsummer\n16.45\n16.44\n14.85\n14.46\n15.02\n16.19\n15.71\n15.72\n15.48\n15.16\n16.10\n15.33\n15.05\n16.02\n15.41\n14.64\n15.33\nNA\n\n\n1883\nsummer\n17.52\n17.51\n15.87\n15.50\n16.15\n16.66\n16.35\n16.36\n16.37\n16.23\n16.31\n16.42\n16.49\n17.14\n16.57\n15.84\n16.26\nNA\n\n\n1884\nsummer\n17.00\n16.98\n16.08\n15.35\n16.01\n16.32\n16.20\n16.21\n16.45\n16.52\n16.19\n16.83\n15.92\n16.57\n16.02\n15.33\n16.10\nNA\n\n\n1885\nsummer\n17.18\n17.17\n16.63\n16.05\n15.84\n16.06\n15.78\n15.78\n16.11\n16.28\n15.53\n16.65\n16.29\n16.63\n16.10\n15.43\n16.18\nNA\n\n\n1886\nsummer\n17.16\n17.15\n16.04\n15.47\n15.88\n16.05\n15.89\n15.89\n16.17\n16.17\n15.52\n16.42\n16.09\n16.61\n16.05\n15.35\n16.00\nNA\n\n\n\n\n\n\nWhich year had the warmest summer in Bayern since the beginning of the recordings?\nWhat was the average summer temperature in Nordrhein-Westfalen since the year 2000.\nWhich German state had the coldest summer in the year 2005.",
+    "text": "The German Weather Service DWD provides a variety of openly available climate, weather and phenology data in their data portal.\n\nDownload the regional average summer temperature of germany.\nThe file is a simple .txt file. Open it with a text editor and have a conscious look at the structure and content.\nLoad the file into R with the read.table or read.csv function.\nBy default, read.table will throw an error at you and the output of read.csv is weird. Why?\nLook at the help page of read.csv / read.table and fix the issues.\n\nHint: the correct data.frame should have 143 observations of 20 variable that look something like this:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nJahr\nsummer\nBrandenburg.Berlin\nBrandenburg\nBaden.Wuerttemberg\nBayern\nHessen\nMecklenburg.Vorpommern\nNiedersachsen\nNiedersachsen.Hamburg.Bremen\nNordrhein.Westfalen\nRheinland.Pfalz\nSchleswig.Holstein\nSaarland\nSachsen\nSachsen.Anhalt\nThueringen.Sachsen.Anhalt\nThueringen\nDeutschland\nX\n\n\n\n\n1881\nsummer\n17.13\n17.11\n17.03\n16.39\n16.62\n16.12\n16.24\n16.24\n16.66\n16.90\n15.80\n17.19\n16.20\n16.88\n16.46\n15.95\n16.53\nNA\n\n\n1882\nsummer\n16.45\n16.44\n14.85\n14.46\n15.02\n16.19\n15.71\n15.72\n15.48\n15.16\n16.10\n15.33\n15.05\n16.02\n15.41\n14.64\n15.33\nNA\n\n\n1883\nsummer\n17.52\n17.51\n15.87\n15.50\n16.15\n16.66\n16.35\n16.36\n16.37\n16.23\n16.31\n16.42\n16.49\n17.14\n16.57\n15.84\n16.26\nNA\n\n\n1884\nsummer\n17.00\n16.98\n16.08\n15.35\n16.01\n16.32\n16.20\n16.21\n16.45\n16.52\n16.19\n16.83\n15.92\n16.57\n16.02\n15.33\n16.10\nNA\n\n\n1885\nsummer\n17.18\n17.17\n16.63\n16.05\n15.84\n16.06\n15.78\n15.78\n16.11\n16.28\n15.53\n16.65\n16.29\n16.63\n16.10\n15.43\n16.18\nNA\n\n\n1886\nsummer\n17.16\n17.15\n16.04\n15.47\n15.88\n16.05\n15.89\n15.89\n16.17\n16.17\n15.52\n16.42\n16.09\n16.61\n16.05\n15.35\n16.00\nNA\n\n\n\n\n\n\nWhich year had the warmest summer in Bayern since the beginning of the recordings?\nWhat was the average summer temperature in Nordrhein-Westfalen since the year 2000.\nWhich German state had the coldest summer in the year 2005.\n\n\ndwd$Jahr[which.max(dwd$Bayern)]\n\n[1] 2003\n\nmean(dwd$Nordrhein.Westfalen[dwd$Jahr == 2000])\n\n[1] 16.48",
     "crumbs": [
       "Data analysis",
       "Ex05: German Climate"
@@ -123,7 +137,7 @@
     "href": "assignments/Ex05_german_climate.html#ex05-german-climate",
     "title": "Analysis of Ecological Data",
     "section": "",
-    "text": "The German Weather Service DWD provides a variety of openly available climate, weather and phenology data in their data portal.\n\nDownload the regional average summer temperature of germany.\nThe file is a simple .txt file. Open it with a text editor and have a conscious look at the structure and content.\nLoad the file into R with the read.table or read.csv function.\nBy default, read.table will throw an error at you and the output of read.csv is weird. Why?\nLook at the help page of read.csv / read.table and fix the issues.\n\nHint: the correct data.frame should have 143 observations of 20 variable that look something like this:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nJahr\nsummer\nBrandenburg.Berlin\nBrandenburg\nBaden.Wuerttemberg\nBayern\nHessen\nMecklenburg.Vorpommern\nNiedersachsen\nNiedersachsen.Hamburg.Bremen\nNordrhein.Westfalen\nRheinland.Pfalz\nSchleswig.Holstein\nSaarland\nSachsen\nSachsen.Anhalt\nThueringen.Sachsen.Anhalt\nThueringen\nDeutschland\nX\n\n\n\n\n1881\nsummer\n17.13\n17.11\n17.03\n16.39\n16.62\n16.12\n16.24\n16.24\n16.66\n16.90\n15.80\n17.19\n16.20\n16.88\n16.46\n15.95\n16.53\nNA\n\n\n1882\nsummer\n16.45\n16.44\n14.85\n14.46\n15.02\n16.19\n15.71\n15.72\n15.48\n15.16\n16.10\n15.33\n15.05\n16.02\n15.41\n14.64\n15.33\nNA\n\n\n1883\nsummer\n17.52\n17.51\n15.87\n15.50\n16.15\n16.66\n16.35\n16.36\n16.37\n16.23\n16.31\n16.42\n16.49\n17.14\n16.57\n15.84\n16.26\nNA\n\n\n1884\nsummer\n17.00\n16.98\n16.08\n15.35\n16.01\n16.32\n16.20\n16.21\n16.45\n16.52\n16.19\n16.83\n15.92\n16.57\n16.02\n15.33\n16.10\nNA\n\n\n1885\nsummer\n17.18\n17.17\n16.63\n16.05\n15.84\n16.06\n15.78\n15.78\n16.11\n16.28\n15.53\n16.65\n16.29\n16.63\n16.10\n15.43\n16.18\nNA\n\n\n1886\nsummer\n17.16\n17.15\n16.04\n15.47\n15.88\n16.05\n15.89\n15.89\n16.17\n16.17\n15.52\n16.42\n16.09\n16.61\n16.05\n15.35\n16.00\nNA\n\n\n\n\n\n\nWhich year had the warmest summer in Bayern since the beginning of the recordings?\nWhat was the average summer temperature in Nordrhein-Westfalen since the year 2000.\nWhich German state had the coldest summer in the year 2005.",
+    "text": "The German Weather Service DWD provides a variety of openly available climate, weather and phenology data in their data portal.\n\nDownload the regional average summer temperature of germany.\nThe file is a simple .txt file. Open it with a text editor and have a conscious look at the structure and content.\nLoad the file into R with the read.table or read.csv function.\nBy default, read.table will throw an error at you and the output of read.csv is weird. Why?\nLook at the help page of read.csv / read.table and fix the issues.\n\nHint: the correct data.frame should have 143 observations of 20 variable that look something like this:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nJahr\nsummer\nBrandenburg.Berlin\nBrandenburg\nBaden.Wuerttemberg\nBayern\nHessen\nMecklenburg.Vorpommern\nNiedersachsen\nNiedersachsen.Hamburg.Bremen\nNordrhein.Westfalen\nRheinland.Pfalz\nSchleswig.Holstein\nSaarland\nSachsen\nSachsen.Anhalt\nThueringen.Sachsen.Anhalt\nThueringen\nDeutschland\nX\n\n\n\n\n1881\nsummer\n17.13\n17.11\n17.03\n16.39\n16.62\n16.12\n16.24\n16.24\n16.66\n16.90\n15.80\n17.19\n16.20\n16.88\n16.46\n15.95\n16.53\nNA\n\n\n1882\nsummer\n16.45\n16.44\n14.85\n14.46\n15.02\n16.19\n15.71\n15.72\n15.48\n15.16\n16.10\n15.33\n15.05\n16.02\n15.41\n14.64\n15.33\nNA\n\n\n1883\nsummer\n17.52\n17.51\n15.87\n15.50\n16.15\n16.66\n16.35\n16.36\n16.37\n16.23\n16.31\n16.42\n16.49\n17.14\n16.57\n15.84\n16.26\nNA\n\n\n1884\nsummer\n17.00\n16.98\n16.08\n15.35\n16.01\n16.32\n16.20\n16.21\n16.45\n16.52\n16.19\n16.83\n15.92\n16.57\n16.02\n15.33\n16.10\nNA\n\n\n1885\nsummer\n17.18\n17.17\n16.63\n16.05\n15.84\n16.06\n15.78\n15.78\n16.11\n16.28\n15.53\n16.65\n16.29\n16.63\n16.10\n15.43\n16.18\nNA\n\n\n1886\nsummer\n17.16\n17.15\n16.04\n15.47\n15.88\n16.05\n15.89\n15.89\n16.17\n16.17\n15.52\n16.42\n16.09\n16.61\n16.05\n15.35\n16.00\nNA\n\n\n\n\n\n\nWhich year had the warmest summer in Bayern since the beginning of the recordings?\nWhat was the average summer temperature in Nordrhein-Westfalen since the year 2000.\nWhich German state had the coldest summer in the year 2005.\n\n\ndwd$Jahr[which.max(dwd$Bayern)]\n\n[1] 2003\n\nmean(dwd$Nordrhein.Westfalen[dwd$Jahr == 2000])\n\n[1] 16.48",
     "crumbs": [
       "Data analysis",
       "Ex05: German Climate"
@@ -134,7 +148,7 @@
     "href": "assignments/Ex05_german_climate.html#pivots",
     "title": "Analysis of Ecological Data",
     "section": "Pivots",
-    "text": "Pivots\n\nCreate a subset that only contains the columns Jahr, Thueringen and Sachsen.Anhalt.\nConvert this data.frame to the long format with tidyr::pivot_longer with three columns: “Jahr”, “Bundesland” and “Temperatur”.\nCompare the temperature of Thueringen and Sachsen.Anhalt:\nUse a boxplot to visualize both state’s summer temperatures.\nUse a t.test to check if there are significant differences between the summer temperatures of both states?\nHint: for these tasks you need the formula notation y ~ x.",
+    "text": "Pivots\n\nCreate a subset that only contains the columns Jahr, Thueringen and Sachsen.Anhalt.\nConvert this data.frame to the long format with tidyr::pivot_longer with three columns: “Jahr”, “Bundesland” and “Temperatur”.\nCompare the temperature of Thueringen and Sachsen.Anhalt:\nUse a boxplot to visualize both state’s summer temperatures.\nUse a t.test to check if there are significant differences between the summer temperatures of both states?\nHint: for these tasks you need the formula notation y ~ x.\n\n\ndf = dwd[,c(\"Jahr\", \"Thueringen\", \"Sachsen.Anhalt\")]\ndf = tidyr::pivot_longer(df, cols = c(\"Thueringen\", \"Sachsen.Anhalt\"))\n\nboxplot(df$value ~ df$name)\n\n\n\n\n\n\n\nt.test(df$value ~ df$name)\n\n\n    Welch Two Sample t-test\n\ndata:  df$value by df$name\nt = 9.63, df = 283.59, p-value &lt; 2.2e-16\nalternative hypothesis: true difference in means between group Sachsen.Anhalt and group Thueringen is not equal to 0\n95 percent confidence interval:\n 0.9463751 1.4326459\nsample estimates:\nmean in group Sachsen.Anhalt     mean in group Thueringen \n                    17.25070                     16.06119",
     "crumbs": [
       "Data analysis",
       "Ex05: German Climate"
@@ -254,21 +268,33 @@
     "href": "R09_linearmodels.html",
     "title": "Linear Models",
     "section": "",
-    "text": "Linear models describe the relation between two variables. In a non-technical description we can think about linear model like:\n\nFind a line that is as close as possible to all the points of a scatterplot.\n\n\n\n\n\n\n\n\n\n\nFor example, we can use a linear model to depict the relation between the amount of samples animals and the number of different species found in a given area. To create a linear model, we need two vectors (here as two columns of a data.frame) with the matching data pairs (Abundance and Species Number). The lm function then need a formula with the vector/column names separated by ~. Think about the ~ like as a function of. So lm(Species ~ Abundance) means: Give me the number of species as a function of species abundance.\n\nlibrary(dplyr)\nbd = read.csv(\"data/crop_species.csv\")\n\nbd = bd %&gt;% mutate(Abundance = AraInd + CaraInd + IsoMyrInd,\n              Species = AraSpec, CaraSpec, IsoMyrSpec)\n\nlmod = lm(Species ~ Abundance, bd)\nlmod\n\n\nCall:\nlm(formula = Species ~ Abundance, data = bd)\n\nCoefficients:\n(Intercept)    Abundance  \n   10.71651      0.01749  \n\n\n\n\nCalling the model returns the intercept and slope. To get a more useful output use the summary function. In the following we will go over the output of the summary function on linear models. The explanations are mostly taken from this blog entry: https://feliperego.github.io/blog/2015/10/23/Interpreting-Model-Output-In-R\n\nsummary(lmod)\n\n\nCall:\nlm(formula = Species ~ Abundance, data = bd)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-6.3136 -1.2481 -0.2235  1.1245  5.3046 \n\nCoefficients:\n             Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept) 10.716507   0.991039  10.813 1.58e-15 ***\nAbundance    0.017491   0.003656   4.784 1.22e-05 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 2.416 on 58 degrees of freedom\nMultiple R-squared:  0.2829,    Adjusted R-squared:  0.2706 \nF-statistic: 22.89 on 1 and 58 DF,  p-value: 1.221e-05\n\n\n\n\n\nthe function that was used to create the model\n\n\n\n\n\nsummary statistic of the model error\n“How far away are the real values from the model?”\nshould follow a normal distribution (e.g. by plotting a histogram)\n\n\n\n\n\n\n\n\n\n\n\nhist(lmod$residuals)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nagain the slope and intercept\nwe can expect to observed at least 10.7 different species on a plot (if we collect 103 animals)\nfor each additional animal observed, the species count increases by 0.017\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nthe expected error of the coefficients\nfor each additional animal observed, the species number increases by 0.017 +- 0.0037\n\n\n\n\n\nhow many standard deviation is the std. error away from zero?\nfar away from zero is better. Reduces the probability that the result is due to chance\nusually not interpreted\n\n\n\n\n\nprobability that the observed value is larger than t\nsmall value means that there is a high chance that the relation is not based on chance\np values &lt; than 0.05 is the convention that we can neglect the H0 hypothesis (the model actually depicts a relation)\n\n\n\n\n\na legend for the significance level of the p-value\n\n\n\n\n\nstandard deviation of the residuals\nthe average deviation of the real values from the model value\ndegree of freedom: on how many observations is this value based on?\n\n\n\n\n\nHow much of the variance is explained by the model?\nValues between 0 and 1\n0 means no explanation, 1 means perfect fit\nDepends on the specific example!\n\n\n\n\n\nIs there a relation between the predictor and the response?\nIs my model better than if all the coefficients are zero?\nAway from 1 is good!\nDepend on number of data points.\n\n\n\n\n\n\nPlotting the linear model gives you 4 different figures that indicate if the model is statistically valid in the first place, i.e. if the residuals follow a normal distribution and if they are homoscedatic.\n\n\n\nIs it actually a linear relation?\nPoints randomly scattered around a horizontal line indicates this\n\n\n\n\n\nAre the residuals normally distributed?\nPoints on the 1-1 line indicates this\nDepicted are the actual residuals vs. a theoretical normal distribution\n\n\n\n\n\nAre the residuals homoscedatic?\nThis means that the range of the residuals are more or less equal for the whole data range\nEqually spread points around the line indicates this\n\n\n\n\n\nAre there outliers in the data that have influence on the model?\nIn this example, if we would leave out point #12, the model outcome would change.\n\n\nplot(lmod)"
+    "text": "Linear models describe the relation between two variables. In a non-technical description we can think about linear model like:\n\nFind a line that is as close as possible to all the points of a scatterplot.\n\n\n\n\n\n\n\n\n\n\nFor example, we can use a linear model to depict the relation between the amount of samples animals and the number of different species found in a given area. To create a linear model, we need two vectors (here as two columns of a data.frame) with the matching data pairs (Abundance and Species Number). The lm function then takes a formula with the vector/column names separated by ~. You can interpret the ~ in this case as a function of. So lm(Species ~ Abundance) means: Give me the number of species as a function of species abundance.\n\nlibrary(dplyr)\nbd = read.csv(\"data/crop_species.csv\")\n\nbd = bd %&gt;% mutate(Abundance = AraInd + CaraInd + IsoMyrInd,\n              Species = AraSpec, CaraSpec, IsoMyrSpec)\n\nlmod = lm(Species ~ Abundance, bd)\nlmod\n\n\nCall:\nlm(formula = Species ~ Abundance, data = bd)\n\nCoefficients:\n(Intercept)    Abundance  \n   10.71651      0.01749  \n\n\n\n\nCalling the model returns the intercept and slope. To get a more useful output use the summary function. In the following we will go over the output of the summary function on linear models. The explanations are mostly taken from this blog entry: https://feliperego.github.io/blog/2015/10/23/Interpreting-Model-Output-In-R\n\nsummary(lmod)\n\n\nCall:\nlm(formula = Species ~ Abundance, data = bd)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-6.3136 -1.2481 -0.2235  1.1245  5.3046 \n\nCoefficients:\n             Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept) 10.716507   0.991039  10.813 1.58e-15 ***\nAbundance    0.017491   0.003656   4.784 1.22e-05 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 2.416 on 58 degrees of freedom\nMultiple R-squared:  0.2829,    Adjusted R-squared:  0.2706 \nF-statistic: 22.89 on 1 and 58 DF,  p-value: 1.221e-05\n\n\n\n\n\nthe function that was used to create the model\n\n\n\n\n\nsummary statistic of the model error\n“How far away are the real values from the model?”\nshould follow a normal distribution (e.g. by plotting a histogram)\n\n\n\n\n\n\n\n\n\n\n\nhist(lmod$residuals)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nagain the slope and intercept\nwe can expect to observed at least 10.7 different species on a plot (if we collect 103 animals)\nfor each additional animal observed, the species count increases by 0.017\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nthe expected error of the coefficients\nfor each additional animal observed, the species number increases by 0.017 +- 0.0037\n\n\n\n\n\nhow many standard deviation is the std. error away from zero?\nfar away from zero is better. Reduces the probability that the result is due to chance\nusually not interpreted\n\n\n\n\n\nprobability that the observed value is larger than t\nsmall value means that there is a high chance that the relation is not based on chance\np values &lt; than 0.05 is the convention that we can neglect the H0 hypothesis (the model actually depicts a relation)\n\n\n\n\n\na legend for the significance level of the p-value\n\n\n\n\n\nstandard deviation of the residuals\nthe average deviation of the real values from the model value\ndegree of freedom: on how many observations is this value based on?\n\n\n\n\n\nHow much of the variance is explained by the model?\nValues between 0 and 1\n0 means no explanation, 1 means perfect fit\nDepends on the specific example!\n\n\n\n\n\nIs there a relation between the predictor and the response?\nIs my model better than if all the coefficients are zero?\nAway from 1 is good!\nDepend on number of data points.\n\n\n\n\n\n\nPlotting the linear model gives you 4 different figures that indicate if the model is statistically valid in the first place, i.e. if the residuals follow a normal distribution and if they are homoscedatic.\n\n\n\nIs it actually a linear relation?\nPoints randomly scattered around a horizontal line indicates this\n\n\n\n\n\nAre the residuals normally distributed?\nPoints on the 1-1 line indicates this\nDepicted are the actual residuals vs. a theoretical normal distribution\n\n\n\n\n\nAre the residuals homoscedatic?\nThis means that the range of the residuals are more or less equal for the whole data range\nEqually spread points around the line indicates this\n\n\n\n\n\nAre there outliers in the data that have influence on the model?\nIn this example, if we would leave out point #12, the model outcome would change.\n\n\nplot(lmod)",
+    "crumbs": [
+      "Data analysis",
+      "Linear Models"
+    ]
   },
   {
     "objectID": "R09_linearmodels.html#linear-model-summary",
     "href": "R09_linearmodels.html#linear-model-summary",
     "title": "Linear Models",
     "section": "",
-    "text": "Calling the model returns the intercept and slope. To get a more useful output use the summary function. In the following we will go over the output of the summary function on linear models. The explanations are mostly taken from this blog entry: https://feliperego.github.io/blog/2015/10/23/Interpreting-Model-Output-In-R\n\nsummary(lmod)\n\n\nCall:\nlm(formula = Species ~ Abundance, data = bd)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-6.3136 -1.2481 -0.2235  1.1245  5.3046 \n\nCoefficients:\n             Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept) 10.716507   0.991039  10.813 1.58e-15 ***\nAbundance    0.017491   0.003656   4.784 1.22e-05 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 2.416 on 58 degrees of freedom\nMultiple R-squared:  0.2829,    Adjusted R-squared:  0.2706 \nF-statistic: 22.89 on 1 and 58 DF,  p-value: 1.221e-05\n\n\n\n\n\nthe function that was used to create the model\n\n\n\n\n\nsummary statistic of the model error\n“How far away are the real values from the model?”\nshould follow a normal distribution (e.g. by plotting a histogram)\n\n\n\n\n\n\n\n\n\n\n\nhist(lmod$residuals)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nagain the slope and intercept\nwe can expect to observed at least 10.7 different species on a plot (if we collect 103 animals)\nfor each additional animal observed, the species count increases by 0.017\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nthe expected error of the coefficients\nfor each additional animal observed, the species number increases by 0.017 +- 0.0037\n\n\n\n\n\nhow many standard deviation is the std. error away from zero?\nfar away from zero is better. Reduces the probability that the result is due to chance\nusually not interpreted\n\n\n\n\n\nprobability that the observed value is larger than t\nsmall value means that there is a high chance that the relation is not based on chance\np values &lt; than 0.05 is the convention that we can neglect the H0 hypothesis (the model actually depicts a relation)\n\n\n\n\n\na legend for the significance level of the p-value\n\n\n\n\n\nstandard deviation of the residuals\nthe average deviation of the real values from the model value\ndegree of freedom: on how many observations is this value based on?\n\n\n\n\n\nHow much of the variance is explained by the model?\nValues between 0 and 1\n0 means no explanation, 1 means perfect fit\nDepends on the specific example!\n\n\n\n\n\nIs there a relation between the predictor and the response?\nIs my model better than if all the coefficients are zero?\nAway from 1 is good!\nDepend on number of data points."
+    "text": "Calling the model returns the intercept and slope. To get a more useful output use the summary function. In the following we will go over the output of the summary function on linear models. The explanations are mostly taken from this blog entry: https://feliperego.github.io/blog/2015/10/23/Interpreting-Model-Output-In-R\n\nsummary(lmod)\n\n\nCall:\nlm(formula = Species ~ Abundance, data = bd)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-6.3136 -1.2481 -0.2235  1.1245  5.3046 \n\nCoefficients:\n             Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept) 10.716507   0.991039  10.813 1.58e-15 ***\nAbundance    0.017491   0.003656   4.784 1.22e-05 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 2.416 on 58 degrees of freedom\nMultiple R-squared:  0.2829,    Adjusted R-squared:  0.2706 \nF-statistic: 22.89 on 1 and 58 DF,  p-value: 1.221e-05\n\n\n\n\n\nthe function that was used to create the model\n\n\n\n\n\nsummary statistic of the model error\n“How far away are the real values from the model?”\nshould follow a normal distribution (e.g. by plotting a histogram)\n\n\n\n\n\n\n\n\n\n\n\nhist(lmod$residuals)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nagain the slope and intercept\nwe can expect to observed at least 10.7 different species on a plot (if we collect 103 animals)\nfor each additional animal observed, the species count increases by 0.017\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nthe expected error of the coefficients\nfor each additional animal observed, the species number increases by 0.017 +- 0.0037\n\n\n\n\n\nhow many standard deviation is the std. error away from zero?\nfar away from zero is better. Reduces the probability that the result is due to chance\nusually not interpreted\n\n\n\n\n\nprobability that the observed value is larger than t\nsmall value means that there is a high chance that the relation is not based on chance\np values &lt; than 0.05 is the convention that we can neglect the H0 hypothesis (the model actually depicts a relation)\n\n\n\n\n\na legend for the significance level of the p-value\n\n\n\n\n\nstandard deviation of the residuals\nthe average deviation of the real values from the model value\ndegree of freedom: on how many observations is this value based on?\n\n\n\n\n\nHow much of the variance is explained by the model?\nValues between 0 and 1\n0 means no explanation, 1 means perfect fit\nDepends on the specific example!\n\n\n\n\n\nIs there a relation between the predictor and the response?\nIs my model better than if all the coefficients are zero?\nAway from 1 is good!\nDepend on number of data points.",
+    "crumbs": [
+      "Data analysis",
+      "Linear Models"
+    ]
   },
   {
     "objectID": "R09_linearmodels.html#linear-model-plot",
     "href": "R09_linearmodels.html#linear-model-plot",
     "title": "Linear Models",
     "section": "",
-    "text": "Plotting the linear model gives you 4 different figures that indicate if the model is statistically valid in the first place, i.e. if the residuals follow a normal distribution and if they are homoscedatic.\n\n\n\nIs it actually a linear relation?\nPoints randomly scattered around a horizontal line indicates this\n\n\n\n\n\nAre the residuals normally distributed?\nPoints on the 1-1 line indicates this\nDepicted are the actual residuals vs. a theoretical normal distribution\n\n\n\n\n\nAre the residuals homoscedatic?\nThis means that the range of the residuals are more or less equal for the whole data range\nEqually spread points around the line indicates this\n\n\n\n\n\nAre there outliers in the data that have influence on the model?\nIn this example, if we would leave out point #12, the model outcome would change.\n\n\nplot(lmod)"
+    "text": "Plotting the linear model gives you 4 different figures that indicate if the model is statistically valid in the first place, i.e. if the residuals follow a normal distribution and if they are homoscedatic.\n\n\n\nIs it actually a linear relation?\nPoints randomly scattered around a horizontal line indicates this\n\n\n\n\n\nAre the residuals normally distributed?\nPoints on the 1-1 line indicates this\nDepicted are the actual residuals vs. a theoretical normal distribution\n\n\n\n\n\nAre the residuals homoscedatic?\nThis means that the range of the residuals are more or less equal for the whole data range\nEqually spread points around the line indicates this\n\n\n\n\n\nAre there outliers in the data that have influence on the model?\nIn this example, if we would leave out point #12, the model outcome would change.\n\n\nplot(lmod)",
+    "crumbs": [
+      "Data analysis",
+      "Linear Models"
+    ]
   },
   {
     "objectID": "R07_lists.html",
@@ -394,127 +420,6 @@
     "text": "Ex09: ggplot Gallery\nErstelle folgende Grafiken mit ggplot2:\n\nBoxplots der Aranae Species pro Feldfruchttyp.\n\n\nScatterplot der Carabidae Individuen und Carabidae Species. Die Punkte sollen je nach Feldfrucht unterschiedlich gefärbt sein.\n\n\nErstelle eine Karte der Bäume Münsters (nur mit ggplot!).\n\n\nErstelle eine “heatmap” der Bäume in Münster (geom_bin_2d or geom_hex)\n\n\nPlotte die Zeitreihe der Sommertemperatur in Deutschland mit:\n\neiner x-Achse in einem Zeitformat. Nutze lubridate::years() um das Datum vernünftig zu formatieren.\neiner horizontalen Linie das langjährige Mittel der Temperatur zw. 1961 und 1990 anzeigt.\nFärbe die Zeitreihe nach der Temperatur ein. Nutze eine geeignete Farbskala."
   },
   {
-    "objectID": "E07_lm.html",
-    "href": "E07_lm.html",
-    "title": "Ex07: Species vs. Area",
-    "section": "",
-    "text": "Ex07: Species vs. Area\nNutze die Dateien muenster_districts.csv und muenster_trees.csv aus dem Learnweb für die folgenden Aufgaben.\n\nNutze dplyr::group_by und dplyr::summarise um die Anzahl der Bäume pro Bezirk zu berechnen.\nMit einem join Befehl (z.B. dplyr::left_join) oder merge können mehrere Tabellen zusammengefügt werden. Erstelle damit eine Tabelle die mindestens folgende Informationen enthält: Bezirksname, Bezirksgröße, Anzahl der Bäume im Bezirk.\n\n\nErstelle einen Scatterplot aus Bezirksgröße und Anzahl der Bäume im Bezirk.\nErstelle ein lineares Model um den Zusammenhang zwischen Bezirksgröße und Anzahl der Bäume im Bezirk zu berechnen.\nErstelle ein Histogramm der Residuen des Models.\n\n\nLogarithmiere Bezirksgröße und Anzahl der Bäume im Bezirk (log10()). Erstelle dann den Scatterplot erneut mit den logarithmierten Werten.\n\n\nErstelle ein lineares Model um den Zusammenhang zwischen logarithmierten Bezirksgröße und Anzahl der Bäume im Bezirk zu berechnen.\nSind die Residuen des Models normalverteilt?\n\n\nBonus: Wie viele Bäume stehen Erwartungsgemäß in einem Bezirk der 10000000 qm groß ist?"
-  },
-  {
-    "objectID": "D01_data_examples.html",
-    "href": "D01_data_examples.html",
-    "title": "What is ecological data?",
-    "section": "",
-    "text": "What is ecological data?",
-    "crumbs": [
-      "Basics",
-      "What is ecological data?"
-    ]
-  },
-  {
-    "objectID": "B01_intro_R.html",
-    "href": "B01_intro_R.html",
-    "title": "What is R?",
-    "section": "",
-    "text": "Open Rstudio and get familiar with the interface.\nCreate a new, empty R script.\nWhat is the difference between the script editor and the console?\nCopy the code below into the R script and run it line by line. Try to understand what each line does.\n\n\na &lt;- 5\nb &lt;- 10\n\na + b\n\np &lt;- a-b\n\nv &lt;- c(3,12,6,9,23)\nv\n\nv / b\n\nmean(v)\n# sum(v)\n\n\n\n\n\nWhy does p &lt;- a-b not produce an output?\nWhat is c()?\nWhy does # sum(v) not work?",
-    "crumbs": [
-      "Basics",
-      "What is R?"
-    ]
-  },
-  {
-    "objectID": "B01_intro_R.html#task-r-and-rstudio",
-    "href": "B01_intro_R.html#task-r-and-rstudio",
-    "title": "What is R?",
-    "section": "",
-    "text": "Open Rstudio and get familiar with the interface.\nCreate a new, empty R script.\nWhat is the difference between the script editor and the console?\nCopy the code below into the R script and run it line by line. Try to understand what each line does.\n\n\na &lt;- 5\nb &lt;- 10\n\na + b\n\np &lt;- a-b\n\nv &lt;- c(3,12,6,9,23)\nv\n\nv / b\n\nmean(v)\n# sum(v)",
-    "crumbs": [
-      "Basics",
-      "What is R?"
-    ]
-  },
-  {
-    "objectID": "B01_intro_R.html#questions",
-    "href": "B01_intro_R.html#questions",
-    "title": "What is R?",
-    "section": "",
-    "text": "Why does p &lt;- a-b not produce an output?\nWhat is c()?\nWhy does # sum(v) not work?",
-    "crumbs": [
-      "Basics",
-      "What is R?"
-    ]
-  },
-  {
-    "objectID": "B01_intro_R_slides.html#section",
-    "href": "B01_intro_R_slides.html#section",
-    "title": "Analysis of Ecological Data",
-    "section": "",
-    "text": "r-project.org"
-  },
-  {
-    "objectID": "B01_intro_R_slides.html#r",
-    "href": "B01_intro_R_slides.html#r",
-    "title": "Analysis of Ecological Data",
-    "section": "R",
-    "text": "R\n\nR is a script language\nVersion 1.0 from 2000 (concept dates back to 1974)\nOriginal Aim: Statistical Analysis\nDesigned for data analysis and “interactive” use\nDownload: r-project.org"
-  },
-  {
-    "objectID": "B01_intro_R_slides.html#r-1",
-    "href": "B01_intro_R_slides.html#r-1",
-    "title": "Analysis of Ecological Data",
-    "section": "R",
-    "text": "R\n\nWhat you see when you start R"
-  },
-  {
-    "objectID": "B01_intro_R_slides.html#r-code",
-    "href": "B01_intro_R_slides.html#r-code",
-    "title": "Analysis of Ecological Data",
-    "section": "R Code",
-    "text": "R Code\n\ndata &lt;- c(12, 45, 65, 1, 3, 87)\nmean(data)\n\ndata &lt;- data + 5\nsort(data)"
-  },
-  {
-    "objectID": "B01_intro_R_slides.html#r-code-1",
-    "href": "B01_intro_R_slides.html#r-code-1",
-    "title": "Analysis of Ecological Data",
-    "section": "R Code",
-    "text": "R Code\n\ndata &lt;- c(12, 45, 65, 1, 3, 87)\nmean(data)\n\n[1] 35.5\n\ndata &lt;- data + 5\nsort(data)\n\n[1]  6  8 17 50 70 92"
-  },
-  {
-    "objectID": "B01_intro_R_slides.html#why-r",
-    "href": "B01_intro_R_slides.html#why-r",
-    "title": "Analysis of Ecological Data",
-    "section": "Why R?",
-    "text": "Why R?\n\nEasy to get into (although it might not feel that way at first)\nDesigned for solving scientific problems\nBig community - Getting help is really easy.\nOpen-source, active development\nUsed in science, industry, healthcare, NGOs, …"
-  },
-  {
-    "objectID": "B01_intro_R_slides.html#why-r-1",
-    "href": "B01_intro_R_slides.html#why-r-1",
-    "title": "Analysis of Ecological Data",
-    "section": "Why R?",
-    "text": "Why R?\n\nThe R package structure has been the key addition to the software - Chambers (2020)\n\n\nExpandable with packages provided by other R users\n\nSpecialized analysis for specific fields\nMachine Learning\nMedicine\nWriting Books\n…"
-  },
-  {
-    "objectID": "B01_intro_R_slides.html#why-r-2",
-    "href": "B01_intro_R_slides.html#why-r-2",
-    "title": "Analysis of Ecological Data",
-    "section": "Why R?",
-    "text": "Why R?\n\n(Wickham2023?) : R for datascience"
-  },
-  {
-    "objectID": "B01_intro_R_slides.html#rstudio",
-    "href": "B01_intro_R_slides.html#rstudio",
-    "title": "Analysis of Ecological Data",
-    "section": "Rstudio",
-    "text": "Rstudio\n\n\nIntegrated Development Environment (IDE)\nMakes R “convenient” to use\nText Editor + R Console\nProject Environments, Package Management, Help Pages, Plot Viewer, File Browser …"
-  },
-  {
-    "objectID": "B01_intro_R_slides.html#references",
-    "href": "B01_intro_R_slides.html#references",
-    "title": "Analysis of Ecological Data",
-    "section": "References",
-    "text": "References\n\n\n\n\n\n\n\n\nChambers, John, M. 2020. “S, R, and Data Science.” The R Journal 12 (1): 462. https://doi.org/10.32614/RJ-2020-028."
-  },
-  {
     "objectID": "D01_data_examples_slides.html#are-bats-in-forests-bigger",
     "href": "D01_data_examples_slides.html#are-bats-in-forests-bigger",
     "title": "Analysis of Ecological Data",
@@ -597,6 +502,120 @@
     "title": "Analysis of Ecological Data",
     "section": "References",
     "text": "References\n\n\n\n\n\n\n\n\nTurner, W. 2014. “Sensing Biodiversity.” Science 346 (6207): 301–2. https://doi.org/10.1126/science.1256014."
+  },
+  {
+    "objectID": "B01_intro_R_slides.html#section",
+    "href": "B01_intro_R_slides.html#section",
+    "title": "Analysis of Ecological Data",
+    "section": "",
+    "text": "r-project.org"
+  },
+  {
+    "objectID": "B01_intro_R_slides.html#r",
+    "href": "B01_intro_R_slides.html#r",
+    "title": "Analysis of Ecological Data",
+    "section": "R",
+    "text": "R\n\nR is a script language\nVersion 1.0 from 2000 (concept dates back to 1974)\nOriginal Aim: Statistical Analysis\nDesigned for data analysis and “interactive” use\nDownload: r-project.org"
+  },
+  {
+    "objectID": "B01_intro_R_slides.html#r-1",
+    "href": "B01_intro_R_slides.html#r-1",
+    "title": "Analysis of Ecological Data",
+    "section": "R",
+    "text": "R\n\nWhat you see when you start R"
+  },
+  {
+    "objectID": "B01_intro_R_slides.html#r-code",
+    "href": "B01_intro_R_slides.html#r-code",
+    "title": "Analysis of Ecological Data",
+    "section": "R Code",
+    "text": "R Code\n\ndata &lt;- c(12, 45, 65, 1, 3, 87)\nmean(data)\n\ndata &lt;- data + 5\nsort(data)"
+  },
+  {
+    "objectID": "B01_intro_R_slides.html#r-code-1",
+    "href": "B01_intro_R_slides.html#r-code-1",
+    "title": "Analysis of Ecological Data",
+    "section": "R Code",
+    "text": "R Code\n\ndata &lt;- c(12, 45, 65, 1, 3, 87)\nmean(data)\n\n[1] 35.5\n\ndata &lt;- data + 5\nsort(data)\n\n[1]  6  8 17 50 70 92"
+  },
+  {
+    "objectID": "B01_intro_R_slides.html#why-r",
+    "href": "B01_intro_R_slides.html#why-r",
+    "title": "Analysis of Ecological Data",
+    "section": "Why R?",
+    "text": "Why R?\n\nEasy to get into (although it might not feel that way at first)\nDesigned for solving scientific problems\nBig community - Getting help is really easy.\nOpen-source, active development\nUsed in science, industry, healthcare, NGOs, …"
+  },
+  {
+    "objectID": "B01_intro_R_slides.html#why-r-1",
+    "href": "B01_intro_R_slides.html#why-r-1",
+    "title": "Analysis of Ecological Data",
+    "section": "Why R?",
+    "text": "Why R?\n\nThe R package structure has been the key addition to the software - Chambers (2020)\n\n\nExpandable with packages provided by other R users\n\nSpecialized analysis for specific fields\nMachine Learning\nMedicine\nWriting Books\n…"
+  },
+  {
+    "objectID": "B01_intro_R_slides.html#why-r-2",
+    "href": "B01_intro_R_slides.html#why-r-2",
+    "title": "Analysis of Ecological Data",
+    "section": "Why R?",
+    "text": "Why R?\n\n(Wickham2023?) : R for datascience"
+  },
+  {
+    "objectID": "B01_intro_R_slides.html#rstudio",
+    "href": "B01_intro_R_slides.html#rstudio",
+    "title": "Analysis of Ecological Data",
+    "section": "Rstudio",
+    "text": "Rstudio\n\n\nIntegrated Development Environment (IDE)\nMakes R “convenient” to use\nText Editor + R Console\nProject Environments, Package Management, Help Pages, Plot Viewer, File Browser …"
+  },
+  {
+    "objectID": "B01_intro_R_slides.html#references",
+    "href": "B01_intro_R_slides.html#references",
+    "title": "Analysis of Ecological Data",
+    "section": "References",
+    "text": "References\n\n\n\n\n\n\n\n\nChambers, John, M. 2020. “S, R, and Data Science.” The R Journal 12 (1): 462. https://doi.org/10.32614/RJ-2020-028."
+  },
+  {
+    "objectID": "B01_intro_R.html",
+    "href": "B01_intro_R.html",
+    "title": "What is R?",
+    "section": "",
+    "text": "Open Rstudio and get familiar with the interface.\nCreate a new, empty R script.\nWhat is the difference between the script editor and the console?\nCopy the code below into the R script and run it line by line. Try to understand what each line does.\n\n\na &lt;- 5\nb &lt;- 10\n\na + b\n\np &lt;- a-b\n\nv &lt;- c(3,12,6,9,23)\nv\n\nv / b\n\nmean(v)\n# sum(v)\n\n\n\n\n\nWhy does p &lt;- a-b not produce an output?\nWhat is c()?\nWhy does # sum(v) not work?",
+    "crumbs": [
+      "Basics",
+      "What is R?"
+    ]
+  },
+  {
+    "objectID": "B01_intro_R.html#task-r-and-rstudio",
+    "href": "B01_intro_R.html#task-r-and-rstudio",
+    "title": "What is R?",
+    "section": "",
+    "text": "Open Rstudio and get familiar with the interface.\nCreate a new, empty R script.\nWhat is the difference between the script editor and the console?\nCopy the code below into the R script and run it line by line. Try to understand what each line does.\n\n\na &lt;- 5\nb &lt;- 10\n\na + b\n\np &lt;- a-b\n\nv &lt;- c(3,12,6,9,23)\nv\n\nv / b\n\nmean(v)\n# sum(v)",
+    "crumbs": [
+      "Basics",
+      "What is R?"
+    ]
+  },
+  {
+    "objectID": "B01_intro_R.html#questions",
+    "href": "B01_intro_R.html#questions",
+    "title": "What is R?",
+    "section": "",
+    "text": "Why does p &lt;- a-b not produce an output?\nWhat is c()?\nWhy does # sum(v) not work?",
+    "crumbs": [
+      "Basics",
+      "What is R?"
+    ]
+  },
+  {
+    "objectID": "D01_data_examples.html",
+    "href": "D01_data_examples.html",
+    "title": "What is ecological data?",
+    "section": "",
+    "text": "What is ecological data?",
+    "crumbs": [
+      "Basics",
+      "What is ecological data?"
+    ]
   },
   {
     "objectID": "E09_biodiversity.html",
@@ -839,6 +858,17 @@
     ]
   },
   {
+    "objectID": "assignments/Ex07_species_area.html",
+    "href": "assignments/Ex07_species_area.html",
+    "title": "Ex07: Species vs. Area",
+    "section": "",
+    "text": "Ex07: Species vs. Area\nNutze die Dateien muenster_districts.csv und muenster_trees.csv aus dem Learnweb für die folgenden Aufgaben.\n\nNutze dplyr::group_by und dplyr::summarise um die Anzahl der Bäume pro Bezirk zu berechnen.\nMit einem join Befehl (z.B. dplyr::left_join) oder merge können mehrere Tabellen zusammengefügt werden. Erstelle damit eine Tabelle die mindestens folgende Informationen enthält: Bezirksname, Bezirksgröße, Anzahl der Bäume im Bezirk.\n\n\nErstelle einen Scatterplot aus Bezirksgröße und Anzahl der Bäume im Bezirk.\nErstelle ein lineares Model um den Zusammenhang zwischen Bezirksgröße und Anzahl der Bäume im Bezirk zu berechnen.\nErstelle ein Histogramm der Residuen des Models.\n\n\nLogarithmiere Bezirksgröße und Anzahl der Bäume im Bezirk (log10()). Erstelle dann den Scatterplot erneut mit den logarithmierten Werten.\n\n\nErstelle ein lineares Model um den Zusammenhang zwischen logarithmierten Bezirksgröße und Anzahl der Bäume im Bezirk zu berechnen.\nSind die Residuen des Models normalverteilt?\n\n\nBonus: Wie viele Bäume stehen Erwartungsgemäß in einem Bezirk der 10000000 qm groß ist?",
+    "crumbs": [
+      "Data analysis",
+      "Ex07: Species vs. Area"
+    ]
+  },
+  {
     "objectID": "df02_files.html",
     "href": "df02_files.html",
     "title": "Filepaths and data I/O",
@@ -898,7 +928,7 @@
     "href": "df04_wide_long.html",
     "title": "Wide vs. Long data.frames",
     "section": "",
-    "text": "Most data you collect yourself or can download from data repositories will come in some variation or form of a “Excel” style spreadsheet. What I mean by that is, that a row in the table contains different features of the same observation. Each column on the other hand contains the same feature of many different observations. Of course, what information we store with feature and observation heavily depends on the content and purpose of the data.\nTake a look at the following data from the German weather service DWD about sunshine duration across German states. You can get this data here. I will only use a subset of the data:\n\nlibrary(dplyr)\n\nsunshine = sunshine |&gt;\n    filter(Jahr &gt; 2015 & Jahr &lt;= 2020) |&gt;\n    select(\"Jahr\", \"Sachsen\", \"Hessen\", \"Bayern\")\n\n\n\n\n\n\n\n\n\n\n\n\nJahr\nSachsen\nHessen\nBayern\n\n\n\n\n2016\n649.2\n579.4\n638.5\n\n\n2017\n682.9\n608.2\n720.3\n\n\n2018\n772.1\n774.0\n779.6\n\n\n2019\n791.2\n769.3\n787.0\n\n\n2020\n653.0\n640.2\n695.6\n\n\n\n\n\n\n\n\nTake a conscious look on this data.frame for a moment.\n\nWhat information does one row contain?\nWhat is stored in one column?\nWhat is the meaning of the numbers in the data.frame? (And maybe more importantly: How do you know?)\n\n\nThis typical format is called wide as we have information (i.e. the sunshine duration) stored in different columns for different states per observation year (the row). While this is a perfectly fine form of data storage (e.g. you can get a good overview of the data), there is a second organisation scheme that can also be very useful, especially in the context of data analysis and visualization with R: the long format.\n\n\n\nThe principle of the long format is, that we have one column where we store the actual measurement values (sunshine duration in this example). Along that, we have multiple columns with metadata that describe and “encode” each value. Take a look at the example data from above in the long format:\n\n\n\n\n\n\n\n\n\nJahr\nBundesland\nSonnenscheindauer\n\n\n\n\n2016\nSachsen\n649.2\n\n\n2016\nHessen\n579.4\n\n\n2016\nBayern\n638.5\n\n\n2017\nSachsen\n682.9\n\n\n2017\nHessen\n608.2\n\n\n2017\nBayern\n720.3\n\n\n2018\nSachsen\n772.1\n\n\n2018\nHessen\n774.0\n\n\n2018\nBayern\n779.6\n\n\n2019\nSachsen\n791.2\n\n\n2019\nHessen\n769.3\n\n\n2019\nBayern\n787.0\n\n\n2020\nSachsen\n653.0\n\n\n2020\nHessen\n640.2\n\n\n2020\nBayern\n695.6\n\n\n\n\n\n\n\n\nAll the measurement of sunshine duration from the different states are now in one column Sonnenscheindauer. And the two columns Jahr and Bundesland describe each value. In a way, the long format is better for the overall understanding than the wide format as it is way clearer what the content of each column actually means.\n\n\n\n\nlibrary(tidyr)\n\nsunshine_long = pivot_longer(sunshine,\n                             cols = c(\"Sachsen\", \"Hessen\", \"Bayern\"),\n                             names_to = \"Bundesland\",\n                             values_to = \"Sonnenscheindauer\")\n\n\n\n\n\n\n\n\n\n\nJahr\nBundesland\nSonnenscheindauer\n\n\n\n\n2016\nSachsen\n649.2\n\n\n2016\nHessen\n579.4\n\n\n2016\nBayern\n638.5\n\n\n2017\nSachsen\n682.9\n\n\n2017\nHessen\n608.2\n\n\n2017\nBayern\n720.3\n\n\n2018\nSachsen\n772.1\n\n\n2018\nHessen\n774.0\n\n\n2018\nBayern\n779.6\n\n\n2019\nSachsen\n791.2\n\n\n2019\nHessen\n769.3\n\n\n2019\nBayern\n787.0\n\n\n2020\nSachsen\n653.0\n\n\n2020\nHessen\n640.2\n\n\n2020\nBayern\n695.6\n\n\n\n\n\n\n\n\n\nsunshine_wide = pivot_wider(sunshine_long,\n                            names_from = \"Bundesland\",\n                            values_from = \"Sonnenscheindauer\")\n\n\n\n\n\n\n\n\n\n\nJahr\nSachsen\nHessen\nBayern\n\n\n\n\n2016\n649.2\n579.4\n638.5\n\n\n2017\n682.9\n608.2\n720.3\n\n\n2018\n772.1\n774.0\n779.6\n\n\n2019\n791.2\n769.3\n787.0\n\n\n2020\n653.0\n640.2\n695.6\n\n\n\n\n\n\n\n\n\nsunshine_year = pivot_wider(sunshine_long,\n                            names_from = \"Jahr\",\n                            values_from = \"Sonnenscheindauer\")\n\n\n\n\n\n\n\n\n\n\nBundesland\n2016\n2017\n2018\n2019\n2020\n\n\n\n\nSachsen\n649.2\n682.9\n772.1\n791.2\n653.0\n\n\nHessen\n579.4\n608.2\n774.0\n769.3\n640.2\n\n\nBayern\n638.5\n720.3\n779.6\n787.0\n695.6\n\n\n\n\n\n\n\n\nIf you want to go into more details for pivot_wider and pivot_longer check out this tidyr reference article.",
+    "text": "Most data you collect yourself or can download from data repositories will come in some variation or form of a “Excel” style spreadsheet. What I mean by that is, that a row in the table contains different features of the same observation. Each column on the other hand contains the same feature of many different observations. Of course, what information we store with feature and observation heavily depends on the content and purpose of the data.\nTake a look at the following data from the German weather service DWD about sunshine duration across German states. You can get this data here. I will only use a subset of the data:\n\nlibrary(dplyr)\n\nsunshine = sunshine |&gt;\n    filter(Jahr &gt; 2015 & Jahr &lt;= 2020) |&gt;\n    select(\"Jahr\", \"Sachsen\", \"Hessen\", \"Bayern\")\n\n\n\n\n\n\n\n\n\n\n\nJahr\nSachsen\nHessen\nBayern\n\n\n\n\n2016\n649.2\n579.4\n638.5\n\n\n2017\n682.9\n608.2\n720.3\n\n\n2018\n772.1\n774.0\n779.6\n\n\n2019\n791.2\n769.3\n787.0\n\n\n2020\n653.0\n640.2\n695.6\n\n\n\n\n\n\n\nTake a conscious look on this data.frame for a moment.\n\nWhat information does one row contain?\nWhat is stored in one column?\nWhat is the meaning of the numbers in the data.frame? (And maybe more importantly: How do you know?)\n\n\nThis typical format is called wide as we have information (i.e. the sunshine duration) stored in different columns for different states per observation year (the row). While this is a perfectly fine form of data storage (e.g. you can get a good overview of the data), there is a second organisation scheme that can also be very useful, especially in the context of data analysis and visualization with R: the long format.\n\n\n\nThe principle of the long format is, that we have one column where we store the actual measurement values (sunshine duration in this example). Along that, we have multiple columns with metadata that describe and “encode” each value. Take a look at the example data from above in the long format:\n\n\n\n\n\n\n\n\nJahr\nBundesland\nSonnenscheindauer\n\n\n\n\n2016\nSachsen\n649.2\n\n\n2016\nHessen\n579.4\n\n\n2016\nBayern\n638.5\n\n\n2017\nSachsen\n682.9\n\n\n2017\nHessen\n608.2\n\n\n2017\nBayern\n720.3\n\n\n2018\nSachsen\n772.1\n\n\n2018\nHessen\n774.0\n\n\n2018\nBayern\n779.6\n\n\n2019\nSachsen\n791.2\n\n\n2019\nHessen\n769.3\n\n\n2019\nBayern\n787.0\n\n\n2020\nSachsen\n653.0\n\n\n2020\nHessen\n640.2\n\n\n2020\nBayern\n695.6\n\n\n\n\n\n\n\nAll the measurement of sunshine duration from the different states are now in one column Sonnenscheindauer. And the two columns Jahr and Bundesland describe each value. In a way, the long format is better for the overall understanding than the wide format as it is way clearer what the content of each column actually means.\n\n\n\n\nlibrary(tidyr)\n\nsunshine_long = pivot_longer(sunshine,\n                             cols = c(\"Sachsen\", \"Hessen\", \"Bayern\"),\n                             names_to = \"Bundesland\",\n                             values_to = \"Sonnenscheindauer\")\n\n\n\n\n\n\n\n\n\nJahr\nBundesland\nSonnenscheindauer\n\n\n\n\n2016\nSachsen\n649.2\n\n\n2016\nHessen\n579.4\n\n\n2016\nBayern\n638.5\n\n\n2017\nSachsen\n682.9\n\n\n2017\nHessen\n608.2\n\n\n2017\nBayern\n720.3\n\n\n2018\nSachsen\n772.1\n\n\n2018\nHessen\n774.0\n\n\n2018\nBayern\n779.6\n\n\n2019\nSachsen\n791.2\n\n\n2019\nHessen\n769.3\n\n\n2019\nBayern\n787.0\n\n\n2020\nSachsen\n653.0\n\n\n2020\nHessen\n640.2\n\n\n2020\nBayern\n695.6\n\n\n\n\n\n\n\n\nsunshine_wide = pivot_wider(sunshine_long,\n                            names_from = \"Bundesland\",\n                            values_from = \"Sonnenscheindauer\")\n\n\n\n\n\n\n\n\n\nJahr\nSachsen\nHessen\nBayern\n\n\n\n\n2016\n649.2\n579.4\n638.5\n\n\n2017\n682.9\n608.2\n720.3\n\n\n2018\n772.1\n774.0\n779.6\n\n\n2019\n791.2\n769.3\n787.0\n\n\n2020\n653.0\n640.2\n695.6\n\n\n\n\n\n\n\n\nsunshine_year = pivot_wider(sunshine_long,\n                            names_from = \"Jahr\",\n                            values_from = \"Sonnenscheindauer\")\n\n\n\n\n\n\n\n\n\nBundesland\n2016\n2017\n2018\n2019\n2020\n\n\n\n\nSachsen\n649.2\n682.9\n772.1\n791.2\n653.0\n\n\nHessen\n579.4\n608.2\n774.0\n769.3\n640.2\n\n\nBayern\n638.5\n720.3\n779.6\n787.0\n695.6\n\n\n\n\n\n\n\nIf you want to go into more details for pivot_wider and pivot_longer check out this tidyr reference article.",
     "crumbs": [
       "Data handling",
       "Wide vs. Long data.frames"
@@ -909,7 +939,7 @@
     "href": "df04_wide_long.html#wide-format",
     "title": "Wide vs. Long data.frames",
     "section": "",
-    "text": "Jahr\nSachsen\nHessen\nBayern\n\n\n\n\n2016\n649.2\n579.4\n638.5\n\n\n2017\n682.9\n608.2\n720.3\n\n\n2018\n772.1\n774.0\n779.6\n\n\n2019\n791.2\n769.3\n787.0\n\n\n2020\n653.0\n640.2\n695.6\n\n\n\n\n\n\n\n\nTake a conscious look on this data.frame for a moment.\n\nWhat information does one row contain?\nWhat is stored in one column?\nWhat is the meaning of the numbers in the data.frame? (And maybe more importantly: How do you know?)\n\n\nThis typical format is called wide as we have information (i.e. the sunshine duration) stored in different columns for different states per observation year (the row). While this is a perfectly fine form of data storage (e.g. you can get a good overview of the data), there is a second organisation scheme that can also be very useful, especially in the context of data analysis and visualization with R: the long format.",
+    "text": "Jahr\nSachsen\nHessen\nBayern\n\n\n\n\n2016\n649.2\n579.4\n638.5\n\n\n2017\n682.9\n608.2\n720.3\n\n\n2018\n772.1\n774.0\n779.6\n\n\n2019\n791.2\n769.3\n787.0\n\n\n2020\n653.0\n640.2\n695.6\n\n\n\n\n\n\n\nTake a conscious look on this data.frame for a moment.\n\nWhat information does one row contain?\nWhat is stored in one column?\nWhat is the meaning of the numbers in the data.frame? (And maybe more importantly: How do you know?)\n\n\nThis typical format is called wide as we have information (i.e. the sunshine duration) stored in different columns for different states per observation year (the row). While this is a perfectly fine form of data storage (e.g. you can get a good overview of the data), there is a second organisation scheme that can also be very useful, especially in the context of data analysis and visualization with R: the long format.",
     "crumbs": [
       "Data handling",
       "Wide vs. Long data.frames"
@@ -920,7 +950,7 @@
     "href": "df04_wide_long.html#long-format",
     "title": "Wide vs. Long data.frames",
     "section": "",
-    "text": "The principle of the long format is, that we have one column where we store the actual measurement values (sunshine duration in this example). Along that, we have multiple columns with metadata that describe and “encode” each value. Take a look at the example data from above in the long format:\n\n\n\n\n\n\n\n\n\nJahr\nBundesland\nSonnenscheindauer\n\n\n\n\n2016\nSachsen\n649.2\n\n\n2016\nHessen\n579.4\n\n\n2016\nBayern\n638.5\n\n\n2017\nSachsen\n682.9\n\n\n2017\nHessen\n608.2\n\n\n2017\nBayern\n720.3\n\n\n2018\nSachsen\n772.1\n\n\n2018\nHessen\n774.0\n\n\n2018\nBayern\n779.6\n\n\n2019\nSachsen\n791.2\n\n\n2019\nHessen\n769.3\n\n\n2019\nBayern\n787.0\n\n\n2020\nSachsen\n653.0\n\n\n2020\nHessen\n640.2\n\n\n2020\nBayern\n695.6\n\n\n\n\n\n\n\n\nAll the measurement of sunshine duration from the different states are now in one column Sonnenscheindauer. And the two columns Jahr and Bundesland describe each value. In a way, the long format is better for the overall understanding than the wide format as it is way clearer what the content of each column actually means.",
+    "text": "The principle of the long format is, that we have one column where we store the actual measurement values (sunshine duration in this example). Along that, we have multiple columns with metadata that describe and “encode” each value. Take a look at the example data from above in the long format:\n\n\n\n\n\n\n\n\nJahr\nBundesland\nSonnenscheindauer\n\n\n\n\n2016\nSachsen\n649.2\n\n\n2016\nHessen\n579.4\n\n\n2016\nBayern\n638.5\n\n\n2017\nSachsen\n682.9\n\n\n2017\nHessen\n608.2\n\n\n2017\nBayern\n720.3\n\n\n2018\nSachsen\n772.1\n\n\n2018\nHessen\n774.0\n\n\n2018\nBayern\n779.6\n\n\n2019\nSachsen\n791.2\n\n\n2019\nHessen\n769.3\n\n\n2019\nBayern\n787.0\n\n\n2020\nSachsen\n653.0\n\n\n2020\nHessen\n640.2\n\n\n2020\nBayern\n695.6\n\n\n\n\n\n\n\nAll the measurement of sunshine duration from the different states are now in one column Sonnenscheindauer. And the two columns Jahr and Bundesland describe each value. In a way, the long format is better for the overall understanding than the wide format as it is way clearer what the content of each column actually means.",
     "crumbs": [
       "Data handling",
       "Wide vs. Long data.frames"
@@ -931,7 +961,7 @@
     "href": "df04_wide_long.html#conversion-between-long-and-wide-with-tidyr",
     "title": "Wide vs. Long data.frames",
     "section": "",
-    "text": "library(tidyr)\n\nsunshine_long = pivot_longer(sunshine,\n                             cols = c(\"Sachsen\", \"Hessen\", \"Bayern\"),\n                             names_to = \"Bundesland\",\n                             values_to = \"Sonnenscheindauer\")\n\n\n\n\n\n\n\n\n\n\nJahr\nBundesland\nSonnenscheindauer\n\n\n\n\n2016\nSachsen\n649.2\n\n\n2016\nHessen\n579.4\n\n\n2016\nBayern\n638.5\n\n\n2017\nSachsen\n682.9\n\n\n2017\nHessen\n608.2\n\n\n2017\nBayern\n720.3\n\n\n2018\nSachsen\n772.1\n\n\n2018\nHessen\n774.0\n\n\n2018\nBayern\n779.6\n\n\n2019\nSachsen\n791.2\n\n\n2019\nHessen\n769.3\n\n\n2019\nBayern\n787.0\n\n\n2020\nSachsen\n653.0\n\n\n2020\nHessen\n640.2\n\n\n2020\nBayern\n695.6\n\n\n\n\n\n\n\n\n\nsunshine_wide = pivot_wider(sunshine_long,\n                            names_from = \"Bundesland\",\n                            values_from = \"Sonnenscheindauer\")\n\n\n\n\n\n\n\n\n\n\nJahr\nSachsen\nHessen\nBayern\n\n\n\n\n2016\n649.2\n579.4\n638.5\n\n\n2017\n682.9\n608.2\n720.3\n\n\n2018\n772.1\n774.0\n779.6\n\n\n2019\n791.2\n769.3\n787.0\n\n\n2020\n653.0\n640.2\n695.6\n\n\n\n\n\n\n\n\n\nsunshine_year = pivot_wider(sunshine_long,\n                            names_from = \"Jahr\",\n                            values_from = \"Sonnenscheindauer\")\n\n\n\n\n\n\n\n\n\n\nBundesland\n2016\n2017\n2018\n2019\n2020\n\n\n\n\nSachsen\n649.2\n682.9\n772.1\n791.2\n653.0\n\n\nHessen\n579.4\n608.2\n774.0\n769.3\n640.2\n\n\nBayern\n638.5\n720.3\n779.6\n787.0\n695.6\n\n\n\n\n\n\n\n\nIf you want to go into more details for pivot_wider and pivot_longer check out this tidyr reference article.",
+    "text": "library(tidyr)\n\nsunshine_long = pivot_longer(sunshine,\n                             cols = c(\"Sachsen\", \"Hessen\", \"Bayern\"),\n                             names_to = \"Bundesland\",\n                             values_to = \"Sonnenscheindauer\")\n\n\n\n\n\n\n\n\n\nJahr\nBundesland\nSonnenscheindauer\n\n\n\n\n2016\nSachsen\n649.2\n\n\n2016\nHessen\n579.4\n\n\n2016\nBayern\n638.5\n\n\n2017\nSachsen\n682.9\n\n\n2017\nHessen\n608.2\n\n\n2017\nBayern\n720.3\n\n\n2018\nSachsen\n772.1\n\n\n2018\nHessen\n774.0\n\n\n2018\nBayern\n779.6\n\n\n2019\nSachsen\n791.2\n\n\n2019\nHessen\n769.3\n\n\n2019\nBayern\n787.0\n\n\n2020\nSachsen\n653.0\n\n\n2020\nHessen\n640.2\n\n\n2020\nBayern\n695.6\n\n\n\n\n\n\n\n\nsunshine_wide = pivot_wider(sunshine_long,\n                            names_from = \"Bundesland\",\n                            values_from = \"Sonnenscheindauer\")\n\n\n\n\n\n\n\n\n\nJahr\nSachsen\nHessen\nBayern\n\n\n\n\n2016\n649.2\n579.4\n638.5\n\n\n2017\n682.9\n608.2\n720.3\n\n\n2018\n772.1\n774.0\n779.6\n\n\n2019\n791.2\n769.3\n787.0\n\n\n2020\n653.0\n640.2\n695.6\n\n\n\n\n\n\n\n\nsunshine_year = pivot_wider(sunshine_long,\n                            names_from = \"Jahr\",\n                            values_from = \"Sonnenscheindauer\")\n\n\n\n\n\n\n\n\n\nBundesland\n2016\n2017\n2018\n2019\n2020\n\n\n\n\nSachsen\n649.2\n682.9\n772.1\n791.2\n653.0\n\n\nHessen\n579.4\n608.2\n774.0\n769.3\n640.2\n\n\nBayern\n638.5\n720.3\n779.6\n787.0\n695.6\n\n\n\n\n\n\n\nIf you want to go into more details for pivot_wider and pivot_longer check out this tidyr reference article.",
     "crumbs": [
       "Data handling",
       "Wide vs. Long data.frames"

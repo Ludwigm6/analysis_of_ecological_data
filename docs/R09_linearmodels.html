@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.554">
+<meta name="generator" content="quarto-1.4.555">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -115,9 +115,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-      Analysis of Ecological Data
-      </li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./assignments/Ex05_german_climate.html">Data analysis</a></li><li class="breadcrumb-item"><a href="./R09_linearmodels.html">Linear Models</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -278,6 +276,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Formula notation</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R09_linearmodels.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Linear Models</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./assignments/Ex07_species_area.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ex07: Species vs.&nbsp;Area</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -324,7 +334,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>For example, we can use a linear model to depict the relation between the amount of samples animals and the number of different species found in a given area. To create a linear model, we need two vectors (here as two columns of a data.frame) with the matching data pairs (Abundance and Species Number). The <code>lm</code> function then need a formula with the vector/column names separated by <code>~</code>. Think about the <code>~</code> like <em>as a function of</em>. So <code>lm(Species ~ Abundance)</code> means: Give me the number of species as a function of species abundance.</p>
+<p>For example, we can use a linear model to depict the relation between the amount of samples animals and the number of different species found in a given area. To create a linear model, we need two vectors (here as two columns of a data.frame) with the matching data pairs (Abundance and Species Number). The <code>lm</code> function then takes a <a href="./R08_formula.html">formula</a> with the vector/column names separated by <code>~</code>. You can interpret the <code>~</code> in this case <em>as a function of</em>. So <code>lm(Species ~ Abundance)</code> means: Give me the number of species as a function of species abundance.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>bd <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">"data/crop_species.csv"</span>)</span>
