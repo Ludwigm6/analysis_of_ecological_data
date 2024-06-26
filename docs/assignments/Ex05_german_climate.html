@@ -293,12 +293,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
- <span class="menu-text">Appendix</span></a>
+ <span class="menu-text">Graphics</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../R10_ggplot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ggplot2 basics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../assignments/Ex08_ggplot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ex09: ggplot Gallery</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text">Appendix</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../98-additional_resources.html" class="sidebar-item-text sidebar-link">
@@ -542,33 +565,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Use a <code>t.test</code> to check if there are significant differences between the summer temperatures of both states?</p></li>
 <li><p>Hint: for these tasks you need the <a href="R08_formula.qmd">formula notation</a> <code>y ~ x</code>.</p></li>
 </ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> dwd[,<span class="fu">c</span>(<span class="st">"Jahr"</span>, <span class="st">"Thueringen"</span>, <span class="st">"Sachsen.Anhalt"</span>)]</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(df, <span class="at">cols =</span> <span class="fu">c</span>(<span class="st">"Thueringen"</span>, <span class="st">"Sachsen.Anhalt"</span>))</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(df<span class="sc">$</span>value <span class="sc">~</span> df<span class="sc">$</span>name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Ex05_german_climate_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(df<span class="sc">$</span>value <span class="sc">~</span> df<span class="sc">$</span>name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    Welch Two Sample t-test
-
-data:  df$value by df$name
-t = 9.63, df = 283.59, p-value &lt; 2.2e-16
-alternative hypothesis: true difference in means between group Sachsen.Anhalt and group Thueringen is not equal to 0
-95 percent confidence interval:
- 0.9463751 1.4326459
-sample estimates:
-mean in group Sachsen.Anhalt     mean in group Thueringen 
-                    17.25070                     16.06119 </code></pre>
-</div>
-</div>
 </section>
 <section id="climate-change-in-germany" class="level2">
 <h2 class="anchored" data-anchor-id="climate-change-in-germany">Climate Change in Germany</h2>

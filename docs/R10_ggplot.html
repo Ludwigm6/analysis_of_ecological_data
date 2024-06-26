@@ -115,9 +115,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-      Analysis of Ecological Data
-      </li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./R10_ggplot.html">Graphics</a></li><li class="breadcrumb-item"><a href="./R10_ggplot.html">ggplot2 basics</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -295,12 +293,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
- <span class="menu-text">Appendix</span></a>
+ <span class="menu-text">Graphics</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R10_ggplot.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">ggplot2 basics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./assignments/Ex08_ggplot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ex09: ggplot Gallery</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text">Appendix</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./98-additional_resources.html" class="sidebar-item-text sidebar-link">
@@ -321,15 +342,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="ggplot2" class="level1">
-<h1>ggplot2</h1>
+<section id="ggplot2-basics" class="level1">
+<h1>ggplot2 basics</h1>
 <blockquote class="blockquote">
 <p>Es gibt nur eine Breitbandleitung ins Hirn und das sind die Augen. <a href="https://www.youtube.com/watch?v=QqVFEP3_BtY">David Kriesel</a></p>
 </blockquote>
 <p>In the course, we used a variety of datasets. All of them have different features and difficulties that we need to keep in mind when we want to visualize parts of the data to point out some interesting facts!</p>
 <p>The <strong>German Climate Data</strong> data has a temporal component and “continuous” measurements. The <strong>arthoropode species on crop fields</strong> follow the classic plot based design and allows for comparisons between different groups. The <strong>trees and districts of Muenster</strong> potentially have a spatial component to it but also allow for comparisons of the different species and districts.</p>
-<section id="the-grammar-of-graphics" class="level2">
-<h2 class="anchored" data-anchor-id="the-grammar-of-graphics">The grammar of graphics</h2>
+<p>Fortunately, there is a common language to visualize most datasets and their specific attributes: the grammar of graphics.</p>
+<section id="the-grammar-of-graphics-in-r" class="level2">
+<h2 class="anchored" data-anchor-id="the-grammar-of-graphics-in-r">The grammar of graphics in R</h2>
 <p>Scientific figures and advanced visualization in R are usually done with the <code>ggplot2</code> package.</p>
 <ul>
 <li><a href="https://ggplot2.tidyverse.org/">https://ggplot2.tidyverse.org/</a></li>
