@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.555">
+<meta name="generator" content="quarto-1.4.557">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -115,9 +115,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-      Analysis of Ecological Data
-      </li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./vis01_ggplot.html">Graphics</a></li><li class="breadcrumb-item"><a href="./vis01_ggplot.html">ggplot2 basics</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -303,14 +301,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R10_ggplot.html" class="sidebar-item-text sidebar-link">
+  <a href="./vis01_ggplot.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">ggplot2 basics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./vis02_ggplot_advanced.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ggplot2 advanced</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./vis03_markdown.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">markdown and quarto</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./assignments/Ex08_ggplot.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Ex09: ggplot Gallery</span></a>
+ <span class="menu-text">Ex08: ggplot gallery</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./assignments/Ex09_markdown.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ex09: Course Summary</span></a>
   </div>
 </li>
       </ul>
@@ -344,46 +360,228 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="markdown-and-quarto" class="level1">
-<h1>markdown and quarto</h1>
-<p>Rstudio is much more than a code editor for R. It supports a variety of programming languages, documentation formats and data types. One of Rstudio’s most used and most powerful features is the creation of markdown documents with integrated R code. In fact, this entire course page is written in markdown within Rstudio and then <a href="https://quarto.org/docs/websites/">rendered as a website</a>. As with Rstudio Version v2022.07, the markdown system of choice is <code>quarto</code> - “An open-source scientific and technical publishing system” <a href="https://quarto.org/" class="uri">https://quarto.org/</a>. Older versions use <code>rmarkdown</code>. <a href="https://rmarkdown.rstudio.com/" class="uri">https://rmarkdown.rstudio.com/</a>.</p>
-<p>Depending on the system you are using, the typical file ending for the markdown files are either <code>.qmd</code> or <code>.rmd</code>.</p>
-<section id="what-is-markdown" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-markdown">What is markdown?</h2>
-<p>Markdown is a “language” to format text. There are dedicated symbols for different purposes:</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Markdown Syntax</th>
-<th>Output</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>*italics*, **bold**, ***bold italics***</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></td>
-<td><em>italics</em>, <strong>bold</strong>, <strong><em>bold italics</em></strong></td>
-</tr>
-<tr class="even">
-<td><div class="sourceCode" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Header 1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></td>
-<td><h1 id="header-1" class="heading-output">Header 1</h1></td>
-</tr>
-<tr class="odd">
-<td><div class="sourceCode" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## Header 2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></td>
-<td><h2 id="header-2" class="heading-output anchored">Header 2</h2></td>
-</tr>
-<tr class="even">
-<td><div class="sourceCode" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Quarto</span><span class="co">](https://quarto.org)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></td>
-<td><a href="https://quarto.org">Quarto</a></td>
-</tr>
-</tbody>
-</table>
-<p>These examples are taken from <a href="https://quarto.org/docs/authoring/markdown-basics.html" class="uri">https://quarto.org/docs/authoring/markdown-basics.html</a> where you can find more more markdown syntax.</p>
+<section id="ggplot2-basics" class="level1">
+<h1>ggplot2 basics</h1>
+<blockquote class="blockquote">
+<p>Es gibt nur eine Breitbandleitung ins Hirn und das sind die Augen. <a href="https://www.youtube.com/watch?v=QqVFEP3_BtY">David Kriesel</a></p>
+</blockquote>
+<p>In the course, we used a variety of datasets. All of them have different features and difficulties that we need to keep in mind when we want to visualize parts of the data to point out some interesting facts!</p>
+<p>The <strong>German Climate Data</strong> data has a temporal component and “continuous” measurements. The <strong>arthoropode species on crop fields</strong> follow the classic plot based design and allows for comparisons between different groups. The <strong>trees and districts of Muenster</strong> potentially have a spatial component to it but also allow for comparisons of the different species and districts.</p>
+<p>Fortunately, there is a common language to visualize most datasets and their specific attributes: the grammar of graphics.</p>
+<section id="the-grammar-of-graphics-in-r" class="level2">
+<h2 class="anchored" data-anchor-id="the-grammar-of-graphics-in-r">The grammar of graphics in R</h2>
+<p>Scientific figures and advanced visualization in R are usually done with the <code>ggplot2</code> package.</p>
+<ul>
+<li><a href="https://ggplot2.tidyverse.org/">https://ggplot2.tidyverse.org/</a></li>
+<li>tidyverse package: synergies and integration with e.g.&nbsp;dplyr</li>
+<li>layer based language that are combined with <code>+</code></li>
+<li>differentiated by “static” and “dynamic” parameters</li>
+<li>many extensions: <a href="https://exts.ggplot2.tidyverse.org/gallery/">https://exts.ggplot2.tidyverse.org/gallery/</a></li>
+<li>Gallery for inspiration: <a href="https://r-graph-gallery.com/index.html">https://r-graph-gallery.com/index.html</a></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(viridis) <span class="co"># for better color scales</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>species <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">"data/crop_species.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="initialze-the-plot" class="level3">
+<h3 class="anchored" data-anchor-id="initialze-the-plot">Initialze the plot</h3>
+<p>Tell ggplot which <code>data.frame</code> is the basis for the plot.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="vis01_ggplot_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The <code>mapping</code> argument of the <code>ggplot()</code> function handles which columns of the data should be used for which purpose. To specify this, we use the <code>aes()</code> function (aesthetics). Common things that we specify:</p>
+<ul>
+<li>x</li>
+<li>y</li>
+<li>group</li>
+<li>color</li>
+<li>fill</li>
+</ul>
+<p>Here we specify that on the x-axis in our plot represent the <code>AraInd</code> column. As a result we get the proper y-axis, but still no data is shown. For this, we have to specify in which form the data should be depicted.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> species, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> AraInd))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="vis01_ggplot_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
-<section id="using-markdown-in-rstudio" class="level2">
-<h2 class="anchored" data-anchor-id="using-markdown-in-rstudio">Using markdown in Rstudio</h2>
-<p>Simply go to <code>File - New File - Quarto Document...</code> or <code>File - New File - R Markdown...</code> to create a markdown file with some example code and work your way from there. Or if you want to jump right into markdown projects go to <code>New Project... - New Directory</code> and choose an appropriate Template (e.g.&nbsp;Quarto Homepage).</p>
+<section id="geometry-types" class="level3">
+<h3 class="anchored" data-anchor-id="geometry-types">Geometry types</h3>
+<p>There are many different geometry types build into <code>ggplot2</code> and even more from additional packages. The functions to create the geometry layers usually start with <code>geom_</code>. The geom functions also have their own arguments you can specify.</p>
+<ul>
+<li>geom_point</li>
+<li>geom_line</li>
+<li>geom_boxplot</li>
+<li>geom_histogram</li>
+<li>…</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(species, <span class="fu">aes</span>(<span class="at">x =</span> AraInd))<span class="sc">+</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_histogram</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="vis01_ggplot_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(species, <span class="fu">aes</span>(<span class="at">x =</span> AraInd))<span class="sc">+</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">10</span>, <span class="at">fill =</span> <span class="st">"darkgreen"</span>, <span class="at">color =</span> <span class="st">"black"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="vis01_ggplot_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Different geometry types require more than one aesthetic. E.g. <code>geom_point</code> needs the x and y aesthetics.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(species, <span class="fu">aes</span>(<span class="at">x =</span> Croptype, <span class="at">y =</span> AraInd))<span class="sc">+</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="vis01_ggplot_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="axis-formats" class="level3">
+<h3 class="anchored" data-anchor-id="axis-formats">Axis Formats</h3>
+<p>The Axis format depends on the type of variable you want to plot. We have to be aware of what scale type we have.</p>
+<ul>
+<li>discrete scale for categorical data</li>
+<li>continuous scale for numeric data</li>
+<li>limits, ticks, labels …</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(species, <span class="fu">aes</span>(<span class="at">x =</span> Croptype, <span class="at">y =</span> AraInd))<span class="sc">+</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">4</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">shape =</span> <span class="dv">18</span>)<span class="sc">+</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_discrete</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"KE"</span> <span class="ot">=</span> <span class="st">"Grain Pea"</span>,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"SM"</span> <span class="ot">=</span> <span class="st">"Silage Maize"</span>,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"WR"</span> <span class="ot">=</span> <span class="st">"Winter Oilseed Rape"</span>,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"WW"</span> <span class="ot">=</span> <span class="st">"Winter Wheat"</span>,</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"ZR"</span> <span class="ot">=</span> <span class="st">"Sugar Beet"</span>))<span class="sc">+</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">name =</span> <span class="st">"Aranae [n]"</span>, <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">200</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="vis01_ggplot_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We can also save the plot to a object to reuse and modify it later.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>araind_plot <span class="ot">=</span> <span class="fu">ggplot</span>(species, <span class="fu">aes</span>(<span class="at">x =</span> Croptype, <span class="at">y =</span> AraInd))<span class="sc">+</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">4</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">shape =</span> <span class="dv">18</span>)<span class="sc">+</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_discrete</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"KE"</span> <span class="ot">=</span> <span class="st">"Grain Pea"</span>,</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"SM"</span> <span class="ot">=</span> <span class="st">"Silage Maize"</span>,</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"WR"</span> <span class="ot">=</span> <span class="st">"Winter Oilseed Rape"</span>,</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"WW"</span> <span class="ot">=</span> <span class="st">"Winter Wheat"</span>,</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"ZR"</span> <span class="ot">=</span> <span class="st">"Sugar Beet"</span>))<span class="sc">+</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">name =</span> <span class="st">"Aranae [n]"</span>, <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">200</span>))</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>araind_plot <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"Aranae [n] per crop type"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="vis01_ggplot_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="color-scales" class="level3">
+<h3 class="anchored" data-anchor-id="color-scales">Color Scales</h3>
+<p>With the <code>color</code> and <code>fill</code> arguments in <code>aes()</code> we specify which columns of the data.frame should be represented as a color scale in the plot.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(species, <span class="fu">aes</span>(<span class="at">x =</span> Croptype, <span class="at">y =</span> AraInd, <span class="at">color =</span> AraSpec))<span class="sc">+</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">4</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">shape =</span> <span class="dv">18</span>)<span class="sc">+</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_discrete</span>(<span class="at">name =</span> <span class="st">"Crop Type"</span>)<span class="sc">+</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">name =</span> <span class="st">"Aranae [n]"</span>, <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">200</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="vis01_ggplot_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We can specify the colors by adding a <code>scale_color_</code> layer. Just like with the axis, there are discrete and continuous color scales available!</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(species, <span class="fu">aes</span>(<span class="at">x =</span> Croptype, <span class="at">y =</span> AraInd, <span class="at">color =</span> AraSpec))<span class="sc">+</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">4</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">shape =</span> <span class="dv">18</span>)<span class="sc">+</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_gradient</span>(<span class="at">name =</span> <span class="st">"Aranae</span><span class="sc">\n</span><span class="st">Species [n]"</span>, <span class="at">low =</span> <span class="st">"yellow"</span>, <span class="at">high =</span> <span class="st">"red"</span>)<span class="sc">+</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_discrete</span>(<span class="at">name =</span> <span class="st">"Crop Type"</span>)<span class="sc">+</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">name =</span> <span class="st">"Aranae [n]"</span>, <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">200</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="vis01_ggplot_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="themes" class="level3">
+<h3 class="anchored" data-anchor-id="themes">Themes</h3>
+<p>There are many prebuild themes…</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(species, <span class="fu">aes</span>(<span class="at">x =</span> Croptype, <span class="at">y =</span> AraInd, <span class="at">color =</span> AraSpec))<span class="sc">+</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">4</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">shape =</span> <span class="dv">18</span>)<span class="sc">+</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_gradientn</span>(<span class="at">name =</span> <span class="st">"Aranae</span><span class="sc">\n</span><span class="st">Species [n]"</span>,<span class="at">colors =</span> <span class="fu">mako</span>(<span class="dv">50</span>))<span class="sc">+</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_discrete</span>(<span class="at">name =</span> <span class="st">"Crop Type"</span>)<span class="sc">+</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">name =</span> <span class="st">"Aranae [n]"</span>, <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">200</span>))<span class="sc">+</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="vis01_ggplot_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>… or you can specify your own:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(species, <span class="fu">aes</span>(<span class="at">x =</span> Croptype, <span class="at">y =</span> AraInd, <span class="at">color =</span> AraSpec))<span class="sc">+</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">4</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">shape =</span> <span class="dv">18</span>)<span class="sc">+</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_gradientn</span>(<span class="at">name =</span> <span class="st">"Aranae</span><span class="sc">\n</span><span class="st">Species [n]"</span>,<span class="at">colors =</span> <span class="fu">mako</span>(<span class="dv">50</span>))<span class="sc">+</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_discrete</span>(<span class="at">name =</span> <span class="st">"Crop Type"</span>)<span class="sc">+</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">name =</span> <span class="st">"Aranae [n]"</span>, <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">200</span>), <span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>))<span class="sc">+</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">panel.background =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">panel.grid.major.y =</span> <span class="fu">element_line</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">linetype =</span> <span class="st">"dotted"</span>),</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.line =</span> <span class="fu">element_line</span>(<span class="at">color =</span> <span class="st">"black"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="vis01_ggplot_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 
 
+</section>
 </section>
 </section>
 
