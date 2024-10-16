@@ -1,4 +1,4 @@
-# R01: Variables, Values, Functions
+# Variables, Values, Functions
 
 ## Variables
 
@@ -17,12 +17,13 @@ a_big_number = 500000
 
 ## Values
 
-* How is data represented in R?
-* Types we need right now:
-    * numeric
-    * character (string / text)
-    * logical
-    * "nothing"
+* values are the "things" you store in variables
+* e.g. numbers or text 
+* values belong to a `class`
+* common classes:
+    * `numeric`: numbers
+    * `character`: text / string
+    * `logical`: TRUE or FALSE
 
 ```{r, eval = FALSE}
 # numeric
@@ -37,18 +38,16 @@ a_big_number = 500000
 
 # logical
 TRUE
-F
+FALSE
 
-# nothing
-NA # there should be something, but it is missing
-NULL # truly nothing
 ```
 
 ## Functions
 
-* Everything you do in R is a function!
+* Functions do something with values or variables.
+* Everything you do in R is a function.
 * Easily identified by function name followed by parenthesis (), e.g. `print()`
-* for common functions there are shortcuts
+* for common functions there are shortcuts (e.g. `+` or `<-`)
 
 
 ```{r}
@@ -60,13 +59,21 @@ class(a)
 nchar("Hi Mom")
 
 
-# Really everything you do in R is a function!
+# <- is a shortcut for the `assign` function
+
+assign("a", 5)
+print(a)
+
 `<-`(b, 10)
 print(b)
+
+d <- 11
+print(d)
+
 ```
 
 * most functions need __arguments__
-* input, options, parameters to specify what the function should do
+* input, options or parameters to specify what the function should do
 * each function has a help page where you can read about arguments
 
 

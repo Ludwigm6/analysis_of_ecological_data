@@ -1,0 +1,97 @@
+# Filepaths and data I/O
+
+Once you deal with external files (e.g. loading a .csv), saving outputs or reports, you have to deal with directory and file structure. For beginners, this is often harder than the actual R code itself. To keep everything easy and consistent within R (at least for this course), I recommend setting a **working directory** either manually or with a Rstudio project and **relative file paths** to data.
+
+
+## The working directory
+
+The working directory in R is a valuable feature that can saves a lot of nerves and time to navigate to files on your computer. You can check your current working directory with the `getwd()` function. In RStudio, you can also see your working directory as a path above the R console next to your R version number. The file browser of Rstudio also starts in your working directory by default.
+Use `setwd()` in order to change the working directory to some location (i.e. folder) on you computer. R and Rstudio know about the files in your working directory. You can think of it as the starting point of file paths.
+
+```{r}
+#| eval: false
+#| echo: true
+
+getwd()
+
+setwd("path/to/directory")
+```
+
+
+## Relative file paths
+
+To import data into R, you have to work with its file path. You could use the **absolute** file path, i.e. starting with the root of your file system: 
+
+```{r, eval = FALSE}
+## Linux
+"/home/marvin/projects/rcourse/session02/data/file.csv"
+```
+
+```{r, eval = FALSE}
+## Windows
+"C:\Users\Marvin\Dokumente\rcourse\session02\data\file.csv"
+```
+
+Way more convenient and less prone to errors is the use of relative paths by setting your working directory.
+
+```{r, eval = FALSE}
+
+setwd("/home/marvin/projects/rcourse/session02")
+
+# If the R project is set up in the "session02" directory we can use relative paths:
+
+# relative path to project root
+data = read.csv("data/file.csv")
+
+```
+
+:::{.callout-tip}
+## File path auto-completion
+
+Use the `TAB` Key in RStudio for navigation and auto-completion of file paths.
+:::
+
+
+
+
+## .csv
+
+Once you deal with actual data you want to analyse, it is rare that you want to build a `data.frame` from scratch like the example above. Instead, you have some file prepared on your computer e.g. a `.csv` file you want to get into R.
+Most likely, this data comes from a spreadsheet application like Excel or Google Sheets that have their own file formats, e.g. a `.xlsx` file. While it is possible to import `.xlsx` files into R with external packages, the more elegant way is to use a much simpler file format: comma separated values - `.csv`. 
+
+
+As the name suggests, a `.csv` file contains values separated by commas `,`:
+```
+plotID, soil_ph, soil_temperature, forest_type
+1, 5.5, 10, coniferous
+2, 5.4, 11, coniferous
+3, 6.1, 12, deciduous
+```
+
+
+:::{.callout-warning}
+## csv files in Germany
+
+In Germany, `,` is used as the decimal point. You will often find csv files where the delimiter is a semicolon `;`.
+:::
+
+
+To get a `.csv` file into R, use the `read.csv()` function. Here you can also specify the `dec` and `sep` arguments to the correct symbols for `dec`imal points and `sep`arators.
+
+```{r, eval = FALSE}
+
+soil = read.csv("data/soil_samples.csv", sep = ",", dec = ".")
+
+```
+
+
+
+## R studio Projects
+
+
+If you want to use RStudio Projects, there is a good [blog entry in r-bloggers.com](https://www.r-bloggers.com/2020/01/rstudio-projects-and-working-directories-a-beginners-guide/).
+
+
+![A good starting point for project setup](https://i1.wp.com/raw.githubusercontent.com/martinctc/blog/master/images/RPROJECT_2000dpi.png?w=578&ssl=1)
+
+

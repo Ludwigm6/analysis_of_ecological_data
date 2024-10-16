@@ -1,5 +1,8 @@
 # Ex01: First Steps
 
+[Download Exercise](../Ex01_first.R)
+
+
 ## Variablen
 
 - Erstelle eine Variable die die Zahl 1650 enthält.

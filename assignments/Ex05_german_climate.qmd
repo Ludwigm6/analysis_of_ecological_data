@@ -1,0 +1,156 @@
+## Ex05: German Climate
+
+
+The German Weather Service [DWD](https://www.dwd.de/DE/Home/home_node.html) provides a variety of openly available climate, weather and phenology data in their [data portal](https://opendata.dwd.de/climate_environment/CDC/).
+
+* Download the [regional average summer temperature of germany](https://opendata.dwd.de/climate_environment/CDC/regional_averages_DE/seasonal/air_temperature_mean/regional_averages_tm_summer.txt).
+* The file is a simple `.txt` file. Open it with a text editor and have a conscious look at the structure and content.
+* Load the file into R with the `read.table` or `read.csv` function.
+* By default, `read.table` will throw an error at you and the output of `read.csv` is weird. Why?
+* Look at the help page of `read.csv` / `read.table` and fix the issues.
+
+Hint: the correct `data.frame` should have 143 observations of 20 variable that look something like this:
+
+
+```{r}
+#| echo: false
+dwd = read.csv("https://opendata.dwd.de/climate_environment/CDC/regional_averages_DE/seasonal/air_temperature_mean/regional_averages_tm_summer.txt", sep = ";", skip = 1)
+knitr::kable(head(dwd))
+```
+
+
+* Which year had the warmest summer in Bayern since the beginning of the recordings?
+* What was the average summer temperature in Nordrhein-Westfalen since the year 2000.
+* Which German state had the coldest summer in the year 2005.
+
+
+
+```{r}
+
+dwd$Jahr[which.max(dwd$Bayern)]
+
+mean(dwd$Nordrhein.Westfalen[dwd$Jahr == 2000])
+
+```
+
+
+
+
+
+## Pivots
+
+
+* Create a subset that only contains the columns Jahr, Thueringen and Sachsen.Anhalt.
+* Convert this `data.frame` to the long format with `tidyr::pivot_longer` with three columns: "Jahr", "Bundesland" and "Temperatur".
+
+* Compare the temperature of Thueringen and Sachsen.Anhalt: 
+* Use a `boxplot` to visualize both state's summer temperatures.
+* Use a `t.test` to check if there are significant differences between the summer temperatures of both states? 
+* Hint: for these tasks you need the [formula notation](../R08_formula.qmd) `y ~ x`.
+
+
+```{r}
+#| eval: false
+#| include: false
+#| echo: false
+
+
+df = dwd[,c("Jahr", "Thueringen", "Sachsen.Anhalt")]
+
+library(tidyverse)
+df = dwd |> select(Jahr, Thueringen, Sachsen.Anhalt)
+
+
+df_long = tidyr::pivot_longer(df,
+                              cols = c("Thueringen", "Sachsen.Anhalt"),
+                              names_to = "Bundesland",
+                              values_to = "Temperatur")
+
+boxplot(df_long$Temperatur)
+
+boxplot(df$Thueringen)
+boxplot(df$Sachsen.Anhalt)
+
+boxplot(df$Thueringen,
+        df$Sachsen.Anhalt,
+        names = c("Thuringen", "Sachsen Anhalt"))
+
+boxplot(df_long$Temperatur ~ df_long$Bundesland)
+
+boxplot(Temperatur ~ Bundesland, data = df_long)
+
+
+boxplot(df$value ~ df$name)
+
+t.test(df$value ~ df$name)
+
+```
+
+
+
+
+## Climate Change in Germany
+
+
+Now we want to have a look at the temperature anomaly over the years, i.e. the deviation of the temperature from a long term mean. For this we want to re-create a figure like this:
+
+
+```{r}
+#| echo: false
+#| fig-link: https://www.dwd.de/EN/ourservices/zeitreihen/zeitreihen.html
+knitr::include_graphics("https://www.dwd.de/DWD/klima/national/gebietsmittel/en_brdras_ttt_01_de_6190_ano.png")
+```
+
+
+* Calculate the average summer temperature of Germany between the years 1961 and 1990.
+* Calculate the temperature anomaly for each year in Germany, i.e. the deviation of the yearly temperature to the calculated long term average. Save this anomaly information in a new column in the data.frame.
+* Create a first plot of the anomaly per year. Set the argument `type = "h"` in the `plot` function to get bars instead of points.
+* To get the some color in the plot, we need to encode the anomaly information into groups. To do this, create a new column that contains the word "blue" for years with a negative temperature anomaly and the word "red" for positive anomalies. Hint: You can do this in two lines of code without any function, or in one line of code with the `ifelse` function.
+* Create the plot again, but this time set the argument `col` (which stands for color) to your new column that contains the color information.
+
+
+```{r}
+#| include: false
+#| eval: false
+
+
+germany_mean = dwd |>
+    filter(Jahr >= 1961 & Jahr <= 1990) |>
+    pull(Deutschland) |>
+    mean()
+
+
+
+dwd$Anomaly = dwd$Deutschland - germany_mean
+
+plot(dwd$Jahr, dwd$Anomaly, type = "h")
+
+#
+
+
+avg_temp = mean(dwd[dwd$Jahr >= 1961 & dwd$Jahr <= 1990, "Deutschland"])
+avg_temp = dwd |> filter(Jahr >= 1961 & Jahr <= 1990) |> pull(Deutschland) |> mean()
+
+dwd$anomaly = dwd$Deutschland - avg_temp
+
+
+
+dwd$color = ifelse(dwd$Anomaly > 0, "red", "blue")
+#
+
+dwd$color2 = "red"
+dwd$color2[dwd$Anomaly < 0] <- "blue"
+
+
+
+
+dwd$color = "blue"
+dwd$color[dwd$Anomaly > 0] = "red"
+
+
+plot(dwd$Jahr, dwd$Anomaly, type = "h", col = dwd$color)
+
+```
+
+
+

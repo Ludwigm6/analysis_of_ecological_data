@@ -1,9 +1,4 @@
----
-code-fold: false
-eval: TRUE
----
-
-# E04a: More Dataframes
+# Ex04a: Trees, Districts and base R
 
 
 Im Learnweb finden sich die Dateien `muenster_districts.csv` und `muenster_trees.csv`. Sie beinhalten Informationen zu den Stadtbezirken und Bäumen in Münster.

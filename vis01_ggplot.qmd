@@ -1,15 +1,17 @@
-# R10: ggplot2
+# ggplot2 basics
 
 
 > Es gibt nur eine Breitbandleitung ins Hirn und das sind die Augen. [David Kriesel](https://www.youtube.com/watch?v=QqVFEP3_BtY)
 
 
-In the course, we used three datasets. All of them have different features and difficulties that we need to keep in mind when we want to visualize parts of the data to point out some interesting facts!
+In the course, we used a variety of datasets. All of them have different features and difficulties that we need to keep in mind when we want to visualize parts of the data to point out some interesting facts!
 
-The **Aasee Water Monitoring** data has a temporal component and "continuous" measurements. The **arthoropode species on crop fields** follow the classic plot based design and allows for comparisons between different groups. The **trees and districts of Muenster** potentially have a spatial component to it but also allow for comparisons of the different species and districts.
+The **German Climate Data** data has a temporal component and "continuous" measurements. The **arthoropode species on crop fields** follow the classic plot based design and allows for comparisons between different groups. The **trees and districts of Muenster** potentially have a spatial component to it but also allow for comparisons of the different species and districts.
+
+Fortunately, there is a common language to visualize most datasets and their specific attributes: the grammar of graphics.
 
 
-## The grammar of graphics
+## The grammar of graphics in R
 
 Scientific figures and advanced visualization in R are usually done with the `ggplot2` package.
 

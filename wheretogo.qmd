@@ -1,0 +1,42 @@
+# Where to go from here?
+
+
+Learn about code control structures and functions:
+
+[https://teaching.mlspatial.org/r_control/](https://teaching.mlspatial.org/r_control/)
+
+
+```{r}
+#| eval: false
+
+f <- function(){
+    
+}
+
+for(i in 1:5){
+    
+}
+
+if(TRUE){
+    
+}else{
+    
+}
+
+lapply(seq(5), function(){
+    
+})
+
+
+
+```
+
+
+
+
+
+
+
+
+
+

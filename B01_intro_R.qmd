@@ -1,13 +1,24 @@
 # What is R?
 
+
+## R and Rstudio - What's the difference?
+
 ```{r}
 #| echo: false
 knitr::include_url("B01_intro_R_slides.html")
 ```
 
 
+## Get R and Rstudio
 
-## TASK: R and Rstudio
+
+* Download R at [r-project.org](https://www.r-project.org/)
+* Download [Rstudio](https://posit.co/download/rstudio-desktop/)
+
+
+
+
+## Learning by doing: R and Rstudio
 
 1. Open Rstudio and get familiar with the interface.
 2. Create a new, empty R script.

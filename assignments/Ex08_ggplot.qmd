@@ -1,4 +1,4 @@
-# E09: Visuals
+# Ex08: ggplot gallery
 
 Erstelle folgende Grafiken mit `ggplot2`:
 
@@ -37,9 +37,9 @@ Erstelle folgende Grafiken mit `ggplot2`:
 ```
 
 
-* Plotte die Zeitreihe des Sauerstoffgehaltes des Aasee mit:
-    * einer x-Achse in einem Zeitformat. Nutze `lubridate::ymd_hm()` um das Datum vernünftig zu formatieren.
-    * einer horizontalen Linie die den Kritischen Sauerstoffgehalt von 4 mg/l anzeigt.
+* Plotte die Zeitreihe der Sommertemperatur in Deutschland mit:
+    * einer x-Achse in einem Zeitformat. Nutze `lubridate::years()` um das Datum vernünftig zu formatieren.
+    * einer horizontalen Linie das langjährige Mittel der Temperatur zw. 1961 und 1990 anzeigt.
     * Färbe die Zeitreihe nach der Temperatur ein. Nutze eine geeignete Farbskala.
 
 ```{r}

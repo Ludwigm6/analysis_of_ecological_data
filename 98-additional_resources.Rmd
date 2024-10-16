@@ -10,22 +10,19 @@ These are compact overview of R functions and how to use them.
 
 Useful for the course are the following:
 
-* [Base R](https://github.com/rstudio/cheatsheets/blob/main/base-r.pdf)
-* [stringr](https://raw.githubusercontent.com/rstudio/cheatsheets/main/strings.pdf)
-* [lubridate](https://raw.githubusercontent.com/rstudio/cheatsheets/main/lubridate.pdf)
-* [dplyr](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-transformation.pdf)
-* [ggplot2](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf)
+* [stringr](https://rstudio.github.io/cheatsheets/strings.pdf)
+* [dplyr](https://rstudio.github.io/cheatsheets/data-transformation.pdf)
+* [ggplot2](https://rstudio.github.io/cheatsheets/data-visualization.pdf)
 
 
 
 ## Useful Keyboard shortcuts
 
-* Ctrl + i: indent automatically
+* <kbd>Ctrl</kbd> + <kbd>i</kbd>: indent automatically
 * Ctrl + shift + c: comment / uncomment marked lines
 * Ctrl + s: save script
 * Ctrl + shift + m: insert pipe operator `%>%`/`|>`
 * F1: open help page of marked function
 * F2: open source code of marked function
-
 
 

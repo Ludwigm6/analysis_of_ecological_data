@@ -49,12 +49,10 @@ knitr::include_graphics("assets/cover_image.png")
 * Defining steps how to solve a problem
 * Translating these steps into R code
 * Learning the necessary R language on the way
-* Data handling. A lot of data handling.
-* I believe a good understanding of data is one of the most important things in science and work.
-* Learn statistics. Use statistics as a tool.
+* A lot of data handling and manipulation
+* Using statistics as a tool.
 
-
-## What this course is not
+## What this course is NOT
 
 * statistics as in mathematical equations
 
@@ -70,7 +68,7 @@ $$
 $$
 
 * R as in computer science
-* You probably won't find out anything you didn't already know about nature
+* You probably won't find out anything you didn't already know about ecology
 
 
 ## Course Outline
@@ -80,13 +78,4 @@ $$
 * Exercises
 * __Studienleistung:__ 10 assignments - Passed with 6 assignments > 50%
 
-```{r nice-tab, tidy=FALSE, echo = FALSE}
-
-df = read.csv("assets/course_dates.csv")[1:4,]
-
-knitr::kable(
-  df, caption = 'Course Outline',
-  booktabs = TRUE
-)
-```
 

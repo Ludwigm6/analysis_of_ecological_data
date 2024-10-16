@@ -1,9 +1,8 @@
 # Ex02: Second Steps
 
+[Download Exercise](../Ex02_second.R)
 
 Der folgende Vektor enthält Temperaturdaten vom Aasee in Münster vom 2021-06-02.
-
-
 
 
 ```{r}
@@ -21,7 +20,6 @@ temperature <- c(18.81,18.73,18.92,18.87,18.76,18.79,18.87,18.84,18.89,18.89,
                  22.61,22.83,20.85,20.68,19.76,19.81,19.74,19.58,19.35,19.40,
                  19.75,19.76,19.85,19.82,19.86,20.08,20.06,19.85,20.04,19.90,
                  19.96,20.12,19.94,20.20,20.17,20.31,20.17,20.37,20.36,20.13)
-
 
 
 ```
@@ -48,7 +46,6 @@ temperature <- c(18.81,18.73,18.92,18.87,18.76,18.79,18.87,18.84,18.89,18.89,
 - Speichere die 30 niedrigsten Temperaturen in einer neuen Variablen.
 
 ```{r}
-
 
 ```
 

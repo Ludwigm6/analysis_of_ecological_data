@@ -1,0 +1,115 @@
+# Wide vs. Long data.frames
+
+Most data you collect yourself or can download from data repositories will come in some variation or form of a "Excel" style spreadsheet.
+What I mean by that is, that a **row** in the table contains different features of the same observation. Each **column** on the other hand contains the same feature of many different observations. Of course, what information we store with feature and observation heavily depends on the content and purpose of the data.
+
+Take a look at the following data from the German weather service DWD about sunshine duration across German states. You can get this data [here](https://opendata.dwd.de/climate_environment/CDC/regional_averages_DE/seasonal/sunshine_duration/regional_averages_sd_summer.txt).
+I will only use a subset of the data:
+
+
+```{r}
+#| echo: false
+library(gt)
+sunshine = read.csv("https://opendata.dwd.de/climate_environment/CDC/regional_averages_DE/seasonal/sunshine_duration/regional_averages_sd_summer.txt",
+                    skip = 1,
+                    sep = ";")
+
+```
+
+
+```{r}
+library(dplyr)
+
+sunshine = sunshine |>
+    filter(Jahr > 2015 & Jahr <= 2020) |>
+    select("Jahr", "Sachsen", "Hessen", "Bayern")
+```
+
+
+## Wide format
+
+
+```{r}
+#| echo: false
+gt(sunshine)
+
+```
+
+Take a conscious look on this `data.frame` for a moment.
+
+* What information does one row contain?
+* What is stored in one column?
+* What is the meaning of the numbers in the `data.frame`? (And maybe more importantly: How do you know?)
+
+
+***
+
+
+This typical format is called _wide_ as we have information (i.e. the sunshine duration) stored in different columns for different states per observation year (the row).
+While this is a perfectly fine form of data storage (e.g. you can get a good overview of the data), there is a second organisation scheme that can also be very useful, especially in the context of data analysis and visualization with R: the _long_ format.
+
+## Long format
+
+
+The principle of the long format is, that we have one column where we store the actual measurement values (sunshine duration in this example).
+Along that, we have multiple columns with metadata that describe and "encode" each value. Take a look at the example data from above in the long format:
+
+```{r}
+#| echo: false
+tidyr::pivot_longer(sunshine,
+                    cols = c("Sachsen", "Hessen", "Bayern"),
+                    names_to = "Bundesland",
+                    values_to = "Sonnenscheindauer") |> gt()
+```
+
+All the measurement of sunshine duration from the different states are now in one column `Sonnenscheindauer`. And the two columns `Jahr` and `Bundesland` describe each value. In a way, the long format is better for the overall understanding than the wide format as it is way clearer what the content of each column actually means.
+
+
+
+## Conversion between long and wide with `tidyr`
+
+
+```{r}
+library(tidyr)
+
+sunshine_long = pivot_longer(sunshine,
+                             cols = c("Sachsen", "Hessen", "Bayern"),
+                             names_to = "Bundesland",
+                             values_to = "Sonnenscheindauer")
+```
+
+
+```{r}
+#| echo: false
+gt(sunshine_long)
+```
+
+```{r}
+sunshine_wide = pivot_wider(sunshine_long,
+                            names_from = "Bundesland",
+                            values_from = "Sonnenscheindauer")
+```
+
+
+```{r}
+#| echo: false
+gt(sunshine_wide)
+```
+
+
+```{r}
+sunshine_year = pivot_wider(sunshine_long,
+                            names_from = "Jahr",
+                            values_from = "Sonnenscheindauer")
+```
+
+
+```{r}
+#| echo: false
+gt(sunshine_year)
+```
+
+
+
+If you want to go into more details for `pivot_wider` and `pivot_longer` check out this [tidyr reference article](https://tidyr.tidyverse.org/articles/pivot.html).
+

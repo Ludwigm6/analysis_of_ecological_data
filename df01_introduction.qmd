@@ -1,0 +1,118 @@
+# Introduction to data.frame
+
+
+> From a data science perspective, the most important class of objects is the data frame - @Chambers2020
+
+* Data ordered in **rows and columns** - just like a spreadsheet
+* Technical implementation in R:
+    * `data.frame` is a list of vectors
+    * each vector is one column
+    * vectors are atomic - each value in a column has the same data type
+    * different columns can have different data types
+
+
+```{r, echo = FALSE, fig.cap = "data.frames are a named list of vectors"}
+knitr::include_graphics("assets/r_dataframe.svg")
+```
+
+
+
+
+```{r}
+df = data.frame(plotID = seq(3),
+                soil_ph = c(5.5, 5.4, 6.1),
+                soil_temperature = c(10, 11, 12),
+                forest_type = c("coniferous", "coniferous", "deciduous"))
+
+class(df)
+
+df
+```
+
+
+Once you deal with actual data you want to analyse, it is rare that you want to build a `data.frame` from scratch like the example above. Instead, you have some file prepared on your computer e.g. a `.csv` file you want to get into R. Learn more about [external data and how to get them into R](D02_project_io.qmd) in the next lesson.
+
+
+For now, we simply want to have a larger `data.frame` to show and test some functions. Here, I use the temperature data from the Aasee that was also part of [assignments/Ex02_second.qmd](Exersice 02).
+
+
+```{r}
+data = read.csv(file = "data/2021-06_aasee.csv")
+
+
+# show the first few rows of the df
+head(data)
+
+# show the last few rows of the df
+tail(data)
+
+# get a short summary of the structure
+str(data)
+```
+
+
+## data.frame subsetting
+
+You can think about `data.frames`  as 2-d vectors. Subsetting of `data.frames` hence requires two values, one for the row subset, one for the column subset: 
+
+
+```{r}
+# row 1, column 2
+data[1,2]
+
+# the first row, empty means "everything"
+data[1,]
+
+# the first 3 rows, column 3 and 4
+data[seq(3), c(3,4)]
+```
+
+
+If you want to extract a column of a `data.frame` you can use the `$` operator. The resulting object is a vector, and hence only has one dimension. This is important to recognize, because a subset of a column by the `$` operator again needs only one value (see example below).
+
+
+
+```{r}
+temperature <- data$Wassertemperatur
+summary(temperature)
+
+# subsetting a column accessed with $ only needs one value
+data$pH.Wert[100]
+
+# You can also define new columns with the $
+data$location <- "Aasee"
+head(data)
+```
+
+Subsetting a `data.frame` by column names also works:
+
+```{r}
+# read: from data, rows 1 to 5, and columns with the name Datum and pH.Wert
+data[seq(5), c("Datum", "pH.Wert")]
+
+```
+
+
+
+
+Of course [logical operators](https://ludwigm6.github.io/analysis_of_ecological_data/R04_logic.html) also work for `data.frame` subsetting:
+
+
+```{r}
+# read: from data, only the rows where ph is larger than 8.9, and all the columns
+data[data$pH.Wert > 8.9, ]
+
+# read: from data, only rows where temperature is smaller than 17.5, and only the column with the name Datum
+data[data$Wassertemperatur < 17.5, "Datum"]
+
+```
+
+
+
+
+
+
+
+
+
+

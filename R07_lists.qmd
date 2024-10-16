@@ -1,4 +1,4 @@
-# R07: Lists
+# Lists
 
 - stores arbitrary content (string, numeric, vectors...)
 - created with `list()`, entries separated by `,`

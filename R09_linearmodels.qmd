@@ -1,4 +1,4 @@
-# R09: Linear Models
+# Linear Models
 
 Linear models describe the relation between two variables. 
 In a non-technical description we can think about linear model like:
@@ -23,12 +23,13 @@ bd = bd %>% mutate(Abundance = AraInd + CaraInd + IsoMyrInd,
 ggplot(bd, aes(Abundance, Species))+
     geom_point()+
     geom_smooth(method = "lm", se = FALSE)+
+    scale_x_continuous(limits = c(0,600))+
     theme_bw()
 ```
 
 
-For example, we can use a linear model to depict the relation between the amount of samples animals and the number of different species found in a given area. To create a linear model, we need two vectors (here as two columns of a data.frame) with the matching data pairs (Abundance and Species Number). The `lm` function then need a formula with the vector/column names separated by `~`.
-Think about the `~` like _as a function of_. So `lm(Species ~ Abundance)` means: Give me the number of species as a function of species abundance. 
+For example, we can use a linear model to depict the relation between the amount of samples animals and the number of different species found in a given area. To create a linear model, we need two vectors (here as two columns of a data.frame) with the matching data pairs (Abundance and Species Number). The `lm` function then takes a [formula](R08_formula.qmd) with the vector/column names separated by `~`.
+You can interpret the `~` in this case _as a function of_. So `lm(Species ~ Abundance)` means: Give me the number of species as a function of species abundance. 
 
 
 ```{r}
@@ -79,7 +80,7 @@ bd$pred = predict(lmod, bd)
 
 ggplot(bd, aes(Abundance, Species))+
     geom_point()+
-    geom_smooth(method = "lm", se = FALSE)+
+    geom_smooth(method = "lm", se = FALSE, lwd = 0.5)+
     geom_segment(aes(yend = pred, xend = Abundance), col = "red")+
     stat_regline_equation()+
     theme_bw()
@@ -160,9 +161,72 @@ ggplot(bd, aes(Abundance, Species))+
 
 #### Residuals standard error
 
-* standard deviation of the residuals
 * the average deviation of the real values from the model value
 * degree of freedom: on how many observations is this value based on?
+
+
+```{r}
+actual_values = bd$Species
+predicted_values = predict(lmod, data.frame(Abundance = bd$Abundance))
+```
+
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+library(ggplot2)
+library(ggpubr)
+
+bd$pred = predict(lmod, bd)
+
+ggplot(bd, aes(Abundance, Species))+
+    geom_point()+
+    geom_smooth(method = "lm", se = FALSE, lwd = 0.5)+
+    geom_segment(aes(yend = pred, xend = Abundance), col = "red")+
+    geom_point(aes(x = Abundance, y = pred), col = "black", fill = "white", size = 2, shape = 23)+
+    stat_regline_equation()+
+    theme_bw()
+
+```
+
+
+
+
+
+For the specific Abundance values we have in our observed data, we can calculate the error i.e. the deviation of the predicted values from the actual values:
+
+```{r}
+# deviation between actual values and predicted values ("error")
+residuals = actual_values - predicted_values
+
+# squared residuals: no negative values, large error values are more severe
+squared_error = (actual_values - predicted_values)**2
+```
+
+
+However, we also want to give estimates of the models error for abundance values that we have not observed.
+
+
+```{r}
+# number of observations
+n = length(actual_values)
+
+
+# mean squared error
+mean(squared_error)
+
+# mean squared error with degrees of freedom
+sum(squared_error)/(n-1)
+
+# root mean squared error
+sqrt(mean(squared_error))
+
+# root mean squared error with degrees of freedom == Residuals standard error
+sqrt(sum(squared_error)/(n-2))
+```
+
 
 
 #### Multiple R-squared
@@ -170,7 +234,28 @@ ggplot(bd, aes(Abundance, Species))+
 * How much of the variance is explained by the model?
 * Values between 0 and 1
 * 0 means no explanation, 1 means perfect fit
-* Depends on the specific example!
+
+
+```{r}
+# how much variation is there in the observed values
+total_sum_of_squares = sum(((actual_values) - mean(actual_values))**2)
+
+
+# how much variation is there in the residuals
+residual_sum_of_squares = sum((actual_values - predicted_values)**2)
+
+
+# divide one by the other:
+# if both values are similar, this approaches 1
+# if residual sum of squares is very low (i.e. the model is good) this value gets smaller
+residual_sum_of_squares / total_sum_of_squares
+
+# Rsq: values close to 1 mean, the residual sum of squares error is low compared to the observed variation
+1 - residual_sum_of_squares / total_sum_of_squares
+```
+
+
+
 
 #### F-statistics
 

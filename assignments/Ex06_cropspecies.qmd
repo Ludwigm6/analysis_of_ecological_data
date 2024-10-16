@@ -1,12 +1,12 @@
-# E06: Crop vs. Species
+# Ex06: Crop vs. Species
 
-Many studies in landscape ecology deal with species data. Usually, these studies follow a plot based design to compare different environments and ecosystems in terms of abundances or species diversity. To practice everything we've learned so far and to go on further we want to have a look at another real world dataset.
-The species data below was collected by Michael Meyer. To find out more about the original goal of why this data was collected you can have a look at @MeyerM2019.
+Many studies in landscape ecology deal with species data. Usually, these studies follow a plot based design to compare different environments and ecosystems in terms of abundances or species diversity. To practice everything we've learned so far we want to have a look at another real world dataset.
+The species data below was collected by [Michael Meyer](https://www.uni-muenster.de/Oekosystemforschung/mitarbeiter/Michael_Meyer.html). To find out more about the original goal of why this data was collected you can have a look at @MeyerM2019.
 While the statistical analysis of this paper is more advanced and not suited for this beginner course, the structure of the data is very easy and also allows the practice of more simple methods.
 
 
 ```{r, echo = FALSE}
-df = read.csv("data/crop_species.csv")
+df = read.csv("../data/crop_species.csv")
 knitr::kable(
   df[1:10,], caption = 'First entries of species data by Meyer et al. 2019',
   booktabs = TRUE
@@ -25,21 +25,13 @@ The column names and crop types appear very cryptic at first sight. Here are som
 
 * Ara = Araneae
 * Cara = Carabidae
-* IsoDip = Isopoda and Diplopoda
 * IsoMyr = Isopoda and Myriapoda
 
 * Ind = Number of individual animals
 * Spec = Number of species
 
 
-## TASK: Crops vs. Species
-
-
-```{r}
-library(dplyr)
-bd = read.csv("data/crop_species.csv")
-```
-
+## Tasks
 
 * How many different crop types where analysed in the study?
 
@@ -57,6 +49,7 @@ bd = read.csv("data/crop_species.csv")
 
 
 * Which plot had the most individual animals? (regardless of species)
+
 ```{r}
 
 
@@ -79,7 +72,7 @@ bd = read.csv("data/crop_species.csv")
 ```
 
 
-* What is the minimum number of individuals and species per crop type?
+* What is the average number of individuals and species per crop type? (Hint: `dplyr::group_by`, `dplyr::summarise`)
 
 ```{r}
 
@@ -94,6 +87,18 @@ bd = read.csv("data/crop_species.csv")
 
 ```
 
+
+* Compare the number of species of Araneae, Carabidae and IsopodaMyriapoda with a boxplot. (Hint: `tidyr::pivot_longer`)
+
+```{r}
+
+
+
+```
+
+
+
+
 * Plot the number of Araneae species in relation to the number of individual Araneae.
 
 ```{r}
@@ -102,7 +107,7 @@ bd = read.csv("data/crop_species.csv")
 ```
 
 
-* If there are more individual Araneae on a plot, are there also more Araneae species?
+* If there are more individual Araneae on a plot, are there also more Araneae species? (Hint: `lm`)
 
 ```{r}
 

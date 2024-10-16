@@ -1,20 +1,10 @@
-# R08: Formula notation
+# Formula notation
 
-Some functions use a so called `formula` as an argument. Look e.g. at the help page of `boxplot()` to see that it's able to takes an argument `formula` the description
+Some functions in R use a so called `formula` as their argument. Look e.g. at the help page of `boxplot()` to see that it's able to takes an argument `formula` which is describes as follows:
 
 > a formula, such as y ~ grp, where y is a numeric vector of data values to be split into groups according to the grouping variable grp (usually a factor).
 
-
-```{r}
-a = c(1,5,3)
-b = c(6,8,7)
-
-a ~ b
-class(a~b)
-```
-
-
-A lot of statistical functions use this notation. As a beginner you most likely find formulas in `boxplot()`, `plot()` and `lm()`.
+So the example code below using the `iris` dataset reads like: make me a boxplot of the petal length split into groups by the species. 
 
 ```{r}
 data(iris)
@@ -22,7 +12,7 @@ boxplot(iris$Petal.Length ~ iris$Species)
 ```
 
 
-Think about the `~` like _as a function of_. So `boxplot(iris$Petal.Length ~ iris$Species)` means: Give me boxplots of the petal length as a function of species.
+A lot of statistical functions use this notation. As a beginner you most likely find formulas in `boxplot()`, `plot()` and `lm()`. More general, think about the `~` like _as a function of_. So `boxplot(iris$Petal.Length ~ iris$Species)` means: Give me boxplots of the petal length as a function of the species. Some more examples:
 
 
 ```{r}

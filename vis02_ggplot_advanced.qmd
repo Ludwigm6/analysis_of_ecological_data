@@ -1,0 +1,159 @@
+# ggplot2 advanced
+
+
+```{r}
+library(tidyverse) # ggplot2 is part of the tidyverse
+```
+
+
+
+## Using multiple datasets in the same plot
+
+```{r}
+#| eval: true
+#| code-fold: true
+
+
+
+
+
+dwd_spring = read.csv("https://opendata.dwd.de/climate_environment/CDC/regional_averages_DE/seasonal/air_temperature_mean/regional_averages_tm_spring.txt",
+               skip = 1,
+               sep = ";")
+colnames(dwd_spring)[2] <- "Jahreszeit"
+
+dwd_summer  = read.csv("https://opendata.dwd.de/climate_environment/CDC/regional_averages_DE/seasonal/air_temperature_mean/regional_averages_tm_summer.txt",
+               skip = 1,
+               sep = ";")
+colnames(dwd_summer)[2] <- "Jahreszeit"
+```
+
+
+```{r}
+head(dwd_spring, n = 3)
+
+head(dwd_summer, n = 3)
+```
+
+If we have two datasets with similar structure, e.g. the same data for spring and summer, you can use both sets in the same plot by specifying the according data frame in the `geom_` functions. Here we use the same mapping for both sets of points, so we can define the mapping only once in the main `ggplot` function. If your variables are not the same in both datasets, you also need to redefine the mapping in the `geom_` function.
+
+
+
+```{r}
+ggplot(mapping = aes(x = Jahr, y = Deutschland))+
+    geom_point(data = dwd_spring, color = "skyblue")+
+    geom_point(data = dwd_summer, color = "firebrick")
+```
+
+
+
+## Facets
+
+Facets divide the data you want to plot along a specific variable. E.g when we combine the spring and summer temperature from our DWD data, we can create a facet along the `Jahreszeiten` column to produce the same plot for spring and summer accordingly:
+
+```{r}
+
+dwd = rbind(dwd_spring, dwd_summer)
+
+
+ggplot(dwd, aes(x = Jahr, y = Brandenburg))+
+    geom_line()+
+    geom_point()+
+    facet_wrap(facets = "Jahreszeit")
+```
+
+
+Of course, `facet_wrap` also has many options to alter the plot to ones desire. Again, have a look at the help page - it is very helpful.
+Try to figure out for yourself what kind of effects the arguments in the following `facet_wrap` make on the plot.
+
+```{r}
+ggplot(dwd, aes(x = Jahr, y = Brandenburg))+
+    geom_line()+
+    geom_point()+
+    facet_wrap(facets = "Jahreszeit",
+               ncol = 1,
+               scales = "free",
+               strip.position = "right")+
+    theme_minimal()
+```
+
+
+Besides `facet_warp`, there is `facet_grid` with slightly different argument options. Here you can define `cols` and `rows` as your facet variables. 
+
+
+
+```{r}
+dwd_long = tidyr::pivot_longer(data = dwd, cols = !all_of(c("Jahr", "Jahreszeit")),
+                               names_to = "Bundesland",
+                               values_to = "Temperatur")
+
+dwd_long = dwd_long |> filter(Bundesland %in% c("Bayern", "Baden.Wuerttemberg", "Rheinland.Pfalz", "Hessen", "Sachsen"))
+
+
+
+ggplot(dwd_long, aes(x = Jahr, y = Temperatur))+
+    geom_line()+
+    geom_point()+
+    facet_grid(rows = vars(Bundesland),
+               cols = vars(Jahreszeit))+
+    theme_bw()
+```
+
+
+
+
+## Graphical Devices
+
+Every time you create a plot, R needs to know where to draw something. This is called the `device` - you canvas, so to say.
+In RStudio, your device is by default automatically set to `RStudioGD` which refers to the plot window in RStudio. You can check you current device with
+
+```{r}
+#| eval: false
+dev.cur()
+```
+
+
+You can find a list of devices in the help page `?Devices`. With the functions you find there you can switch to a different graphic device.
+For example, use `pdf()` and your plots will be drawn into a pdf file instead of the RStudio plot window.
+Once you finished plotting, use `dev.off()` to turn the device off.
+
+
+```{r}
+#| eval: false
+
+pdf(filename = "nice_plot.pdf")
+
+ggplot(dwd_summer, aes(x = Jahr, y = Deutschland))+
+    geom_line()
+
+dev.off()
+```
+
+Personally, I often use vector graphics with the `svg()` device. The plots from R, even with `ggplot2` often need some minor tweaks like making the legend a little bit bigger that are too finicky for me to do with code. Instead, I use [inkscape](https://inkscape.org/) for some cosmetic changes in the svg graphic and export it there as a pdf or png. Make sure, however, that you do not alter the actual information that is communicated in the plot!
+
+
+
+## Animations
+
+The [gganimate](https://gganimate.com/) package expands the ggplot syntax with functions that deal with plot animations.
+Have a look at [gganimate.com/](https://gganimate.com/) for examples and explanations.
+
+```{r}
+#| eval: false
+install.packages("gganimate")
+install.packages("gifski") # has to be installed for gif output
+```
+
+
+```{r}
+library(gganimate)
+
+
+ggplot(dwd, aes(x = Jahr, y = Deutschland, color = Jahreszeit))+
+    geom_point()+
+    gganimate::enter_grow()+
+    gganimate::transition_states(Jahr, wrap = FALSE, transition_length = 5, state_length = 10)+
+    gganimate::shadow_mark()
+
+```
+

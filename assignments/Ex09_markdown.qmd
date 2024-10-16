@@ -1,4 +1,4 @@
-# E10: Learning Log
+# Ex09: Course Summary
 
 Zeige was du im Kurs gelernt hast. Analysiere und Visualisiere einen beliebigen (ökologischen) Datensatz und dokumentiere den Code und die Ergebnisse. 
 

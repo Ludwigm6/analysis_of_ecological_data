@@ -1,8 +1,8 @@
-# R03: Logical Operators
+# Logical Operators
 
 Logical Operators are essential to efficiently work with R. It is a good idea to spent some time with them and think about their possibilities and usage.
 
-But first: what are logical operators? They are used to compare values. The most intuitive ones are the `<` and `>` operators.
+But first: **What are logical operators?** They are used to compare two values. The most intuitive ones are the `<` and `>` operators, for `less than` and `larger than` respectively.
 
 ```{r}
 4 < 5
@@ -10,14 +10,14 @@ But first: what are logical operators? They are used to compare values. The most
 6 > 2
 ```
 
-As you see, both statements return the value `TRUE` because, ...well... 4 is smaller than 5 and 6 is larger then 2. As you might guess, if there is `TRUE` there should also be `FALSE`.
+As you see, both statements return the value `TRUE` because, --- well --- 4 is smaller than 5 and 6 is larger than 2. As you might guess, if there is `TRUE` there should also be a `FALSE`.
 
 
 ```{r}
 24 > 50
 ```
 
-Logical operators will *always* return `TRUE` or `FALSE`, so the statements you make with them are always questions which you can answer as `TRUE` or `FALSE`. As a data type, this is called a `logical` (or sometimes `boolean value` after the British mathematician George Boole).
+Logical operators will **always** return `TRUE` or `FALSE`, so the statements you make with them are always questions which you can answer as `TRUE` or `FALSE`. As a data type, this is called a `logical` (or sometimes `boolean` after the British mathematician George Boole).
 
 
 ```{r}
@@ -26,7 +26,7 @@ class(bool)
 ```
 
 
-To ask the question if two values are the same we use the operator `==`:
+To ask the question if two values are the same we use the operator `==`. Be careful to not confuse this with the assignment operator `=`.
 
 ```{r}
 1.9999999 == 2
@@ -61,4 +61,66 @@ vec[large]
 # in short, we combine both steps to
 vec[vec > 10]
 ```
+
+
+## Overview of common logical operators
+
+Comparative operators:
+
+|          |                          |
+|----------|--------------------------|
+|`==`      |   equal                  |    
+|`!=`      |   not equal              |        
+|`<`       |   less than              |        
+|`<=`      |   less than or equal     |        
+|`>`       |   greater than           |    
+|`>=`      |   greater than or equal  | 
+|`%in%`    |   is in the set          |  
+
+There are also functions that test for certain conditions, for example if a value is of a particular class.
+Particularly common is the `is.na()` function to check for missing values. 
+
+```{r}
+is.numeric(5)
+
+is.logical(5)
+
+
+vec = c(1, 8, 8, NA, 6, NA, 7)
+
+# vectorized
+is.na(vec)
+
+# simple check if vector contains any NA value
+anyNA(vec)
+```
+
+> How can we get rid of the NA values in this vector?
+
+
+
+## Linking logical statements
+
+If you want to test multiple statements at once, you'll need the following operators.
+
+|          |                          |
+|----------|--------------------------|
+|`|`       |   or                     |        
+|`&`       |   and                    |    
+|`!`       |   not                    |    
+          
+
+To be on the safe side, use parenthesis for the individual logical statements.
+
+```{r}
+
+vec = c(1, 8, 8, 6, 7)
+
+(vec > 5) & (vec < 8)
+
+
+!anyNA(vec) & max(vec) > 5
+
+```
+
 

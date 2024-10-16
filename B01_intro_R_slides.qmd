@@ -8,14 +8,19 @@ output-dir: slides/
 
 ![r-project.org](https://www.r-project.org/Rlogo.png)
 
+![](https://www.produnis.de/R/images/rstudiologo.png)
 
 ## R
 
-* R is a script language
+
+
+
+* **R** is a programming language.
 * Version 1.0 from 2000 (concept dates back to 1974)
-* Original Aim: Statistical Analysis
-* Designed for data analysis and "interactive" use
-* Download: [r-project.org](https://www.r-project.org/)
+* Main Aim: Statistical computing and data analysis
+* R is an interpretet language
+    * R comes with a command line interface (cli)
+	* R code is directly executable via the cli
 
 
 
@@ -23,29 +28,8 @@ output-dir: slides/
 
 
 
-![What you see when you start R](assets/R_window.png)
+![The R command line interface](assets/R_window.png)
 
-
-## R Code
-
-```{r, eval = FALSE, echo = TRUE}
-data <- c(12, 45, 65, 1, 3, 87)
-mean(data)
-
-data <- data + 5
-sort(data)
-```
-
-
-## R Code
-
-```{r, eval = TRUE, echo = TRUE}
-data <- c(12, 45, 65, 1, 3, 87)
-mean(data)
-
-data <- data + 5
-sort(data)
-```
 
 
 
@@ -59,16 +43,17 @@ sort(data)
 
 ## Why R?
 
-
-> The R package structure has been the key addition to the software - @Chambers2020
-
-
-* Expandable with `packages` provided by other R users
+* R is expandable
     * Specialized analysis for specific fields
+    * Bioinformatics
     * Machine Learning
     * Medicine
     * Writing Books
     * ...
+
+> The R package structure has been the key addition to the software - @Chambers2020
+
+
 
 ## Why R?
 
@@ -79,9 +64,9 @@ sort(data)
 
 ![](https://www.produnis.de/R/images/rstudiologo.png)
 
-* Integrated Development Environment (IDE)
+* Integrated Development Environment (IDE) for R
 * Makes R "convenient" to use
-* Text Editor + R Console
+* R command line interface + Text editor
 * Project Environments, Package Management, Help Pages, Plot Viewer, File Browser ...
 
 

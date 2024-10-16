@@ -1,4 +1,4 @@
-# R02: Vectors
+# Vectors
 
 * most important data structure in R
 * building block for more complicated structures
@@ -14,30 +14,43 @@ knitr::include_graphics("assets/r_vector.svg")
 
 
 ```{r}
-c(23, 1, 60, 21, 21)
+c(23, 1, 60, 21, 21, 5)
 ```
 
 
 
 ```{r, error = TRUE}
 # vectors are atomic
-c(23, 1, 60.5, 21, 21)
+c(23, 1, 60.5, 21, 21, 5)
 
 # to actually use a vector we have to assign it to a variable
-vec = c(23, 1, 60, 21, 21)
+vec1 = c(23, 1, 60, 21, 21, 5)
 
 ```
 
 
-## Vector Maths
+## Vectors and functions
+
+Most functions in R either work with a vector (e.g. `mean`) or the function is "vectorized" (e.g. `sqrt`). Vectorized means that a functions is automatically applied to all the elements in a vector.
+
+```{r}
+# function that works with a vector
+mean(vec1)
+
+# function that is vectorised
+sqrt(vec1)
+```
+
+
+
+## Basic Calculations
 
 
 ```{r, fig.cap="R vector addition", echo = FALSE}
 knitr::include_graphics("assets/r_vector_plus.svg")
 ```
 
-* most of the functions in R are "vectorised"
-* i.e. functions are applied to all the elements in a vector
+
 
 
 ```{r, warning = TRUE}
@@ -65,29 +78,7 @@ vec1 * vec4
 
 
 
-## Vectors and functions
-
-The vector below are the temperature values for the Aasee in Münster from the 2021-06-02.
-
-```{r, results = "hide"}
-temperature <- c(18.81,18.73,18.92,18.87,18.76,18.79,18.87,18.84,18.89,18.89,
-                 18.93,18.95,18.92,18.97,19.00,18.99,19.00,19.00,18.99,19.00,
-                 18.98,18.97,18.97,18.97,18.97,18.98,18.96,18.94,18.94,18.91,
-                 18.90,18.89,18.87,18.85,18.85,18.84,18.83,18.81,18.81,18.81,
-                 18.81,18.81,18.80,18.79,18.80,18.79,18.79,18.78,18.77,18.78,
-                 18.79,18.79,18.79,18.79,18.79,18.79,18.80,18.79,18.81,18.80,
-                 18.81,18.81,18.82,18.84,18.87,18.89,18.89,18.91,18.96,19.02,
-                 19.11,19.15,18.95,18.92,18.84,18.85,18.96,18.92,18.95,18.95,
-                 18.91,19.00,19.02,19.06,19.05,19.47,19.32,19.05,19.66,19.57,
-                 19.23,19.42,19.36,19.66,19.79,19.81,19.99,21.10,21.94,22.52,
-                 22.81,22.43,22.16,21.55,21.80,21.02,21.85,21.45,22.48,22.73,
-                 22.61,22.83,20.85,20.68,19.76,19.81,19.74,19.58,19.35,19.40,
-                 19.75,19.76,19.85,19.82,19.86,20.08,20.06,19.85,20.04,19.90,
-                 19.96,20.12,19.94,20.20,20.17,20.31,20.17,20.37,20.36,20.13)
-```
-
-
-## Indexing
+## Vector indexing
 
 For many questions it is often required to access only parts of the data.
 This is one of the most common things you have to deal with in R.
@@ -97,13 +88,23 @@ To access single values of a vector, use square brackets `[]`.
 
 ```{r, error = TRUE}
 # get the third value of the vector
-temperature[3]
+vec1[3]
+```
 
 
-# accessing multiple elements at once
-temperature[1,2]
-temperature[c(1,2)]
+
+If you want to access multiple values of a vector at once, you have to first create a new vector with `c()` that contain the index positions.
+
+```{r, error = TRUE}
+index_vector <- c(1,2)
+vec1[index_vector]
+
+
+## in short:
+vec1[c(1,2)]
 ```
 
 > What is an easy way to access the first 10 elements of the vector?
+
+
 

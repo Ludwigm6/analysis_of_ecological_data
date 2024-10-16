@@ -1,0 +1,185 @@
+---
+format: revealjs
+output-dir: slides/
+---
+
+
+## {background-image="assets/landscape_bats.svg" background-size="contain"}
+
+
+
+
+## Are bats in forests bigger? {background-image="assets/landscape_bats.svg" background-size="contain"}
+
+
+
+
+## {background-image="assets/landscape.svg" background-size="contain"}
+
+
+## Plot surverys {background-image="assets/landscape_plots.svg" background-size="contain"}
+
+
+
+
+## Plot surveys {background-image="assets/landscape_one_plot.svg" background-size="contain"}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+:::
+
+::: {.column width="50%"}
+
+
+```{r d01-plotsurveys, echo = FALSE}
+df = data.frame(plotID = c("F1", "F2", "A1"),
+           land_cover = c("forest", "forest", "arable"),
+           bats = c(7, 2, 4))
+
+knitr::kable(
+  df, caption = 'Field survery data on a plot',
+  booktabs = TRUE
+)
+```
+
+:::
+
+::::
+
+
+## Time Series {background-image="assets/landscape_one_plot_sensor.svg" background-size="contain"}
+
+
+## Time Series {background-image="assets/landscape_one_plot_sensor.svg" background-size="contain"}
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+:::
+
+::: {.column width="60%"}
+
+* _quasi_ continuous measurements
+* measurement interval
+* climate, soil, remote sensing
+
+
+***
+
+
+```{r d01-timeseries, echo = FALSE}
+
+df <- data.frame(time = c("12:00", "12:15", "12:30"),
+                 temperature = c(18.3, 18.5, 18.6))
+knitr::kable(
+  df, row.names = FALSE
+)
+```
+:::
+
+::::
+
+
+
+## Time Series
+
+
+```{r d01-timeseries-vis, echo = FALSE, fig.cap="Visualization of time series data"}
+
+library(tidyverse)
+df <- read.csv(file = "data/2021-06_aasee.csv")
+colnames(df) = c("date", "temperature", "ph", "o2")
+df$date <- as.Date(df$date)
+dfmean <- df %>% group_by(date) %>% summarise(temperature = mean(temperature))
+ggplot(dfmean, aes(date, temperature))+
+    geom_line()+
+    theme_light()
+```
+
+
+
+
+## Species Lists {background-image="assets/landscape_one_plot.svg" background-size="contain"}
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+:::
+
+::: {.column width="50%"}
+```{r d01-specieslists, echo = FALSE}
+df = data.frame(species = c("Digitalis purpurea", "Galium odoratum", "Fagus Sylvatica"),
+                n = c("4", "25", "20"))
+knitr::kable(
+  df, caption = 'Vegetation of F1',
+  booktabs = TRUE
+)
+```
+:::
+
+::::
+
+
+
+
+
+
+
+
+## Geospatial Data
+
+* defined by explicit location on the earth surface
+* information attached to coordinates
+
+```{r d01-geospatial, echo = FALSE}
+set.seed(10)
+mof_trees = sf::st_read("data/mof/mof_trees.gpkg", quiet = TRUE) %>% 
+    na.omit() %>%
+    slice_sample(n = 25) %>% 
+    select(-socialposition) %>% 
+    mutate(dbh = round(dbh, 2))
+
+
+knitr::kable(
+  sf::st_drop_geometry(mof_trees)[1:4,], caption = 'Geospatial Data: Tree locations',
+  booktabs = TRUE
+)
+```
+
+
+## Geospatial Data
+
+```{r d01-geospatial-vis, echo = FALSE}
+mapview::mapviewOptions(basemaps = c("OpenStreetMap.DE"))
+mapview::mapview(mof_trees, zcol = "dbh")
+```
+
+
+
+## Data for monitoring
+
+
+![@Turner2014 : Sensing Biodiversity](https://www.science.org/cms/10.1126/science.1256014/asset/1e767e07-e785-4851-9ea0-6604203398a1/assets/graphic/346_301_f1.jpeg){width = 50%}
+
+## Other data sources
+
+* Lab / Field experiments
+* Individuum based information (e.g. traits)
+* Data repositories
+* Socio-Economic data (also useful for landscape ecology)
+* Open Data from paper
+* ...
+
+
+
+
+
+## References
+
+
+

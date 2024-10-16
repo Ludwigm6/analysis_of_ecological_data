@@ -1,0 +1,37 @@
+# markdown and quarto
+
+Rstudio is much more than a code editor for R. It supports a variety of programming languages, documentation formats and data types. One of Rstudio's most used and most powerful features is the creation of markdown documents with integrated R code. In fact, this entire course page is written in markdown within Rstudio and then [rendered as a website](https://quarto.org/docs/websites/). As with Rstudio Version v2022.07, the markdown system of choice is `quarto` - "An open-source scientific and technical publishing system" <https://quarto.org/>. Older versions use `rmarkdown`. <https://rmarkdown.rstudio.com/>.
+
+Depending on the system you are using, the typical file ending for the markdown files are either `.qmd` or `.rmd`.
+
+## What is markdown?
+
+Markdown is a "language" to format text. There are dedicated symbols for different purposes:
+
++-----------------------------------------+-----------------------------------------+
+| Markdown Syntax                         | Output                                  |
++=========================================+=========================================+
+| ``` markdown                            | *italics*, **bold**, ***bold italics*** |
+| *italics*, **bold**, ***bold italics*** |                                         |
+| ```                                     |                                         |
++-----------------------------------------+-----------------------------------------+
+| ``` markdown                            | # Header 1 {.heading-output}            |
+| # Header 1                              |                                         |
+| ```                                     |                                         |
++-----------------------------------------+-----------------------------------------+
+| ``` markdown                            | ## Header 2 {.heading-output}           |
+| ## Header 2                             |                                         |
+| ```                                     |                                         |
++-----------------------------------------+-----------------------------------------+
+| ```markdown                             | [Quarto](https://quarto.org)            |
+| [Quarto](https://quarto.org)            |                                         |
+| ```                                     |                                         |
++-----------------------------------------+-----------------------------------------+
+
+These examples are taken from <https://quarto.org/docs/authoring/markdown-basics.html> where you can find more more markdown syntax.
+
+
+
+## Using markdown in Rstudio
+
+Simply go to `File - New File - Quarto Document...` or `File - New File - R Markdown...` to create a markdown file with some example code and work your way from there. Or if you want to jump right into markdown projects go to `New Project... - New Directory` and choose an appropriate Template (e.g. Quarto Homepage).
