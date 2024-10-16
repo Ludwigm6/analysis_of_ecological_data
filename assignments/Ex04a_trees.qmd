@@ -1,7 +1,12 @@
 # Ex04a: Trees, Districts and base R
 
+[Download Exercise](https://raw.githubusercontent.com/Ludwigm6/analysis_of_ecological_data/refs/heads/main/assignments/Ex04a_trees.R) (Right Click - Save Link as...)
 
-Im Learnweb finden sich die Dateien `muenster_districts.csv` und `muenster_trees.csv`. Sie beinhalten Informationen zu den Stadtbezirken und Bäumen in Münster.
+[Download muenster_districts.csv](https://raw.githubusercontent.com/Ludwigm6/analysis_of_ecological_data/refs/heads/main/data/muenster_districts.csv) (Right Click - Save Link as...) This file contains information about the city districts of Münster.
+[Download muenster_trees.csv](https://raw.githubusercontent.com/Ludwigm6/analysis_of_ecological_data/refs/heads/main/data/muenster_districts.csv) (Right Click - Save Link as...) This file contains the location and species of city-managed trees.
+Both files are from the [Open Data Portal Münster https://opendata.stadt-muenster.de/](https://opendata.stadt-muenster.de/).
+
+
 
 - Lade beide Dateien in R.
 

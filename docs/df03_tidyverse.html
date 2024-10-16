@@ -411,83 +411,94 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Of course, you can also load single packages from the <code>tidyverse</code> with the <code>library()</code> function.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>aasee <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">"data/2021-06_aasee.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>trees <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">"data/muenster_trees.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="slice---a-slice-of-data---i.e.-the-specified-rows" class="level3">
 <h3 class="anchored" data-anchor-id="slice---a-slice-of-data---i.e.-the-specified-rows"><code>slice</code> - a slice of data - i.e.&nbsp;the specified rows</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>aasee <span class="ot">=</span> <span class="fu">slice</span>(aasee, <span class="fu">seq</span>(<span class="dv">8</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>trees <span class="ot">=</span> <span class="fu">slice</span>(trees, <span class="fu">seq</span>(<span class="dv">8</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="select---selects-columns" class="level3">
 <h3 class="anchored" data-anchor-id="select---selects-columns"><code>select</code> - selects columns</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(aasee, Wassertemperatur)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(trees, species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  Wassertemperatur
-1            17.98
-2            17.66
-3            18.03
-4            18.08
-5            18.06
-6            18.01
-7            18.02
-8            18.06</code></pre>
+<pre><code>   species
+1    Tilia
+2    Tilia
+3 Carpinus
+4 Carpinus
+5 Carpinus
+6    Tilia
+7 Carpinus
+8 Platanus</code></pre>
 </div>
 </div>
 </section>
 <section id="filter---filters-rows-based-on-logical-operators" class="level3">
 <h3 class="anchored" data-anchor-id="filter---filters-rows-based-on-logical-operators"><code>filter</code> - filters rows based on logical operators</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(aasee, Wassertemperatur <span class="sc">&lt;</span> <span class="dv">18</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(trees, species <span class="sc">==</span> <span class="st">"Tilia"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>             Datum Wassertemperatur pH.Wert Sauerstoffgehalt
-1 2021-05-31 23:57            17.98    8.05            10.53
-2 2021-06-01 00:09            17.66    8.04             9.64</code></pre>
+<pre><code>  species  district        X       Y
+1   Tilia Uppenberg 404685.2 5759126
+2   Tilia Uppenberg 404698.5 5759130
+3   Tilia Uppenberg 404685.6 5759520</code></pre>
 </div>
 </div>
 </section>
 <section id="mutate---mutates-the-data.frame-by-adding-columns" class="level3">
 <h3 class="anchored" data-anchor-id="mutate---mutates-the-data.frame-by-adding-columns"><code>mutate</code> - mutates the data.frame by adding columns</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(aasee, <span class="at">t_kelvin =</span> Wassertemperatur <span class="sc">+</span> <span class="fl">273.15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(trees, <span class="at">city =</span> <span class="st">"Muenster"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>             Datum Wassertemperatur pH.Wert Sauerstoffgehalt t_kelvin
-1 2021-05-31 23:57            17.98    8.05            10.53   291.13
-2 2021-06-01 00:09            17.66    8.04             9.64   290.81
-3 2021-06-01 00:19            18.03    8.12            11.30   291.18
-4 2021-06-01 00:27            18.08    8.14            11.32   291.23
-5 2021-06-01 00:39            18.06    8.12            11.06   291.21
-6 2021-06-01 00:49            18.01    8.10            10.91   291.16
-7 2021-06-01 00:59            18.02    8.10            10.96   291.17
-8 2021-06-01 01:08            18.06    8.10            10.83   291.21</code></pre>
+<pre><code>   species  district        X       Y     city
+1    Tilia Uppenberg 404685.2 5759126 Muenster
+2    Tilia Uppenberg 404698.5 5759130 Muenster
+3 Carpinus Uppenberg 404693.0 5759279 Muenster
+4 Carpinus Uppenberg 404692.9 5759289 Muenster
+5 Carpinus Uppenberg 404692.1 5759319 Muenster
+6    Tilia Uppenberg 404685.6 5759520 Muenster
+7 Carpinus Uppenberg 404662.3 5760350 Muenster
+8 Platanus    Neutor 404352.7 5758912 Muenster</code></pre>
 </div>
 </div>
 </section>
 <section id="summarise---summarises-data" class="level3">
 <h3 class="anchored" data-anchor-id="summarise---summarises-data"><code>summarise</code> - summarises data</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise</span>(aasee, <span class="at">minimum_t =</span> <span class="fu">min</span>(Wassertemperatur))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise</span>(trees, <span class="at">amount =</span> <span class="fu">n_distinct</span>(species))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  minimum_t
-1     17.66</code></pre>
+<pre><code>  amount
+1      3</code></pre>
 </div>
 </div>
-<p>The functions above could all be realized with base R:</p>
+</section>
+<section id="pull---pulls-the-values-out-of-a-column" class="level3">
+<h3 class="anchored" data-anchor-id="pull---pulls-the-values-out-of-a-column"><code>pull</code> - pulls the values out of a column</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the same in base R</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># select</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>aasee<span class="sc">$</span>Wassertemperatur</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co"># filter</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>aasee[,aasee<span class="sc">$</span>Wassertemperatur <span class="sc">&lt;</span> <span class="dv">18</span>]</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co"># mutate</span></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>aasee<span class="sc">$</span>t_kelvin <span class="ot">=</span> aasee<span class="sc">$</span>Wassertemperatur <span class="sc">+</span> <span class="fl">273.15</span></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="co"># summarise</span></span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(aasee<span class="sc">$</span>Wassertemperatur)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pull</span>(trees, species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Tilia"    "Tilia"    "Carpinus" "Carpinus" "Carpinus" "Tilia"    "Carpinus"
+[8] "Platanus"</code></pre>
+</div>
+</div>
+<p>Note that the functions above could all be realized with base R. Think about the tidyverse as a different dialect to data analysis with R. Later on, it will be up to you which style you like more and feels more natural to your thought process. However, for understanding code you randomly find on the internet or if you work with other people that prefer different dialects than yourself, you should be able to read and write the basics of each style regardless.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the same in base R</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># select</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>trees<span class="sc">$</span>species</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co"># filter</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>trees[,trees<span class="sc">$</span>species <span class="sc">==</span> <span class="st">"Tilia"</span>]</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co"># mutate</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>trees<span class="sc">$</span>city <span class="ot">=</span> <span class="st">"Muenster"</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="co"># summarise</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(trees<span class="sc">$</span>species))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -495,19 +506,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="the-pipe-operator">The pipe operator</h2>
 <p>The strength of dplyr is the possibility to chain functions with <code>%&gt;%</code> or <code>|&gt;</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>aasee<span class="sc">|&gt;</span> </span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(Wassertemperatur <span class="sc">&lt;</span> <span class="dv">18</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(pH.Wert) <span class="sc">|&gt;</span>  </span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">max</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>trees<span class="sc">|&gt;</span> </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(species <span class="sc">==</span> <span class="st">"Tilia"</span> <span class="sc">|</span> species <span class="sc">==</span> <span class="st">"Platanus"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pull</span>(district) <span class="sc">|&gt;</span>  </span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">unique</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 8.05</code></pre>
+<pre><code>[1] "Uppenberg" "Neutor"   </code></pre>
 </div>
 </div>
 <p>With base R functions this looks messy, because we have to use functions inside functions.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(aasee<span class="sc">$</span>pH.Wert[aasee<span class="sc">$</span>Wassertemperatur <span class="sc">&lt;</span> <span class="dv">18</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(trees<span class="sc">$</span>district[trees<span class="sc">$</span>species <span class="sc">==</span> <span class="st">"Tilia"</span> <span class="sc">|</span> trees<span class="sc">$</span>species <span class="sc">==</span> <span class="st">"Platanus"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 8.05</code></pre>
+<pre><code>[1] "Uppenberg" "Neutor"   </code></pre>
 </div>
 </div>
 

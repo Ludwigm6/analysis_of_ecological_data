@@ -49,57 +49,64 @@ Of course, you can also load single packages from the `tidyverse` with the `libr
 
 ```{r}
 library(dplyr)
-aasee = read.csv("data/2021-06_aasee.csv")
+trees = read.csv("data/muenster_trees.csv")
 ```
 
 
 
 ### `slice` - a slice of data - i.e. the specified rows
 ```{r}
-aasee = slice(aasee, seq(8))
+trees = slice(trees, seq(8))
 ```
 
 ### `select` - selects columns
 
 ```{r}
-select(aasee, Wassertemperatur)
+select(trees, species)
 ```
-
 
 ### `filter` - filters rows based on logical operators
 ```{r}
-filter(aasee, Wassertemperatur < 18)
+filter(trees, species == "Tilia")
 ```
 
 ### `mutate` - mutates the data.frame by adding columns
 
 ```{r}
-mutate(aasee, t_kelvin = Wassertemperatur + 273.15)
+mutate(trees, city = "Muenster")
 ```
 
 ### `summarise` - summarises data
 ```{r}
-summarise(aasee, minimum_t = min(Wassertemperatur))
+summarise(trees, amount = n_distinct(species))
 ```
 
 
-The functions above could all be realized with base R:
+### `pull` - pulls the values out of a column
+
+```{r}
+pull(trees, species)
+```
+
+
+
+Note that the functions above could all be realized with base R. Think about the tidyverse as a different dialect to data analysis with R. Later on, it will be up to you which style you like more and feels more natural to your thought process. However, for understanding code you randomly find on the internet or if you work with other people that prefer different dialects than yourself, you should be able to read and write the basics of each style regardless.
 
 ```{r}
 #| eval: false
 # the same in base R
 
 # select
-aasee$Wassertemperatur
+trees$species
 
 # filter
-aasee[,aasee$Wassertemperatur < 18]
+trees[,trees$species == "Tilia"]
 
 # mutate
-aasee$t_kelvin = aasee$Wassertemperatur + 273.15
+trees$city = "Muenster"
 
 # summarise
-min(aasee$Wassertemperatur)
+length(unique(trees$species))
 
 ```
 
@@ -111,17 +118,17 @@ The strength of dplyr is the possibility to chain functions with `%>%` or `|>`.
 
 
 ```{r}
-aasee|> 
-    filter(Wassertemperatur < 18) |> 
-    select(pH.Wert) |>  
-    max()
+trees|> 
+    filter(species == "Tilia" | species == "Platanus") |> 
+    pull(district) |>  
+    unique()
 ```
 
 
 With base R functions this looks messy, because we have to use functions inside functions.
 
 ```{r}
-max(aasee$pH.Wert[aasee$Wassertemperatur < 18])
+unique(trees$district[trees$species == "Tilia" | trees$species == "Platanus"])
 ```
 
 
