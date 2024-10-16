@@ -27,10 +27,6 @@ knitr::kable(head(dwd))
 
 ```{r}
 
-dwd$Jahr[which.max(dwd$Bayern)]
-
-mean(dwd$Nordrhein.Westfalen[dwd$Jahr == 2000])
-
 ```
 
 
@@ -50,39 +46,9 @@ mean(dwd$Nordrhein.Westfalen[dwd$Jahr == 2000])
 
 
 ```{r}
-#| eval: false
-#| include: false
-#| echo: false
 
 
-df = dwd[,c("Jahr", "Thueringen", "Sachsen.Anhalt")]
 
-library(tidyverse)
-df = dwd |> select(Jahr, Thueringen, Sachsen.Anhalt)
-
-
-df_long = tidyr::pivot_longer(df,
-                              cols = c("Thueringen", "Sachsen.Anhalt"),
-                              names_to = "Bundesland",
-                              values_to = "Temperatur")
-
-boxplot(df_long$Temperatur)
-
-boxplot(df$Thueringen)
-boxplot(df$Sachsen.Anhalt)
-
-boxplot(df$Thueringen,
-        df$Sachsen.Anhalt,
-        names = c("Thuringen", "Sachsen Anhalt"))
-
-boxplot(df_long$Temperatur ~ df_long$Bundesland)
-
-boxplot(Temperatur ~ Bundesland, data = df_long)
-
-
-boxplot(df$value ~ df$name)
-
-t.test(df$value ~ df$name)
 
 ```
 
@@ -110,45 +76,9 @@ knitr::include_graphics("https://www.dwd.de/DWD/klima/national/gebietsmittel/en_
 
 
 ```{r}
-#| include: false
-#| eval: false
-
-
-germany_mean = dwd |>
-    filter(Jahr >= 1961 & Jahr <= 1990) |>
-    pull(Deutschland) |>
-    mean()
 
 
 
-dwd$Anomaly = dwd$Deutschland - germany_mean
-
-plot(dwd$Jahr, dwd$Anomaly, type = "h")
-
-#
-
-
-avg_temp = mean(dwd[dwd$Jahr >= 1961 & dwd$Jahr <= 1990, "Deutschland"])
-avg_temp = dwd |> filter(Jahr >= 1961 & Jahr <= 1990) |> pull(Deutschland) |> mean()
-
-dwd$anomaly = dwd$Deutschland - avg_temp
-
-
-
-dwd$color = ifelse(dwd$Anomaly > 0, "red", "blue")
-#
-
-dwd$color2 = "red"
-dwd$color2[dwd$Anomaly < 0] <- "blue"
-
-
-
-
-dwd$color = "blue"
-dwd$color[dwd$Anomaly > 0] = "red"
-
-
-plot(dwd$Jahr, dwd$Anomaly, type = "h", col = dwd$color)
 
 ```
 

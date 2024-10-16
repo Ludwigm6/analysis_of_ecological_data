@@ -15,20 +15,9 @@ Im Learnweb finden sich die Dateien `muenster_districts.csv` und `muenster_trees
 - Wie groß ist die Bezirksgruppe "Altstadt" (Fläche)?
 
 ```{r}
-#| code-fold: true
-#| eval: false
-
-library(tidyverse)
-
-bezirke = read.csv("data/muenster_districts.csv")
-
-bezirke |>
-    filter(district_group == "Altstadt") |>
-    select(area) |>
-    sum()
-
 
 ```
+
 
 - Zu welcher Bezirksgruppe gehört der Bezirk "Schloss"?
 
@@ -45,17 +34,6 @@ bezirke |>
 - Erstelle eine Tabelle die für jede Bezirksgruppe den Mittelwert und die Standardabweichung der Fläche der jeweiligen Bezirke berechnet. Nutze dafür die Funktionen `dplyr::group_by()` und `dplyr::summarise()`
 
 ```{r}
-#| code-fold: true
-#| eval: false
-
-library(tidyverse)
-
-bezirke = read.csv("data/muenster_districts.csv")
-
-bezirke |> 
-    group_by(district_group) |>
-    summarise(mittel = mean(area),
-              abweichung = sd(area))
 
 ```
 

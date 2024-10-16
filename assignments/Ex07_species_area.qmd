@@ -8,22 +8,7 @@ Nutze die Dateien `muenster_districts.csv` und `muenster_trees.csv` aus dem Lear
 * Mit einem `join` Befehl (z.B. `dplyr::left_join`) oder `merge` können mehrere Tabellen zusammengefügt werden. Erstelle damit eine Tabelle die mindestens folgende Informationen enthält: Bezirksname, Bezirksgröße, Anzahl der Bäume im Bezirk.
 
 ```{r}
-library(tidyverse)
-trees = read.csv("../data/muenster_trees.csv")
-districts = read.csv("../data/muenster_districts.csv")
 
-# entweder:
-tree_summary = trees |> group_by(district) |> count()
-
-# oder:
-tree_summary = trees |> group_by(district) |>   
-    summarise(AnzahlBaum = length(species))
-
-
-trees_districts = merge(districts, tree_summary, by = "district")
-
-
-trees_districts = left_join(districts, tree_summary, by = "district")
 
 
 

@@ -8,8 +8,6 @@ output-dir: slides/
 
 ![](https://www.r-project.org/Rlogo.png)
 
-![](https://www.produnis.de/R/images/rstudiologo.png)
-
 ## R
 
 
@@ -58,7 +56,7 @@ output-dir: slides/
 ![@Wickham2023 : R for datascience](https://r4ds.hadley.nz/diagrams/data-science/base.png)
 
 
-## Rstudio
+##
 
 ![](https://www.produnis.de/R/images/rstudiologo.png)
 

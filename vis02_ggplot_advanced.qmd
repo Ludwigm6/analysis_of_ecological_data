@@ -14,15 +14,17 @@ library(tidyverse) # ggplot2 is part of the tidyverse
 #| code-fold: true
 
 
+# data sources: 
+# https://opendata.dwd.de/climate_environment/CDC/regional_averages_DE/seasonal/air_temperature_mean/regional_averages_tm_spring.txt
+# https://opendata.dwd.de/climate_environment/CDC/regional_averages_DE/seasonal/air_temperature_mean/regional_averages_tm_summer.txt
 
 
-
-dwd_spring = read.csv("https://opendata.dwd.de/climate_environment/CDC/regional_averages_DE/seasonal/air_temperature_mean/regional_averages_tm_spring.txt",
+dwd_spring = read.csv("data/dwd_spring_temperature.txt",
                skip = 1,
                sep = ";")
 colnames(dwd_spring)[2] <- "Jahreszeit"
 
-dwd_summer  = read.csv("https://opendata.dwd.de/climate_environment/CDC/regional_averages_DE/seasonal/air_temperature_mean/regional_averages_tm_summer.txt",
+dwd_summer  = read.csv("data/dwd_summer_temperature.txt",
                skip = 1,
                sep = ";")
 colnames(dwd_summer)[2] <- "Jahreszeit"
