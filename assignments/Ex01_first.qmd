@@ -1,6 +1,6 @@
 # Ex01: First Steps
 
-[Download Exercise](assignments/Ex01_first.R)
+[Download Exercise](https://raw.githubusercontent.com/Ludwigm6/analysis_of_ecological_data/refs/heads/main/assignments/Ex01_first.R)
 
 
 ## Variablen
