@@ -1,6 +1,6 @@
 # Ex02: Second Steps
 
-[Download Exercise](../Ex02_second.R)
+[Download Exercise](assignments/Ex02_second.R)
 
 Der folgende Vektor enthält Temperaturdaten vom Aasee in Münster vom 2021-06-02.
 

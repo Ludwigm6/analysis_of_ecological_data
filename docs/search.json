@@ -654,13 +654,6 @@
     "text": "References"
   },
   {
-    "objectID": "B01_intro_R_slides.html#section",
-    "href": "B01_intro_R_slides.html#section",
-    "title": "Analysis of Ecological Data",
-    "section": "",
-    "text": "r-project.org"
-  },
-  {
     "objectID": "B01_intro_R_slides.html#r",
     "href": "B01_intro_R_slides.html#r",
     "title": "Analysis of Ecological Data",
@@ -686,14 +679,14 @@
     "href": "B01_intro_R_slides.html#why-r-1",
     "title": "Analysis of Ecological Data",
     "section": "Why R?",
-    "text": "Why R?\n\nR is expandable\n\nSpecialized analysis for specific fields\nBioinformatics\nMachine Learning\nMedicine\nWriting Books\n…\n\n\n\nThe R package structure has been the key addition to the software - Chambers (2020)"
+    "text": "Why R?\n\nR is expandable\n\nSpecialized analysis for specific fields\nBioinformatics, Medicine, …\nMachine Learning, Remote Sensing, …\nWriting Books, Blogs, Apps, …\n\n\n\nThe R package structure has been the key addition to the software - Chambers (2020)"
   },
   {
     "objectID": "B01_intro_R_slides.html#why-r-2",
     "href": "B01_intro_R_slides.html#why-r-2",
     "title": "Analysis of Ecological Data",
     "section": "Why R?",
-    "text": "Why R?\n\n(Wickham2023?) : R for datascience"
+    "text": "Why R?\n\nWickham, Çetinkaya-Rundel, and Grolemund (2023) : R for datascience"
   },
   {
     "objectID": "B01_intro_R_slides.html#rstudio",
@@ -707,7 +700,7 @@
     "href": "B01_intro_R_slides.html#references",
     "title": "Analysis of Ecological Data",
     "section": "References",
-    "text": "References\n\n\n\n\n\n\n\n\nChambers, John, M. 2020. “S, R, and Data Science.” The R Journal 12 (1): 462. https://doi.org/10.32614/RJ-2020-028."
+    "text": "References\n\n\n\n\n\n\n\n\nChambers, John, M. 2020. “S, R, and Data Science.” The R Journal 12 (1): 462. https://doi.org/10.32614/RJ-2020-028.\n\n\nWickham, Hadley, Mine Çetinkaya-Rundel, and Garrett Grolemund. 2023. R for Data Science: Import, Tidy, Transform, Visualize, and Model Data. 2nd edition. Beijing Boston Farnham Sebastopol Tokyo: O’Reilly."
   },
   {
     "objectID": "wheretogo.html",

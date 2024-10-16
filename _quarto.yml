@@ -56,7 +56,7 @@ website:
         - "wheretogo.qmd"
         - "98-additional_resources.Rmd"
     
-bibliography: "../../literature/zotero/references.bib"
+bibliography: "references.bib"
 number-depth: 0
 format:
   html:

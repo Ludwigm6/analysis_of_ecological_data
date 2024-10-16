@@ -1,6 +1,6 @@
 # Ex01: First Steps
 
-[Download Exercise](../Ex01_first.R)
+[Download Exercise](assignments/Ex01_first.R)
 
 
 ## Variablen

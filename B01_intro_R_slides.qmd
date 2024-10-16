@@ -6,7 +6,7 @@ output-dir: slides/
 
 ##
 
-![r-project.org](https://www.r-project.org/Rlogo.png)
+![](https://www.r-project.org/Rlogo.png)
 
 ![](https://www.produnis.de/R/images/rstudiologo.png)
 
@@ -45,11 +45,9 @@ output-dir: slides/
 
 * R is expandable
     * Specialized analysis for specific fields
-    * Bioinformatics
-    * Machine Learning
-    * Medicine
-    * Writing Books
-    * ...
+    * Bioinformatics, Medicine, ...
+    * Machine Learning, Remote Sensing, ...
+    * Writing Books, Blogs, Apps, ...
 
 > The R package structure has been the key addition to the software - @Chambers2020
 
