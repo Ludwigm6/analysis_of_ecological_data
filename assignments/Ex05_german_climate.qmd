@@ -1,5 +1,7 @@
 ## Ex05: German Climate
 
+[Download Exercise](https://raw.githubusercontent.com/Ludwigm6/analysis_of_ecological_data/refs/heads/main/assignments/Ex05_german_climate.R) (Right Click - Save Link as...)
+
 
 The German Weather Service [DWD](https://www.dwd.de/DE/Home/home_node.html) provides a variety of openly available climate, weather and phenology data in their [data portal](https://opendata.dwd.de/climate_environment/CDC/).
 

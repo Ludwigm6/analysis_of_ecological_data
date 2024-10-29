@@ -9,22 +9,6 @@
 #' 
 ## ----------------------------------------------------------------------------------------------------------------------------------------------
 
-library(tidyverse)
-trees = read.csv("data/muenster_trees.csv")
-districts = read.csv("data/muenster_districts.csv")
-
-# entweder:
-tree_summary = trees |> group_by(district) |> count()
-
-# oder:
-tree_summary = trees |> group_by(district) |>   
-    summarise(AnzahlBaum = length(species))
-
-
-trees_districts = merge(districts, tree_summary, by = "district")
-
-
-trees_districts = left_join(districts, tree_summary, by = "district")
 
 
 
@@ -36,47 +20,12 @@ trees_districts = left_join(districts, tree_summary, by = "district")
 #' 
 ## ----------------------------------------------------------------------------------------------------------------------------------------------
 
-plot(trees_districts$area, trees_districts$n)
-
-lmod = lm(n ~ area, data = trees_districts)
-
-lmod$coefficients
-
-lmod
-
-summary(lmod)
-
-abline(lmod)
-
-
-
-
-lmod = lm(trees_districts$n ~ trees_districts$area)
-
-
-lmod$residuals
-
-hist(lmod$residuals)
-
-norm = rnorm(100)
-
-hist(norm)
 #' 
 #' * Logarithmiere Bezirksgröße und Anzahl der Bäume im Bezirk (`log10()`).
 #'  Erstelle dann den Scatterplot erneut mit den logarithmierten Werten.
 #' 
 ## ----------------------------------------------------------------------------------------------------------------------------------------------
 
-trees_districts$area_log = log10(trees_districts$area)
-trees_districts$n_log = log10(trees_districts$n)
-
-plot(n ~ area, data = trees_districts)
-plot(n_log ~ area_log, data = trees_districts)
-
-lmod_log = lm(n_log ~ area_log, data = trees_districts)
-abline(lmod_log)
-summary(lmod_log)
-hist(lmod_log$residuals)
 
 #' 
 #' 
@@ -87,6 +36,8 @@ hist(lmod_log$residuals)
 ## ----------------------------------------------------------------------------------------------------------------------------------------------
 
 
+
+
 #' 
 #' 
 #' * Bonus: Wie viele Bäume stehen Erwartungsgemäß in einem Bezirk der 10000000 qm groß ist?
@@ -95,4 +46,4 @@ hist(lmod_log$residuals)
 ## ----------------------------------------------------------------------------------------------------------------------------------------------
 
 
-predict()
+
