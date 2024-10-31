@@ -10,10 +10,6 @@
 ## ----------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-districts = read.csv("data/muenster_districts.csv")
-trees = read.csv("data/muenster_trees.csv")
-
-
 
 #' 
 #' 
@@ -22,8 +18,6 @@ trees = read.csv("data/muenster_trees.csv")
 #' 
 ## ----------------------------------------------------------------------------------------------------------------------------------------------------------
 
-head(trees)
-str(districts)
 
 
 #' 
@@ -35,11 +29,6 @@ str(districts)
 #' 
 ## ----------------------------------------------------------------------------------------------------------------------------------------------------------
 
-table(districts$district_group)
-
-table(districts$district_group, districts$district)
-
-unique(districts$district_group)
 
 
 #' 
@@ -50,32 +39,11 @@ unique(districts$district_group)
 #' 
 ## ----------------------------------------------------------------------------------------------------------------------------------------------------------
 
-districts[districts$area == max(districts$area), ]
-
-districts[districts$area == max(districts$area), ]$district
-
-districts[districts$area == max(districts$area), "district"]
-
-districts$district[districts$area == max(districts$area)]
-
-
-library(tidyverse)
-districts |> filter(area == max(districts$area)) |> select(district)
 
 #' 
 #' - Wie groß ist die Bezirksgruppe "Altstadt"?
 #' 
 ## ----------------------------------------------------------------------------------------------------------------------------------------------------------
-
-sum(districts[districts$district_group == "Altstadt",]$area)
-
-length(districts[districts$district_group == "Altstadt",]$area)
-
-
-districts |>
-    filter(district_group == "Altstadt") |>
-    select(area) |>
-    sum()
 
 
 #' 
@@ -103,7 +71,7 @@ districts |>
 #' 
 ## ----------------------------------------------------------------------------------------------------------------------------------------------------------
 
-length(unique(trees$species))
+
 
 
 #' 
@@ -112,7 +80,7 @@ length(unique(trees$species))
 ## ----------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-sum(trees$species == "Fagus")
+
 
 
 #' 
@@ -121,16 +89,6 @@ sum(trees$species == "Fagus")
 #' 
 ## ----------------------------------------------------------------------------------------------------------------------------------------------------------
 
-which.max(table(trees$district))
-
-sort(table(trees$district), decreasing = TRUE)[1]
-
-
-
-test = data.frame(col1 = c("a", "a", "a", "b", "b", "b", "c", "c"))
-
-which.max(table(test$col1))
-table(test$col1)[table(test$col1) == max(table(test$col1))]
 
 
 #' 
@@ -140,14 +98,6 @@ table(test$col1)[table(test$col1) == max(table(test$col1))]
 ## ----------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-which.max(table(trees$district[trees$species == "Magnolia"]))
-
-
-trees |>
-    filter(species == "Magnolia") |>
-    select(district) |>
-    table() |>
-    which.max()
 
 #' 
 #' 
@@ -158,15 +108,6 @@ trees |>
 ## ----------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-district_central = districts[districts$district_group == "Altstadt" | districts$district_group == "Innenstadtring",]$district
 
-# andere schreibweise
-district_central = districts[districts$district_group %in% c("Altstadt", "Innenstadtring"),]$district
-
-# baume aus den bezirken filtern
-trees_central = trees[is.element(trees$district, district_central),]
-trees_central = trees[trees$district %in% district_central,]
-
-plot(trees_central$X, trees_central$Y, asp = 1, cex = 0.1)
 
 
