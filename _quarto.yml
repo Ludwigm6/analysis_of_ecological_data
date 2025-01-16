@@ -48,6 +48,7 @@ website:
         contents:
         - "vis01_ggplot.qmd"
         - "vis02_ggplot_advanced.qmd"
+        - "vis03_colors.qmd"
         - "vis03_markdown.qmd"
         - "assignments/Ex08_ggplot.qmd"
         - "assignments/Ex09_markdown.qmd"
