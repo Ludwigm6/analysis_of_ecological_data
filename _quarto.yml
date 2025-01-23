@@ -52,6 +52,10 @@ website:
         - "vis03_markdown.qmd"
         - "assignments/Ex08_ggplot.qmd"
         - "assignments/Ex09_markdown.qmd"
+      - section: "Outlook"
+        contents:
+        - "out01_controlstructuresI.qmd"
+        - "out02_controlstructuresII.qmd"
       - section: "Appendix"
         contents:
         - "wheretogo.qmd"

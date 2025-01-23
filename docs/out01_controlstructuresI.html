@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>r06_strings – Analysis of Ecological Data</title>
+<title>out01_controlstructuresi – Analysis of Ecological Data</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -115,9 +115,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-      Analysis of Ecological Data
-      </li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./out01_controlstructuresI.html">Outlook</a></li><li class="breadcrumb-item"><a href="./out01_controlstructuresI.html">Control structures I: functions</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -350,7 +348,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./out01_controlstructuresI.html" class="sidebar-item-text sidebar-link">
+  <a href="./out01_controlstructuresI.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Control structures I: functions</span></a>
   </div>
 </li>
@@ -397,116 +395,270 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="strings" class="level1">
-<h1>Strings</h1>
-<p>Modifying strings (i.e.&nbsp;text) is a very common task but can be a bit tricky if you start out. Here are some functions to try out:</p>
+<section id="control-structures-i-functions" class="level1">
+<h1>Control structures I: functions</h1>
+<section id="functions" class="level2">
+<h2 class="anchored" data-anchor-id="functions">Functions</h2>
+<section id="when-to-use-functions" class="level3">
+<h3 class="anchored" data-anchor-id="when-to-use-functions">When to use functions</h3>
 <ul>
-<li>create strings from multiple “substrings” with the <code>paste</code> or <code>paste0</code> function</li>
+<li>for common tasks and computations</li>
+<li>helps to structure code</li>
+<li>to reduces code redundancies</li>
+<li>for integration into packages with documentation</li>
 </ul>
+</section>
+<section id="function-syntax" class="level3">
+<h3 class="anchored" data-anchor-id="function-syntax">function syntax</h3>
+<p>Functions are created the same way as you would create a new variable. You assign (<code>&lt;- / =</code>) a function to a variable name which in turn will be the name of the function. In the parenthesis you define the names of the arguments (in the example below <code>arg1</code> and <code>arg2</code>) of function. These arguments are basically placeholders i.e.&nbsp;variables you can use inside the function. Finally the function needs to <code>return</code> something, meaning the result of your function or the output.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="dv">5</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"The number five:"</span>, n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>myFunction <span class="ot">&lt;-</span> <span class="cf">function</span>(arg1, arg2){</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  X <span class="ot">&lt;-</span> arg1 <span class="sc">+</span> arg2</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  result <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(X)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(result)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># executing the function</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">myFunction</span>(<span class="at">arg1 =</span> <span class="dv">8</span>, <span class="at">arg2 =</span> <span class="dv">10</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "The number five: 5"</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># again functions are vectorized</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="fu">seq</span>(<span class="dv">10</span>), <span class="st">"is"</span>, <span class="fu">c</span>(<span class="st">"odd"</span>, <span class="st">"even"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] "1 is odd"   "2 is even"  "3 is odd"   "4 is even"  "5 is odd"  
- [6] "6 is even"  "7 is odd"   "8 is even"  "9 is odd"   "10 is even"</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># paste0 defaults to no character for separating the strings</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">paste0</span>(n, <span class="st">"five"</span>, n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "5five5"</code></pre>
+<pre><code>[1] 4.242641</code></pre>
 </div>
 </div>
-<section id="the-stringr-package" class="level2">
-<h2 class="anchored" data-anchor-id="the-stringr-package">The stringr package</h2>
-<p>For advanced string handling we will make our lives easier by using the <code>stringr</code> package.</p>
-<p>To use functions from a package we have to load it first with the <code>library</code> function. The first time you want to use a package you might have to install it first with <code>install.packages</code>.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Task
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Write a simple function called <code>span</code> which subtracts the lowest value in a vector from the largest value in the vector.</li>
+<li>Test the function with the vector below.</li>
+</ul>
+</div>
+</div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"stringr"</span>)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Many packages have so called <code>vignettes</code> which are tutorial style help pages about the package. You can access vignettes via the “Packages” Pane in R studio or with a quick <a href="https://www.google.com/search?q=stringr+vignette">Google search</a>.</p>
-<p>It is a good idea to go over the vignette when using a new package.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>s <span class="ot">=</span> <span class="st">"Hi Mom!"</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># you can indicate in your script from which package a function comes from</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># by using ::</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>stringr<span class="sc">::</span><span class="fu">str_length</span>(s)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 7</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_sub</span>(<span class="at">string =</span> s, <span class="at">start =</span> <span class="dv">1</span>, <span class="at">end =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "Hi"</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># vectorized:</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>string_vector <span class="ot">=</span> <span class="fu">paste</span>(<span class="fu">seq</span>(<span class="dv">12</span>), <span class="st">"is"</span>, <span class="fu">c</span>(<span class="st">"odd"</span>, <span class="st">"even"</span>))</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>string_vector</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] "1 is odd"   "2 is even"  "3 is odd"   "4 is even"  "5 is odd"  
- [6] "6 is even"  "7 is odd"   "8 is even"  "9 is odd"   "10 is even"
-[11] "11 is odd"  "12 is even"</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_remove</span>(string_vector, <span class="at">pattern =</span> <span class="st">"is "</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] "1 odd"   "2 even"  "3 odd"   "4 even"  "5 odd"   "6 even"  "7 odd"  
- [8] "8 even"  "9 odd"   "10 even" "11 odd"  "12 even"</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># stringr functions are part of the tidyverse</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co"># pipes work:</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>string_vector <span class="sc">|&gt;</span> <span class="fu">str_replace</span>(<span class="at">pattern =</span> <span class="st">" is"</span>, <span class="at">replacement =</span> <span class="st">":"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] "1: odd"   "2: even"  "3: odd"   "4: even"  "5: odd"   "6: even" 
- [7] "7: odd"   "8: even"  "9: odd"   "10: even" "11: odd"  "12: even"</code></pre>
-</div>
-</div>
-<section id="pattern-matching" class="level3">
-<h3 class="anchored" data-anchor-id="pattern-matching">Pattern matching</h3>
-<p>Pattern matching are logical operators for strings.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(string_vector, <span class="at">pattern =</span> <span class="st">"odd"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1]  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_which</span>(string_vector, <span class="at">pattern =</span> <span class="st">"even"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1]  2  4  6  8 10 12</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_starts</span>(string_vector, <span class="at">pattern =</span> <span class="st">"1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1]  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_count</span>(string_vector, <span class="at">pattern =</span> <span class="st">"1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] 1 0 0 0 0 0 0 0 0 1 2 1</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>vec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">16</span>,<span class="dv">3</span>,<span class="dv">8</span>,<span class="dv">71</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="leading-zeros" class="level3">
-<h3 class="anchored" data-anchor-id="leading-zeros">Leading Zeros</h3>
-<p><code>str_pad</code> one can be quite important to keep you sane.</p>
+<section id="generalise-your-code" class="level3">
+<h3 class="anchored" data-anchor-id="generalise-your-code">Generalise your code</h3>
+<p>The following dataset contains the average summer temperatures per year in Germany. You can download it <a href="https://opendata.dwd.de/climate_environment/CDC/regional_averages_DE/seasonal/air_temperature_mean/regional_averages_tm_summer.txt">here</a>.</p>
+<p>The code block below calculates the long term average summer temperature between 1960 and 1989 for Bayern. In the following task we want to generalise this code in a way that we can choose for which years and which state we calculate the average temperature.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>string_vector <span class="ot">=</span> <span class="fu">paste</span>(<span class="fu">seq</span>(<span class="dv">15</span>), <span class="st">"is"</span>, <span class="fu">c</span>(<span class="st">"odd"</span>, <span class="st">"even"</span>))</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>string_vector</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] "1 is odd"   "2 is even"  "3 is odd"   "4 is even"  "5 is odd"  
- [6] "6 is even"  "7 is odd"   "8 is even"  "9 is odd"   "10 is even"
-[11] "11 is odd"  "12 is even" "13 is odd"  "14 is even" "15 is odd" </code></pre>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>dwd <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">"https://opendata.dwd.de/climate_environment/CDC/regional_averages_DE/seasonal/air_temperature_mean/regional_averages_tm_summer.txt"</span>, <span class="at">sep =</span> <span class="st">";"</span>, <span class="at">skip =</span> <span class="dv">1</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(dwd))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 1%">
+<col style="width: 2%">
+<col style="width: 6%">
+<col style="width: 4%">
+<col style="width: 6%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 8%">
+<col style="width: 4%">
+<col style="width: 10%">
+<col style="width: 7%">
+<col style="width: 5%">
+<col style="width: 6%">
+<col style="width: 3%">
+<col style="width: 2%">
+<col style="width: 5%">
+<col style="width: 9%">
+<col style="width: 3%">
+<col style="width: 4%">
+<col style="width: 1%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Jahr</th>
+<th style="text-align: left;">summer</th>
+<th style="text-align: right;">Brandenburg.Berlin</th>
+<th style="text-align: right;">Brandenburg</th>
+<th style="text-align: right;">Baden.Wuerttemberg</th>
+<th style="text-align: right;">Bayern</th>
+<th style="text-align: right;">Hessen</th>
+<th style="text-align: right;">Mecklenburg.Vorpommern</th>
+<th style="text-align: right;">Niedersachsen</th>
+<th style="text-align: right;">Niedersachsen.Hamburg.Bremen</th>
+<th style="text-align: right;">Nordrhein.Westfalen</th>
+<th style="text-align: right;">Rheinland.Pfalz</th>
+<th style="text-align: right;">Schleswig.Holstein</th>
+<th style="text-align: right;">Saarland</th>
+<th style="text-align: right;">Sachsen</th>
+<th style="text-align: right;">Sachsen.Anhalt</th>
+<th style="text-align: right;">Thueringen.Sachsen.Anhalt</th>
+<th style="text-align: right;">Thueringen</th>
+<th style="text-align: right;">Deutschland</th>
+<th style="text-align: left;">X</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1881</td>
+<td style="text-align: left;">summer</td>
+<td style="text-align: right;">17.13</td>
+<td style="text-align: right;">17.11</td>
+<td style="text-align: right;">17.03</td>
+<td style="text-align: right;">16.39</td>
+<td style="text-align: right;">16.62</td>
+<td style="text-align: right;">16.12</td>
+<td style="text-align: right;">16.24</td>
+<td style="text-align: right;">16.24</td>
+<td style="text-align: right;">16.66</td>
+<td style="text-align: right;">16.90</td>
+<td style="text-align: right;">15.80</td>
+<td style="text-align: right;">17.19</td>
+<td style="text-align: right;">16.20</td>
+<td style="text-align: right;">16.88</td>
+<td style="text-align: right;">16.46</td>
+<td style="text-align: right;">15.95</td>
+<td style="text-align: right;">16.53</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1882</td>
+<td style="text-align: left;">summer</td>
+<td style="text-align: right;">16.45</td>
+<td style="text-align: right;">16.44</td>
+<td style="text-align: right;">14.85</td>
+<td style="text-align: right;">14.46</td>
+<td style="text-align: right;">15.02</td>
+<td style="text-align: right;">16.19</td>
+<td style="text-align: right;">15.71</td>
+<td style="text-align: right;">15.72</td>
+<td style="text-align: right;">15.48</td>
+<td style="text-align: right;">15.16</td>
+<td style="text-align: right;">16.10</td>
+<td style="text-align: right;">15.33</td>
+<td style="text-align: right;">15.05</td>
+<td style="text-align: right;">16.02</td>
+<td style="text-align: right;">15.41</td>
+<td style="text-align: right;">14.64</td>
+<td style="text-align: right;">15.33</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1883</td>
+<td style="text-align: left;">summer</td>
+<td style="text-align: right;">17.52</td>
+<td style="text-align: right;">17.51</td>
+<td style="text-align: right;">15.87</td>
+<td style="text-align: right;">15.50</td>
+<td style="text-align: right;">16.15</td>
+<td style="text-align: right;">16.66</td>
+<td style="text-align: right;">16.35</td>
+<td style="text-align: right;">16.36</td>
+<td style="text-align: right;">16.37</td>
+<td style="text-align: right;">16.23</td>
+<td style="text-align: right;">16.31</td>
+<td style="text-align: right;">16.42</td>
+<td style="text-align: right;">16.49</td>
+<td style="text-align: right;">17.14</td>
+<td style="text-align: right;">16.57</td>
+<td style="text-align: right;">15.84</td>
+<td style="text-align: right;">16.26</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1884</td>
+<td style="text-align: left;">summer</td>
+<td style="text-align: right;">17.00</td>
+<td style="text-align: right;">16.98</td>
+<td style="text-align: right;">16.08</td>
+<td style="text-align: right;">15.35</td>
+<td style="text-align: right;">16.01</td>
+<td style="text-align: right;">16.32</td>
+<td style="text-align: right;">16.20</td>
+<td style="text-align: right;">16.21</td>
+<td style="text-align: right;">16.45</td>
+<td style="text-align: right;">16.52</td>
+<td style="text-align: right;">16.19</td>
+<td style="text-align: right;">16.83</td>
+<td style="text-align: right;">15.92</td>
+<td style="text-align: right;">16.57</td>
+<td style="text-align: right;">16.02</td>
+<td style="text-align: right;">15.33</td>
+<td style="text-align: right;">16.10</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1885</td>
+<td style="text-align: left;">summer</td>
+<td style="text-align: right;">17.18</td>
+<td style="text-align: right;">17.17</td>
+<td style="text-align: right;">16.63</td>
+<td style="text-align: right;">16.05</td>
+<td style="text-align: right;">15.84</td>
+<td style="text-align: right;">16.06</td>
+<td style="text-align: right;">15.78</td>
+<td style="text-align: right;">15.78</td>
+<td style="text-align: right;">16.11</td>
+<td style="text-align: right;">16.28</td>
+<td style="text-align: right;">15.53</td>
+<td style="text-align: right;">16.65</td>
+<td style="text-align: right;">16.29</td>
+<td style="text-align: right;">16.63</td>
+<td style="text-align: right;">16.10</td>
+<td style="text-align: right;">15.43</td>
+<td style="text-align: right;">16.18</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1886</td>
+<td style="text-align: left;">summer</td>
+<td style="text-align: right;">17.16</td>
+<td style="text-align: right;">17.15</td>
+<td style="text-align: right;">16.04</td>
+<td style="text-align: right;">15.47</td>
+<td style="text-align: right;">15.88</td>
+<td style="text-align: right;">16.05</td>
+<td style="text-align: right;">15.89</td>
+<td style="text-align: right;">15.89</td>
+<td style="text-align: right;">16.17</td>
+<td style="text-align: right;">16.17</td>
+<td style="text-align: right;">15.52</td>
+<td style="text-align: right;">16.42</td>
+<td style="text-align: right;">16.09</td>
+<td style="text-align: right;">16.61</td>
+<td style="text-align: right;">16.05</td>
+<td style="text-align: right;">15.35</td>
+<td style="text-align: right;">16.00</td>
+<td style="text-align: left;">NA</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>string_vector_pad <span class="ot">=</span> <span class="fu">paste</span>(<span class="fu">str_pad</span>(<span class="fu">seq</span>(<span class="dv">15</span>), <span class="at">width =</span> <span class="dv">2</span>, <span class="at">pad =</span> <span class="dv">0</span>, <span class="at">side =</span> <span class="st">"left"</span>),</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>                          <span class="st">"is"</span>,</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">c</span>(<span class="st">"odd"</span>, <span class="st">"even"</span>))</span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>string_vector_pad</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># mean temperature in Bayern between 1960 and 1989</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(dwd[dwd<span class="sc">$</span>Jahr <span class="sc">&gt;=</span> <span class="dv">1960</span> <span class="sc">&amp;</span> dwd<span class="sc">$</span>Jahr <span class="sc">&lt;=</span> <span class="dv">1989</span>, <span class="st">"Bayern"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "01 is odd"  "02 is even" "03 is odd"  "04 is even" "05 is odd" 
- [6] "06 is even" "07 is odd"  "08 is even" "09 is odd"  "10 is even"
-[11] "11 is odd"  "12 is even" "13 is odd"  "14 is even" "15 is odd" </code></pre>
+<pre><code>[1] 15.82</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Task
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Write a function that calculates the long-term average temperature for a particular region in Germany.</li>
+<li>The function should have three arguments: the region, the start year and the end year.</li>
+<li>The function should return the temperature average between these two year for the specified region.</li>
+</ul>
 </div>
 </div>
 
