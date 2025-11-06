@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.6.42">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -69,12 +69,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-1e55e317bd74b60758646b707cf72507.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-481fb3e7c8ed794e7e9508e1bc0de807.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -167,7 +167,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./R02_basics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Variables, Values, Functions</span></a>
+ <span class="menu-text">Values, Variables, Functions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -390,7 +390,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./df01_introduction.html">Data handling</a></li><li class="breadcrumb-item"><a href="./df02_files.html">Filepaths and data I/O</a></li></ol></nav></header>
 
 
 
@@ -439,32 +439,6 @@ File path auto-completion
 <div class="callout-body-container callout-body">
 <p>Use the <code>TAB</code> Key in RStudio for navigation and auto-completion of file paths.</p>
 </div>
-</div>
-</section>
-<section id="csv" class="level2">
-<h2 class="anchored" data-anchor-id="csv">.csv</h2>
-<p>Once you deal with actual data you want to analyse, it is rare that you want to build a <code>data.frame</code> from scratch like the example above. Instead, you have some file prepared on your computer e.g.&nbsp;a <code>.csv</code> file you want to get into R. Most likely, this data comes from a spreadsheet application like Excel or Google Sheets that have their own file formats, e.g.&nbsp;a <code>.xlsx</code> file. While it is possible to import <code>.xlsx</code> files into R with external packages, the more elegant way is to use a much simpler file format: comma separated values - <code>.csv</code>.</p>
-<p>As the name suggests, a <code>.csv</code> file contains values separated by commas <code>,</code>:</p>
-<pre><code>plotID, soil_ph, soil_temperature, forest_type
-1, 5.5, 10, coniferous
-2, 5.4, 11, coniferous
-3, 6.1, 12, deciduous</code></pre>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-csv files in Germany
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>In Germany, <code>,</code> is used as the decimal point. You will often find csv files where the delimiter is a semicolon <code>;</code>.</p>
-</div>
-</div>
-<p>To get a <code>.csv</code> file into R, use the <code>read.csv()</code> function. Here you can also specify the <code>dec</code> and <code>sep</code> arguments to the correct symbols for <code>dec</code>imal points and <code>sep</code>arators.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>soil <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">"data/soil_samples.csv"</span>, <span class="at">sep =</span> <span class="st">","</span>, <span class="at">dec =</span> <span class="st">"."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="r-studio-projects" class="level2">
@@ -708,8 +682,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -820,7 +792,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {

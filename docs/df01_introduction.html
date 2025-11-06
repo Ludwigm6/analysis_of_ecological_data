@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.6.42">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -89,12 +89,12 @@ div.csl-indent {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-1e55e317bd74b60758646b707cf72507.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-481fb3e7c8ed794e7e9508e1bc0de807.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -187,7 +187,7 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./R02_basics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Variables, Values, Functions</span></a>
+ <span class="menu-text">Values, Variables, Functions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -410,7 +410,7 @@ div.csl-indent {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./df01_introduction.html">Data handling</a></li><li class="breadcrumb-item"><a href="./df01_introduction.html">Introduction to data.frame</a></li></ol></nav></header>
 
 
 
@@ -432,10 +432,14 @@ div.csl-indent {
 </ul>
 <div class="cell">
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="assets/r_dataframe.svg" class="img-fluid figure-img"></p>
-<figcaption>data.frames are a named list of vectors</figcaption>
+<div id="fig-df01" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-df01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="assets/r_dataframe.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-df01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: data.frames are a named list of vectors
+</figcaption>
 </figure>
 </div>
 </div>
@@ -450,132 +454,67 @@ div.csl-indent {
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "data.frame"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  plotID soil_ph soil_temperature forest_type
-1      1     5.5               10  coniferous
-2      2     5.4               11  coniferous
-3      3     6.1               12   deciduous</code></pre>
 </div>
-</div>
-<p>Once you deal with actual data you want to analyse, it is rare that you want to build a <code>data.frame</code> from scratch like the example above. Instead, you have some file prepared on your computer e.g.&nbsp;a <code>.csv</code> file you want to get into R. Learn more about <a href="./df02_files.html">external data and how to get them into R</a> in the next lesson.</p>
-<p>For now, we simply want to have a larger <code>data.frame</code> to show and test some functions. Here, I use data about the districts of Muenster that will be part of <a href="Exersice 04">assignments/Ex04_trees.qmd</a> later in the course.</p>
+<p>You can still access the individual column vectors by using the <code>$</code> operator.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">"data/muenster_districts.csv"</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># show the first few rows of the df</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>soil_ph</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  id   district  district_group       area
-1 15    Bahnhof  Innenstadtring   363089.2
-2 16  Albachten    Münster-West 12965147.7
-3 17 Angelmodde  Münster-Südost  5016879.5
-4 18      Kreuz  Innenstadtring  1014690.9
-5 19 Berg Fidel Münster-Hiltrup  4781065.8
-6 20   Düesberg       Mitte-Süd  2185161.9</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># show the last few rows of the df</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>   id      district  district_group     area
-40 40    Amelsbüren Münster-Hiltrup 43373127
-41 41   Mecklenbeck    Münster-West  6244230
-42 42     Uppenberg   Mitte-Nordost  3400206
-43 43     Nienberge    Münster-West 27773029
-44 44       Sentrup    Münster-West  6627422
-45 45 Hiltrup-Mitte Münster-Hiltrup  5984811</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get a short summary of the structure</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>'data.frame':   45 obs. of  4 variables:
- $ id            : int  15 16 17 18 19 20 21 22 23 24 ...
- $ district      : chr  "Bahnhof" "Albachten" "Angelmodde" "Kreuz" ...
- $ district_group: chr  "Innenstadtring" "Münster-West" "Münster-Südost" "Innenstadtring" ...
- $ area          : num  363089 12965148 5016880 1014691 4781066 ...</code></pre>
+<pre><code>[1] 5.5 5.4 6.1</code></pre>
 </div>
 </div>
 <section id="data.frame-subsetting" class="level2">
 <h2 class="anchored" data-anchor-id="data.frame-subsetting">data.frame subsetting</h2>
-<p>You can think about <code>data.frames</code> as 2-d vectors. Subsetting of <code>data.frames</code> hence requires two values, one for the row subset, one for the column subset:</p>
+<p>One of the most important skills you will need in R, is the ability to subset a data.frame in order to get the information you need for your analysis. Rarely, you need the whole dataframe at once for something. Usually, you only need certain columns, e.g.&nbsp;in order to calculate the average soil temperature for all the locations you would only need the values of the soil_temperature column (<code>mean(df$soil_temperature)</code>). Let’s have a more detailed look at the following question:</p>
+<blockquote class="blockquote">
+<p>What is the highest soil pH we measured in coniferous forests?</p>
+</blockquote>
+<p>Of course, just by looking at our little example data.frame, the answer should be 5.5 - But how do we get there with R code? To do this, we have to go step by step and reduce the data.frame logically. If we want to get the maximum soil pH of coniferous forest, we first have to get all the pH values we gathered in coniferous forests. In general, there are only two options when reducing a data.frame:</p>
+<ol type="1">
+<li>subsetting columns, i.e.&nbsp;reducing the data.frame in width</li>
+<li>subsetting rows i.e.&nbsp;reducing the data.frame in length</li>
+</ol>
+<p>Think about which columns you need and how to get to specific rows in this column. Your mental image could look something like this:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># row 1, column 2</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>data[<span class="dv">1</span>,<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "Bahnhof"</code></pre>
+<div class="cell-output-display">
+<div id="fig-dfsubset01" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-dfsubset01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="assets/r_df_subset01.svg" class="img-fluid figure-img">
 </div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the first row, empty means "everything"</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>data[<span class="dv">1</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  id district district_group     area
-1 15  Bahnhof Innenstadtring 363089.2</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the first 3 rows, column 3 and 4</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>data[<span class="fu">seq</span>(<span class="dv">3</span>), <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">4</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  district_group       area
-1 Innenstadtring   363089.2
-2   Münster-West 12965147.7
-3 Münster-Südost  5016879.5</code></pre>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dfsubset01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: data.frames subsetting with rows and columns
+</figcaption>
+</figure>
 </div>
 </div>
-<p>If you want to extract a column of a <code>data.frame</code> you can use the <code>$</code> operator. The resulting object is a vector, and hence only has one dimension. This is important to recognize, because a subset of a column by the <code>$</code> operator again needs only one value (see example below).</p>
+</div>
+<p>We want to end up with the two cells marked in blue. The column we need to reduce the data.frame to is of course the <code>soil_ph</code> column which we can access easily with the <code>$</code> operator, however, to get the two specific rows is a bit more tricky. Luckily, with the data.frame, we have more information available that we can use. Combined with the use of <a href="https://ludwigm6.github.io/analysis_of_ecological_data/R04_logic.html">logical operators</a> we could reduce the data.frame to the rows where in the <code>forest_type</code> column, the word “coniferous” appears.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>district_area <span class="ot">&lt;-</span> data<span class="sc">$</span>area</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(district_area)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
-  164740   760916  3157262  6736010  6399041 43373127 </code></pre>
+<div class="cell-output-display">
+<div id="fig-dfsubset02" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-dfsubset02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="assets/r_df_subset02.svg" class="img-fluid figure-img">
 </div>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># subsetting a column accessed with $ only needs one value</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>area[<span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 4781066</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># You can also define new columns with the $</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>city <span class="ot">&lt;-</span> <span class="st">"Muenster"</span></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  id   district  district_group       area     city
-1 15    Bahnhof  Innenstadtring   363089.2 Muenster
-2 16  Albachten    Münster-West 12965147.7 Muenster
-3 17 Angelmodde  Münster-Südost  5016879.5 Muenster
-4 18      Kreuz  Innenstadtring  1014690.9 Muenster
-5 19 Berg Fidel Münster-Hiltrup  4781065.8 Muenster
-6 20   Düesberg       Mitte-Süd  2185161.9 Muenster</code></pre>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dfsubset02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: data.frames subsetting with logical operators
+</figcaption>
+</figure>
 </div>
 </div>
-<p>Subsetting a <code>data.frame</code> by column names also works:</p>
+</div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read: from data, rows 1 to 5, and columns with the name Datum and pH.Wert</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>data[<span class="fu">seq</span>(<span class="dv">5</span>), <span class="fu">c</span>(<span class="st">"district"</span>, <span class="st">"district_group"</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>soil_ph</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>    district  district_group
-1    Bahnhof  Innenstadtring
-2  Albachten    Münster-West
-3 Angelmodde  Münster-Südost
-4      Kreuz  Innenstadtring
-5 Berg Fidel Münster-Hiltrup</code></pre>
+<pre><code>[1] 5.5 5.4 6.1</code></pre>
 </div>
-</div>
-<p>Of course <a href="https://ludwigm6.github.io/analysis_of_ecological_data/R04_logic.html">logical operators</a> also work for <code>data.frame</code> subsetting:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read: from data, only the rows where area is larger than 20 Million, and all the columns</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>data[data<span class="sc">$</span>area <span class="sc">&gt;</span> <span class="dv">20000000</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>forest_type <span class="sc">==</span> <span class="st">'coniferous'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   id   district  district_group     area     city
-16 30    Wolbeck  Münster-Südost 20706535 Muenster
-36 36    Handorf     Münster-Ost 30696425 Muenster
-38 38    Sprakel    Münster-Nord 22417558 Muenster
-40 40 Amelsbüren Münster-Hiltrup 43373127 Muenster
-43 43  Nienberge    Münster-West 27773029 Muenster</code></pre>
+<pre><code>[1]  TRUE  TRUE FALSE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read: from data, only rows where area is smaller than 500000, and only the column with the name district</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>data[data<span class="sc">$</span>area <span class="sc">&lt;</span> <span class="dv">500000</span>, <span class="st">"district"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(df[df<span class="sc">$</span>forest_type <span class="sc">==</span> <span class="st">'coniferous'</span>,]<span class="sc">$</span>soil_ph)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "Bahnhof"      "Mauritz-West" "Aegidii"      "Dom"          "Martini"     
-[6] "Hansaplatz"   "Buddenturm"   "Überwasser"  </code></pre>
+<pre><code>[1] 5.5</code></pre>
 </div>
 </div>
 
@@ -815,8 +754,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -927,7 +864,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
