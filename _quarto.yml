@@ -29,6 +29,7 @@ website:
       # - "D02_projects_io.qmd"
         - "df01_introduction.qmd"
         - "df02_files.qmd"
+        - "df03_filesdata.qmd"
         - "df03_tidyverse.qmd"
         - "df04_wide_long.qmd"
         - "assignments/Ex03_iris.qmd"

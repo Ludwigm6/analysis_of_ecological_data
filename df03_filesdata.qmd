@@ -1,0 +1,29 @@
+# Data in Files
+
+Once you deal with actual data you want to analyse, it is rare that you want to build a `data.frame` from scratch in your R script or use a predefined example data from within R. Instead, you have some file prepared on your computer e.g. a `.csv` file you want to get into R.
+Most likely, this data comes from a spreadsheet application like Excel or Google Sheets that have their own file formats, e.g. a `.xlsx` file. While it is possible to import `.xlsx` files into R with external packages, the more elegant way is to use a much simpler file format: **comma separated values** - `.csv`. 
+
+As the name suggests, a `.csv` file contains values separated by commas `,`:
+
+```
+plotID, soil_ph, soil_temperature, forest_type
+1, 5.5, 10, coniferous
+2, 5.4, 11, coniferous
+3, 6.1, 12, deciduous
+```
+
+
+:::{.callout-warning}
+## Caution with csv files
+
+In Germany, `,` is used as the decimal point. You will often find csv files where the delimiter is a semicolon `;`. Sometimes you will also find files where the separator is a tabstop or four spaces.
+:::
+
+
+To get a `.csv` file into R, use the `read.csv()` function. Here you can also specify the `dec` and `sep` arguments to the correct symbols for `dec`imal points and `sep`arators.
+
+```{r, eval = FALSE}
+
+soil = read.csv("data/soil_samples.csv", sep = ",", dec = ".")
+
+```
